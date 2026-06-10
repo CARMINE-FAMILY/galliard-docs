@@ -1,0 +1,18 @@
+// GENERALS
+@use "./generals/fonts";
+@use "./generals/vars";
+@use "./generals/root";
+@use "./generals/reset";
+@use "./generals/typography";
+
+// LAYOUTS
+@use "./layouts/mainLayout";
+
+// COMPONENTS
+@use "./components/navbar";
+@use "./components/hero";
+@use "./components/footer";
+@use "./components/code";
+
+// PAGES
+@use "./pages/landingScreen";

@@ -1,28 +1,48 @@
-import React from 'react';
+import React from "react";
+import { FaGithub, FaNpm } from "react-icons/fa";
 
 const Navbar: React.FC = () => {
+  
   return (
-    // display: flex pone las 3 secciones principales en una sola fila horizontal
-    <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px' }}>
-      
-      {/* Sección Izquierda */}
-      <div>
+    <nav className="navbar">
+      <div className="navbar__brand">
         <a href="/">
-          <span>G </span>
+          <span>G</span>
           <strong>Galliard UI</strong>
         </a>
       </div>
 
-      {/* Sección Central: display: flex aquí quita el comportamiento de lista hacia abajo */}
-      <ul style={{ display: 'flex', listStyle: 'none', gap: '15px', margin: 0, padding: 0 }}>
-        <li><a href="/docs">Docs</a></li>
-        <li><a href="/components">Components</a></li>
+      <ul className="navbar__links">
+        <li>
+          <a href="/docs">Docs</a>
+        </li>
+        <li>
+          <a href="/components">Components</a>
+        </li>
+        <li>
+          <a href="/prueba">Prueba</a>
+        </li>
       </ul>
 
-      {/* Sección Derecha */}
-      <div style={{ display: 'flex', gap: '10px' }}>
-        <a href="https://github.com" rel="noopener noreferrer">Ver Perfil de GitHub</a>
-        <a href="https://www.npmjs.com/package/galliard-ui">NPM</a>
+      <div className="navbar__actions">
+        <a
+          className="navbar__github"
+          href="https://github.com/CARMINE-FAMILY/galliard-docs"
+          target="_blank"
+          // Evita que el sitio externo pueda manipular la pestaña original
+          rel="noopener noreferrer"
+        >
+          <FaGithub />
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 128 128"><path fill="#cb3837" d="M0 7.062C0 3.225 3.225 0 7.062 0h113.88c3.838 0 7.063 3.225 7.063 7.062v113.88c0 3.838-3.225 7.063-7.063 7.063H7.062c-3.837 0-7.062-3.225-7.062-7.063zm23.69 97.518h40.395l.05-58.532h19.494l-.05 58.581h19.543l.05-78.075l-78.075-.1l-.1 78.126z"/><path fill="#fff" d="M25.105 65.52V26.512H40.96c8.72 0 26.274.034 39.008.075l23.153.075v77.866H83.645v-58.54H64.057v58.54H25.105z"/></svg>
+        </a>
+        <a
+          className="navbar__npm"
+          href="https://www.npmjs.com/package/galliard-ui"
+          target="_blank"
+          rel="noopener nereferrer"
+        >
+          <FaNpm />
+        </a>
       </div>
     </nav>
   );

@@ -2,10 +2,11 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer>
-      <div className="footer-contenido">
+    <footer className="footer">
+      <div className="footer__content">
         <p>Contáctanos: contacto@miweb.com</p>
-        <ul>
+
+        <ul className="footer__links">
           <li>
             <a href="/sobre-nosotros">Sobre nosotros</a>
           </li>
@@ -13,6 +14,7 @@ const Footer: React.FC = () => {
             <a href="/aviso-legal">Aviso legal</a>
           </li>
         </ul>
+
         <p>© 2025 MiWeb</p>
       </div>
     </footer>

@@ -1,18 +1,48 @@
-import React from 'react';
+import React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaCopy, FaCheck } from "react-icons/fa";
 
-// Usamos React.FC para definir que es un Function Component de React
 const Hero: React.FC = () => {
+  const [copied, setCopied] = useState(false);
+
+  const copyCommand = async (): Promise<void> => {
+    await navigator.clipboard.writeText("npm install galliard-ui");
+
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  };
+
   return (
-    <header className="hero-container" style={{textAlign:'center', padding: '100px'}}>
-      {/* Título con degradado */}
-      <h1 className="hero-title">Galliard UI</h1>
-      
-      {/* Subtítulo / Descripción */}
-      <p className="hero-subtitle">
-        Librería de componentes React moderna, construida con TypeScript y Sass.<br />
+    <section className="hero">
+      <h1 className="hero__title">Galliard UI</h1>
+      <p className="hero__subtitle">
+        Librería de componentes React moderna, construida con TypeScript y Sass.
+        <br />
         Ligera, accesible y altamente personalizable.
       </p>
-    </header>
+      <div>
+        <br />
+        <Link to="/get-started" className="hero__button hero__button--primary">
+          Get Started →
+        </Link>
+      </div>
+      <br />
+      <div className="hero__install">
+      <code>npm install galliard-ui</code>
+
+      <button
+        className="hero__copy-button"
+        onClick={copyCommand}
+        aria-label="Copiar comando"
+      >
+        {copied ? <FaCheck /> : <FaCopy />}
+      </button>
+    </div>
+    </section>
   );
 };
 

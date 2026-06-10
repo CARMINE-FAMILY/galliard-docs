@@ -1,22 +1,22 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Footer from './components/Footer'; // <- Importas el footer
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const App: React.FC = () => {
+import MainLayout from "./app/MainLayout";
+import LandingScreen from "./app/landingPage/LandigScreen";
+import Prueba from "./app/Prueba";
+//import {NotFound} from "./app/NotFound";
+
+function App() {
   return (
-    <div className="App" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-      <div>
-        <Navbar />
-        <main>
-          <Hero />
-        </main>
-      </div>
-      
-      {/* El Footer va al final de todo */}
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<LandingScreen />} />
+        </Route>
+
+         <Route path="/prueba" element={<Prueba />} />
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
 export default App;

@@ -1,0 +1,19 @@
+
+.footer {
+  border-top: 1px solid var(--border);
+
+  padding: 2rem;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__links {
+  display: flex;
+  gap: 1rem;
+
+  list-style: none;
+}
