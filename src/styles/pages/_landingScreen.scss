@@ -1,3 +1,9 @@
+@use "../generals/vars" as *;
+
 .landing-screen {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3xl;
+  padding-block: $space-2xl;
 }

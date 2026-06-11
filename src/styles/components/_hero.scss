@@ -1,89 +1,95 @@
 .hero {
-  padding: 4rem 6rem;
+  padding:  0.2rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  text-align: default;
-}
+  text-align: center;
 
-.hero__title {
-  color: var(--accent);
-}
+  &__title {
+    display: inline-block;
 
-.hero__subtitle {
-  max-width: 800px;
+    padding: 40px;
 
-  font-size: 1.25rem;
-  line-height: 1.5;
+    font-size: 5rem;
+    font-weight: 400;
 
-  color: var(--text);
+    background-image: url("../../assets/Imagen.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-  margin-top: 1rem;
-}
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-.hero__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0.9rem 1.8rem;
-
-  border-radius: 12px;
-
-  font-weight: 600;
-
-  transition: .3s ease;
-}
-
-.hero__button--primary {
-  background: var(--accent);
-  color: white;
-
-  &:hover {
-    transform: translateY(-2px);
+    text-align: center;
   }
-}
 
-.hero__install {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  &__subtitle {
+    max-width: 800px;
 
-  max-width: 500px;
+    margin-top: 0.4rem;
 
-  padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
 
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-.hero__copy-button {
-  border: none;
-  background: transparent;
+    padding: 0.6rem 1rem;
 
-  cursor: pointer;
+    border-radius: 12px;
 
-  font-size: 1rem;
-}
+    font-weight: 600;
 
-.hero__copy-button {
-  border: none;
-  background: transparent;
+    transition: 0.3s ease;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    &--primary {
+      color: white;
+      background: var(--accent);
 
-  cursor: pointer;
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  }
 
-  font-size: 1rem;
-  color: var(--text);
+  &__install {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  transition: 0.2s ease;
+    gap: 1rem;
 
-  &:hover {
-    color: var(--accent);
+    margin-top: 2rem;
+
+    padding: 1rem 1.5rem;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  &__copy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    color: var(--text);
+
+    transition: 0.2s ease;
+
+    &:hover {
+      color: var(--accent);
+    }
   }
 }

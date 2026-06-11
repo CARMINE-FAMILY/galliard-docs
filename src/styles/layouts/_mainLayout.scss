@@ -1,25 +1,10 @@
-@use "../generals/vars" as *;
-
-#root {
-  max-width: $container-width;
-
-  margin: 0 auto;
-
-  min-height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-
-  
-}
-
 .main-layout {
   min-height: 100vh;
 
   display: flex;
   flex-direction: column;
-}
 
-.main-layout__content {
-  flex: 1;
+  &__content {
+    flex: 1;
+  }
 }

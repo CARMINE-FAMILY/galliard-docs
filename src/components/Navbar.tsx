@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
 
       <div className="navbar__actions">
         <a
-          className="navbar__github"
+          className="navbar__social"
           href="https://github.com/CARMINE-FAMILY/galliard-docs"
           target="_blank"
           // Evita que el sitio externo pueda manipular la pestaña original
@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
           </svg>
         </a>
         <a
-          className="navbar__npm"
+          className="navbar__social"
           href="https://www.npmjs.com/package/galliard-ui"
           target="_blank"
           rel="noopener nereferrer"
