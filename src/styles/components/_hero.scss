@@ -1,21 +1,20 @@
 .hero {
-  padding: 0.2rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
+  gap: 20px;
   text-align: center;
+  height: calc(100vh - 60px);
+  width: 100%;
+  position: relative;
 
   &__title {
     display: inline-block;
-
-    padding: 15px;
-
-    font-size: 5rem;
+   
+    font-size: 4rem;
     font-weight: 400;
-
-    background-image: url("../../assets/Imagen.jpg");
+    background-image: url("../../assets/Imagen.jpg"); //pasar a webp
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -29,86 +28,93 @@
 
   &__subtitle {
     max-width: 800px;
-
-    margin-top: 0rem;
-
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 1.5;
   }
 
-  &__button {
-    display: inline-flex;
+  .container-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    gap: 0.5rem;
 
-    padding: 0.6rem 1rem;
+    .h-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      font-family: OpenSansSemiBoldItalic;
+      transition: 0.3s ease;
+      height: 40px;
+      gap: 5px;
 
-    border-radius: 12px;
+      .icon {
+        color: #fff !important;
+        font-size: 1.3rem;
+        transform: rotateY(180deg);
+      }
 
-    font-weight: 600;
+      &--primary {
+        color: white;
+        background: var(--accent);
 
-    transition: 0.3s ease;
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+    }
 
-    &--primary {
-      color: white;
-      background: var(--accent);
+    .h-install {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.2rem;
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      height: 40px;
 
-      &:hover {
-        transform: translateY(-2px);
+      &__copy-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: none;
+        background: transparent;
+
+        cursor: pointer;
+
+        color: var(--text);
+
+        transition: 0.2s ease;
+
+        &:hover {
+          color: var(--accent);
+        }
       }
     }
   }
 
-  &__install {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 1rem;
-
-    margin-top: 2rem;
-
-    padding: 1rem 1.5rem;
-
-    border: 1px solid var(--border);
-    border-radius: 12px;
-  }
-
-  &__copy-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: none;
-    background: transparent;
-
-    cursor: pointer;
-
-    color: var(--text);
-
-    transition: 0.2s ease;
-
-    &:hover {
-      color: var(--accent);
-    }
-  }
-
   &__made-with {
-    margin-top: 0.8rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 20px;
+    z-index: 3;
 
-    font-size: 1.5rem;
-  }
+    .h-heart {
+      display: inline-block;
 
-  &__heart {
-    display: inline-block;
-    
-    color: rgb(255, 0, 0);
+      color: rgb(255, 0, 0);
 
-    animation: heartbeat 1.5s ease infinite;
+      animation: heartbeat 2s ease infinite;
 
-    text-shadow:
-      0 0 5px rgba(162, 71, 247, 0.4),
-      0 0 10px rgba(162, 71, 247, 0.2);
+      text-shadow:
+        0 0 5px rgba(162, 71, 247, 0.4),
+        0 0 10px rgba(162, 71, 247, 0.2);
+    }
   }
 
   @keyframes heartbeat {

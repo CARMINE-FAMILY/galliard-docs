@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaCopy, FaCheck } from "react-icons/fa";
+import { Icon } from "@iconify/react";
 
 const Hero: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -21,31 +22,32 @@ const Hero: React.FC = () => {
       <h1 className="hero__title">Galliard UI</h1>
       <p className="hero__subtitle">
         Librería de componentes React moderna, construida con TypeScript y Sass.
-        <br />
         Ligera, accesible y altamente personalizable.
       </p>
-      <p className="hero__made-with">
-        Made with <span className="hero__heart">❤</span> using React +
-        TypeScript.
-      </p>
-      <div>
-        <br />
-        <Link to="/get-started" className="hero__button hero__button--primary">
-          Get Started →
-        </Link>
-      </div>
-      <br />
-      <div className="hero__install">
-        <code>npm install galliard-ui</code>
 
-        <button
-          className="hero__copy-button"
-          onClick={copyCommand}
-          aria-label="Copiar comando"
-        >
-          {copied ? <FaCheck /> : <FaCopy />}
-        </button>
+      <div className="container-actions">
+        <Link to="/get-started" className="h-button h-button--primary">
+          Get Started
+          <Icon icon="tabler:karate" className="icon" />
+        </Link>
+
+        <div className="h-install">
+          <code>npm install galliard-ui</code>
+          <button
+            className="h-copy-button"
+            onClick={copyCommand}
+            aria-label="Copiar comando"
+          >
+            {copied ? <FaCheck /> : <FaCopy />}
+          </button>
+        </div>
       </div>
+
+      <p className="hero__made-with">
+        {" "}
+        Made with <span className="h-heart">❤</span> using React +
+        TypeScript.{" "}
+      </p>
     </section>
   );
 };
