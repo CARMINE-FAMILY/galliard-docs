@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 40px;
   text-align: center;
   height: calc(100vh - 60px);
   width: 100%;
@@ -11,33 +11,31 @@
 
   &__title {
     display: inline-block;
-   
-    font-size: 4rem;
+    font-size: 8rem;
     font-weight: 400;
-    background-image: url("../../assets/Imagen.jpg"); //pasar a webp
+    background-image: url("../../assets/Imagen.webp"); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
     text-align: center;
   }
 
   &__subtitle {
     max-width: 800px;
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     line-height: 1.5;
   }
 
   .container-actions {
+    
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.7rem;
 
     .h-button {
       display: flex;
@@ -49,10 +47,11 @@
       transition: 0.3s ease;
       height: 40px;
       gap: 5px;
+      font-size: 20px;
 
       .icon {
         color: #fff !important;
-        font-size: 1.3rem;
+        font-size: 2.7rem;
         transform: rotateY(180deg);
       }
 
@@ -70,26 +69,22 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.2rem;
-      padding: 0.6rem 1rem;
+      gap: 0.3rem;
+      padding: 1.5rem;
       border: 1px solid var(--border);
       border-radius: 12px;
       height: 40px;
 
       &__copy-button {
+        font-size: 3rem;
         display: flex;
         align-items: center;
         justify-content: center;
-
         border: none;
         background: transparent;
-
         cursor: pointer;
-
         color: var(--text);
-
         transition: 0.2s ease;
-
         &:hover {
           color: var(--accent);
         }
@@ -99,18 +94,15 @@
 
   &__made-with {
     margin-top: 0.5rem;
-    font-size: 1rem;
+    font-size: 2.2rem;
     position: absolute;
-    bottom: 20px;
-    z-index: 3;
-
+    bottom: 40px;
+    
     .h-heart {
       display: inline-block;
-
+      font-size: 2rem;
       color: rgb(255, 0, 0);
-
       animation: heartbeat 2s ease infinite;
-
       text-shadow:
         0 0 5px rgba(162, 71, 247, 0.4),
         0 0 10px rgba(162, 71, 247, 0.2);

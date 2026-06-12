@@ -3,9 +3,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
   border-bottom: 1px solid var(--border);
-  
+  padding: 3rem;
+
   // ========================
   // Logo
   // ========================
@@ -13,11 +13,11 @@
     a {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-
+      gap: 0.9rem;
       color: rgb(162, 71, 247);
       font-weight: 700;
       text-decoration: none;
+      font-size: 1.9rem;
     }
   }
 
@@ -25,23 +25,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 40px;
     height: 40px;
-
     border-radius: 10px;
-
     background: rgb(162, 71, 247);
     color: white;
-
-    font-size: 1.4rem;
+    font-size: 2.5rem;
     font-weight: 700;
-
     transition: transform 0.3s ease;
-
+    gap: 1px;
     &:hover {
       transform: rotate(-9deg) scale(1.05);
     }
+  }
+
+  &__title{
+    font-size: 1.9rem;
+    gap: 3rem;
   }
 
   // ========================
@@ -49,21 +49,16 @@
   // ========================
   &__links {
     display: flex;
-    gap: 2.5rem;
-
+    gap: 2rem;
     a {
+      font-size: 1.9rem;
       position: relative;
-
-      padding: 0.5rem 0.75rem;
-
+      padding: 0.8rem;
       color: rgba(124, 8, 233, 0.829);
       text-decoration: none;
       font-weight: 500;
-
-      border-radius: 8px;
-
+      border-radius: 9px;
       transition: all 0.3s ease;
-
       &:hover {
         background: linear-gradient(
           90deg,
@@ -75,45 +70,33 @@
           #0000ff,
           #ff00ff
         );
-
         background-size: 300%;
-
-        -webkit-background-clip: text;
         background-clip: text;
-
         color: transparent;
-
         animation: rainbow 2s linear infinite;
       }
 
       // Ruta activa
       &.active {
         color: #000000;
-
         &::after {
           width: 100%;
           background: #ff6a00;
         }
       }
-
       &::after {
         content: "";
-
         position: absolute;
         left: 50%;
         bottom: -6px;
-
         width: 0;
         height: 2px;
-
         background: rgb(162, 71, 247);
-
         transform: translateX(-50%);
         transition: width 0.3s ease;
       }
-
       &:hover::after {
-        width: 80%;
+        width: 100%;
       }
     }
   }
@@ -123,29 +106,26 @@
   // ========================
   &__actions {
     display: flex;
-    gap: 1rem;
+    font-size: 1.6rem;
   }
 
   &__social {
-    width: 40px;
-    height: 40px;
-
+    font-size: 2.3rem;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border-radius: 10px;
-
-    font-size: 28px;
-
+    border-radius: 100px;
     color: var(--text-h);
-
     transition: all 0.3s ease;
-
+    svg {
+      width: 35px;
+      height: 35px;
+    }
     &:hover {
       color: rgb(162, 71, 247);
       background: rgba(162, 71, 247, 0.08);
-
       transform: translateY(-2px);
     }
   }
