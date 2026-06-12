@@ -1,30 +1,35 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div className="navbar__brand">
         <a href="/">
-          <span>G</span>
-          <strong>Galliard UI</strong>
+          <span className="navbar__logo">G</span>
+          <span>Galliard UI</span>
         </a>
       </div>
 
       <ul className="navbar__links">
         <li>
-          <a href="/docs">Docs</a>
+          <NavLink to="/docs">Docs</NavLink>
         </li>
+
         <li>
-          <a href="/components">Components</a>
+          <NavLink to="/components">Components</NavLink>
         </li>
+
         <li>
-          <a href="/prueba">Prueba</a>
+          <NavLink to="/prueba">Prueba</NavLink>
         </li>
+
         <li>
-          <a href="/nose">Nose</a>
+          <NavLink to="/nose">Nose</NavLink>
         </li>
+
         <li>
-          <a href="/final">Final</a>
+          <NavLink to="/final">Final</NavLink>
         </li>
       </ul>
 

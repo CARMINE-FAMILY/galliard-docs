@@ -24,6 +24,10 @@ const Hero: React.FC = () => {
         <br />
         Ligera, accesible y altamente personalizable.
       </p>
+      <p className="hero__made-with">
+        Made with <span className="hero__heart">❤</span> using React +
+        TypeScript.
+      </p>
       <div>
         <br />
         <Link to="/get-started" className="hero__button hero__button--primary">
@@ -32,16 +36,16 @@ const Hero: React.FC = () => {
       </div>
       <br />
       <div className="hero__install">
-      <code>npm install galliard-ui</code>
+        <code>npm install galliard-ui</code>
 
-      <button
-        className="hero__copy-button"
-        onClick={copyCommand}
-        aria-label="Copiar comando"
-      >
-        {copied ? <FaCheck /> : <FaCopy />}
-      </button>
-    </div>
+        <button
+          className="hero__copy-button"
+          onClick={copyCommand}
+          aria-label="Copiar comando"
+        >
+          {copied ? <FaCheck /> : <FaCopy />}
+        </button>
+      </div>
     </section>
   );
 };

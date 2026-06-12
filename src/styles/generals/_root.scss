@@ -1,7 +1,9 @@
 @use "./vars" as *;
 
 :root {
-  --sans: "OpenSansLight";
+  //navbar y texto del hero
+  --sans: "OpenSansMediumItalic";
+  // titulo del hero
   --heading: "OpenSansExtraBold";
   --mono: ui-monospace, Consolas, monospace;
 
@@ -17,7 +19,7 @@
   --code-bg: #f8f9fb70;
 
   --accent-bg: rgba(124, 58, 237, 0.1);
-  --accent-border: rgba(124, 58, 237, 0.3);
+  --accent-border: rgba(198, 237, 58, 0.3);
 
   --social-bg: rgba(248, 251, 248, 0.8);
 
