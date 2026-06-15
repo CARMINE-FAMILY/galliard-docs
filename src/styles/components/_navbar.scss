@@ -7,6 +7,15 @@
   padding: 3rem;
 
   // ========================
+  // Glassmorphism
+  // ========================
+  position: sticky; // se queda fijo en la parte superior al hacer scroll
+  top: 0; // pegado al borde superior de la ventana
+  z-index: 100; // se dibuja encima de otros elementos de la página
+  background: rgba(255,255,255,0.12); // fondo blanco con 12% de opacidad (casi transparente)
+  backdrop-filter: blur(14px); // difumina lo que hay DETRÁS del navbar
+  
+  // ========================
   // Logo
   // ========================
   &__brand {
@@ -39,9 +48,10 @@
     }
   }
 
-  &__title{
-    font-size: 1.9rem;
+  &__title {
+    font-size: 1.7rem;
     gap: 3rem;
+    font-family: OpenSansSemiBold;
   }
 
   // ========================
