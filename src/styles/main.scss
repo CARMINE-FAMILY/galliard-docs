@@ -1,5 +1,4 @@
 // GENERALS
-
 @use "./generals/vars";
 @use "./generals/root";
 @use "./generals/reset";
@@ -13,6 +12,7 @@
 @use "./components/hero";
 @use "./components/footer";
 @use "./components/code";
+@use "./components/card";
 
 // PAGES
 @use "./pages/landingScreen";

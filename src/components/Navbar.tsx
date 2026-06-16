@@ -5,12 +5,10 @@ import { Icon } from "@iconify/react";
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
-      <div className="navbar__brand">
-        <a href="/">
-          <span className="navbar__logo">G</span>
-          <span className="navbar__title">Galliard UI</span>
-        </a>
-      </div>
+      <a href="/" className="navbar__brand">
+        <span className="logo">G</span>
+        <span className="title">Galliard UI</span>
+      </a>
 
       <ul className="navbar__links">
         <li>
@@ -36,21 +34,21 @@ const Navbar: React.FC = () => {
 
       <div className="navbar__actions">
         <a
-          className="navbar__social"
+          className="social"
           href="https://github.com/CARMINE-FAMILY/galliard-docs"
           target="_blank"
           // Evita que el sitio externo pueda manipular la pestaña original
           rel="noopener noreferrer"
         >
-          <Icon icon="feather:github" />
+          <Icon icon="feather:github" className="icon" />
         </a>
         <a
-          className="navbar__social"
+          className="social"
           href="https://www.npmjs.com/package/galliard-ui"
           target="_blank"
           rel="noopener nereferrer"
         >
-          <Icon icon="devicon:npm" />
+          <Icon icon="devicon:npm" className="icon npm" />
         </a>
       </div>
     </nav>

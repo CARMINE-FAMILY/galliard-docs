@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainLayout from "./app/MainLayout";
 import LandingScreen from "./app/landingPage/LandigScreen";
-import Prueba from "./app/Prueba";
 import Nose from "./app/Nose";
 import Final from "./app/Final";
 import SecundaryLayout from "./app/landingPage/SecundaryLayout";
@@ -18,7 +17,6 @@ function App() {
             <Route path="/nose" element={<Nose />} />
           </Route>
           <Route path="/" element={<LandingScreen />} />
-          <Route path="/prueba" element={<Prueba />} />
           <Route path="/final" element={<Final />} />
         </Route>
       </Routes>

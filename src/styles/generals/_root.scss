@@ -1,12 +1,6 @@
 @use "./vars" as *;
 
 :root {
-  //navbar y texto del hero
-  --sans: "OpenSansMediumItalic";
-  // titulo del hero
-  --heading: "OpenSansExtraBold";
-  --mono: ui-monospace, Consolas, monospace;
-
   --text: #{$text-secondary};
   --text-h: #{$text-primary};
 
@@ -39,4 +33,3 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-

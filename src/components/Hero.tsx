@@ -22,6 +22,7 @@ const Hero: React.FC = () => {
       <h1 className="hero__title">Galliard UI</h1>
       <p className="hero__subtitle">
         Librería de componentes React moderna, construida con TypeScript y Sass.
+        <br />
         Ligera, accesible y altamente personalizable.
       </p>
 

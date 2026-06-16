@@ -1,67 +1,67 @@
+
 .navbar {
-  height: 60px;
+  width: 100%;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-  padding: 3rem;
-
-  // ========================
-  // Glassmorphism
-  // ========================
-  position: sticky; // se queda fijo en la parte superior al hacer scroll
-  top: 0; // pegado al borde superior de la ventana
-  z-index: 100; // se dibuja encima de otros elementos de la página
-  background: rgba(255,255,255,0.12); // fondo blanco con 12% de opacidad (casi transparente)
-  backdrop-filter: blur(14px); // difumina lo que hay DETRÁS del navbar
+  border-bottom: 1px solid #d1d1d1;
+  padding: 5px 20px;
   
+  // ========================
+  // Glass Morphism
+  // ========================
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  left: 0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+
   // ========================
   // Logo
   // ========================
   &__brand {
-    a {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      color: rgb(162, 71, 247);
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 1.9rem;
-    }
-  }
-
-  &__logo {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: rgb(162, 71, 247);
-    color: white;
-    font-size: 2.5rem;
+    gap: 0.9rem;
+    color: rgb(162, 71, 247);
     font-weight: 700;
-    transition: transform 0.3s ease;
-    gap: 1px;
-    &:hover {
-      transform: rotate(-9deg) scale(1.05);
+    text-decoration: none;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: rgb(162, 71, 247);
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+      transition: transform 0.3s ease;
+      gap: 1px;
+
+      &:hover {
+        transform: rotate(-9deg) scale(1.05);
+      }
+    }
+
+    .title {
+      font-size: 1.8rem;
+      gap: 3rem;
+      font-family: OpenSansExtraBold;
     }
   }
-
-  &__title {
-    font-size: 1.7rem;
-    gap: 3rem;
-    font-family: OpenSansSemiBold;
-  }
-
   // ========================
   // Navegación central
   // ========================
   &__links {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     a {
-      font-size: 1.9rem;
+      font-size: 1.5rem;
       position: relative;
       padding: 0.8rem;
       color: rgba(124, 8, 233, 0.829);
@@ -98,9 +98,9 @@
         content: "";
         position: absolute;
         left: 50%;
-        bottom: -6px;
+        bottom: -5px;
         width: 0;
-        height: 2px;
+        height: 4px;
         background: rgb(162, 71, 247);
         transform: translateX(-50%);
         transition: width 0.3s ease;
@@ -116,27 +116,41 @@
   // ========================
   &__actions {
     display: flex;
-    font-size: 1.6rem;
-  }
-
-  &__social {
-    font-size: 2.3rem;
-    width: 60px;
-    height: 60px;
-    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    border-radius: 100px;
-    color: var(--text-h);
-    transition: all 0.3s ease;
-    svg {
-      width: 35px;
-      height: 35px;
-    }
-    &:hover {
-      color: rgb(162, 71, 247);
-      background: rgba(162, 71, 247, 0.08);
-      transform: translateY(-2px);
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 1rem;
+    height: 100%;
+
+    .social {
+      width: auto;
+      height: 100%;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+      transition: all 0.3s ease;
+
+      .icon {
+        height: 80%;
+        width: auto;
+        aspect-ratio: 1/1;
+      }
+
+      .npm {
+        height: 100%;
+        width: auto;
+        aspect-ratio: 1/1;
+      }
+
+      &:hover {
+        color: #a247f7;
+        background: #a247f714;
+        transform: translateY(-2px);
+      }
     }
   }
 }
