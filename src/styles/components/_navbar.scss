@@ -1,3 +1,4 @@
+@use "../generals/vars" as *;
 
 .navbar {
   width: 100%;
@@ -5,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid ($primary);
   padding: 5px 20px;
   
   // ========================
@@ -15,7 +16,7 @@
   top: 0;
   z-index: 10;
   left: 0;
-  background: rgba(255, 255, 255, 0.12);
+  background: $background;
   backdrop-filter: blur(14px);
 
   // ========================
@@ -25,7 +26,7 @@
     display: flex;
     align-items: center;
     gap: 0.9rem;
-    color: rgb(162, 71, 247);
+    color:$primary;
     font-weight: 700;
     text-decoration: none;
 
@@ -36,7 +37,7 @@
       width: 30px;
       height: 30px;
       border-radius: 10px;
-      background: rgb(162, 71, 247);
+      background: $primary;
       color: white;
       font-size: 2rem;
       font-weight: 700;

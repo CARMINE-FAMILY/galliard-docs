@@ -1,5 +1,4 @@
 // GENERALS
-@use "./generals/vars";
 @use "./generals/root";
 @use "./generals/reset";
 @use "./generals/typography";
@@ -9,10 +8,13 @@
 
 // COMPONENTS
 @use "./components/navbar";
-@use "./components/hero";
 @use "./components/footer";
 @use "./components/code";
-@use "./components/card";
+@use "./components/cardComponent";
 
 // PAGES
 @use "./pages/landingScreen";
+
+// Landing
+@use "./landing/hero";
+@use "./landing/cardContainer"

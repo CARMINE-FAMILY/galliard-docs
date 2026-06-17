@@ -1,9 +1,9 @@
 import { Icon } from "@iconify/react";
 
-export default function Card() {
+export default function CardsContainer() {
   return (
-    <section className="card">
-      <div className="header">
+    <section className="cardsContainer">
+      <div className="headerCardContainer">
         <h1 className="title">Caracteristicas</h1>
         <p className="subtitle">
           Todo lo que necesitas para construir aplicaciones modernas
@@ -11,46 +11,45 @@ export default function Card() {
       </div>
 
       <div className="general">
-        <div className="tarjeta">
+        <div className="cardComponent">
           <div className="icon">
-            <Icon icon="game-icons:feather" />
+            <Icon icon="game-icons:feather" className="iconContainer" />
           </div>
-          <div className="detalle">
+          <div className="detail">
             <h2>Ligera</h2>
             <p>Optimizada para no pesar en tu bundle final</p>
           </div>
         </div>
 
-        <div className="tarjeta">
+        <div className="cardComponent">
           <div className="icon">
-            <Icon icon="glyphs-poly:palette" />
+            <Icon icon="glyphs-poly:palette" className="iconContainer" />
           </div>
-          <div className="detalle">
+          <div className="detail">
             <h2>Personalizable</h2>
             <p>Usa Mixins de Sass para adaptar los estilos a tu marca.</p>
           </div>
         </div>
 
-        <div className="tarjeta">
+        <div className="cardComponent">
           <div className="icon">
-            <Icon icon="vscode-icons:file-type-ng-service-ts2" />
+            <Icon icon="proicons:typescript" className="iconContainer" />
           </div>
-          <div className="detalle">
+          <div className="detail">
             <h2>TypeScript</h2>
             <p>Tipado completo para una mejor experiencia de desarrollo.</p>
           </div>
         </div>
 
-        <div className="tarjeta">
+        <div className="cardComponent">
           <div className="icon">
-            <Icon icon="mdi:cellphone" />
+            <Icon icon="mdi:cellphone" className="iconContainer" />
           </div>
-          <div className="detalle">
+          <div className="detail">
             <h2>Responsiva</h2>
             <p>Disenada para funcionar en cualquier tamano de pantalla.</p>
           </div>
         </div>
-
       </div>
     </section>
   );
