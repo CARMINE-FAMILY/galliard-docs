@@ -1,35 +1,58 @@
+
 @use "./vars" as *;
+// @use "./vars" as *;
 
 :root {
-  --text: #{$text-secondary};
-  --text-h: #{$text-primary};
+ 
+// :root {
+  
 
   --bg: #{$background};
   --border: #{$border};
 
   --accent: #{$primary};
-  --accent-hover: #{$primary-hover};
+  
+//   --bg: #{$background};
+//   --border: #{$border};
 
   --code-bg: #f8f9fb70;
+//   --accent: #{$primary};
 
   --accent-bg: rgba(124, 58, 237, 0.1);
   --accent-border: rgba(198, 237, 58, 0.3);
 
   --social-bg: rgba(248, 251, 248, 0.8);
+//   --code-bg: #f8f9fb70;
 
   --shadow:
     rgba(0, 0, 0, 0.08) 0 10px 15px -3px,
     rgba(0, 0, 0, 0.04) 0 4px 6px -2px;
+//   --accent-bg: rgba(124, 58, 237, 0.1);
+//   --accent-border: rgba(198, 237, 58, 0.3);
 
   color: var(--text);
   background: var(--bg);
+//   --social-bg: rgba(248, 251, 248, 0.8);
+
+//   --shadow:
+//     rgba(0, 0, 0, 0.08) 0 10px 15px -3px,
+//     rgba(0, 0, 0, 0.04) 0 4px 6px -2px;
+
+//   color: var(--text);
+//   background: var(--bg);
 
  
   letter-spacing: 0.18px;
+//   letter-spacing: 0.18px;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+//   font-synthesis: none;
+//   text-rendering: optimizeLegibility;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }

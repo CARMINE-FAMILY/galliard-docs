@@ -2,27 +2,32 @@
 // COLORS
 // ==========================================
 
-$primary: #a247f7;
-
-$primary-hover: #00ffb3;
-
-$text-primary: #111827;
-$text-secondary: #000000;
-
-$background: #ffffff1f;
+//$primary:#9A4C95;
+$primary: #A86CA4;
+$background: #FDF7FA;
 $border: #d1d1d1;
-
-//mixins
-
-// ==========================================
-// BORDER RADIUS
-// ==========================================
-
-$radius-sm: 8px;
-$radius-md: 12px;
+$bottomline: #ff6a00;
+$activeroute: #000000;
 
 // ==========================================
-// TRANSITIONS
+// CARD COMPONENTS
 // ==========================================
+$border2: #e8e8f0;
+$bordercolor: #9A4C95;
 
-$transition: 0.3s ease;
+// ==========================================
+// CARD CONTAINER
+// ==========================================
+$blackcake: #212528;
+
+// ========================
+// Glass Morphism
+// ====================
+$glass: #ffffff1f;
+
+// ==========================================
+// text
+// ==========================================
+$text:#FF5A5F;
+$text2:#18A999;
+$font-family: OpenSansRegular, Helvetica, Verdana, sans-serif;

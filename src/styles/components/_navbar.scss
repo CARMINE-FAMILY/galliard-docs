@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid ($primary);
+  border-bottom: 1px solid ($border);
   padding: 5px 20px;
   
   // ========================
@@ -14,10 +14,10 @@
   // ========================
   position: sticky;
   top: 0;
-  z-index: 10;
-  left: 0;
-  background: $background;
+  z-index: 100;
+  background: $glass;
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   // ========================
   // Logo
@@ -38,7 +38,7 @@
       height: 30px;
       border-radius: 10px;
       background: $primary;
-      color: white;
+      color: $background;
       font-size: 2rem;
       font-weight: 700;
       transition: transform 0.3s ease;
@@ -65,7 +65,7 @@
       font-size: 1.5rem;
       position: relative;
       padding: 0.8rem;
-      color: rgba(124, 8, 233, 0.829);
+      color: $primary;
       text-decoration: none;
       font-weight: 500;
       border-radius: 9px;
@@ -89,10 +89,10 @@
 
       // Ruta activa
       &.active {
-        color: #000000;
+        color: $activeroute;
         &::after {
           width: 100%;
-          background: #ff6a00;
+          background: $bottomline;
         }
       }
       &::after {
@@ -102,7 +102,7 @@
         bottom: -5px;
         width: 0;
         height: 4px;
-        background: rgb(162, 71, 247);
+        background: $primary;
         transform: translateX(-50%);
         transition: width 0.3s ease;
       }
@@ -148,8 +148,7 @@
       }
 
       &:hover {
-        color: #a247f7;
-        background: #a247f714;
+        color: $primary;
         transform: translateY(-2px);
       }
     }

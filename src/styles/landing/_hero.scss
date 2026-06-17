@@ -1,3 +1,5 @@
+@use "../generals/vars" as *;
+
 .hero {
   display: flex;
   flex-direction: column;
@@ -51,14 +53,14 @@
       font-size: 15px;
 
       .icon {
-        color: #fff !important;
+        color: $background !important;
         font-size: 2.7rem;
         transform: rotateY(180deg);
       }
 
       &--primary {
-        color: white;
-        background: var(--accent);
+        color: $background;
+        background: $primary;
 
         &:hover {
           transform: translateY(-2px);
@@ -72,7 +74,7 @@
       justify-content: space-between;
       gap: 0.3rem;
       padding: 1.5rem;
-      border: 1px solid var(--border);
+      border: 1px solid $border;
       border-radius: 12px;
       height: 40px;
 
@@ -84,11 +86,7 @@
         border: none;
         background: transparent;
         cursor: pointer;
-        color: var(--text);
         transition: 0.2s ease;
-        &:hover {
-          color: var(--accent);
-        }
       }
     }
   }

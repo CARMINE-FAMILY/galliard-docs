@@ -1,3 +1,5 @@
+@use "../generals/vars" as *;
+
 .cardsContainer {
   width: 100%;
   min-height: 100vh;
@@ -7,7 +9,7 @@
   align-items: center;
   justify-content: center;
   font-family: sans-serif;
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid $border;
   padding: 5rem 20px;
   padding-top: 230px;
 
@@ -20,8 +22,8 @@
     #b3b3b3 16%,
     #707070 20%,
     #3a3e41 23%,
-    #212528 25%,
-    #212528 100%
+    $blackcake 25%,
+    $blackcake 100%
   );
 
   background-size: 100%;
@@ -33,14 +35,14 @@
     .title {
       font-family: OpenSansBoldItalic;
       font-size: 4.5rem;
-      color: #ffffff;
+      color: $text;
       margin: 0 0 0.4rem;
       text-align: center;
     }
 
     .subtitle {
       font-size: 2.2rem;
-      color: #48ff00;
+      color: $text2;
       margin: 0;
       text-align: center;
     }
@@ -63,13 +65,13 @@
     h2 {
       font-size: 2.4rem;
       font-weight: 600;
-      color: #d97706;
+      color: $text;
       margin: 0 0 0.6rem;
     }
 
     p {
       font-size: 1.5rem;
-      color: #4b5563;
+      color: $text2;
       line-height: 1.6;
       margin: 0;
     }

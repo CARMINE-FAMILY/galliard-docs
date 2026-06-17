@@ -23,7 +23,7 @@ export default function CardsContainer() {
 
         <div className="cardComponent">
           <div className="icon">
-            <Icon icon="glyphs-poly:palette" className="iconContainer" />
+            <Icon icon="material-symbols-light:palette" className="iconContainer" />
           </div>
           <div className="detail">
             <h2>Personalizable</h2>
