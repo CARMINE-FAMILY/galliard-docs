@@ -9,8 +9,8 @@
 // COMPONENTS
 @use "./components/navbar";
 @use "./components/footer";
-@use "./components/code";
 @use "./components/cardComponent";
+@use "./components/codeComponent";
 
 // PAGES
 @use "./pages/landingScreen";
@@ -18,4 +18,4 @@
 // Landing
 @use "./landing/hero";
 @use "./landing/cardContainer";
-@use "./landing/codeExample";
+@use "./landing/codeContainer";

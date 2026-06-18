@@ -1,13 +1,13 @@
 import Hero from "../../components/Hero";
 import CardsContainer from "../CardsContainer";
-import Final from "../Final";
+import CodeExample from "../CodeContainer";
 
 export default function LandingScreen() {
   return (
     <div className="landing-screen">
       <Hero />
       <CardsContainer />
-      {/* <Final /> */}
+      <CodeExample />
     </div>
   );
 }

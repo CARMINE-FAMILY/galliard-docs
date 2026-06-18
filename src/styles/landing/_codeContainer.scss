@@ -1,0 +1,44 @@
+@use "../generals/vars" as *;
+
+.codeContainer {
+  background-color: $blackcake;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  padding: 5rem 20px;
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+
+  .headerCodeContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+
+    .title {
+      color: $prueba;
+      font-size: 4.5rem;
+      font-family: OpenSansBoldItalic;
+    }
+
+    .subtitle {
+      color: $text2;
+      font-size: 2.2rem;
+      align-items: center;
+      margin: 0;
+      font-family: OpenSansItalic;
+    }
+  }
+
+  .general {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+}
