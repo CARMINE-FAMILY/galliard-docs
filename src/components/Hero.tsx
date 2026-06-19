@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaCopy, FaCheck } from "react-icons/fa";
-import { Icon } from "@iconify/react";
+import { ButtonGal } from "galliard-ui";
 
 const Hero: React.FC = () => {
+  const navigate = useNavigate();
+
   const [copied, setCopied] = useState(false);
 
   const copyCommand = async (): Promise<void> => {
@@ -27,10 +29,18 @@ const Hero: React.FC = () => {
       </p>
 
       <div className="container-actions">
-        <Link to="/get-started" className="h-button h-button--primary">
-          Get Started
-          <Icon icon="tabler:karate" className="icon" />
-        </Link>
+        <ButtonGal
+          label="Get Started"
+          action={() => navigate("/docs")}
+          icon="tabler:karate"
+          bgColor="linear-gradient(to right, #9A4C95, #a78bfa)"
+          txtColor="#FDF7FA"
+          height="40px"
+          padding="0.6rem 1rem"
+          iconSize="2.7rem"
+          customClassIcon="icon"
+          customClassButton="hola"
+        />
 
         <div className="h-install">
           <code>npm install galliard-ui</code>

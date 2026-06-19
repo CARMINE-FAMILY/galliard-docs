@@ -1,3 +1,5 @@
+import { ButtonGal } from "galliard-ui";
+
 export default function Nose() {
   return (
     <>
@@ -5,6 +7,13 @@ export default function Nose() {
       <p>1</p>
       <p>2</p>
       <p>3</p>
+
+      <ButtonGal 
+      label="cerrar sesion"
+      action={() => handleLogout()}
+      styleType="ThemeRed"
+      icon="tabler:logout"
+      />
     </>
   );
 }

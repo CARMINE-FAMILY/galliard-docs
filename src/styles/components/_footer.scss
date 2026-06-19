@@ -1,64 +1,80 @@
 @use "../generals/vars" as *;
 
 .footer {
-  padding: 0 4rem;
-  min-height: 60px;
-  display: center;
+  width: 100%;
+  padding-top: 280px;
   align-items: center;
-  border-top: 1px solid var($border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  &__content {
+  background: linear-gradient(
+    to bottom,
+    $blackcake 0%,
+    $blackcake 25%,
+    #4a4d50 27%,
+    #8a878c 35%,
+    #c7c0c8 50%,
+    #e4dce3 65%,
+    #f1eaef 80%,
+    #f8f2f6 92%,
+    #fdf7fa 100%
+  );
+
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  .cta {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
+    text-align: center;
 
-  &__brand {
-    a {
+    margin-bottom: 6rem;
+    padding: 5rem;
+
+    h2 {
+      font-family: OpenSansExtraBold;
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: $primary;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.8rem;
+      color: #b8860b;
+      margin-bottom: 2.5rem;
+    }
+
+    .icon {
+      color: $background !important;
+      font-size: 2.7rem;
+      transform: rotateY(180deg);
+    }
+
+    .label {
+      margin: 0;
+      line-height: 1;
       display: flex;
       align-items: center;
-      gap: .9rem;
-      color: $primary;
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 3rem;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
     }
   }
 
-  &__logo {
+  .content {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    background: $primary;
-    color: $background;
-    font-size: 1.5rem;
-    font-weight: 700;
-    transition: transform 0.3s ease;
-    gap: 1px;
-    &:hover {
-      transform: rotate(-9deg) scale(1.05);
+
+    .legal {
+      padding-block: 20px;
+      font-family: OpenSansMedium;
+      font-size: 1.7rem;
     }
-  }
-
-  &__title{
-    font-size: 1.4rem;
-    gap: 1rem;
-  }
-
-  &__links {
-    display: flex;
-    gap: 1.5rem;
-
-    a {
-      font-size: 1.9rem;
-    }
-  }
-
-  p {
-    font-size: 1.7rem;
   }
 }

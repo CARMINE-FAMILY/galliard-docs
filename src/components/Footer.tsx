@@ -1,31 +1,34 @@
+import { Icon } from "@iconify/react";
+import { ButtonGal } from "galliard-ui";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Footer: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <footer className="footer">
+      <div className="cta">
+        <h2>Listo para comenzar?</h2>
+        <p>Explora la documentación completa y comienza a construir.</p>
 
-      <div className="footer__content">
-        
-        <div className="footer__brand">
-          <a href="/">
-            <span className="footer__logo">G</span>
-            <span className="footer__title">Galliard UI</span>
-          </a>
-        </div>
+        <ButtonGal
+          label="Explorar Docs"
+          action={() => navigate("/docs")}
+          icon="tabler:karate"
+          bgColor="linear-gradient(to right, #9A4C95, #a78bfa)"
+          txtColor="#FDF7FA"
+          height="40px"
+          padding="0.6rem 1rem"
+          iconSize="2.7rem"
+          customClassIcon="icon"
+          customClassLabel="label"
+        />
+      </div>
 
-        <p>Contáctanos: contacto@miweb.com</p>
-
-        <ul className="footer__links">
-          <li>
-            <a href="/sobre-nosotros">Sobre nosotros</a>
-          </li>
-
-          <li>
-            <a href="/aviso-legal">Aviso legal</a>
-          </li>
-        </ul>
-
-        <p>© 2025 MiWeb</p>
+      <div className="content">
+        <p className="legal">
+          Open source bajo licencia MIT. Creado por CARMINE-FAMILY.
+        </p>
       </div>
     </footer>
   );

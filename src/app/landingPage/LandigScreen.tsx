@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer";
 import Hero from "../../components/Hero";
 import CardsContainer from "../CardsContainer";
 import CodeExample from "../CodeContainer";
@@ -8,6 +9,7 @@ export default function LandingScreen() {
       <Hero />
       <CardsContainer />
       <CodeExample />
+      <Footer />
     </div>
   );
 }

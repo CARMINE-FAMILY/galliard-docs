@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./app/MainLayout";
 import LandingScreen from "./app/landingPage/LandigScreen";
 import Nose from "./app/Nose";
-import Final from "./app/CodeContainer";
 import SecundaryLayout from "./app/landingPage/SecundaryLayout";
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
             <Route path="/nose" element={<Nose />} />
           </Route>
           <Route path="/" element={<LandingScreen />} />
-          <Route path="/final" element={<Final />} />
         </Route>
       </Routes>
     </BrowserRouter>

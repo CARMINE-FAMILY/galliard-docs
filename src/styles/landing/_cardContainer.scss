@@ -9,19 +9,18 @@
   align-items: center;
   justify-content: center;
   font-family: sans-serif;
-  // border-bottom: 1px solid $border;
   padding: 5rem 20px;
   padding-top: 230px;
 
   background: linear-gradient(
     to bottom,
-    #ffffff 0%,
-    #fafafa 4%,
-    #eeeeee 8%,
-    #d9d9d9 12%,
-    #b3b3b3 16%,
-    #707070 20%,
-    #3a3e41 23%,
+    #fdf7fa 0%,
+    #f8f2f6 4%,
+    #f1eaef 8%,
+    #e4dce3 12%,
+    #c7c0c8 16%,
+    #8a878c 20%,
+    #4a4d50 23%,
     $blackcake 25%,
     $blackcake 100%
   );
@@ -33,7 +32,7 @@
     margin-bottom: 4rem;
 
     .title {
-      font-family: OpenSansBoldItalic;
+      font-family: OpenSansExtraBold;
       font-size: 4.5rem;
       color: $text;
       margin: 0 0 0.4rem;
@@ -42,7 +41,7 @@
 
     .subtitle {
       font-size: 2.2rem;
-      color: $text2;
+      color: $background;
       margin: 0;
       text-align: center;
       font-family: OpenSansItalic;
@@ -58,14 +57,14 @@
     justify-items: flex-start;
     width: 100%;
     height: auto;
-    gap: 2.4rem;  
+    gap: 2.4rem;
   }
 
   .detail {
     h2 {
       font-size: 2.4rem;
       font-weight: 600;
-      color: $prueba;
+      color: $text2;
       margin: 0 0 0.6rem;
     }
 

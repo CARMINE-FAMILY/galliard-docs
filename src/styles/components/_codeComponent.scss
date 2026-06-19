@@ -6,8 +6,8 @@
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
-
-  background: lighten($blackcake, 4%);
+  
+  background: #2b3034;
   color: $background;
   border-radius: 16px;
 
@@ -23,6 +23,8 @@
 
   pre {
     margin: 0;
+    font-size: 2.2rem;
+    width: 100%;
 
     code {
       white-space: pre-wrap;
