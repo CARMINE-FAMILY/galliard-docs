@@ -1,4 +1,17 @@
-import type { CodeLanguage, CodeTheme } from "./CodeBlockModel";
+export type CodeLanguage = "tsx" | "ts" | "js" | "jsx" | "scss" | "bash";
+
+// Debe coincidir EXACTO con las llaves de $themes en el .module.scss
+// para que se aplique el color pertinente
+export type CodeTheme =
+  | "black"
+  | "light"
+  | "dracula"
+  | "orange"
+  | "green"
+  | "solarized-light"
+  | "blue"
+  | "yellow"
+  | "red";
 
 // Subset de variables que aplican a CollapsibleCode (no usa
 // bgHeader/textActive/success porque no tiene tabs ni boton de copiar).

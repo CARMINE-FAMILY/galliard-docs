@@ -1,7 +1,7 @@
 import { useState, type CSSProperties } from "react";
 import type { CodeBlockProps, CodeThemeValues } from "../models/CodeBlockModel";
-import { tokenize } from "../hooks/UserCodeTokenizer";
-import styles from "../styles/components/_codeBlock.module.scss";
+import { tokenize } from "../hooks/useCodeTokenizer";
+import styles from "../styles/components/codeBlock.module.scss";
 
 // Convierte la llave camelCase del modelo (bgHeader) al nombre
 // real de la variable CSS en el scss (--code-bg-header).
@@ -118,7 +118,7 @@ export function CodeBlock({ tabs, className }: CodeBlockProps) {
           {copied ? "✓ Copiado" : "📋 Copiar"}
         </button>
       </div>
-      
+
       {/* mandas a llamar al ejemplo de tu codigo */}
       <pre className={styles["codeBlock-codePre"]}>
         <HighlightedCode code={currentTab.code} />

@@ -3,8 +3,8 @@ import type {
   CollapsibleCodeProps,
   CollapsibleCodeThemeValues,
 } from "../models/CollapsibleCodeModel";
-import { tokenize } from "../hooks/UserCodeTokenizer";
-import styles from "../styles/components/_collapsibleCode.module.scss";
+import { tokenize } from "../hooks/useCodeTokenizer";
+import styles from "../styles/components/collapsibleCode.module.scss";
 
 // Igual que en CodeBlock: traduce la llave camelCase del modelo
 // al nombre real de la variable CSS en el scss.

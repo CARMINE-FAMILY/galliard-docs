@@ -35,7 +35,7 @@ const App = () => (
       {/* Los 3 ejemplos juntos en un mismo CodeBlock, cada uno con su propio tema */}
       <CodeBlock
         tabs={[
-          { label: "Ejemplo", language: "tsx", code, theme: "dracula" },
+          { label: "Ejemplo", language: "tsx", code, theme:"blue" },
           // {
           //   label: "Ejemplo con acento",
           //   language: "tsx",
@@ -44,6 +44,8 @@ const App = () => (
           //   customTheme: {
           //     accent: "#ff0055",
           //     fontSize: "16px",
+          //     bg:"#f7468a",
+          //     string:"#B0e0e6"
           //   },
           // },
           // {

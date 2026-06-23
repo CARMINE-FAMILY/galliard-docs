@@ -5,11 +5,12 @@ export type CodeTheme =
   | "black"
   | "light"
   | "dracula"
-  | "monokai"
-  | "nord"
+  | "orange"
+  | "green"
   | "solarized-light"
-  | "github-dark"
-  | "synthwave";
+  | "blue"
+  | "yellow"
+  | "red";
 
 // Cada llave aqui = una variable CSS --code-* en el .module.scss.
 // Si agregas una variable nueva al scss, agregala tambien aqui

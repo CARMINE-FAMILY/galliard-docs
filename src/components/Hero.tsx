@@ -1,24 +1,10 @@
 import React from "react";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaCopy, FaCheck } from "react-icons/fa";
 import { ButtonGal } from "galliard-ui";
 import { InputText } from "./InputText";
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
-
-  const [copied, setCopied] = useState(false);
-
-  const copyCommand = async (): Promise<void> => {
-    await navigator.clipboard.writeText("npm install galliard-ui");
-
-    setCopied(true);
-
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000);
-  };
 
   return (
     <section className="hero">
@@ -43,7 +29,15 @@ const Hero: React.FC = () => {
           customClassButton="hola"
         />
 
-        <InputText command="npm install galliard-ui" />
+        <InputText 
+        command="npm install galliard-ui"
+        // customStyle={{bg:"#B0e0e6", text:"#f7468a", buttonBg:"#008f39"}}
+        />
+        {/* <InputText 
+         command="prueba"
+         theme="synthwave"
+         customStyle={{}}
+        /> */}
       </div>
 
       <p className="hero__made-with">
