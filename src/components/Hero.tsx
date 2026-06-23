@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCopy, FaCheck } from "react-icons/fa";
 import { ButtonGal } from "galliard-ui";
+import { InputText } from "./InputText";
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
@@ -42,16 +43,7 @@ const Hero: React.FC = () => {
           customClassButton="hola"
         />
 
-        <div className="h-install">
-          <code>npm install galliard-ui</code>
-          <button
-            className="h-copy-button"
-            onClick={copyCommand}
-            aria-label="Copiar comando"
-          >
-            {copied ? <FaCheck /> : <FaCopy />}
-          </button>
-        </div>
+        <InputText command="npm install galliard-ui" />
       </div>
 
       <p className="hero__made-with">

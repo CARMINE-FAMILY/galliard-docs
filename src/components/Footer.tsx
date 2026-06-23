@@ -1,4 +1,3 @@
-import { Icon } from "@iconify/react";
 import { ButtonGal } from "galliard-ui";
 import React from "react";
 import { useNavigate } from "react-router-dom";

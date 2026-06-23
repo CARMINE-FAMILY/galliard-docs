@@ -1,0 +1,329 @@
+@use "sass:map";
+
+// ============================================================
+// Mapa de temas: cada tema es un sub-mapa con las MISMAS llaves.
+// Si agregas un tema nuevo, copia un bloque y cambia los colores;
+// el @each de abajo lo recoge solo, sin tocar nada más.
+// ============================================================
+$themes: (
+  black: (
+    bg: #1e1e1e,
+    bg-header: #252528,
+    border: #2d2d2d,
+    text-muted: #9ca3af,
+    text-active: #ffffff,
+    accent: #569cd6,
+    success: #4ade80,
+    keyword: #569cd6,
+    string: #ce9178,
+    comment: #6a9955,
+    function: #dcdcaa,
+    type: #4ec9b0,
+    number: #b5cea8,
+    operator: #d4d4d4,
+    tag: #4ec9b0,
+    attribute: #9cdcfe,
+    punctuation: #808080,
+    variable: #9cdcfe,
+    plain: #d4d4d4,
+  ),
+  light: (
+    bg: #ffffff,
+    bg-header: #f3f3f3,
+    border: #e0e0e0,
+    text-muted: #6b7280,
+    text-active: #111827,
+    accent: #2563eb,
+    success: #16a34a,
+    keyword: #0000ff,
+    string: #a31515,
+    comment: #008000,
+    function: #795e26,
+    type: #267f99,
+    number: #098658,
+    operator: #383a42,
+    tag: #267f99,
+    attribute: #e45649,
+    punctuation: #383a42,
+    variable: #001080,
+    plain: #383a42,
+  ),
+  dracula: (
+    bg: #282a36,
+    bg-header: #21222c,
+    border: #44475a,
+    text-muted: #6272a4,
+    text-active: #f8f8f2,
+    accent: #bd93f9,
+    success: #50fa7b,
+    keyword: #ff79c6,
+    string: #f1fa8c,
+    comment: #6272a4,
+    function: #50fa7b,
+    type: #8be9fd,
+    number: #bd93f9,
+    operator: #ff79c6,
+    tag: #ff79c6,
+    attribute: #50fa7b,
+    punctuation: #f8f8f2,
+    variable: #f8f8f2,
+    plain: #f8f8f2,
+  ),
+  monokai: (
+    bg: #272822,
+    bg-header: #1e1f1c,
+    border: #3e3d32,
+    text-muted: #75715e,
+    text-active: #f8f8f2,
+    accent: #fd971f,
+    success: #a6e22e,
+    keyword: #f92672,
+    string: #e6db74,
+    comment: #75715e,
+    function: #a6e22e,
+    type: #66d9ef,
+    number: #ae81ff,
+    operator: #f92672,
+    tag: #f92672,
+    attribute: #a6e22e,
+    punctuation: #f8f8f2,
+    variable: #f8f8f2,
+    plain: #f8f8f2,
+  ),
+  nord: (
+    bg: #2e3440,
+    bg-header: #272c36,
+    border: #3b4252,
+    text-muted: #4c566a,
+    text-active: #eceff4,
+    accent: #88c0d0,
+    success: #a3be8c,
+    keyword: #81a1c1,
+    string: #a3be8c,
+    comment: #4c566a,
+    function: #88c0d0,
+    type: #8fbcbb,
+    number: #b48ead,
+    operator: #81a1c1,
+    tag: #81a1c1,
+    attribute: #8fbcbb,
+    punctuation: #eceff4,
+    variable: #d8dee9,
+    plain: #d8dee9,
+  ),
+  solarized-light: (
+    bg: #fdf6e3,
+    bg-header: #eee8d5,
+    border: #d3cbb7,
+    text-muted: #93a1a1,
+    text-active: #073642,
+    accent: #268bd2,
+    success: #859900,
+    keyword: #859900,
+    string: #2aa198,
+    comment: #93a1a1,
+    function: #268bd2,
+    type: #b58900,
+    number: #d33682,
+    operator: #657b83,
+    tag: #268bd2,
+    attribute: #b58900,
+    punctuation: #657b83,
+    variable: #cb4b16,
+    plain: #657b83,
+  ),
+  github-dark: (
+    bg: #0d1117,
+    bg-header: #161b22,
+    border: #30363d,
+    text-muted: #8b949e,
+    text-active: #f0f6fc,
+    accent: #58a6ff,
+    success: #3fb950,
+    keyword: #ff7b72,
+    string: #a5d6ff,
+    comment: #8b949e,
+    function: #d2a8ff,
+    type: #79c0ff,
+    number: #79c0ff,
+    operator: #ff7b72,
+    tag: #7ee787,
+    attribute: #79c0ff,
+    punctuation: #c9d1d9,
+    variable: #c9d1d9,
+    plain: #c9d1d9,
+  ),
+  synthwave: (
+    bg: #131320,
+    bg-header: #1a1a2e,
+    border: #2a2a45,
+    text-muted: #8a7ca8,
+    text-active: #f4eee8,
+    accent: #ff7edb,
+    success: #72f1b8,
+    keyword: #ff7edb,
+    string: #ffe261,
+    comment: #6f5d8f,
+    function: #72f1b8,
+    type: #36f9f6,
+    number: #f97e72,
+    operator: #ff7edb,
+    tag: #36f9f6,
+    attribute: #72f1b8,
+    punctuation: #f4eee8,
+    variable: #f4eee8,
+    plain: #f4eee8,
+  ),
+);
+
+.codeBlock {
+  &-wrapper {
+    // Valores que NO cambian entre temas (layout, tamaños, fuentes)
+    --code-font-size: 18px; // De aqui se ve el tamaño del codigo
+    --code-line-height: 1.3;
+    --code-padding: 20px;
+    --code-radius: 10px;
+    --code-font-family: "Fira Code", "Cascadia Code", "Consolas", monospace;
+    //Aqui termina los cambios del codigo
+
+    border: 1px solid var(--code-border);
+    border-radius: var(--code-radius);
+    overflow: hidden;
+
+    &:hover {
+      border-color: var(--code-accent);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+      transform: translateY(-2px);
+    }
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--code-bg-header);
+    border-bottom: 1px solid var(--code-border);
+    padding: 0 8px;
+    min-height: 36px;
+  }
+
+  &-tabsContainer {
+    display: flex;
+  }
+
+  &-tabButton {
+    padding: 6px 12px;
+    border: none;
+    background: transparent;
+    color: var(--code-text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    font-size: 14px;
+
+    &.active {
+      background: var(--code-bg);
+      color: var(--code-text-active);
+      border-bottom-color: var(--code-accent);
+    }
+
+    &:hover {
+      border-color: var(--code-accent);
+    }
+  }
+
+  &-copyButton {
+    border: none;
+    background: transparent;
+    color: var(--code-text-muted);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px 6px;
+
+    &.copied {
+      color: var(--code-success);
+    }
+  }
+
+  &-codePre {
+    margin: 0;
+    padding: var(--code-padding);
+    overflow-x: auto;
+    font-size: var(--code-font-size);
+    line-height: var(--code-line-height);
+    font-family: var(--code-font-family);
+    background: var(--code-bg);
+  }
+}
+
+.token {
+  &-keyword {
+    color: var(--code-keyword);
+  }
+  &-string {
+    color: var(--code-string);
+  }
+  &-comment {
+    color: var(--code-comment);
+  }
+  &-function {
+    color: var(--code-function);
+  }
+  &-type {
+    color: var(--code-type);
+  }
+  &-number {
+    color: var(--code-number);
+  }
+  &-operator {
+    color: var(--code-operator);
+  }
+  &-tag {
+    color: var(--code-tag);
+  }
+  &-attribute {
+    color: var(--code-attribute);
+  }
+  &-punctuation {
+    color: var(--code-punctuation);
+  }
+  &-variable {
+    color: var(--code-variable);
+  }
+  &-plain {
+    color: var(--code-plain);
+  }
+}
+
+// ============================================================
+// @each recorre cada tema del mapa $themes y solo DEFINE las
+// variables CSS de ese tema (no propiedades visuales directas).
+// Asi, si React inyecta un --code-accent inline en el wrapper,
+// ese inline gana por especificidad sin tocar nada de aqui.
+// ============================================================
+@each $name, $theme in $themes {
+  // "" + $name fuerza a Sass a tratar $name como string, no como color
+  // (esto evita el warning/error porque "black" tambien es un color valido en CSS)
+  $theme-name: "" + $name;
+
+  .codeBlock-wrapper[data-theme="#{$theme-name}"] {
+    --code-bg: #{map.get($theme, bg)};
+    --code-bg-header: #{map.get($theme, bg-header)};
+    --code-border: #{map.get($theme, border)};
+    --code-text-muted: #{map.get($theme, text-muted)};
+    --code-text-active: #{map.get($theme, text-active)};
+    --code-accent: #{map.get($theme, accent)};
+    --code-success: #{map.get($theme, success)};
+    --code-keyword: #{map.get($theme, keyword)};
+    --code-string: #{map.get($theme, string)};
+    --code-comment: #{map.get($theme, comment)};
+    --code-function: #{map.get($theme, function)};
+    --code-type: #{map.get($theme, type)};
+    --code-number: #{map.get($theme, number)};
+    --code-operator: #{map.get($theme, operator)};
+    --code-tag: #{map.get($theme, tag)};
+    --code-attribute: #{map.get($theme, attribute)};
+    --code-punctuation: #{map.get($theme, punctuation)};
+    --code-variable: #{map.get($theme, variable)};
+    --code-plain: #{map.get($theme, plain)};
+  }
+}
