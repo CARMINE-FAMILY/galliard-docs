@@ -1,10 +1,14 @@
 import { Outlet } from "react-router-dom";
+import { Sidebar } from "../../components/sidebar/Sidebar";
 
-export default function SecundaryLayout() {
+export const SecondaryLayout = () => {
   return (
-    <div className="container">
-        <div style={{width:50, height:50, backgroundColor:'blue'}}></div>
-        <Outlet/>
+    <div className="docs-layout">
+      <Sidebar />
+
+      <main className="docs-content">
+        <Outlet />
+      </main>
     </div>
   );
-}
+};

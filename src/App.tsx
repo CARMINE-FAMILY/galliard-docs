@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainLayout from "./app/MainLayout";
 import LandingScreen from "./app/landingPage/LandigScreen";
-import Nose from "./app/Nose";
-import SecundaryLayout from "./app/landingPage/SecundaryLayout";
+import {SecondaryLayout} from "./app/landingPage/SecundaryLayout";
+import { Installation } from "./app/getStartedDocs/Installation";
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
         {/* Se agrega el navbar y footer, solo agregar rutas del contenido */}
         <Route element={<MainLayout />}>
           {/* Aqui van las rutas del contenido */}
-          <Route element={<SecundaryLayout />}>
-            <Route path="/nose" element={<Nose />} />
+          <Route element={<SecondaryLayout />}>
+            <Route path="/docs" element={<Installation />} />
           </Route>
           <Route path="/" element={<LandingScreen />} />
         </Route>
@@ -23,26 +23,3 @@ function App() {
 }
 
 export default App;
-
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// import MainLayout from "./app/MainLayout";
-// import LandingScreen from "./app/landingPage/LandigScreen";
-// import Prueba from "./app/Prueba";
-// //import {NotFound} from "./app/NotFound";
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route element={<MainLayout />}>
-//           <Route path="/" element={<LandingScreen />} />
-//         </Route>
-
-//          <Route path="/prueba" element={<Prueba />} />
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// }
-
-// export default App;

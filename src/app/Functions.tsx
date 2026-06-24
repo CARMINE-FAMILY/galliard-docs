@@ -1,6 +1,6 @@
 import { ButtonGal } from "galliard-ui";
 
-export default function Nose() {
+export default function Functions() {
   return (
     <>
       <h1>Hola</h1>

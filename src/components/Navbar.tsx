@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
         </li>
 
         <li>
-          <NavLink to="/nose">Nose</NavLink>
+          <NavLink to="/functions">Functions</NavLink>
         </li>
 
       </ul>
