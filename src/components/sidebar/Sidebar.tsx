@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { sidebarData } from "./sidebar.data";
+import { sidebarData } from "./Sidebar.data";
 import { SidebarItem } from "./SidebarItem";
-import "../../styles/pages/_sidebar.scss";
+import "../../styles/components/sidebar/_sidebar.scss";
 import { Icon } from "@iconify/react";
 
 export const Sidebar = () => {
@@ -9,14 +9,10 @@ export const Sidebar = () => {
 
   return (
     <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
-      
       <div className="sidebar-header">
         {!collapsed && <h2 className="logo">Galliard Docs</h2>}
 
-        <button
-          className="button"
-          onClick={() => setCollapsed(!collapsed)}
-        >
+        <button className="button" onClick={() => setCollapsed(!collapsed)}>
           <Icon className="icon" icon="twemoji:hamburger" />
         </button>
       </div>
@@ -24,12 +20,7 @@ export const Sidebar = () => {
       <div className="content">
         {sidebarData.map((group) => (
           <div key={group.title} className="group">
-
-            {!collapsed && (
-              <p className="title">
-                <span>{group.icon}</span> {group.title}
-              </p>
-            )}
+            {!collapsed && <p className="title">{group.title}</p>}
 
             {group.items.map((item) => (
               <SidebarItem
@@ -42,7 +33,6 @@ export const Sidebar = () => {
           </div>
         ))}
       </div>
-
     </aside>
   );
 };

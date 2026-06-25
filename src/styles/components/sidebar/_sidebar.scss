@@ -1,0 +1,135 @@
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: rgba(253, 247, 250, 0.7);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: width 0.25s ease;
+  overflow: hidden;
+
+  &.collapsed {
+    width: 70px;
+
+    .content {
+      display: none;
+    }
+  }
+
+  /* HEADER */
+  .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); // separa el header del resto
+
+    .button {
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.6rem;
+      padding: 0.4rem;
+      transition: background 0.2s ease;
+
+      //Icono de la hamburguesa
+      .icon {
+        font-size: 1.9rem;
+        display: flex;
+        transform: translateY(2px);
+      }
+
+      &:hover {
+        background: rgba(154, 76, 149, 0.08);
+      }
+    }
+    //Titulo de Galliard docs
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+      color: #9a4c95; // refuerza marca, antes era negro plano
+    }
+  }
+
+  .content {
+    padding: 1.6rem;
+    overflow-y: auto;
+
+    //separacion entre los textos del menu
+    .group {
+      margin-bottom: 2.4rem;
+
+      //Titulos(get started, components, functions)
+      .title {
+        font-size: 1.7rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase; // jerarquía: se distingue claramente de los items
+        opacity: 0.45;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+    }
+  }
+
+  /* ITEM */
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.2rem;
+    border-radius: 0.8rem;
+    border-left: 3px solid transparent; // reserva el espacio para que no salte al activarse
+    text-decoration: none;
+    color: #212528;
+    font-size: 1.7rem;
+    font-weight: 500;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease;
+
+    &:hover {
+      background: rgba(154, 76, 149, 0.08);
+    }
+
+    &.active {
+      background: rgba(154, 76, 149, 0.15);
+      border-left-color: #9a4c95;
+      color: #9a4c95;
+      font-weight: 600;
+    }
+
+    // esta parte es solo de los circulos que estan en el menu
+    .icon {
+      width: 1.4rem;
+      height: 1.4rem;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.3; // bullet sólido en vez de carácter "•", más limpio
+      font-size: 0; // oculta el carácter de texto, queda solo el div como punto
+    }
+
+    &.active .icon {
+      opacity: 1;
+    }
+
+    //Esta es la parte de los texto que van en el menu del lado derecho
+    .label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 1.7rem;
+    }
+  }
+}

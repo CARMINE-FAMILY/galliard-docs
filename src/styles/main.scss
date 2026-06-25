@@ -11,11 +11,15 @@
 @use "./components/footer";
 @use "./components/cardComponent";
 @use "./components/codeComponent";
+@use "./components/sidebar/sidebar";
+
+//Get Started
+@use "./getStartedDocs/installation";
 
 // PAGES
 @use "./pages/landingScreen";
-@use "./pages/sidebar";
 @use "./pages/secundaryLayout";
+@use "./pages/tableOfContents";
 
 // Landing
 @use "./landing/hero";

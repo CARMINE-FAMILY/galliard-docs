@@ -1,18 +1,28 @@
+// Este archivo se basa para ser tu oragnizador de rutas
+// y agregar los titulos que tendra el menu 
+
+// Este sirve para:
+// label: el texto que vera el usuario
+// path: la ruta a la que navegara
 export type SidebarItemType = {
   label: string;
   path: string;
 };
 
+// Este sirve para:
+// title: El nombre de la sección
+// items: Es un arreglo de los elementos de acuerdo al navbar
 export type SidebarGroupType = {
   title: string;
-  icon: string;
   items: SidebarItemType[];
 };
 
+// Funcion con el array de como ira estructurado el menú
+// Si quisieras agregar un nuevo elemneto asegurate de agregarlo
+// al navbar y a tu app.tsx para que funcione
 export const sidebarData: SidebarGroupType[] = [
   {
-    title: "Getting Started",
-    icon: "📚",
+    title: "Get Started",
     items: [
       { label: "Home", path: "/" },
       { label: "Installation", path: "/docs" },
@@ -20,10 +30,13 @@ export const sidebarData: SidebarGroupType[] = [
   },
   {
     title: "Components",
-    icon: "🧩",
     items: [
-      { label: "Buttons", path: "/buttons" },
-      { label: "Inputs", path: "/inputs" },
+      { label: "Buttons", path: "/components" },
+      { label: "Inputs", path: "/components/inputs" },
     ],
+  },
+  {
+    title: "Functions",
+    items: [{ label: "Overview", path: "/functions" }],
   },
 ];

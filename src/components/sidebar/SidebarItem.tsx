@@ -10,9 +10,8 @@ export const SidebarItem = ({ label, path, collapsed }: Props) => {
   return (
     <NavLink
       to={path}
-      className={({ isActive }) =>
-        `sidebar-item ${isActive ? "active" : ""}`
-      }
+      title={collapsed ? label : undefined}
+      className={({ isActive }) => `sidebar-item ${isActive ? "active" : ""}`}
     >
       <span className="icon">•</span>
 
