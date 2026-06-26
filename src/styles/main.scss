@@ -5,6 +5,7 @@
 
 // LAYOUTS
 @use "./layouts/mainLayout";
+@use "./layouts/secundaryLayout";
 
 // COMPONENTS
 @use "./components/navbar";
@@ -18,7 +19,6 @@
 
 // PAGES
 @use "./pages/landingScreen";
-@use "./pages/secundaryLayout";
 @use "./pages/tableOfContents";
 
 // Landing
