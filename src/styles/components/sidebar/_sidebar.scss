@@ -87,8 +87,7 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    margin-bottom: 0.2rem;
-    border-radius: 0.8rem;
+    border-radius: 0.7rem;
     border-left: 3px solid transparent; // reserva el espacio para que no salte al activarse
     text-decoration: none;
     color: #212528;
@@ -106,7 +105,7 @@
       background: rgba(154, 76, 149, 0.15);
       border-left-color: #9a4c95;
       color: #9a4c95;
-      font-weight: 600;
+
     }
 
     // esta parte es solo de los circulos que estan en el menu
@@ -129,7 +128,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      font-size: 1.7rem;
+      font-size: 1.4rem;
     }
   }
 }
