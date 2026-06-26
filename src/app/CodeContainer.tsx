@@ -1,5 +1,4 @@
 import { CodeBlock } from "../components/CodeBlock";
-import { CollapsibleCode } from "../components/CollapsibleCode";
 
 export default function CodeExample() {
   const code = `import { ButtonGal, InputTextGal } from 'galliard-ui'
@@ -35,36 +34,16 @@ const App = () => (
       {/* Los 3 ejemplos juntos en un mismo CodeBlock, cada uno con su propio tema */}
       <CodeBlock
         tabs={[
-          { label: "Ejemplo", language: "tsx", code, theme:"blue" },
+          { label: "Ejemplo", code: code, theme: "blue" },
           // {
-          //   label: "Ejemplo con acento",
-          //   language: "tsx",
-          //   code,
+          //   label: "Ejemplo",
+          //   code: code,
           //   theme: "dracula",
-          //   customTheme: {
-          //     accent: "#ff0055",
-          //     fontSize: "16px",
-          //     bg:"#f7468a",
-          //     string:"#B0e0e6"
-          //   },
-          // },
-          // {
-          //   label: "Ejemplo claro",
-          //   language: "tsx",
-          //   code,
-          //   theme: "nord",
-          //   customTheme: {
-          //     bg: "#f0f4ff",
-          //   },
+          //   collapsible: true,
+          //   previewLines: 10,
           // },
         ]}
       />
-
-      {/* <CollapsibleCode
-        code={code}
-        theme="black"
-        customTheme={{ accent: "#ff0000" }}
-      /> */}
     </section>
   );
 }

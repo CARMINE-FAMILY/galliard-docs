@@ -1,7 +1,9 @@
 import { useState, type CSSProperties } from "react";
-import type { CodeBlockProps, CodeThemeValues } from "../models/CodeBlockModel";
+import type { CodeBlockProps, CodeTab, CodeThemeValues } from "../models/CodeBlockModel";
 import { tokenize } from "../hooks/useCodeTokenizer";
 import styles from "../styles/components/codeBlock.module.scss";
+
+const DEFAULT_PREVIEW_LINES = 8;
 
 // Convierte la llave camelCase del modelo (bgHeader) al nombre
 // real de la variable CSS en el scss (--code-bg-header).
@@ -13,6 +15,9 @@ const CSS_VAR_MAP: Record<keyof CodeThemeValues, string> = {
   textActive: "--code-text-active",
   accent: "--code-accent",
   success: "--code-success",
+  fadeFrom: "--code-fade-from",
+  fadeTo: "--code-fade-to",
+  buttonBg: "--code-button-bg",
   keyword: "--code-keyword",
   string: "--code-string",
   comment: "--code-comment",
@@ -70,12 +75,30 @@ function HighlightedCode({ code }: { code: string }) {
 export function CodeBlock({ tabs, className }: CodeBlockProps) {
   const [active, setActive] = useState(0);
   const [copied, setCopied] = useState(false);
+  // expansion independiente por tab: cambiar de tab no resetea
+  // el estado de los demas tabs collapsible
+  const [expandedByTab, setExpandedByTab] = useState<Record<number, boolean>>({});
 
-  const currentTab = tabs[active];
+  const currentTab: CodeTab = tabs[active];
   // el tema y customTheme vienen del tab ACTIVO; al cambiar de tab,
   // cambia el tema con el, porque currentTab cambia en cada render
   const activeTheme = currentTab.theme ?? "black";
   const customStyle = buildCustomStyle(currentTab.customTheme);
+
+  const isCollapsible = currentTab.collapsible ?? false;
+  const previewLines = currentTab.previewLines ?? DEFAULT_PREVIEW_LINES;
+  const expanded = expandedByTab[active] ?? false;
+
+  const lines = currentTab.code.trim().split("\n");
+  const isLong = isCollapsible && lines.length > previewLines;
+  const displayedCode =
+    isCollapsible && !expanded
+      ? lines.slice(0, previewLines).join("\n")
+      : currentTab.code;
+
+  const toggleExpanded = () => {
+    setExpandedByTab((prev) => ({ ...prev, [active]: !expanded }));
+  };
 
   const handleCopy = async () => {
     try {
@@ -119,10 +142,23 @@ export function CodeBlock({ tabs, className }: CodeBlockProps) {
         </button>
       </div>
 
-      {/* mandas a llamar al ejemplo de tu codigo */}
-      <pre className={styles["codeBlock-codePre"]}>
-        <HighlightedCode code={currentTab.code} />
-      </pre>
+      <div className={styles["codeBlock-codeWrapper"]}>
+        {/* mandas a llamar al ejemplo de tu codigo */}
+        <pre className={styles["codeBlock-codePre"]}>
+          <HighlightedCode code={displayedCode} />
+        </pre>
+
+        {isLong && !expanded && <div className={styles["codeBlock-fade"]} />}
+      </div>
+
+      {isLong && (
+        <button
+          onClick={toggleExpanded}
+          className={styles["codeBlock-toggleButton"]}
+        >
+          {expanded ? "▲ Ver menos" : "▼ Ver más"}
+        </button>
+      )}
     </div>
   );
 }

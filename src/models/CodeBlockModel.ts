@@ -15,6 +15,8 @@ export type CodeTheme =
 // Cada llave aqui = una variable CSS --code-* en el .module.scss.
 // Si agregas una variable nueva al scss, agregala tambien aqui
 // (mismo nombre, sin el prefijo "--code-").
+// fadeFrom/fadeTo/buttonBg vienen de CollapsibleCode: se fusionaron
+// aqui porque ahora cualquier tab puede ser collapsible.
 export interface CodeThemeValues {
   bg: string;
   bgHeader: string;
@@ -23,6 +25,9 @@ export interface CodeThemeValues {
   textActive: string;
   accent: string;
   success: string;
+  fadeFrom: string;
+  fadeTo: string;
+  buttonBg: string;
   keyword: string;
   string: string;
   comment: string;
@@ -48,6 +53,10 @@ export interface CodeTab {
   language?: CodeLanguage;
   theme?: CodeTheme; // default: "black". Cada tab puede tener su propio tema
   customTheme?: Partial<CodeThemeValues>; // override parcial solo para este tab
+  // Si true, este tab nace colapsado (fade + boton "Ver mas/menos").
+  // Si no se manda, el tab se muestra completo (comportamiento original).
+  collapsible?: boolean;
+  previewLines?: number; // default 8. Solo aplica si collapsible es true.
 }
 
 export type TokenType =
