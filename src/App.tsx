@@ -4,7 +4,7 @@ import LandingScreen from "./app/landingPage/LandigScreen";
 import { SecondaryLayout } from "./app/landingPage/SecundaryLayout";
 import { Installation } from "./app/getStartedDocs/Installation";
 import Functions from "./app/functionsDocs/Functions";
-import Components from "./app/componentsDocs/Components";
+import Button from "./app/componentsDocs/Button";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <Route element={<SecondaryLayout />}>
             <Route path="/docs" element={<Installation />} />
             <Route path="/functions" element={<Functions />} />
-            <Route path="/components" element={<Components />} />
+            <Route path="/button" element={<Button />} />
           </Route>
 
           <Route path="/" element={<LandingScreen />} />

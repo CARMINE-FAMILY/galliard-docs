@@ -9,7 +9,7 @@ const App = () => (
 );
 `;
 
-const example =`<CopyTextGal
+  const example = `<CopyTextGal
   label="Correo"
   iconLeft="tabler:mail-ai""
 />
@@ -19,7 +19,7 @@ const example =`<CopyTextGal
       <h1 className="titlePrimary">Galliard UI</h1>
 
       <p className="text">
-        Galliard UI es una libreria de componentes Reacr moderna, construida con
+        Galliard UI es una libreria de componentes React moderna, construida con
         TypeScript y Sass, diseñada para ser ligera, accesible, facil de
         integrar y altamente personalizable para adecuarse a cada proyecto
       </p>
@@ -31,22 +31,22 @@ const example =`<CopyTextGal
         favoritos
         <br />
         npm: <br />
-        <CopyTextGal command="npm install galliard-ui" /> <br />
+        <CopyTextGal command="npm install galliard-ui" theme="light" />
+        <br />
         yarn
-        <br /> <CopyTextGal command="yarn add galliard-ui" />
+        <br /> <CopyTextGal command="yarn add galliard-ui" theme="light" />
       </p>
 
       <h2 className="titleSecundary">🛠️ Uso Básico</h2>
       <p className="text">
-        Una vez instalada la libreria ya podras importar los componentes para utilizarlos
-        directamente en tu aplicación de React o
-        Next.js:
+        Una vez instalada la libreria ya podras importar los componentes para
+        utilizarlos directamente en tu aplicación de React o Next.js:
         <CodeBlockGal
           tabs={[
             {
               code: code,
               label: "Ejemplo de uso",
-              theme:"blue"
+              theme: "blue",
             },
           ]}
         />
@@ -54,7 +54,8 @@ const example =`<CopyTextGal
 
       <h2 className="titleSecundary">📦 Uso de YesIcon</h2>
       <p className="text">
-        Algunos componentes de Galliard UI utilizan Yesicon. Para utilizarlos, sigue estos pasos: <br />
+        Algunos componentes de Galliard UI utilizan Yesicon. Para utilizarlos,
+        sigue estos pasos: <br />
         <ol>
           <li className="text">
             1.- Ingresa a YesIcon App y busca el ícono que deseas utilizar.
@@ -63,10 +64,12 @@ const example =`<CopyTextGal
             2.- Selecciona el ícono y elige React como lenguaje.
           </li>
           <li className="text">
-            3.- Dentro de las opciones disponibles, selecciona "Con @iconify/react".
+            3.- Dentro de las opciones disponibles, selecciona "Con
+            @iconify/react".
           </li>
           <li className="text">
-            4.- Copia el nombre del ícono y utilízalo en la propiedad correspondiente del componente de Galliard UI.
+            4.- Copia el nombre del ícono y utilízalo en la propiedad
+            correspondiente del componente de Galliard UI.
           </li>
         </ol>
         Por Ejemplo:
@@ -75,7 +78,7 @@ const example =`<CopyTextGal
             {
               code: example,
               label: "Ejemplo de uso",
-              theme:"dracula"
+              theme: "dracula",
             },
           ]}
         />

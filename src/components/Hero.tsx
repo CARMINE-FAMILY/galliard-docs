@@ -32,6 +32,7 @@ const Hero: React.FC = () => {
 
         <CopyTextGal 
         command="npm install galliard-ui"
+        theme="light"
         />
       </div>
 
