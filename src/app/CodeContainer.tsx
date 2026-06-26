@@ -1,4 +1,4 @@
-import { CodeBlock } from "../components/CodeBlock";
+import { CodeBlockGal } from "galliard-ui";
 
 export default function CodeExample() {
   const code = `import { ButtonGal, InputTextGal } from 'galliard-ui'
@@ -31,18 +31,10 @@ const App = () => (
         </p>
       </div>
 
-      {/* Los 3 ejemplos juntos en un mismo CodeBlock, cada uno con su propio tema */}
-      <CodeBlock
-        tabs={[
-          { label: "Ejemplo", code: code, theme: "blue" },
-          // {
-          //   label: "Ejemplo",
-          //   code: code,
-          //   theme: "dracula",
-          //   collapsible: true,
-          //   previewLines: 10,
-          // },
-        ]}
+      <CodeBlockGal
+      tabs={[
+        {label: "Ejemplo", code:code, theme:"blue"}
+      ]}
       />
     </section>
   );

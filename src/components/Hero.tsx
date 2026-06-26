@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ButtonGal } from "galliard-ui";
+import { ButtonGal, CopyTextGal } from "galliard-ui";
 import { InputText } from "./InputText";
+
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
@@ -29,15 +30,9 @@ const Hero: React.FC = () => {
           customClassButton="hola"
         />
 
-        <InputText 
+        <CopyTextGal 
         command="npm install galliard-ui"
-        // customStyle={{bg:"#B0e0e6", text:"#f7468a", buttonBg:"#008f39"}}
         />
-        {/* <InputText 
-         command="prueba"
-         theme="synthwave"
-         customStyle={{}}
-        /> */}
       </div>
 
       <p className="hero__made-with">

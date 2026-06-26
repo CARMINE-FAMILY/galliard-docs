@@ -17,6 +17,9 @@
 //Get Started
 @use "./getStartedDocs/installation";
 
+//ComponentsDocs
+@use "./componentsDocs/button";
+
 // PAGES
 @use "./pages/landingScreen";
 @use "./pages/tableOfContents";

@@ -24,14 +24,13 @@ export const sidebarData: SidebarGroupType[] = [
   {
     title: "Get Started",
     items: [
-      { label: "Home", path: "/" },
       { label: "Installation", path: "/docs" },
     ],
   },
   {
     title: "Components",
     items: [
-      { label: "Buttons", path: "/components" },
+      { label: "Button", path: "/button" },
       { label: "Inputs", path: "/components/inputs" },
     ],
   },

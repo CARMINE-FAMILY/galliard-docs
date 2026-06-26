@@ -1,41 +1,84 @@
-import { InputText } from "../../components/InputText";
 import "../../styles/getStartedDocs/_installation.scss";
+import { CopyTextGal, CodeBlockGal } from "galliard-ui";
 
 export const Installation = () => {
+  const code = `import { ButtonGal } from 'galliard-ui';
+
+const App = () => (
+  <ButtonGal label="Cerrrar sesión" action={() => handleLogout()} styleType="ThemeRed"/>
+);
+`;
+
+const example =`<CopyTextGal
+  label="Correo"
+  iconLeft="tabler:mail-ai""
+/>
+`;
   return (
     <div className="container doc-content">
-      <h1 className="titlePrimary">
-        ¿Cómo instalar la librería de Galliard UI?
-      </h1>
+      <h1 className="titlePrimary">Galliard UI</h1>
 
-      <h2 className="titleSecundary">Requisitos</h2>
-      <p className="text">Necesitás Node.js 18+ y React 18+.</p>
-
-      <h2 className="titleSecundary">Instalación</h2>
-      <p className="text">Elegí tu gestor de paquetes preferido.</p>
-
-      <h3 className="subtitle">Usando npm</h3>
-      <InputText command="npm install galliard-ui" />
-
-      <h3 className="subtitle">Usando yarn</h3>
-      <InputText command="yarn add galliard-ui" />
-
-      <h3 className="subtitle">Usando pnpm</h3>
-      <InputText command="pnpm add galliard-ui" />
-
-      <h2 className="titleSecundary">Configuración</h2>
       <p className="text">
-        Importá los estilos base una sola vez en tu entrada principal.
+        Galliard UI es una libreria de componentes Reacr moderna, construida con
+        TypeScript y Sass, diseñada para ser ligera, accesible, facil de
+        integrar y altamente personalizable para adecuarse a cada proyecto
       </p>
 
-      <h3 className="subtitle">Tema por defecto</h3>
+      <h2 className="titleSecundary">🚀 Instalación</h2>
+
       <p className="text">
-        Galliard UI viene con un tema base listo para usar.
+        Instala Galliard Ui en tu proyecto usando tu gestor de paquetes
+        favoritos
+        <br />
+        npm: <br />
+        <CopyTextGal command="npm install galliard-ui" /> <br />
+        yarn
+        <br /> <CopyTextGal command="yarn add galliard-ui" />
       </p>
 
-      <h3 className="subtitle">Personalizando el tema</h3>
+      <h2 className="titleSecundary">🛠️ Uso Básico</h2>
       <p className="text">
-        Podés sobreescribir las variables CSS para adaptarlo a tu marca.
+        Una vez instalada la libreria ya podras importar los componentes para utilizarlos
+        directamente en tu aplicación de React o
+        Next.js:
+        <CodeBlockGal
+          tabs={[
+            {
+              code: code,
+              label: "Ejemplo de uso",
+              theme:"blue"
+            },
+          ]}
+        />
+      </p>
+
+      <h2 className="titleSecundary">📦 Uso de YesIcon</h2>
+      <p className="text">
+        Algunos componentes de Galliard UI utilizan Yesicon. Para utilizarlos, sigue estos pasos: <br />
+        <ol>
+          <li className="text">
+            1.- Ingresa a YesIcon App y busca el ícono que deseas utilizar.
+          </li>
+          <li className="text">
+            2.- Selecciona el ícono y elige React como lenguaje.
+          </li>
+          <li className="text">
+            3.- Dentro de las opciones disponibles, selecciona "Con @iconify/react".
+          </li>
+          <li className="text">
+            4.- Copia el nombre del ícono y utilízalo en la propiedad correspondiente del componente de Galliard UI.
+          </li>
+        </ol>
+        Por Ejemplo:
+        <CodeBlockGal
+          tabs={[
+            {
+              code: example,
+              label: "Ejemplo de uso",
+              theme:"dracula"
+            },
+          ]}
+        />
       </p>
     </div>
   );
