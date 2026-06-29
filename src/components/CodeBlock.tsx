@@ -72,7 +72,11 @@ function HighlightedCode({ code }: { code: string }) {
   );
 }
 
-export function CodeBlock({ tabs, className }: CodeBlockProps) {
+export function CodeBlock({
+  tabs,
+  className,
+  hideHeaderIfSingleTab = false,
+}: CodeBlockProps) {
   const [active, setActive] = useState(0);
   const [copied, setCopied] = useState(false);
   // expansion independiente por tab: cambiar de tab no resetea
@@ -110,6 +114,8 @@ export function CodeBlock({ tabs, className }: CodeBlockProps) {
     }
   };
 
+  const showTabsRow = !(hideHeaderIfSingleTab && tabs.length === 1);
+
   return (
     // data-theme pone la base; customStyle (inline) gana donde aplique
     <div
@@ -118,19 +124,21 @@ export function CodeBlock({ tabs, className }: CodeBlockProps) {
       style={customStyle}
     >
       <div className={styles["codeBlock-header"]}>
-        <div className={styles["codeBlock-tabsContainer"]}>
-          {tabs.map((tab, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className={`${styles["codeBlock-tabButton"]} ${
-                active === i ? styles.active : ""
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        {showTabsRow && (
+          <div className={styles["codeBlock-tabsContainer"]}>
+            {tabs.map((tab, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className={`${styles["codeBlock-tabButton"]} ${
+                  active === i ? styles.active : ""
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        )}
 
         <button
           onClick={handleCopy}

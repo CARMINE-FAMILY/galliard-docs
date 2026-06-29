@@ -81,4 +81,9 @@ export interface Token {
 export interface CodeBlockProps {
   tabs: CodeTab[];
   className?: string;
+  // Si hay un solo tab y esto es true, se oculta la fila de
+  // header (tabs + boton copiar de tabs). El boton de copiar
+  // individual sigue visible, solo se esconde el selector inutil
+  // de un solo tab. Default: false (comportamiento original).
+  hideHeaderIfSingleTab?: boolean;
 }

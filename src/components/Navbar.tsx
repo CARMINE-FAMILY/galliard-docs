@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
         </li>
 
         <li>
-          <NavLink to="/components">Components</NavLink>
+          <NavLink to="/button">Components</NavLink>
         </li>
 
         <li>
