@@ -54,7 +54,7 @@ $themes: (
 
   &-tabsContainer {
     display: flex;
-    gap: 4px;
+    gap: 6px;
     padding: 0 8px;
     border-bottom: 1px solid #e5e7eb;
   }
@@ -66,7 +66,7 @@ $themes: (
     color: #9ca3af;
     cursor: pointer;
     border-bottom: 2px solid transparent;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
 
     &.active {
@@ -84,20 +84,14 @@ $themes: (
   &-canvas {
     --preview-bg: #ffffff;
     --preview-stripe: #f5f5f5;
-
-    min-height: 180px;
+    min-height: 100px;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap; // Permite que bajen de linea
+    gap: 16px; // Espaciado entre botones
     justify-content: center;
-    padding: 40px;
-    background-color: var(--preview-bg);
-    background-image: repeating-linear-gradient(
-      45deg,
-      var(--preview-stripe) 0,
-      var(--preview-stripe) 1px,
-      transparent 1px,
-      transparent 14px
-    );
+    align-items: center;
+    padding: 20px; // Espacio interno
+    background-color: #ffffff;
   }
 }
 

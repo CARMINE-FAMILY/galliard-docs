@@ -29,7 +29,7 @@ export interface CodeThemeValues {
   fadeTo: string;
   buttonBg: string;
   keyword: string;
-  string: string;
+  stringTexts: string;
   comment: string;
   function: string;
   type: string;

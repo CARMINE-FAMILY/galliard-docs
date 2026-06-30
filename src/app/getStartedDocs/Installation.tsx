@@ -47,6 +47,7 @@ const App = () => (
               code: code,
               label: "Ejemplo de uso",
               theme: "blue",
+              customTheme: {fontSize:"15px"},
             },
           ]}
         />
@@ -74,11 +75,13 @@ const App = () => (
         </ol>
         Por Ejemplo:
         <CodeBlockGal
-          tabs={[
+          tabs={
+            [
             {
               code: example,
               label: "Ejemplo de uso",
               theme: "dracula",
+              customTheme: {fontSize:"15px"},
             },
           ]}
         />

@@ -33,7 +33,7 @@ const App = () => (
 
       <CodeBlockGal
       tabs={[
-        {label: "Ejemplo", code:code, theme:"blue"}
+        {label: "Ejemplo", code:code, theme:"blue", customTheme: {fontSize:"14px"},}
       ]}
       />
     </section>

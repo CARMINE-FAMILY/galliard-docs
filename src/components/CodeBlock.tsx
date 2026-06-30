@@ -19,7 +19,7 @@ const CSS_VAR_MAP: Record<keyof CodeThemeValues, string> = {
   fadeTo: "--code-fade-to",
   buttonBg: "--code-button-bg",
   keyword: "--code-keyword",
-  string: "--code-string",
+  stringTexts: "--code-stringTexts",
   comment: "--code-comment",
   function: "--code-function",
   type: "--code-type",

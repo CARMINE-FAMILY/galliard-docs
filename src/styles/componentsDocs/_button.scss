@@ -3,6 +3,44 @@
   flex-direction: column;
   width: 100%;
 
+  .tableProps {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    overflow: hidden;
+    border-radius: 8px;
+
+    thead {
+      background: #1f2937; // gris oscuro elegante
+      color: #ffffff;
+    }
+
+    th {
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+      border: 1px solid #374151;
+    }
+
+    td {
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      color: #111827;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f9fafb; // zebra
+    }
+
+    code {
+      color: #000000;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 1.5rem;
+    }
+  }
+
   .titlePrimary {
     font-size: 4.5rem;
     font-weight: 700;
@@ -11,14 +49,14 @@
   }
 
   .titleSecundary {
-    font-size: 3.1rem;
+    font-size: 3.2rem;
     font-weight: 700;
     margin: 4rem 0 1.6rem;
     line-height: 1.25;
   }
 
   .subtitle {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 600;
     margin: 3.2rem 0 1.2rem;
     line-height: 1.3;
