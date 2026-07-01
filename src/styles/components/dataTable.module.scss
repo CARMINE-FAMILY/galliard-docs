@@ -1,0 +1,148 @@
+@use "../generals/vars" as *;
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.2rem;
+  background: #ffffff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 1.4rem;
+
+  th,
+  td {
+    padding: 1.4rem 1.8rem;
+    text-align: left;
+    vertical-align: middle;
+
+    // Líneas verticales
+    border-right: 1px solid #e5e7eb;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  // ==========================
+  // Header
+  // ==========================
+
+  thead {
+    background: $blackcake;
+
+    th {
+      font-weight: 600;
+      font-size: 1.35rem;
+      color: #ffffff;
+      white-space: nowrap;
+
+      // Línea debajo del encabezado
+      border-bottom: 1px solid #e5e7eb;
+    }
+  }
+
+  // ==========================
+  // Body
+  // ==========================
+
+  tbody {
+    tr {
+      transition: background 0.18s ease;
+
+      &:hover {
+        background: #f9fafb;
+      }
+    }
+
+    td {
+      color: #374151;
+      font-size: 1.3rem;
+      line-height: 1.6;
+
+      // Líneas horizontales
+      border-bottom: 1px solid #e5e7eb;
+
+      code {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.35rem 0.7rem;
+        background: #f3f4f6;
+        border-radius: 0.6rem;
+        font-family: "Fira Code", monospace;
+        font-size: 1.2rem;
+        color: #1f2937;
+        white-space: nowrap;
+      }
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+}
+
+// ==========================
+// Tabla compacta
+// ==========================
+
+.compact {
+  th,
+  td {
+    padding: 0.8rem 1.2rem;
+  }
+}
+
+// ==========================
+// Filas alternadas
+// ==========================
+
+.striped {
+  tbody tr:nth-child(even) {
+    background: #fcfcfd;
+  }
+
+  tbody tr:nth-child(even):hover {
+    background: #f4f4f5;
+  }
+}
+
+// ==========================
+// Bordes internos (opcional)
+// ==========================
+
+.bordered {
+  border: 1px solid #e5e7eb;
+}
+
+// ==========================
+// Sin datos
+// ==========================
+
+.emptyCell {
+  text-align: center;
+  padding: 3rem;
+  color: #9ca3af;
+}
+
+// ==========================
+// Scroll
+// ==========================
+
+.tableWrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 999px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
