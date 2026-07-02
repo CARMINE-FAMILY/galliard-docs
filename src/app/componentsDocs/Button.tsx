@@ -5,7 +5,6 @@ import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
 
 export default function Button() {
-
   const contenidoProps: PropRow[] = [
     {
       name: "label",
@@ -336,6 +335,8 @@ export default function Button() {
         <ButtonGal label="Eliminar" icon="tabler:trash" iconColor="red" />
         <ButtonGal label="Configuración" icon="tabler:settings" iconSize="26px" />
         <ButtonGal label="Sin icono" seeIcon={false} />
+        //Sin texto
+        <ButtonGal label="" action={() => {}} />
         <ButtonGal
           label="Gif"
           customIcon={
@@ -354,6 +355,8 @@ export default function Button() {
         <ButtonGal label="Eliminar" icon="tabler:trash" iconColor="red" />
         <ButtonGal label="Configuración" icon="tabler:settings" iconSize="26px" />
         <ButtonGal label="Sin icono" seeIcon={false} />
+        //Sin texto
+        <ButtonGal label="" action={() => {}} />
         <ButtonGal
           label="Gif"
           customIcon={
@@ -380,6 +383,8 @@ export default function Button() {
           action={() => {}}
         />
         <ButtonGal label="Sin icono" seeIcon={false} action={() => {}} />
+        <ButtonGal label="" action={() => {}} />
+
         <ButtonGal
           label="Gif"
           action={() => {}}
@@ -533,56 +538,87 @@ export default function Button() {
         En este apartado se muestra el uso de sobras con las variables shadow
       </p>
       <ComponentPreview
-        customTheme={{ bg: "#ffffff" }}
+        // customTheme={{ bg: "#E4d4ba" }}
+        customTheme={{ bg: "#ffffce" }}
+        // customTheme={{ bg: "#9ca3af" }}]
         codeTabs={[
           {
             label: "JSX",
             language: "jsx",
             code: `
-        <ButtonGal shadow/>
-        <ButtonGal shadow colorShadow="#2563eb" />
-        <ButtonGal shadow colorShadow="red" />`,
+        <ButtonGal shadow action={() => {}} />
+        <ButtonGal shadow colorShadow="#ffffff" action={() => {}} />
+        <ButtonGal shadow colorShadow="#1fd545" action={() => {}} />
+        <ButtonGal shadow colorShadow="#1d4ed8" action={() => {}} />
+        <ButtonGal shadow colorShadow="#ff0000" action={() => {}} />
+        <ButtonGal shadow colorShadow="#f59e0b" action={() => {}} />
+        <ButtonGal shadow colorShadow="#9d50dc" action={() => {}} />
+        <ButtonGal shadow colorShadow="#374151" action={() => {}} />`,
           },
           {
             label: "TSX",
             language: "tsx",
             code: `
-        <ButtonGal shadow/>
-        <ButtonGal shadow colorShadow="#2563eb" />
-        <ButtonGal shadow colorShadow="red" />`,
+        <ButtonGal shadow action={() => {}} />
+        <ButtonGal shadow colorShadow="#ffffff" action={() => {}} />
+        <ButtonGal shadow colorShadow="#1fd545" action={() => {}} />
+        <ButtonGal shadow colorShadow="#1d4ed8" action={() => {}} />
+        <ButtonGal shadow colorShadow="#ff0000" action={() => {}} />
+        <ButtonGal shadow colorShadow="#f59e0b" action={() => {}} />
+        <ButtonGal shadow colorShadow="#9d50dc" action={() => {}} />
+        <ButtonGal shadow colorShadow="#374151" action={() => {}} />`,
           },
         ]}
       >
-        <ButtonGal shadow action={() => {}} />
-        <ButtonGal shadow colorShadow="#2563eb" action={() => {}} />
-        <ButtonGal shadow colorShadow="red" action={() => {}} />
+        <ButtonGal shadow colorShadow="#000000" action={() => {}} />
+        <ButtonGal shadow colorShadow="#ffffff" action={() => {}} />
+        <ButtonGal shadow colorShadow="#1fd545" action={() => {}} />
+        <ButtonGal shadow colorShadow="#1d4ed8" action={() => {}} />
+        <ButtonGal shadow colorShadow="#ff0000" action={() => {}} />
+        <ButtonGal shadow colorShadow="#f59e0b" action={() => {}} />
+        <ButtonGal shadow colorShadow="#9d50dc" action={() => {}} />
+        <ButtonGal shadow colorShadow="#374151" action={() => {}} />
       </ComponentPreview>
 
       {/* Personalización del botón */}
       <h2 className="titleSecundaryButton">Personalización del botón</h2>
       <p className="text">
         Para la personalización del boton se ocuparon las siguientes
-        propiedades: <code>label</code>, <code>icon</code>, <code>iconOn</code>,
-        <code>bgColor</code>, <code>txtColor</code>, <code>rounded</code>,
-        <code>padding</code>, <code>customClassButton</code>,
-        <code>customClassIcon</code>.
+        propiedades: <span className="inline-code">label</span>,
+        <span className="inline-code">icon</span>,
+        <span className="inline-code">iconOn</span>,
+        <span className="inline-code">bgColor</span>,
+        <span className="inline-code">txtColor</span>,
+        <span className="inline-code">rounded</span>,
+        <span className="inline-code">padding</span>,
+        <span className="inline-code">customClassButton</span>,
+        <span className="inline-code">customClassLabel</span>,
+        <span className="inline-code">customClassIcon</span>.
+      </p>
+      <p className="note">Nota:</p>
+      <p className="text">
+        Si los estilos personalizados no se aplican correctamente en el botón,
+        puede deberse a que existen estilos con mayor prioridad. Para
+        sobreescribirlos, puedes utilizar
+        <span className="inline-code">!important</span>
+        una vez ya aplicada, veras que los estilos que seleccionas se habrán
+        aplicado
       </p>
       <ComponentPreview
+        customTheme={{ bg: "#212528" }}
         codeTabs={[
           {
             label: "JSX",
             language: "jsx",
             code: `
        <ButtonGal
-          label="Let's get started"
-          icon="heroicons:chevron-right"
-          iconOn="right"
-          bgColor="#1f2937"
-          txtColor="#fff"
-          rounded="lg"
-          padding="12px 24px"
-          customClassButton={"btnGradientGlow"}
-          customClassIcon={"arrowIcon"}
+          label="Get started"
+          seeIcon={false}
+          padding="1em 3em"
+          customClassButton="button"
+          customClassLabel="label"
+          customClassIcon="icon"
+          args={{title: "Ejemplo de args"}}
           action={() => {}}
         />`,
           },
@@ -591,15 +627,13 @@ export default function Button() {
             language: "tsx",
             code: `
         <ButtonGal
-          label="Let's get started"
-          icon="heroicons:chevron-right"
-          iconOn="right"
-          bgColor="#1f2937"
-          txtColor="#fff"
-          rounded="lg"
-          padding="12px 24px"
-          customClassButton={"btnGradientGlow"}
-          customClassIcon={"arrowIcon"}
+          label="Get started"
+          seeIcon={false}
+          padding="1em 3em"
+          customClassButton="button"
+          customClassLabel="label"
+          customClassIcon="icon"
+          args={{title: "Ejemplo de args"}}
           action={() => {}}
         />`,
           },
@@ -607,14 +641,12 @@ export default function Button() {
       >
         <ButtonGal
           label="Get started"
-          icon="heroicons:chevron-right"
-          iconOn="right"
-          bgColor="#1f2937"
-          txtColor="#fff"
-          rounded="lg"
-          padding="12px 24px"
-          customClassButton={"btnGradientGlow"}
-          customClassIcon={"arrowIcon"}
+          seeIcon={false}
+          padding="1em 3em"
+          customClassButton="button"
+          customClassLabel="label"
+          customClassIcon="icon"
+          args={{title: "Ejemplo de args"}}
           action={() => {}}
         />
       </ComponentPreview>

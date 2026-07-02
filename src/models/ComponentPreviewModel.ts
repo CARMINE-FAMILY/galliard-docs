@@ -30,4 +30,5 @@ export interface ComponentPreviewProps {
   customTheme?: Partial<PreviewThemeValues>; // override solo del fondo de rayas
   codeCustomTheme?: Partial<CodeThemeValues>; // override solo de los CodeBlock internos
   className?: string;
+  codeTheme?: PreviewTheme; // tema indenpendiente para codeblock
 }

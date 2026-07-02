@@ -35,9 +35,10 @@ export function ComponentPreview({
   children,
   codeTabs,
   previewLabel = "Avance",
-  theme = "black",
+  theme = "light",
   customTheme,
   codeCustomTheme,
+  codeTheme,
   className,
 }: ComponentPreviewProps) {
   // 0 = tab "Avance" (vivo). 1..n = tabs de codigo (HTML, JSX, etc.)
@@ -86,7 +87,7 @@ export function ComponentPreview({
               label: codeTabs[active - 1].label,
               code: codeTabs[active - 1].code,
               language: codeTabs[active - 1].language,
-              theme,
+              theme: codeTheme ?? "blue",
               customTheme: codeCustomTheme,
             },
           ]}
