@@ -1,44 +1,109 @@
 @use "../generals/vars" as *;
+@use "../generals/mixins" as *;
 
 .container {
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-color: $background;
 
   .titlePrimary {
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: 700;
-    margin: 0 0 2.4rem;
+    margin: 0 0 2rem;
     line-height: 1.2;
+    font-family: OpenSansBold;
+    color:$primary1;
   }
 
   .titleSecundary {
-    font-size: 3.2rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin: 4rem 0 1.6rem;
+    margin: 1.5rem 0 .7rem;
     line-height: 1.25;
+    color:$textPrimary;
+    font-family: OpenSansSemiBold;
+  }
+
+  .titleSecundaryButton {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 5rem 0 1.5rem;
+    line-height: 1.25;
+    color:$textPrimary;
+    font-family: OpenSansSemiBold;
   }
 
   .subtitle {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 600;
     margin: 3.2rem 0 1.2rem;
     line-height: 1.3;
+    color:$blackcake;
+    font-family:OpenSansSemiBold;
   }
 
   .text {
-    font-size: 2rem;
+    font-size: 1.4rem;
     line-height: 1.6;
     margin: 0 0 1.6rem;
+    @include inline-code
   }
 
   .code {
     font-size: 1.8rem;
     display: block;
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(255, 0, 0, 0.05);
     padding: 1.2rem 1.6rem;
     border-radius: 0.8rem;
     margin: 0 0 2.4rem;
     overflow-x: auto;
+  }
+
+  // En un archivo tuyo, ej: MiVista.module.scss
+  .btnGradientGlow {
+    position: relative;
+    background-color: #1f2937 !important;
+    transition: transform 0.3s ease;
+    overflow: visible;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+
+    // Borde con gradiente que aparece en hover
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(90deg, #2dd4bf, #3b82f6, #a855f7);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+
+    // Icono y texto se mueven un poco en hover
+    &:hover .arrowIcon {
+      transform: translateX(4px);
+    }
+  }
+
+  .arrowIcon {
+    transition: transform 0.3s ease;
   }
 }

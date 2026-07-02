@@ -1,0 +1,13 @@
+@mixin inline-code {
+  code {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    background: #0055ff;
+    border-radius: 0.6rem;
+    font-family: "Fira Code", monospace;
+    font-size: 0.9em;
+    color: #37241f;
+    white-space: nowrap;
+  }
+}

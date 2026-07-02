@@ -91,7 +91,7 @@ $themes: (
     justify-content: center;
     align-items: center;
     padding: 20px; // Espacio interno
-    background-color: #ffffff;
+    background-color: var(--preview-bg);
   }
 }
 

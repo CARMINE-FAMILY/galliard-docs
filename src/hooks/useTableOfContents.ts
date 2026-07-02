@@ -28,33 +28,36 @@ export const useTableOfContents = ({
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const container = document.querySelector(containerSelector);
-    if (!container) {
-      setItems([]);
-      return;
-    }
-
-    //Buscador de headings(Titulos)
-    const headings = Array.from(
-      container.querySelectorAll<HTMLHeadingElement>(headingSelector),
-    );
-
-    const collected: TocItem[] = headings.map((heading) => {
-      // Si el heading no tiene id, se lo generamos a partir del texto.
-      if (!heading.id) {
-        heading.id = slugify(heading.textContent ?? "");
+    const timer = setTimeout(() => {
+      const container = document.querySelector(containerSelector);
+      if (!container) {
+        setItems([]);
+        return;
       }
-      return {
-        id: heading.id,
-        text: heading.textContent ?? "",
-        level: Number(heading.tagName.replace("H", "")),
-      };
-    });
+      //Buscador de headings(Titulos)
+      const headings = Array.from(
+        container.querySelectorAll<HTMLHeadingElement>(headingSelector),
+      );
 
-    setItems(collected);
-    //Al cambiar de pagina, se resetea
-    // el id de la página anterior mientras carga el nuevo
-    setActiveId(collected[0]?.id ?? null);
+      const collected: TocItem[] = headings.map((heading) => {
+        // Si el heading no tiene id, se lo generamos a partir del texto.
+        if (!heading.id) {
+          heading.id = slugify(heading.textContent ?? "");
+        }
+        return {
+          id: heading.id,
+          text: heading.textContent ?? "",
+          level: Number(heading.tagName.replace("H", "")),
+        };
+      });
+
+      setItems(collected);
+      //Al cambiar de pagina, se resetea
+      // el id de la página anterior mientras carga el nuevo
+      setActiveId(collected[0]?.id ?? null);
+    }, 100); // Delay de 100ms para esperar a que el contenido se renderice
+
+    return () => clearTimeout(timer); // Limpiar el timeout si el componente se desmonta o cambia de ruta
   }, [pathname, containerSelector, headingSelector]);
 
   // Resalta el heading visible actualmente mientras se hace scroll.
@@ -66,8 +69,12 @@ export const useTableOfContents = ({
     // cuál heading es el último que ya cruzó la línea de referencia.
     // Es el mismo enfoque que usa Docusaurus.
 
+    const scrollContainer =
+      document.querySelector<HTMLElement>(".docs-content");
+    if (!scrollContainer) return;
+
     const handleScroll = () => {
-      const scrollY = window.scrollY;
+      const scrollTop = scrollContainer.scrollTop;
       const offset = 120; // qué tan abajo del top cuenta como "ya lo pasé"
 
       let current: string | null = items[0]?.id ?? null;
@@ -76,11 +83,13 @@ export const useTableOfContents = ({
         const el = document.getElementById(item.id);
         if (!el) continue;
 
-        const top = el.getBoundingClientRect().top + window.scrollY;
-        if (scrollY + offset >= top) {
+        const containerTop = scrollContainer.getBoundingClientRect().top;
+        const elTop = el.getBoundingClientRect().top - containerTop + scrollTop;
+
+        if (scrollTop + offset >= elTop) {
           current = item.id;
         } else {
-          break;
+          break; // Si ya encontramos un heading que no hemos pasado, salimos del loop
         }
       }
 
@@ -88,10 +97,9 @@ export const useTableOfContents = ({
     };
 
     handleScroll(); // estado inicial al montar
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    scrollContainer.addEventListener("scroll", handleScroll, { passive: true });
+    return () => scrollContainer.removeEventListener("scroll", handleScroll);
   }, [items]);
-
   return { items, activeId };
 };
 

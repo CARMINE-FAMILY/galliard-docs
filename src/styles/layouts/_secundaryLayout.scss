@@ -1,8 +1,7 @@
 .docs-layout {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 45px);
 
-  //esto maneja la de como iria acomodado la informacion pára los archivos
   .docs-content {
     flex: 1;
     min-width: 0;
