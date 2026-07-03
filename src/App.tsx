@@ -6,6 +6,8 @@ import { Installation } from "./app/getStartedDocs/Installation";
 import Functions from "./app/functionsDocs/Functions";
 import Button from "./app/componentsDocs/Button";
 import CheckBox from "./app/componentsDocs/inputs/CheckBox";
+import DropDown from "./app/componentsDocs/inputs/DropDown";
+import Nose from "./app/componentsDocs/inputs/nose";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
             <Route path="/getStartDocs/docs" element={<Installation />} />
             <Route path="/componentsDocs/button" element={<Button />} />
             <Route path="/componentsDocs/inputs/checkbox" element={<CheckBox />} />
+            <Route path="/componentsDocs/inputs/dropdown" element={<DropDown />} />
+            <Route path="/componentsDocs/inputs/nose" element={<Nose />} />
             <Route path="/functions" element={<Functions />} />
           </Route>
 

@@ -31,4 +31,5 @@ export interface ComponentPreviewProps {
   codeCustomTheme?: Partial<CodeThemeValues>; // override solo de los CodeBlock internos
   className?: string;
   codeTheme?: PreviewTheme; // tema indenpendiente para codeblock
+  allowOverflow?: boolean; // default: false. Si true, el preview puede crecer y salirse del contenedor padre
 }

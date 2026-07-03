@@ -24,6 +24,11 @@ export default function CheckBox() {
       type: "(value:boolean) => void",
       description: "Mensaje de error que se muestra debajo del chekbox",
     },
+    {
+      name: "errorMessage",
+      type: "string",
+      description: "Mensaje de error que se muestra debajo del checkbox",
+    },
   ];
 
   const aparienciaProps: PropRow[] = [
@@ -52,38 +57,69 @@ export default function CheckBox() {
       description: "Indica si se muestra el icono junto al checkbox",
     },
     {
-        name: "icon",
-        type: "string",
-        defaultValue: '"mi:user"',
-        description: "Identificador del icono obtenido desde YesIcon"
+      name: "icon",
+      type: "string",
+      defaultValue: '"mi:user"',
+      description: "Identificador del icono obtenido desde YesIcon",
     },
     {
-        name:"iconSize",
-        type:"string ó number",
-        description: "Tamaño del icono",
+      name: "iconSize",
+      type: "string ó number",
+      description: "Tamaño del icono",
     },
     {
-        name: "iconColor",
-        type:"string",
-        description:"Color del ícono",
+      name: "iconColor",
+      type: "string",
+      description: "Color del ícono",
     },
     {
-        name:"customIcon",
-        type:"React.ReactNode",
-        description:"Reemplaza el ícono de YesIcon por un ejemplo personalizado",
+      name: "customIcon",
+      type: "React.ReactNode",
+      description: "Reemplaza el ícono de YesIcon por un ejemplo personalizado",
     },
   ];
 
   const enlaceProps: PropRow[] = [
     {
-        name: "useLinkable",
-        type: "boolean",
-        description: "Convierte el label en un enlace (por ejemplo, para 'Acepto los terminos y condiciones')"
+      name: "useLinkable",
+      type: "boolean",
+      description:
+        "Convierte el label en un enlace (por ejemplo, para 'Acepto los terminos y condiciones')",
     },
     {
-        name:"link",
-        type:"string",
-        description:"URL a la que apunta el label cuando useLinkable está activo"
+      name: "link",
+      type: "string",
+      description:
+        "URL a la que apunta el label cuando useLinkable está activo",
+    },
+  ];
+
+  const personalizacionProps: PropRow[] = [
+    {
+      name: "customInputClass",
+      type: "string",
+      description: "Clase CSS adicional aplicada al input",
+    },
+    {
+      name: "customLabelClass",
+      type: "string",
+      description: "Clase CSS adicional aplicada al label",
+    },
+    {
+      name: "customIconClass",
+      type: "string",
+      description: "Clase CSS adicional aplicada al icono",
+    },
+    {
+      name: "args",
+      type: "InputHTMLAttributes<HTMLInputElement>",
+      description: (
+        <>
+          Permite agregar atributos nativos del elemento
+          <code>&lt;input&gt;</code>, como <code>disabled</code>,
+          <code>name</code> o <code>aria-label</code>
+        </>
+      ),
     },
   ];
 
@@ -99,6 +135,312 @@ export default function CheckBox() {
 
       <h2 className="titleSecundary">Props</h2>
       <h3 className="subtitle">Contenido</h3>
+      <DataTable
+        columns={propsColumns}
+        data={contenidoProps}
+        rowKey={(r) => r.name}
+      />
+
+      <h3 className="subtitle">Apariencia</h3>
+      <DataTable
+        columns={propsColumns}
+        data={aparienciaProps}
+        rowKey={(r) => r.name}
+      />
+
+      <h3 className="subtitle">Iconos</h3>
+      <DataTable
+        columns={propsColumns}
+        data={iconosProps}
+        rowKey={(r) => r.name}
+      />
+
+      <h3 className="subtitle">Enlaces</h3>
+      <DataTable
+        columns={propsColumns}
+        data={enlaceProps}
+        rowKey={(r) => r.name}
+      />
+
+      <h3 className="subtitle">Personalización</h3>
+      <DataTable
+        columns={propsColumns}
+        data={personalizacionProps}
+        rowKey={(r) => r.name}
+      />
+
+      {/* CheckBox */}
+      <h2 className="titleSecundaryButton">CheckBox</h2>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <CheckBoxGal
+          label="Acepto"
+          value={checked}
+          setValue={setChecked}
+        />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <CheckBoxGal
+          label="Acepto"
+          value={checked}
+          setValue={setChecked}
+        />`,
+          },
+        ]}
+      >
+        <CheckBoxGal label="Acepto" value={checked} setValue={setChecked} />
+      </ComponentPreview>
+
+      {/* Iconos */}
+      <h2 className="titleSecundaryButton">Diseño de Iconos</h2>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <CheckBoxGal label="Con icono" seeIcon icon="tabler:check" />
+        <CheckBoxGal label="Icono a color" seeIcon icon="tabler:check" iconColor="#2aa198" />
+        <CheckBoxGal label="Icono grande" seeIcon icon="tabler:check" iconSize="26px" />
+        <CheckBoxGal label="Sin icono" seeIcon={false} />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <CheckBoxGal label="Con icono" seeIcon icon="tabler:check" />
+        <CheckBoxGal label="Icono a color" seeIcon icon="tabler:check" iconColor="#2aa198" />
+        <CheckBoxGal label="Icono grande" seeIcon icon="tabler:check" iconSize="26px" />
+        <CheckBoxGal label="Sin icono" seeIcon={false} />`,
+          },
+        ]}
+      >
+        <CheckBoxGal
+          label="Con icono"
+          value={checked}
+          setValue={setChecked}
+          seeIcon
+          icon="tabler:check"
+        />
+        <CheckBoxGal
+          label="Icono a color"
+          value={checked}
+          setValue={setChecked}
+          seeIcon
+          icon="tabler:check"
+          iconColor="#2aa198"
+        />
+        <CheckBoxGal
+          label="Icono grande"
+          value={checked}
+          setValue={setChecked}
+          seeIcon
+          icon="tabler:check"
+          iconSize="26px"
+        />
+        <CheckBoxGal
+          label="Sin icono"
+          value={checked}
+          setValue={setChecked}
+          seeIcon={false}
+        />
+        <CheckBoxGal label="" value={checked} setValue={setChecked} />
+      </ComponentPreview>
+
+      {/* Enlace */}
+      <h2 className="titleSecundaryButton">Label como enlace</h2>
+      <p className="text">
+        Útil para casos como "Acepto los términos y condiciones", donde el texto
+        debe funcionar como link en vez de solo describir el checkbox.
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <CheckBoxGal
+          label="Acepto los términos y condiciones"
+          useLinkable
+          link="tu link"
+        />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <CheckBoxGal
+          label="Acepto los términos y condiciones"
+          useLinkable
+          link="tu link"
+        />`,
+          },
+        ]}
+      >
+        <CheckBoxGal
+          label="Acepto los términos y condiciones"
+          value={checked}
+          setValue={setChecked}
+          useLinkable
+          link="https://www.bing.com/ck/a?!&&p=327161dec17d8c3f1ca84cfdcebb3609d1760c9661e912b6fd047a3907295bedJmltdHM9MTc4MzAzNjgwMA&ptn=3&ver=2&hsh=4&fclid=25f0258f-2714-62ae-2ce3-32c026b56397&psq=yesicon+app&u=a1aHR0cHM6Ly95ZXNpY29uLmFwcC8"
+        />
+      </ComponentPreview>
+
+      {/* Error */}
+      <h2 className="titleSecundaryButton">Mensaje de error</h2>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <CheckBoxGal
+          label="Acepto"
+          errorMessage="Debes aceptar para continuar"
+        />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <CheckBoxGal
+          label="Acepto"
+          errorMessage="Debes aceptar para continuar"
+        />`,
+          },
+        ]}
+      >
+        <CheckBoxGal
+          label="Acepto"
+          value={checked}
+          setValue={setChecked}
+          textSize={20}
+          errorMessage="Acepta para continuar"
+        />
+      </ComponentPreview>
+
+      {/* Tipografía */}
+      <h2 className="titleSecundaryButton">Tipografía</h2>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <CheckBoxGal label="OpenSansRegular" font="OpenSansRegular" />
+        <CheckBoxGal label="TextoGrande" textSize="20px" />
+        <CheckBoxGal label="Georgia" font="Georgia" textSize="18px" />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <CheckBoxGal label="OpenSansRegular" font="OpenSansRegular" />
+        <CheckBoxGal label="TextoGrande" textSize="20px" />
+        <CheckBoxGal label="Georgia" font="Georgia" textSize="18px" />`,
+          },
+        ]}
+      >
+        <CheckBoxGal
+          label="OpenSansRegular"
+          value={checked}
+          setValue={setChecked}
+          font="OpenSansRegular"
+        />
+        <CheckBoxGal
+          label="TextoGrande"
+          value={checked}
+          setValue={setChecked}
+          textSize="20px"
+        />
+        <CheckBoxGal
+          label="Georgia"
+          value={checked}
+          setValue={setChecked}
+          font="Georgia"
+          textSize="18px"
+        />
+      </ComponentPreview>
+
+      {/* Personalización del checkbox */}
+      <h2 className="titleSecundaryButton">Personalización del checkbox</h2>
+      <p className="text">
+        Para la personalización del checkbox se ocuparon las siguientes
+        propiedades: <span className="inline-code">label</span>,
+        <span className="inline-code">icon</span>,
+        <span className="inline-code">iconColor</span>,
+        <span className="inline-code">textColor</span>,
+        <span className="inline-code">customInputClass</span>,
+        <span className="inline-code">customLabelClass</span>,
+        <span className="inline-code">customIconClass</span>.
+      </p>
+      <p className="note">Nota:</p>
+      <p className="text">
+        Si los estilos personalizados no se aplican correctamente en el
+        checkbox, puede deberse a que existen estilos con mayor prioridad. Para
+        sobreescribirlos, puedes utilizar
+        <span className="inline-code">!important</span>
+        una vez ya aplicada, veras que los estilos que seleccionas se habrán
+        aplicado
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <CheckBoxGal
+          label="Acepto los términos"
+          value={checked}
+          setValue={setChecked}
+          seeIcon
+          icon="tabler:check"
+          iconColor="#2aa198"
+          textColor="#000000"
+          customInputClass="input"
+          customLabelClass="label"
+          customIconClass="icon"
+        />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <CheckBoxGal
+          label="Acepto los términos"
+          value={checked}
+          setValue={setChecked}
+          seeIcon
+          icon="tabler:check"
+          iconColor="#2aa198"
+          textColor="#000000"
+          customInputClass="input"
+          customLabelClass="label"
+          customIconClass="icon"
+        />`,
+          },
+        ]}
+      >
+        <CheckBoxGal
+          label="Acepto los términos"
+          value={checked}
+          setValue={setChecked}
+          seeIcon
+          icon="tabler:check"
+          iconColor="#2aa198"
+          textColor="#000000"
+          customInputClass="input"
+          customLabelClass="label"
+          customIconClass="icon"
+        />
+      </ComponentPreview>
     </div>
   );
 }

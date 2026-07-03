@@ -7,6 +7,7 @@
   width: 100%;
   background-color: $background;
   overflow: hidden;
+  font-family: inherit;
 
   .titlePrimary {
     font-size: 4rem;
@@ -21,15 +22,6 @@
     font-size: 2.5rem;
     font-weight: 700;
     margin: 1.5rem 0 0.7rem;
-    line-height: 1.25;
-    color: $textPrimary;
-    font-family: OpenSansSemiBold;
-  }
-
-  .titleSecundaryButton {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 5rem 0 1.5rem;
     line-height: 1.25;
     color: $textPrimary;
     font-family: OpenSansSemiBold;
@@ -69,62 +61,32 @@
     font-family: OpenSansSemiBold;
   }
 
-  // Estilos custom para el ejemplo de "Personalización del checkbox"
-  .input {
-    width: 2rem;
-    height: 2rem;
-    accent-color: #2aa198;
-    cursor: pointer;
-    border-radius: 0.4rem;
-    outline: 2px solid transparent;
-    outline-offset: 2px;
+  .inputDrop {
+    border: 1.5px solid #2aa198 !important;
     transition:
-      outline-color 0.2s ease,
-      transform 0.15s ease;
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
 
     &:hover {
-      outline-color: rgba(42, 161, 152, 0.4);
-    }
-
-    &:active {
-      transform: scale(0.9);
-    }
-
-    &:checked {
-      animation: checkPop 0.25s ease;
-    }
-
-    // cuando el input se marca, afecta al label que viene después en el DOM
-    &:checked ~ .label {
-      color: #00ff00 !important;
+      box-shadow: 0 0 0 3px rgba(42, 161, 152, 0.2);
     }
   }
 
-  .label {
+  .labelDrop {
     font-weight: 600;
     letter-spacing: 0.02em;
-    cursor: pointer;
-    transition: color 0.2s ease; // el cambio de color se anima suave, no de golpe
+    color: #2aa198 !important;
+  }
+
+  .iconDrop {
+    color: #2aa198 !important;
+  }
+
+  .optionDrop {
+    transition: background 0.15s ease;
 
     &:hover {
-      color: #a12a30 !important;
-    }
-  }
-
-  .icon {
-    filter: drop-shadow(0 0 4px rgba(42, 161, 152, 0.5));
-    transition: transform 0.2s ease;
-  }
-
-  @keyframes checkPop {
-    0% {
-      transform: scale(0.8);
-    }
-    50% {
-      transform: scale(1.15);
-    }
-    100% {
-      transform: scale(1);
+      background: rgba(42, 161, 152, 0.1);
     }
   }
 }

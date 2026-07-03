@@ -50,6 +50,12 @@ $themes: (
     border: 1px solid #e5e7eb;
     border-radius: 10px;
     overflow: hidden;
+
+    // libera el recorte del wrapper cuando el contenido necesita
+    // salirse (ej. el menú desplegable de un dropdown)
+    &.componentPreview-wrapperOverflow {
+      overflow: visible;
+    }
   }
 
   &-tabsContainer {
@@ -93,6 +99,11 @@ $themes: (
     align-items: center;
     padding: 20px; // Espacio interno
     background-color: var(--preview-bg);
+  }
+
+  // igual que el wrapper: libera el recorte solo cuando se pide
+  &-canvasOverflow {
+    overflow: visible;
   }
 }
 

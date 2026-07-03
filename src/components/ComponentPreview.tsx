@@ -34,20 +34,24 @@ function buildPreviewStyle(
 export function ComponentPreview({
   children,
   codeTabs,
-  previewLabel = "Avance",
+  previewLabel = "Vista previa",
   theme = "light",
   customTheme,
   codeCustomTheme,
   codeTheme,
   className,
+  allowOverflow = false,
 }: ComponentPreviewProps) {
-  // 0 = tab "Avance" (vivo). 1..n = tabs de codigo (HTML, JSX, etc.)
   const [active, setActive] = useState(0);
   const isPreviewTab = active === 0;
   const previewStyle = buildPreviewStyle(customTheme);
 
   return (
-    <div className={`${styles["componentPreview-wrapper"]} ${className ?? ""}`}>
+    <div
+      className={`${styles["componentPreview-wrapper"]} ${
+        allowOverflow ? styles["componentPreview-wrapperOverflow"] : ""
+      } ${className ?? ""}`}
+    >
       <div className={styles["componentPreview-tabsContainer"]}>
         <button
           onClick={() => setActive(0)}
@@ -73,7 +77,9 @@ export function ComponentPreview({
 
       {isPreviewTab ? (
         <div
-          className={styles["componentPreview-canvas"]}
+          className={`${styles["componentPreview-canvas"]} ${
+            allowOverflow ? styles["componentPreview-canvasOverflow"] : ""
+          }`}
           data-theme={theme}
           style={previewStyle}
         >
