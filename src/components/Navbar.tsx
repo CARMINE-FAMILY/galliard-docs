@@ -12,11 +12,11 @@ const Navbar: React.FC = () => {
 
       <ul className="navbar__links">
         <li>
-          <NavLink to="/docs">Docs</NavLink>
+          <NavLink to="/getStartDocs/docs">Docs</NavLink>
         </li>
 
         <li>
-          <NavLink to="/button">Components</NavLink>
+          <NavLink to="/componentsDocs/button">Components</NavLink>
         </li>
 
         <li>

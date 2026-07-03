@@ -26,6 +26,7 @@ export const Sidebar = () => {
                 key={item.path}
                 label={item.label}
                 path={item.path}
+                children={item.children}
                 collapsed={collapsed}
               />
             ))}

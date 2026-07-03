@@ -10,7 +10,7 @@
   transition: width 0.25s ease;
   overflow-y: auto;
   align-items: center;
-  
+
   &.collapsed {
     width: 50px;
 
@@ -98,7 +98,6 @@
     border-left: 3px solid transparent; // reserva el espacio para que no salte al activarse
     text-decoration: none;
     color: #212528;
-    font-size: 1.7rem;
     font-weight: 500;
     transition:
       background 0.2s ease,
@@ -135,6 +134,76 @@
       overflow: hidden;
       text-overflow: ellipsis;
       font-size: 1.4rem;
+    }
+  }
+
+  /* ITEM CON SUB-ITEMS (acordeón) */
+  .sidebar-item-group {
+    width: 100%;
+  }
+
+  .sidebar-item-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    font: inherit;
+
+    .chevron {
+      margin-left: auto;
+      font-size: 1.2rem;
+      opacity: 0.5;
+      transition: transform 0.2s ease;
+    }
+
+    &.open {
+      .chevron {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .sidebar-children {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 0.25s ease;
+    padding-left: 2.4rem; // indenta los hijos respecto al padre
+
+    &[data-open="true"] {
+      grid-template-rows: 1fr;
+    }
+
+    .sidebar-children-inner {
+      min-height: 0; // para que el contenido no se desborde del grid
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-child {
+      display: block;
+      padding: 0.4rem 0.5rem;
+      font-size: 1.4rem; //tamaño de la letra de los subitems
+      text-decoration: none;
+      color: #212528;
+      opacity: 0.7;
+      border-left: 3px solid transparent;
+      transition:
+        opacity 0.2s ease,
+        color 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+        background: rgba(154, 76, 149, 0.08);
+      }
+
+      &.active {
+        opacity: 1;
+        color: #9a4c95;
+        border-left-color: #9a4c95;
+      }
     }
   }
 }
