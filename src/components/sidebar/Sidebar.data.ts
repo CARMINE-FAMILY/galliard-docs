@@ -37,7 +37,8 @@ export const sidebarData: SidebarGroupType[] = [
         children: [
           { label: "Checkbox", path: "/componentsDocs/inputs/checkbox" },
           { label: "DropDown", path: "/componentsDocs/inputs/dropdown" },
-          { label: "SearchInput", path: "/componentsDocs/inputs/nose" },
+          { label: "InputFile", path: "/componentsDocs/inputs/inputfile" },
+          { label: "InputRadio", path: "/componentsDocs/inputs/inputradio" },
         ],
       },
       

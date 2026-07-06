@@ -1,4 +1,5 @@
-import type { TableColumn, PropRow } from "../models/TableModel";
+import type { TableColumn, PropRow, FileCatalogRow } from "../models/TableModel";
+
 
 export const propsColumns: TableColumn<PropRow>[] = [
   {
@@ -32,3 +33,17 @@ export const propsColumns: TableColumn<PropRow>[] = [
     render: (row) => row.description,
   },
 ];
+
+export const fileCatalogColumns: TableColumn<FileCatalogRow>[] = [
+  {
+    key: "category",
+    header: "Categoria",
+    width: "25%",
+    render: (row) => <code>{row.category}</code>
+  },
+  {
+    key: "types",
+    header: "Tipos disponibles",
+    render: (row) => row.types
+  }
+]

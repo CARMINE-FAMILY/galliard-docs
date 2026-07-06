@@ -37,3 +37,8 @@ export interface ClassNameRow {
     badge: ClassBadgeType;
     description: string;
 }
+
+export interface FileCatalogRow{
+  category: string;
+  types: string;
+}
