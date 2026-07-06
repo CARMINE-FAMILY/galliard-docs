@@ -40,7 +40,7 @@ export function ComponentPreview({
   codeCustomTheme,
   codeTheme,
   className,
-  allowOverflow = false,
+  allowOverflow = true, // antes: false
 }: ComponentPreviewProps) {
   const [active, setActive] = useState(0);
   const isPreviewTab = active === 0;

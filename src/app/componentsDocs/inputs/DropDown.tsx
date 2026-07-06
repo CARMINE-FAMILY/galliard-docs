@@ -20,6 +20,65 @@ export default function DropDown() {
     { valueOption: "uva", text: "Uva", icon: "tabler:grain" },
   ];
 
+  const opcionesMundial: OptionsDropModel[] = [
+    {
+      valueOption: 1,
+      text: "México",
+      customIcon: (
+        <img src="https://tse1.mm.bing.net/th/id/OIP.R7mW1KxNk8kkbkzcYgboEQHaFh?rs=1&pid=ImgDetMain&o=7&rm=3" />
+      ),
+    },
+    {
+      valueOption: 2,
+      text: "Portugal",
+      customIcon: (
+        <img src="https://www.bplay.bet.ar/wp-content/uploads/2022/12/istockphoto-475191977-612x612-1.jpg" />
+      ),
+    },
+    {
+      valueOption: 3,
+      text: "España",
+      customIcon: (
+        <img src="https://i.pinimg.com/originals/be/80/0a/be800ab60086b8ad63b3b49d6c103754.jpg" />
+      ),
+    },
+    {
+      valueOption: 4,
+      text: "Estados Unidos",
+      customIcon: (
+        <img src="https://tse1.mm.bing.net/th/id/OIP.74w6-I6p-FaHDGhFgn96twHaEJ?rs=1&pid=ImgDetMain&o=7&rm=3" />
+      ),
+    },
+    {
+      valueOption: 5,
+      text: "Bélgica",
+      customIcon: (
+        <img src="https://media.istockphoto.com/id/1415663118/es/vector/insignia-del-equipo-de-escudo-de-b%C3%A9lgica-para-el-torneo-de-f%C3%BAtbol.jpg?s=612x612&w=is&k=20&c=b_gdLIlfaZd251REDzZTZzM07u_lFcRZfF5fy2OU-d0=" />
+      ),
+    },
+    {
+      valueOption: 6,
+      text: "Argentina",
+      customIcon: (
+        <img src="https://img.freepik.com/vector-premium/insignia-equipo-escudo-argentina-torneo-futbol_95164-6379.jpg?w=2000" />
+      ),
+    },
+    {
+      valueOption: 7,
+      text: "Egipto",
+      customIcon: (
+        <img src="https://tse2.mm.bing.net/th/id/OIP.fUB0WFXL0R4yVGm7blcQngHaHa?w=996&h=996&rs=1&pid=ImgDetMain&o=7&rm=3" />
+      ),
+    },
+    {
+      valueOption: 8,
+      text: "Colombia",
+      customIcon: (
+        <img src="https://img.freepik.com/vector-premium/insignia-equipo-futbol-escudo-colombia_95164-16196.jpg?w=2000" />
+      ),
+    },
+  ];
+
   const contenidoProps: PropRow[] = [
     {
       name: "label",
@@ -274,6 +333,7 @@ export default function DropDown() {
       {/* DropDown */}
       <h2 className="titleSecundary">DropDown</h2>
       <ComponentPreview
+        allowOverflow
         codeTabs={[
           {
             label: "JSX",
@@ -328,6 +388,7 @@ export default function DropDown() {
         input.
       </p>
       <ComponentPreview
+        allowOverflow
         codeTabs={[
           {
             label: "JSX",
@@ -358,6 +419,7 @@ export default function DropDown() {
       {/* Layout horizontal / vertical */}
       <h2 className="titleSecundary">Orientación del label</h2>
       <ComponentPreview
+        allowOverflow
         codeTabs={[
           {
             label: "JSX",
@@ -382,7 +444,7 @@ export default function DropDown() {
       {/* Iconos */}
       <h2 className="titleSecundary">Diseño de Iconos</h2>
       <ComponentPreview
-      allowOverflow
+        allowOverflow
         codeTabs={[
           {
             label: "JSX",
@@ -434,7 +496,7 @@ export default function DropDown() {
       {/* Tamaño y bordes */}
       <h2 className="titleSecundary">Tamaño y bordes</h2>
       <ComponentPreview
-      allowOverflow
+        allowOverflow
         codeTabs={[
           {
             label: "JSX",
@@ -468,6 +530,7 @@ export default function DropDown() {
       {/* Error */}
       <h2 className="titleSecundary">Mensaje de error</h2>
       <ComponentPreview
+        allowOverflow
         codeTabs={[
           {
             label: "JSX",
@@ -499,7 +562,7 @@ export default function DropDown() {
       </ComponentPreview>
 
       {/* Personalización del dropdown */}
-      <h2 className="titleSecundaryButton">Personalización del dropdown</h2>
+      <h2 className="titleSecundaryButton">Personalización del DropDown</h2>
       <p className="text">
         Para la personalización del dropdown se ocuparon las siguientes
         propiedades: <span className="inline-code">customContainerClass</span>,
@@ -525,114 +588,53 @@ export default function DropDown() {
             language: "jsx",
             code: `
         <DropDownGal
-          label="Fruta"
-          options={opciones}
-          seeIcon
-          icon="tabler:apple"
-          customContainerClass="container"
-          customInputClass="input"
-          customLabelClass="label"
-          customIconClass="icon"
-          customOptionClass="option"
-        />`,
-          },
-          {
-            label: "TSX",
-            language: "tsx",
-            code: `
-        <DropDownGal
-          label="Fruta"
-          options={opciones}
-          seeIcon
-          icon="tabler:apple"
-          customContainerClass="container"
-          customInputClass="input"
-          customLabelClass="label"
-          customIconClass="icon"
-          customOptionClass="option"
-        />`,
-          },
-        ]}
-      >
-        <DropDownGal
-          label="Fruta"
+          label="Equipos del Mundial"
           value={selected}
           setValue={setSelected}
-          options={opcionesConIconos}
+          options={opcionesMundial}
+          orientation="top"
           seeIcon
-          icon="tabler:apple"
-          customContainerClass="container"
+          seeOptionsIcons
+          icon="openmoji:soccer-ball"
+          customContainerClass="dropDemoContainer"
           customInputClass="inputDrop"
           customLabelClass="labelDrop"
           customIconClass="iconDrop"
           customOptionClass="optionDrop"
-        />
-      </ComponentPreview>
-
-       {/* Personalización del dropdown */}
-      <h2 className="titleSecundaryButton">Personalización del dropdown</h2>
-      <p className="text">
-        Para la personalización del dropdown se ocuparon las siguientes
-        propiedades: <span className="inline-code">customContainerClass</span>,
-        <span className="inline-code">customInputClass</span>,
-        <span className="inline-code">customLabelClass</span>,
-        <span className="inline-code">customIconClass</span>,
-        <span className="inline-code">customOptionClass</span>.
-      </p>
-      <p className="note">Nota:</p>
-      <p className="text">
-        Si los estilos personalizados no se aplican correctamente en el
-        dropdown, puede deberse a que existen estilos con mayor prioridad. Para
-        sobreescribirlos, puedes utilizar
-        <span className="inline-code">!important</span>
-        una vez ya aplicada, veras que los estilos que seleccionas se habrán
-        aplicado
-      </p>
-      <ComponentPreview
-        allowOverflow
-        codeTabs={[
-          {
-            label: "JSX",
-            language: "jsx",
-            code: `
-        <DropDownGal
-          label="Fruta"
-          options={opciones}
-          seeIcon
-          icon="tabler:apple"
-          customContainerClass="container"
-          customInputClass="input"
-          customLabelClass="label"
-          customIconClass="icon"
-          customOptionClass="option"
         />`,
           },
           {
             label: "TSX",
             language: "tsx",
             code: `
-        <DropDownGal
-          label="Fruta"
-          options={opciones}
+       <DropDownGal
+          label="Equipos del Mundial"
+          value={selected}
+          setValue={setSelected}
+          options={opcionesMundial}
+          orientation="top"
           seeIcon
-          icon="tabler:apple"
-          customContainerClass="container"
-          customInputClass="input"
-          customLabelClass="label"
-          customIconClass="icon"
-          customOptionClass="option"
+          seeOptionsIcons
+          icon="openmoji:soccer-ball"
+          customContainerClass="dropDemoContainer"
+          customInputClass="inputDrop"
+          customLabelClass="labelDrop"
+          customIconClass="iconDrop"
+          customOptionClass="optionDrop"
         />`,
           },
         ]}
       >
         <DropDownGal
-          label="Fruta"
+          label="Equipos del Mundial"
           value={selected}
           setValue={setSelected}
-          options={opcionesConIconos}
+          options={opcionesMundial}
+          orientation="top"
           seeIcon
-          icon="tabler:apple"
-          customContainerClass="container"
+          seeOptionsIcons
+          icon="openmoji:soccer-ball"
+          customContainerClass="dropDemoContainer"
           customInputClass="inputDrop"
           customLabelClass="labelDrop"
           customIconClass="iconDrop"

@@ -6,7 +6,7 @@
   flex-direction: column;
   width: 100%;
   background-color: $background;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: inherit;
 
   .titlePrimary {
@@ -59,6 +59,14 @@
     margin: 0 0 1.6rem;
     color: $textPrimary;
     font-family: OpenSansSemiBold;
+  }
+
+  // Clase custom del DropDownGal de la sección "Personalización".
+  // Renombrada de .container -> .dropDemoContainer para no chocar
+  // con la clase global .container del wrapper de la página.
+  .dropDemoContainer {
+    // vacía por ahora, disponible si necesitas estilos propios
+    // para el contenedor de ese dropdown en particular
   }
 
   .inputDrop {
