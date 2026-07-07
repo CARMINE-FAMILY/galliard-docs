@@ -198,13 +198,13 @@ export default function DropDown() {
     },
     {
       name: "font",
-      type: "OpenSans...",
+      type: "OpenSansLight, OpenSansRegular, OpenSansSemiBold, OpenSansBold, OpenSansBolder",
       typePlain: true,
       description: "Fuente utilizada para el texto de las opciones",
     },
     {
       name: "fontLabel",
-      type: "OpenSans...",
+      type: "OpenSansLight, OpenSansRegular, OpenSansSemiBold, OpenSansBold, OpenSansBolder",
       typePlain: true,
       description: "Fuente utilizada para el label",
     },
@@ -332,6 +332,12 @@ export default function DropDown() {
 
       {/* DropDown */}
       <h2 className="titleSecundary">DropDown</h2>
+      <p className="text">
+        Ejemplo base del componente: una lista despegable simple donde el
+        usuario elige una opción, usando
+        <span className="inline-code">setValue</span>
+        <span className="inline-code">options</span> para capturar la selección
+      </p>
       <ComponentPreview
         allowOverflow
         codeTabs={[
@@ -384,8 +390,12 @@ export default function DropDown() {
       {/* Orientación */}
       <h2 className="titleSecundary">Orientación del menú</h2>
       <p className="text">
-        Define hacia qué lado se despliega el menú de opciones respecto al
-        input.
+        La prop <span className="inline-code">orientation</span> define hacia
+        qué lado se despliega el menú de opciones respecto al input:
+        <span className="inline-code">bottom</span> (por defecto),
+        <span className="inline-code">top</span>,
+        <span className="inline-code">left</span> o
+        <span className="inline-code">right</span>.
       </p>
       <ComponentPreview
         allowOverflow
@@ -418,6 +428,12 @@ export default function DropDown() {
 
       {/* Layout horizontal / vertical */}
       <h2 className="titleSecundary">Orientación del label</h2>
+      <p className="text">
+        La prop <span className="inline-code">HorV</span> define si el label se
+        acomoda en columna (<span className="inline-code">"vertical"</span>, por
+        defecto) o en fila (<span className="inline-code">"horizontal"</span>)
+        respecto al input
+      </p>
       <ComponentPreview
         allowOverflow
         codeTabs={[
@@ -443,6 +459,14 @@ export default function DropDown() {
 
       {/* Iconos */}
       <h2 className="titleSecundary">Diseño de Iconos</h2>
+      <p className="text">
+        Con <span className="inline-code">seeIcon</span> e
+        <span className="inline-code">icon</span> se muestra un ícono junto al
+        label principal. Para que cada opción del menú también muestre su propio
+        ícono, activa <span className="inline-code">seeOptionsIcons</span> y
+        agrega la propiedad <span className="inline-code">icon</span> dentro de
+        cada elemento de <span className="inline-code">options</span>.
+      </p>
       <ComponentPreview
         allowOverflow
         codeTabs={[
@@ -495,6 +519,14 @@ export default function DropDown() {
 
       {/* Tamaño y bordes */}
       <h2 className="titleSecundary">Tamaño y bordes</h2>
+      <p className="text">
+        Combinando <span className="inline-code">width</span>,{" "}
+        <span className="inline-code">height</span>,{" "}
+        <span className="inline-code">border</span>,{" "}
+        <span className="inline-code">shadow</span> y{" "}
+        <span className="inline-code">rounded</span> puedes ajustar las
+        dimensiones y el borde del dropdown.
+      </p>
       <ComponentPreview
         allowOverflow
         codeTabs={[
@@ -529,6 +561,13 @@ export default function DropDown() {
 
       {/* Error */}
       <h2 className="titleSecundary">Mensaje de error</h2>
+      <p className="text">
+        La prop <span className="inline-code">errorMessage</span> muestra un
+        texto de validación debajo del dropdown. Igual que en los demás
+        componentes, DropDown no valida nada por sí mismo — depende de ti
+        decidir cuándo mostrarlo (por ejemplo, al enviar un formulario sin
+        ninguna opción seleccionada).
+      </p>
       <ComponentPreview
         allowOverflow
         codeTabs={[
@@ -568,7 +607,7 @@ export default function DropDown() {
         propiedades: <span className="inline-code">customContainerClass</span>,
         <span className="inline-code">customInputClass</span>,
         <span className="inline-code">customLabelClass</span>,
-        <span className="inline-code">customIconClass</span>,
+        <span className="inline-code">customIconClass</span> y
         <span className="inline-code">customOptionClass</span>.
       </p>
       <p className="note">Nota:</p>

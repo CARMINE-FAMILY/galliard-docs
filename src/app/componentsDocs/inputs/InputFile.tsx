@@ -114,7 +114,7 @@ export default function InputFile() {
     },
     {
       name: "font",
-      type: "OpenSans...",
+      type: "OpenSansLight, OpenSansRegular, OpenSansSemiBold, OpenSansBold, OpenSansBolder",
       typePlain: true,
       description:
         "Fuente utilizada para el texto del label y del nombre de archivo",
@@ -275,6 +275,13 @@ export default function InputFile() {
 
       {/* InputFile básico */}
       <h2 className="titleSecundary">InputFile</h2>
+      <p className="text">
+        Ejemplo base del componente: un área de carga simple donde el usuario
+        puede seleccionar un archivo haciendo click o arrastrándolo, usando
+        <span className="inline-code">selectedFileE</span> y
+        <span className="inline-code">setSelectedFileE</span> para capturar el
+        archivo elegido
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -319,7 +326,7 @@ export default function InputFile() {
             code: `
             <InputFileGal
               label="Solo imágenes"
-              acceptFiles="image"
+              acceptFiles="images"
               selectedFileE={file}
               setSelectedFileE={setFile}
             />`,
@@ -330,7 +337,7 @@ export default function InputFile() {
             code: `
             <InputFileGal
               label="Solo imágenes"
-              acceptFiles="image"
+              acceptFiles="images"
               selectedFileE={file}
               setSelectedFileE={setFile}
             />`,
@@ -388,6 +395,13 @@ export default function InputFile() {
 
       {/* Apariencia */}
       <h2 className="titleSecundary">Tamaño y bordes</h2>
+      <p className="text">
+        Combinando <span className="inline-code">width</span>
+        <span className="inline-code">height</span>
+        <span className="inline-code">shadow</span>
+        <span className="inline-code">rounded</span> puedes ajustar las
+        dimensiones y el borde del área de carga
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -438,6 +452,12 @@ export default function InputFile() {
 
       {/* Colores */}
       <h2 className="titleSecundary">Colores</h2>
+      <p className="text">
+        Con <span className="inline-code">bgColor</span> y
+        <span className="inline-code">bgColorHover</span> puedes cambiar el
+        color de fondo del área de carga en su estado normal y al pasar el mouse
+        por encima
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -477,6 +497,12 @@ export default function InputFile() {
 
       {/* Cambio de Iconos */}
       <h2 className="titleSecundary">Cambio de iconos</h2>
+      <p className="text">
+        Con <span className="inline-code">icon</span>,
+        <span className="inline-code">iconColor</span> e
+        <span className="inline-code">iconSize</span> puedes reemplazar el icono
+        por defecto y ajustar su color y tamaño
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -519,6 +545,12 @@ export default function InputFile() {
 
       {/* Error */}
       <h2 className="titleSecundary">Mensaje de error</h2>
+      <p className="text">
+        La prop <span className="inline-code">errorMessage</span> muestra un
+        texto de validación debajo del área de carga.Igual que en otros
+        componentes, InputFile no valida nada por sí mismo, la lógica de cuándo
+        mostrar el mensaje depende de ti
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -556,6 +588,7 @@ export default function InputFile() {
         Para la Personalización del InputFile se ocuparon las siguientes
         propiedades:
         <span className="inline-code">customFIleClass</span>,
+        <span className="inline-code">customSelectedClass</span>,
         <span className="inline-code">customLabelClass</span>,
         <span className="inline-code">customIconClass</span>
       </p>
@@ -612,9 +645,9 @@ export default function InputFile() {
       {/* Diseño circular personalizado */}
       <h2 className="titleSecundary">Ejemplo: botón circular de subida</h2>
       <p className="text">
-        Combinando <span className="inline-code">width</span>,{" "}
-        <span className="inline-code">height</span>,{" "}
-        <span className="inline-code">icon</span> e{" "}
+        Combinando <span className="inline-code">width</span>,
+        <span className="inline-code">height</span>,
+        <span className="inline-code">icon</span> e
         <span className="inline-code">iconSize</span> junto con las clases
         custom, es posible transformar por completo la apariencia del
         componente.
@@ -665,7 +698,7 @@ export default function InputFile() {
           customFIleClass="circleUploadDemo"
           customIconClass="circleUploadIcon"
           customLabelClass="circleUploadLabel"
-          args={{title:"Subir archivo"}}
+          args={{ title: "Subir archivo" }}
         />
       </ComponentPreview>
     </div>

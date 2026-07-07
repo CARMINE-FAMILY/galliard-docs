@@ -44,7 +44,7 @@ export default function CheckBox() {
     },
     {
       name: "font",
-      type: "OpenSans...",
+      type: "OpenSansLight, OpenSansRegular, OpenSansSemiBold, OpenSansBold, OpenSansBolder",
       typePlain: true,
       description: "Fuente utilizada para el texto del label",
     },
@@ -171,6 +171,12 @@ export default function CheckBox() {
 
       {/* CheckBox */}
       <h2 className="titleSecundaryButton">CheckBox</h2>
+      <p className="text">
+        Ejemplo base del componente: un checkbox simple, usando{" "}
+        <span className="inline-code">value</span> y{" "}
+        <span className="inline-code">setValue</span> para controlar si está
+        marcado o no.
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -200,6 +206,14 @@ export default function CheckBox() {
 
       {/* Iconos */}
       <h2 className="titleSecundaryButton">Diseño de Iconos</h2>
+      <p className="text">
+        Con <span className="inline-code">seeIcon</span> se muestra u oculta el
+        ícono dentro del checkbox marcado. Usa{" "}
+        <span className="inline-code">icon</span> para cambiar el ícono por
+        defecto, y <span className="inline-code">iconColor</span> /{" "}
+        <span className="inline-code">iconSize</span> para ajustar su color y
+        tamaño.
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -258,7 +272,9 @@ export default function CheckBox() {
       <h2 className="titleSecundaryButton">Label como enlace</h2>
       <p className="text">
         Útil para casos como "Acepto los términos y condiciones", donde el texto
-        debe funcionar como link en vez de solo describir el checkbox.
+        debe funcionar como link en vez de solo describir el checkbox. Se activa
+        con <span className="inline-code">useLinkable</span> y{" "}
+        <span className="inline-code">link</span>.
       </p>
       <ComponentPreview
         codeTabs={[
@@ -295,6 +311,12 @@ export default function CheckBox() {
 
       {/* Error */}
       <h2 className="titleSecundaryButton">Mensaje de error</h2>
+      <p className="text">
+        La prop <span className="inline-code">errorMessage</span> muestra un
+        texto de validación debajo del checkbox. Igual que en los demás
+        componentes, CheckBox no valida nada por sí mismo — depende de ti
+        decidir cuándo mostrarlo.
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -328,6 +350,11 @@ export default function CheckBox() {
 
       {/* Tipografía */}
       <h2 className="titleSecundaryButton">Tipografía</h2>
+      <p className="text">
+        Con <span className="inline-code">font</span> y{" "}
+        <span className="inline-code">textSize</span> puedes ajustar la fuente y
+        el tamaño del texto del label.
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -378,7 +405,7 @@ export default function CheckBox() {
         <span className="inline-code">iconColor</span>,
         <span className="inline-code">textColor</span>,
         <span className="inline-code">customInputClass</span>,
-        <span className="inline-code">customLabelClass</span>,
+        <span className="inline-code">customLabelClass</span> y
         <span className="inline-code">customIconClass</span>.
       </p>
       <p className="note">Nota:</p>
@@ -387,7 +414,7 @@ export default function CheckBox() {
         checkbox, puede deberse a que existen estilos con mayor prioridad. Para
         sobreescribirlos, puedes utilizar
         <span className="inline-code">!important</span>
-        una vez ya aplicada, veras que los estilos que seleccionas se habrán
+        una vez ya aplicado, verás que los estilos que seleccionas se habrán
         aplicado
       </p>
       <ComponentPreview

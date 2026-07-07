@@ -35,7 +35,7 @@ export default function Button() {
     { name: "txtColor", type: "string", description: "Color del texto." },
     {
       name: "font",
-      type: "OpenSans...",
+      type: "OpenSansLight, OpenSansRegular, OpenSansSemiBold, OpenSansBold, OpenSansBolder",
       typePlain: true,
       description: "Fuente utilizada para el texto.",
     },
@@ -205,6 +205,11 @@ export default function Button() {
 
       {/* Botón */}
       <h2 className="titleSecundaryButton">Botón</h2>
+      <p className="text">
+        Ejemplo base del componente: un botón simple con solo un{" "}
+        <span className="inline-code">label</span> y una{" "}
+        <span className="inline-code">action</span> a ejecutar al hacer click.
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -225,8 +230,10 @@ export default function Button() {
       {/* Colores */}
       <h2 className="titleSecundaryButton">Colores que hay por defecto</h2>
       <p className="text">
-        Estos son los colores que hay, si quieres poner otro color lo puedes
-        hacer
+        El componente incluye varios temas de color predefinidos mediante la
+        prop <span className="inline-code">styleType</span>. Si ninguno se
+        ajusta a lo que necesitas, puedes definir un color propio con{" "}
+        <span className="inline-code">bgColor</span>.
       </p>
       <ComponentPreview
         customTheme={{ bg: "#9b9b9b" }}
@@ -290,6 +297,13 @@ export default function Button() {
 
       {/* Tamaño del Botón */}
       <h2 className="titleSecundaryButton">Tamaño del Botón</h2>
+      <p className="text">
+        Con <span className="inline-code">width</span>,{" "}
+        <span className="inline-code">height</span>,{" "}
+        <span className="inline-code">textSize</span> y{" "}
+        <span className="inline-code">padding</span> puedes ajustar las
+        dimensiones del botón y el espaciado interno de su contenido.
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -325,6 +339,15 @@ export default function Button() {
 
       {/* Iconos */}
       <h2 className="titleSecundaryButton">Diseño de Iconos</h2>
+      <p className="text">
+        Con <span className="inline-code">icon</span>,{" "}
+        <span className="inline-code">iconColor</span> e{" "}
+        <span className="inline-code">iconSize</span> puedes agregar y
+        personalizar un ícono dentro del botón. Con{" "}
+        <span className="inline-code">seeIcon={"{false}"}</span> lo ocultas, y
+        con <span className="inline-code">customIcon</span> puedes reemplazarlo
+        por cualquier elemento (incluso una imagen o gif).
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -404,6 +427,10 @@ export default function Button() {
 
       {/* Posición del icono */}
       <h2 className="titleSecundaryButton">Posición del icono</h2>
+      <p className="text">
+        La prop <span className="inline-code">iconOn</span> define si el ícono
+        se muestra a la izquierda o a la derecha del texto del botón.
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -429,7 +456,9 @@ export default function Button() {
       {/* Bordes */}
       <h2 className="titleSecundaryButton">Bordes</h2>
       <p className="text">
-        El nombre de los botones son los diferentes tamaños que son posibles
+        El nombre de cada botón indica el valor de{" "}
+        <span className="inline-code">rounded</span> que se usó, mostrando los
+        distintos niveles de redondeo disponibles.
       </p>
       <ComponentPreview
         codeTabs={[
@@ -464,6 +493,12 @@ export default function Button() {
 
       {/* Botón con borde */}
       <h2 className="titleSecundaryButton">Botón con borde</h2>
+      <p className="text">
+        Con <span className="inline-code">borderedStyle</span> el botón cambia a
+        una variante de solo borde (outline), manteniendo el color de cada{" "}
+        <span className="inline-code">styleType</span> en el borde y el texto en
+        vez de en el fondo.
+      </p>
       <ComponentPreview
         customTheme={{ bg: "#9b9b9b" }}
         codeTabs={[
@@ -507,6 +542,11 @@ export default function Button() {
 
       {/* Tipografia */}
       <h2 className="titleSecundaryButton">Tipografía</h2>
+      <p className="text">
+        Con <span className="inline-code">font</span> y{" "}
+        <span className="inline-code">textSize</span> puedes ajustar la fuente y
+        el tamaño del texto del botón.
+      </p>
       <ComponentPreview
         codeTabs={[
           {
@@ -535,7 +575,10 @@ export default function Button() {
       {/* Sombras */}
       <h2 className="titleSecundaryButton">Botón con Sombras</h2>
       <p className="text">
-        En este apartado se muestra el uso de sobras con las variables shadow
+        Con <span className="inline-code">shadow</span> se activa una sombra
+        alrededor del botón, y con{" "}
+        <span className="inline-code">colorShadow</span> puedes ajustar su
+        color.
       </p>
       <ComponentPreview
         // customTheme={{ bg: "#E4d4ba" }}
@@ -646,7 +689,7 @@ export default function Button() {
           customClassButton="button"
           customClassLabel="label"
           customClassIcon="icon"
-          args={{title: "Ejemplo de args"}}
+          args={{ title: "Ejemplo de args" }}
           action={() => {}}
         />
       </ComponentPreview>
