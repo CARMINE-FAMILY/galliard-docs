@@ -10,6 +10,7 @@ import DropDown from "./app/componentsDocs/inputs/DropDown";
 import InputFile from "./app/componentsDocs/inputs/InputFile";
 import InputRadio from "./app/componentsDocs/inputs/InputRadio";
 import InputText from "./app/componentsDocs/inputs/InputText";
+import TextArea from "./app/componentsDocs/inputs/TextArea";
 
 function App() {
   return (
@@ -43,6 +44,10 @@ function App() {
             <Route
               path="/componentsDocs/inputs/inputtext"
               element={<InputText />}
+            />
+            <Route
+              path="/componentsDocs/inputs/textarea"
+              element={<TextArea />}
             />
 
             {/* Tercera parte documentacion de funciones */}

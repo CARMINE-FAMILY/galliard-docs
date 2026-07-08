@@ -40,6 +40,7 @@ export const sidebarData: SidebarGroupType[] = [
           { label: "InputFile", path: "/componentsDocs/inputs/inputfile" },
           { label: "InputRadio", path: "/componentsDocs/inputs/inputradio" },
           { label: "InputText", path: "/componentsDocs/inputs/inputtext" },
+          { label: "TextArea", path: "/componentsDocs/inputs/textarea" },
         ],
       },
       
