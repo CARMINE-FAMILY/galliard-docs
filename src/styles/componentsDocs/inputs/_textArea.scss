@@ -60,4 +60,19 @@
     color: $textPrimary;
     font-family: OpenSansSemiBold;
   }
+
+  //Coloir del borde del textArea
+  .textAreaDemo {
+    border: 1.5px solid #00ff15 !important;
+  }
+
+  //  Color de la letra deñ texto
+  .textAreaFieldDemo {
+    color: #9b273a !important;
+  }
+
+  //Color del icono
+  .textAreaIconDemo {
+    color: #2e9fd3 !important;
+  }
 }

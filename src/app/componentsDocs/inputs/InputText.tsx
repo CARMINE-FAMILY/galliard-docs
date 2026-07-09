@@ -8,12 +8,22 @@ import { propsColumns } from "../../../hooks/usePropsTableColumns";
 export default function InputText() {
   const [value1, setValue1] = useState("");
   const [value1b, setValue1b] = useState("");
-  const [value2, setValue2] = useState("");
   const [value3, setValue3] = useState("");
   const [value4, setValue4] = useState("");
   const [value5, setValue5] = useState("");
   const [value6, setValue6] = useState("");
   const [value7, setValue7] = useState("");
+  
+  const [typeText, setTypeText] = useState("");
+  const [typeEmail, setTypeEmail] = useState("");
+  const [typePassword, setTypePassword] = useState("");
+  const [typeUrl, setTypeUrl] = useState("");
+  const [typeTel, setTypeTel] = useState("");
+  const [typeNumber, setTypeNumber] = useState("");
+  const [typeDate, setTypeDate] = useState("");
+  const [typeTime, setTypeTime] = useState("");
+  const [typeDatetime, setTypeDatetime] = useState("");
+  const [typeSearch, setTypeSearch] = useState("");
 
   const contenidoProps: PropRow[] = [
     {
@@ -46,7 +56,7 @@ export default function InputText() {
   const comportamientoProps: PropRow[] = [
     {
       name: "typeInput",
-      type: 'text, email, password, url, tel, number, date, time, datetime-local, search',
+      type: "text, email, password, url, tel, number, date, time, datetime-local, search",
       typePlain: true,
       description:
         "Tipo nativo del input HTML. Con 'password' se agrega automáticamente el ícono para mostrar/ocultar el texto",
@@ -363,10 +373,26 @@ export default function InputText() {
       <h2 className="titleSecundary">Tipos de input</h2>
       <p className="text">
         La prop <span className="inline-code">typeInput</span> acepta cualquier
-        tipo nativo de <span className="inline-code">{`<input>`}</span> (text,
-        email, number, datetime-local, etc). Con{" "}
-        <span className="inline-code">"password"</span> el componente agrega
-        automáticamente un ícono para mostrar u ocultar el texto escrito.
+        tipo nativo de <span className="inline-code">{`<input>`}</span> de HTML.
+        El navegador ajusta automáticamente el teclado (en móvil), la validación
+        básica y los controles nativos según el tipo elegido. Abajo se detalla
+        cada uno
+      </p>
+
+      <h3 className="subtitle">¿Como se utilizan para el componente?</h3>
+      <p className="text">
+        Todos los tipos se definen de la misma forma: pasando el valor
+        correspondiente a la prop <span className="inline-code">typeInput</span>
+        . El resto de las props (<span className="inline-code">value</span>,
+        <span className="inline-code">setValue</span>,
+        <span className="inline-code">label</span>, íconos, colores, etc.)
+        funcionan igual sin importar el tipo elegido.
+      </p>
+
+      <h3 className="subtitle">text</h3>
+      <p className="text">
+        Tipo por defecto. Acepta cualquier texto libre, sin ninguna validación
+        ni formato especial
       </p>
       <ComponentPreview
         codeTabs={[
@@ -374,37 +400,431 @@ export default function InputText() {
             label: "JSX",
             language: "jsx",
             code: `
-        <InputTextGal label="Correo" typeInput="email" value={value} setValue={setValue} />
-        <InputTextGal label="Contraseña" typeInput="password" value={value} setValue={setValue} />
-        <InputTextGal label="Edad" typeInput="number" value={value} setValue={setValue} />`,
+          <InputTextGal
+            label="Nombre"
+            typeInput="text"
+            placeholder="Escribe tu nombre"
+            value={value}
+            setValue={setValue}
+          />`,
           },
           {
             label: "TSX",
             language: "tsx",
             code: `
-        <InputTextGal label="Correo" typeInput="email" value={value} setValue={setValue} />
-        <InputTextGal label="Contraseña" typeInput="password" value={value} setValue={setValue} />
-        <InputTextGal label="Edad" typeInput="number" value={value} setValue={setValue} />`,
+          <InputTextGal
+            label="Nombre"
+            typeInput="text"
+            placeholder="Escribe tu nombre"
+            value={value}
+            setValue={setValue}
+          />`,
+          },
+        ]}
+      >
+        <InputTextGal
+          label="Nombre"
+          typeInput="text"
+          placeholder="Escribe tu nombre"
+          value={typeText}
+          setValue={setTypeText}
+        />
+      </ComponentPreview>
+
+      <h3 className="subtitle">email</h3>
+      <p className="text">
+        Optimizado para direcciones de correo. En móvil muestra un teclado con
+        acceso rápido a <span className="inline-code">@</span> y
+        <span className="inline-code">.com</span>. Con el atributo nativo
+        <span className="inline-code">required</span> (viá
+        <span className="inline-code">args</span>), el navegador valida el
+        formato antes de enviar el formulario
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+          <InputTextGal
+            label="Correo"
+            typeInput="email"
+            placeholder="ejemplo@correo.com"
+            value={value}
+            setValue={setValue}
+          />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+          <InputTextGal
+            label="Correo"
+            typeInput="email"
+            placeholder="ejemplo@correo.com"
+            value={value}
+            setValue={setValue}
+          />`,
           },
         ]}
       >
         <InputTextGal
           label="Correo"
           typeInput="email"
-          value={value2}
-          setValue={setValue2}
+          placeholder="ejemplo@correo.com"
+          value={typeEmail}
+          setValue={setTypeEmail}
         />
+      </ComponentPreview>
+
+      <h3 className="subtitle">password</h3>
+      <p className="text"></p>
+      <p className="text">
+        Oculta el texto escrito con puntos o asteriscos. El componente agrega
+        automáticamente un ícono de ojo para mostrar u ocultar el contenido,
+        personalizable con <span className="inline-code">iconColorPass</span>e
+        <span className="inline-code">iconSizePass</span>.
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+            <InputTextGal
+              label="Contraseña"
+              typeInput="password"
+              placeholder="Escribe tu contraseña"
+              value={value}
+              setValue={setValue}
+          />`,
+          },
+          {
+            label: "TSX",
+            language: "jsx",
+            code: `
+             <InputTextGal
+              label="Contraseña"
+              typeInput="password"
+              placeholder="Escribe tu contraseña"
+              value={value}
+              setValue={setValue}
+          />`,
+          },
+        ]}
+      >
         <InputTextGal
           label="Contraseña"
           typeInput="password"
-          value={value2}
-          setValue={setValue2}
+          placeholder="Escribe tu contraseña"
+          value={typePassword}
+          setValue={setTypePassword}
         />
+      </ComponentPreview>
+
+      <h3 className="subtitle">url</h3>
+      <p className="text">
+        Pensado para direcciones web. Igual que
+        <span className="inline-code">email</span>, el navegador puede validar
+        que el valor tenga un formato de URL válido (ej. debe incluir
+        <span className="inline-code">http://</span> o
+        <span className="inline-code">https:</span>)
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+            <InputTextGal
+              label="Sitio web"
+              typeInput="url"
+              placeholder="https://tusitio.com"
+              value={value}
+              setValue={setValue}  
+          />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+            <InputTextGal
+              label="Sitio web"
+              typeInput="url"
+              placeholder="https://tusitio.com"
+              value={value}
+              setValue={setValue}  
+          />`,
+          },
+        ]}
+      >
+        <InputTextGal
+          label="Sitio web"
+          typeInput="url"
+          placeholder="https://tusitio.com"
+          value={typeUrl}
+          setValue={setTypeUrl}
+        />
+      </ComponentPreview>
+
+      <h3 className="subtitle">tel (telefono)</h3>
+      <p className="text">
+        Pensado para números telefónicos. A diferencia de{" "}
+        <span className="inline-code">number</span>, acepta símbolos comunes en
+        teléfonos (<span className="inline-code">+</span>,{" "}
+        <span className="inline-code">-</span>, espacios, paréntesis) y en móvil
+        muestra el teclado numérico de marcado
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <InputTextGal
+          label="Teléfono"
+          typeInput="tel"
+          placeholder="+52 222 123 4567"
+          value={value}
+          setValue={setValue}
+        />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <InputTextGal
+          label="Teléfono"
+          typeInput="tel"
+          placeholder="+52 222 123 4567"
+          value={value}
+          setValue={setValue}
+        />`,
+          },
+        ]}
+      >
+        <InputTextGal
+          label="Teléfono"
+          typeInput="tel"
+          placeholder="+52 222 123 4567"
+          value={typeTel}
+          setValue={setTypeTel}
+        />
+      </ComponentPreview>
+
+      <h3 className="subtitle">number</h3>
+      <p className="text">
+        Solo acepta valores numéricos, y en la mayoría de navegadores agrega
+        pequeñas flechas para incrementar o decrementar el valor. Puedes usar
+        <span className="inline-code">args</span> para pasar
+        <span className="inline-code">min</span>,
+        <span className="inline-code">max</span> y
+        <span className="inline-code">step</span> nativos.
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+          <InputTextGal
+            label="Edad"
+            typeInput="number"
+            placeholder="18"
+            value={value}
+            setValue={setValue}
+            args={{min:0, max:120}}  
+          />`,
+          },
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+          <InputTextGal
+            label="Edad"
+            typeInput="number"
+            placeholder="18"
+            value={value}
+            setValue={setValue}
+            args={{min:0, max:120}}  
+          />`,
+          },
+        ]}
+      >
         <InputTextGal
           label="Edad"
           typeInput="number"
-          value={value2}
-          setValue={setValue2}
+          placeholder="18"
+          value={typeNumber}
+          setValue={setTypeNumber}
+          args={{ min: 0, max: 120 }}
+        />
+      </ComponentPreview>
+
+      <h3 className="subtitle">date</h3>
+      <p className="text">
+        Muestra un selector de fecha nativo del navegador (dia, mes, año), sin
+        hora
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+          <InputTextGal
+            label="Fecha de nacimiento"
+            typeInput="date"
+            value={value}
+            setValue={setValue}
+          />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+          <InputTextGal
+            label="Fecha de nacimiento"
+            typeInput="date"
+            value={value}
+            setValue={setValue}
+          />`,
+          },
+        ]}
+      >
+        <InputTextGal
+          label="Fecha de nacimiento"
+          typeInput="date"
+          value={typeDate}
+          setValue={setTypeDate}
+        />
+      </ComponentPreview>
+
+      <h3 className="subtitle">time</h3>
+      <p className="text">
+        Muestra un selector de hora nativo (horas y minutos), sin fecha.
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+          <InputTextGal
+            label="Hola de la cita"
+            typeInput="time"
+            value={value}
+            setValue={setValue}
+          />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+          <InputTextGal
+            label="Hola de la cita"
+            typeInput="time"
+            value={value}
+            setValue={setValue}
+          />`,
+          },
+        ]}
+      >
+        <InputTextGal
+          label="Hola de la cita"
+          typeInput="time"
+          value={typeTime}
+          setValue={setTypeTime}
+        />
+      </ComponentPreview>
+
+      <h3 className="subtitle">datetime-local</h3>
+      <p className="text">
+        Combina fecha y hora en un mismo selector, sin información de zona
+        horaria.
+        <p className="note">Nota:</p>
+        Si no defines <span className="inline-code">width</span>, el componente
+        usa <span className="inline-code">width: "auto"</span>
+        automáticamente para este tipo, ya que el selector nativo suele
+        necesitar más espacio del que ocuparía un input de texto normal
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+          <InputTextGal
+            label="Fecha y hora del evento"
+            typeInput="datetime-local"
+            value={value}
+            setValue={setValue}
+          />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+          <InputTextGal
+            label="Fecha y hora del evento"
+            typeInput="datetime-local"
+            value={value}
+            setValue={setValue}
+          />`,
+          },
+        ]}
+      >
+        <InputTextGal
+          label="Fecha y hora del evento"
+          typeInput="datetime-local"
+          value={typeDatetime}
+          setValue={setTypeDatetime}
+        />
+      </ComponentPreview>
+
+      <h3 className="subtitle">search</h3>
+      <p className="text">
+        Visualmente similar a <span className="inline-code">text</span>, pero
+        algunos navegadores agregan una "x" para limpiar el campo rápidamente y
+        ajustan el botón de "Enter" del teclado móvil a un ícono de búsqueda
+      </p>
+      <ComponentPreview
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <InputTextGal
+          label="Buscar"
+          typeInput="search"
+          iconLeft="tabler:search"
+          placeholder="Buscar..."
+          value={value}
+          setValue={setValue}
+        />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <InputTextGal
+          label="Buscar"
+          typeInput="search"
+          iconLeft="tabler:search"
+          placeholder="Buscar..."
+          value={value}
+          setValue={setValue}
+        />`,
+          },
+        ]}
+      >
+        <InputTextGal
+          label="Buscar"
+          typeInput="search"
+          iconLeft="tabler:search"
+          placeholder="Buscar..."
+          value={typeSearch}
+          setValue={setTypeSearch}
         />
       </ComponentPreview>
 
