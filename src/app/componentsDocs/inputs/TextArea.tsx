@@ -492,7 +492,7 @@ export default function TextArea() {
       <p className="text">
         La prop <span className="inline-code">errorMessage</span> muestra un
         texto de validación debajo del textarea. Igual que en los demás
-        componentes, TextArea no valida nada por sí mismo — depende de ti
+        componentes, TextArea no valida nada por sí mismo depende de ti
         decidir cuándo mostrarlo.
       </p>
       <ComponentPreview
