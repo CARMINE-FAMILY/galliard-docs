@@ -12,6 +12,7 @@ import InputRadio from "./app/componentsDocs/inputs/InputRadio";
 import InputText from "./app/componentsDocs/inputs/InputText";
 import TextArea from "./app/componentsDocs/inputs/TextArea";
 import BottomSheet from "./app/componentsDocs/BottomSheet";
+import CopyText from "./app/componentsDocs/CopyText";
 
 function App() {
   return (
@@ -53,6 +54,10 @@ function App() {
             <Route
               path="/componentsDocs/bottomsheet"
               element={<BottomSheet />}
+            />
+            <Route
+              path="/componentsDocs/copytext"
+              element={<CopyText />}
             />
 
             {/* Tercera parte documentacion de funciones */}

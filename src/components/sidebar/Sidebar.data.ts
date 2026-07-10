@@ -44,6 +44,7 @@ export const sidebarData: SidebarGroupType[] = [
         ],
       },
       { label: "BottomSheet", path: "/componentsDocs/bottomsheet" },
+      { label: "CopyText", path: "/componentsDocs/copytext" },
     ],
   },
   {
