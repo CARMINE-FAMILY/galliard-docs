@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
 
         <ButtonGal
           label="Explorar Docs"
-          action={() => navigate("/docs")}
+          action={() => navigate("/getStartDocs/docs")}
           icon="tabler:karate"
           bgColor="linear-gradient(to right, #9A4C95, #a78bfa)"
           txtColor="#FDF7FA"

@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ButtonGal, CopyTextGal } from "galliard-ui";
-import { InputText } from "./InputText";
 
 
 const Hero: React.FC = () => {
@@ -19,7 +18,7 @@ const Hero: React.FC = () => {
       <div className="container-actions">
         <ButtonGal
           label="Get Started"
-          action={() => navigate("/docs")}
+          action={() => navigate("/getStartDocs/docs")}
           icon="tabler:karate"
           bgColor="linear-gradient(to right, #9A4C95, #a78bfa)"
           txtColor="#FDF7FA"
