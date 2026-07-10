@@ -11,6 +11,7 @@ import InputFile from "./app/componentsDocs/inputs/InputFile";
 import InputRadio from "./app/componentsDocs/inputs/InputRadio";
 import InputText from "./app/componentsDocs/inputs/InputText";
 import TextArea from "./app/componentsDocs/inputs/TextArea";
+import BottomSheet from "./app/componentsDocs/BottomSheet";
 
 function App() {
   return (
@@ -48,6 +49,10 @@ function App() {
             <Route
               path="/componentsDocs/inputs/textarea"
               element={<TextArea />}
+            />
+            <Route
+              path="/componentsDocs/bottomsheet"
+              element={<BottomSheet />}
             />
 
             {/* Tercera parte documentacion de funciones */}

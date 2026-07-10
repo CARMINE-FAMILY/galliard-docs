@@ -43,7 +43,7 @@ export const sidebarData: SidebarGroupType[] = [
           { label: "TextArea", path: "/componentsDocs/inputs/textarea" },
         ],
       },
-      
+      { label: "BottomSheet", path: "/componentsDocs/bottomsheet" },
     ],
   },
   {
