@@ -5,10 +5,38 @@ import { DataTable } from "../../../components/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
 
-export default function CheckBox() {
-  const [checked, setChecked] = useState<boolean>(false);
+type CheckKey =
+  | "base"
+  | "iconoBase"
+  | "iconoColor"
+  | "iconoGrande"
+  | "sinIcono"
+  | "enlace"
+  | "error"
+  | "tipografia1"
+  | "tipografia2"
+  | "tipografia3"
+  | "custom";
 
-  const contenidoProps: PropRow[] = [
+export default function CheckBox() {
+  const [checks, setChecks] = useState<Record<CheckKey, boolean>>({
+    base: false,
+    iconoBase: false,
+    iconoColor: false,
+    iconoGrande: false,
+    sinIcono: false,
+    enlace: false,
+    error: false,
+    tipografia1: false,
+    tipografia2: false,
+    tipografia3: false,
+    custom: false,
+  });
+
+  const setCheck = (key: CheckKey) => (value: boolean) =>
+    setChecks((prev) => ({ ...prev, [key]: value }));
+
+   const contenidoProps: PropRow[] = [
     {
       name: "label",
       type: "string",
@@ -201,7 +229,11 @@ export default function CheckBox() {
           },
         ]}
       >
-        <CheckBoxGal label="Acepto" value={checked} setValue={setChecked} />
+        <CheckBoxGal
+          label="Acepto"
+          value={checks.base}
+          setValue={setCheck("base")}
+        />
       </ComponentPreview>
 
       {/* Iconos */}
@@ -238,34 +270,33 @@ export default function CheckBox() {
       >
         <CheckBoxGal
           label="Con icono"
-          value={checked}
-          setValue={setChecked}
+          value={checks.iconoBase}
+          setValue={setCheck("iconoBase")}
           seeIcon
           icon="tabler:check"
         />
         <CheckBoxGal
           label="Icono a color"
-          value={checked}
-          setValue={setChecked}
+          value={checks.iconoColor}
+          setValue={setCheck("iconoColor")}
           seeIcon
           icon="tabler:check"
           iconColor="#2aa198"
         />
         <CheckBoxGal
           label="Icono grande"
-          value={checked}
-          setValue={setChecked}
+          value={checks.iconoGrande}
+          setValue={setCheck("iconoGrande")}
           seeIcon
           icon="tabler:check"
           iconSize="26px"
         />
         <CheckBoxGal
           label="Sin icono"
-          value={checked}
-          setValue={setChecked}
+          value={checks.sinIcono}
+          setValue={setCheck("sinIcono")}
           seeIcon={false}
         />
-        <CheckBoxGal label="" value={checked} setValue={setChecked} />
       </ComponentPreview>
 
       {/* Enlace */}
@@ -302,8 +333,8 @@ export default function CheckBox() {
       >
         <CheckBoxGal
           label="Acepto los términos y condiciones"
-          value={checked}
-          setValue={setChecked}
+          value={checks.enlace}
+          setValue={setCheck("enlace")}
           useLinkable
           link="https://www.bing.com/ck/a?!&&p=327161dec17d8c3f1ca84cfdcebb3609d1760c9661e912b6fd047a3907295bedJmltdHM9MTc4MzAzNjgwMA&ptn=3&ver=2&hsh=4&fclid=25f0258f-2714-62ae-2ce3-32c026b56397&psq=yesicon+app&u=a1aHR0cHM6Ly95ZXNpY29uLmFwcC8"
         />
@@ -341,9 +372,9 @@ export default function CheckBox() {
       >
         <CheckBoxGal
           label="Acepto"
-          value={checked}
-          setValue={setChecked}
-          textSize={20}
+          value={checks.error}
+          setValue={setCheck("error")}
+          textSize={25}
           errorMessage="Acepta para continuar"
         />
       </ComponentPreview>
@@ -377,20 +408,20 @@ export default function CheckBox() {
       >
         <CheckBoxGal
           label="OpenSansRegular"
-          value={checked}
-          setValue={setChecked}
+          value={checks.tipografia1}
+          setValue={setCheck("tipografia1")}
           font="OpenSansRegular"
         />
         <CheckBoxGal
           label="TextoGrande"
-          value={checked}
-          setValue={setChecked}
+          value={checks.tipografia2}
+          setValue={setCheck("tipografia2")}
           textSize="20px"
         />
         <CheckBoxGal
           label="Georgia"
-          value={checked}
-          setValue={setChecked}
+          value={checks.tipografia3}
+          setValue={setCheck("tipografia3")}
           font="Georgia"
           textSize="18px"
         />
@@ -457,8 +488,8 @@ export default function CheckBox() {
       >
         <CheckBoxGal
           label="Acepto los términos"
-          value={checked}
-          setValue={setChecked}
+          value={checks.custom}
+          setValue={setCheck("custom")}
           seeIcon
           icon="tabler:check"
           iconColor="#2aa198"

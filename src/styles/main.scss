@@ -27,6 +27,11 @@
 @use "./componentsDocs/inputs/textArea";
 @use "./componentsDocs/bottomSheet";
 @use "./componentsDocs/copyText";
+@use "./componentsDocs/codeBlock";
+@use "./componentsDocs/componentPreview";
+
+// FunctionsDocs
+@use "./functionsDocs/unixActions";
 
 // PAGES
 @use "./pages/landingScreen";

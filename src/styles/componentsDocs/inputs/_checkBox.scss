@@ -128,3 +128,13 @@
     }
   }
 }
+
+// Fix: el errorMessage de CheckBoxGal (galliard-ui) viene con line-clamp: 2
+// desde su mixin interno, lo que lo parte en dos líneas. No podemos tocar
+// galliard-ui directamente, así que lo sobreescribimos aquí con un selector
+// de atributo que matchea la clase compilada del CSS module sin importar el hash.
+p[class*="errorMessage"] {
+  white-space: nowrap !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+}

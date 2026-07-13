@@ -3,7 +3,6 @@ import MainLayout from "./app/MainLayout";
 import LandingScreen from "./app/landingPage/LandigScreen";
 import { SecondaryLayout } from "./app/landingPage/SecundaryLayout";
 import { Installation } from "./app/getStartedDocs/Installation";
-import Functions from "./app/functionsDocs/Functions";
 import Button from "./app/componentsDocs/Button";
 import CheckBox from "./app/componentsDocs/inputs/CheckBox";
 import DropDown from "./app/componentsDocs/inputs/DropDown";
@@ -13,6 +12,9 @@ import InputText from "./app/componentsDocs/inputs/InputText";
 import TextArea from "./app/componentsDocs/inputs/TextArea";
 import BottomSheet from "./app/componentsDocs/BottomSheet";
 import CopyText from "./app/componentsDocs/CopyText";
+import CodeBlock from "./app/componentsDocs/CodeBlock";
+import ComponentPreview from "./app/componentsDocs/ComponentPreview";
+import UnixActions from "./app/functionsDocs/UnixActions";
 
 function App() {
   return (
@@ -55,13 +57,23 @@ function App() {
               path="/componentsDocs/bottomsheet"
               element={<BottomSheet />}
             />
+            <Route 
+              path="/componentsDocs/copytext" 
+              element={<CopyText />} 
+            />
+
+            <Route 
+              path="/componentsDocs/codeblock" 
+              element={<CodeBlock />} 
+            />
+            
             <Route
-              path="/componentsDocs/copytext"
-              element={<CopyText />}
+              path="/componentsDocs/componentpreview"
+              element={<ComponentPreview />}
             />
 
             {/* Tercera parte documentacion de funciones */}
-            <Route path="/functions" element={<Functions />} />
+            <Route path="/functionsDocs/unixactions" element={<UnixActions />} />
           </Route>
           <Route path="/" element={<LandingScreen />} />
         </Route>

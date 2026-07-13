@@ -98,3 +98,9 @@
     }
   }
 }
+
+p[class*="errorMessage"] {
+  white-space: nowrap !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+}

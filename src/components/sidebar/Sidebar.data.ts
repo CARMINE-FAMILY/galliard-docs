@@ -45,10 +45,14 @@ export const sidebarData: SidebarGroupType[] = [
       },
       { label: "BottomSheet", path: "/componentsDocs/bottomsheet" },
       { label: "CopyText", path: "/componentsDocs/copytext" },
+      { label: "CodeBlock", path: "/componentsDocs/codeblock" },
+      { label: "ComponentPreview", path: "/componentsDocs/componentpreview" },
     ],
   },
   {
     title: "Functions",
-    items: [{ label: "Overview", path: "/functions" }],
+    items: [
+      { label: "UnixActions", path: "/functionsDocs/unixactions" },
+    ],
   },
 ];
