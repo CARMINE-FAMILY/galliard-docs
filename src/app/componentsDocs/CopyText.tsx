@@ -1,5 +1,4 @@
-import { CopyTextGal } from "galliard-ui";
-import { ComponentPreview } from "../../components/ComponentPreview";
+import { CopyTextGal, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../components/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
@@ -78,7 +77,7 @@ export default function CopyText() {
         botón, el texto se copia al portapapeles y el ícono cambia a un check
         por 2 segundos.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -93,7 +92,7 @@ export default function CopyText() {
         ]}
       >
         <CopyTextGal command="npm install galliard-ui" />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Temas */}
       <h2 className="titleSecundaryButton">Temas</h2>
@@ -102,7 +101,7 @@ export default function CopyText() {
         color del componente. Son los mismos 9 temas que usan CodeBlock y
         CollapsibleCode, para mantener coherencia visual entre ambos.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -143,7 +142,7 @@ export default function CopyText() {
         <CopyTextGal command="blue" theme="blue" />
         <CopyTextGal command="yellow" theme="yellow" />
         <CopyTextGal command="red" theme="red" />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* customStyle */}
       <h2 className="titleSecundaryButton">Personalización con customStyle</h2>
@@ -154,7 +153,7 @@ export default function CopyText() {
         las llaves que mandes; el resto sigue tomando el valor del
         <span className="inline-code">theme</span> base.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -181,7 +180,7 @@ export default function CopyText() {
           theme="black"
           customStyle={{ bg: "#0f172a", success: "#38bdf8", width: "300px" }}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Personalización con className */}
       <h2 className="titleSecundaryButton">Personalización con className</h2>
@@ -196,7 +195,7 @@ export default function CopyText() {
         <span className="inline-code">ct-fade-up</span> definida en el SCSS del
         componente.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -211,7 +210,7 @@ export default function CopyText() {
         ]}
       >
         <CopyTextGal command="git clone repo.git" className="my-copy-text" />
-      </ComponentPreview>
+      </ComponentPreviewGal>
     </div>
   );
 }

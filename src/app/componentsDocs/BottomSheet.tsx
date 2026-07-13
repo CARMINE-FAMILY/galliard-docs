@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { BottomSheetGal } from "galliard-ui";
-import { ComponentPreview } from "../../components/ComponentPreview";
+import { BottomSheetGal, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../components/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
@@ -209,7 +208,7 @@ export default function BottomSheet() {
         click fuera del panel, gracias a{" "}
         <span className="inline-code">closeOnBackdropClick</span>.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -243,7 +242,7 @@ export default function BottomSheet() {
         >
           <div style={{ padding: "20px" }}>Contenido del panel</div>
         </BottomSheetGal>
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Cierre por arrastre */}
       <h2 className="titleSecundaryButton">Cierre al arrastrar</h2>
@@ -252,7 +251,7 @@ export default function BottomSheet() {
         al arrastrarlo hacia abajo más allá del umbral definido en{" "}
         <span className="inline-code">disapearPercent</span>.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -293,7 +292,7 @@ export default function BottomSheet() {
         >
           <div style={{ padding: "20px" }}>Arrástrame hacia abajo</div>
         </BottomSheetGal>
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Límites de altura */}
       <h2 className="titleSecundaryButton">Límites de altura</h2>
@@ -303,7 +302,7 @@ export default function BottomSheet() {
         <span className="inline-code">maxHeightPercentPosition</span> defines
         entre qué alturas se puede mover el panel al arrastrarlo.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -352,7 +351,7 @@ export default function BottomSheet() {
             Arrastra para expandir o reducir
           </div>
         </BottomSheetGal>
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Ancho */}
       <h2 className="titleSecundaryButton">Ancho del panel</h2>
@@ -360,7 +359,7 @@ export default function BottomSheet() {
         Con <span className="inline-code">widthPercent</span> ajustas el ancho
         del panel respecto al viewport.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -391,7 +390,7 @@ export default function BottomSheet() {
         >
           <div style={{ padding: "20px" }}>Panel más angosto</div>
         </BottomSheetGal>
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Backdrop */}
       <h2 className="titleSecundaryButton">Backdrop</h2>
@@ -401,7 +400,7 @@ export default function BottomSheet() {
         <span className="inline-code">closeOnBackdropClick</span> permites
         cerrarlo al hacer click sobre él.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -450,7 +449,7 @@ export default function BottomSheet() {
             Click fuera del panel para cerrar
           </div>
         </BottomSheetGal>
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Colores y apariencia */}
       <h2 className="titleSecundaryButton">Colores y apariencia</h2>
@@ -460,7 +459,7 @@ export default function BottomSheet() {
         <span className="inline-code">draggElementColor</span> personalizas los
         colores del header, el cuerpo y el ícono de arrastre.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -509,7 +508,7 @@ export default function BottomSheet() {
             Panel con tema oscuro
           </div>
         </BottomSheetGal>
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Personalización */}
       <h2 className="titleSecundaryButton">Personalización del BottomSheet</h2>
@@ -532,7 +531,7 @@ export default function BottomSheet() {
         arrastra, agrégala manualmente mediante{" "}
         <span className="inline-code">customContainerClass</span>.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -579,7 +578,7 @@ export default function BottomSheet() {
         >
           <div style={{ padding: "20px" }}>Panel con clases personalizadas</div>
         </BottomSheetGal>
-      </ComponentPreview>
+      </ComponentPreviewGal>
     </div>
   );
 }

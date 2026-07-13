@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { InputRadioGal } from "galliard-ui";
-import { ComponentPreview } from "../../../components/ComponentPreview";
+import { InputRadioGal, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../../components/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
@@ -269,7 +268,7 @@ export default function InputRadio() {
         <span className="inline-code">setValue</span>
         para capturar la opción seleccionda
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -312,7 +311,7 @@ export default function InputRadio() {
           options={opciones}
           setValue={setRadioValue1}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Orientación */}
       <h2 className="titleSecundary">Orientación</h2>
@@ -322,7 +321,7 @@ export default function InputRadio() {
         valor por defecto) o en columna (
         <span className="inline-code">"vertical"</span>).
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -355,7 +354,7 @@ export default function InputRadio() {
           HorV="vertical"
           setValue={setRadioValue2}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Iconos por opción */}
       <h2 className="titleSecundary">Iconos por opción</h2>
@@ -366,7 +365,7 @@ export default function InputRadio() {
         <span className="inline-code">seeIcon</span>. Si además quieres ajustar
         el tamaño, usa <span className="inline-code">iconSize</span>
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -414,7 +413,7 @@ export default function InputRadio() {
           iconSize={22}
           setValue={setRadioValue3}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Apariencia */}
       <h2 className="titleSecundary">Tamaños y colores de texto</h2>
@@ -424,10 +423,10 @@ export default function InputRadio() {
         <span className="inline-code">textColor</span>,
         <span className="inline-code">labelSize</span> y
         <span className="inline-code">labelColor</span>
-        puedes ajustar independientemente el tamaño y color del texto de cada 
+        puedes ajustar independientemente el tamaño y color del texto de cada
         opción frente al del label principal
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -472,7 +471,7 @@ export default function InputRadio() {
           labelColor="#2aa198"
           setValue={setRadioValue4}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Error */}
       <h2 className="titleSecundary">Mensaje de error</h2>
@@ -487,7 +486,7 @@ export default function InputRadio() {
         vacío, pasas el mensaje; si ya hay una selección, pasas una cadena vacía
         para ocultarlo.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -523,7 +522,7 @@ export default function InputRadio() {
           setValue={setRadioValue5}
           errorMessage="Debes seleccionar una opción"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
     </div>
   );
 }

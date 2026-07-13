@@ -1,6 +1,9 @@
 import { useState } from "react";
-import { DropDownGal, type OptionsDropModel } from "galliard-ui";
-import { ComponentPreview } from "../../../components/ComponentPreview";
+import {
+  DropDownGal,
+  type OptionsDropModel,
+  ComponentPreviewGal,
+} from "galliard-ui";
 import { DataTable } from "../../../components/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
@@ -338,7 +341,7 @@ export default function DropDown() {
         <span className="inline-code">setValue</span>
         <span className="inline-code">options</span> para capturar la selección
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -385,7 +388,7 @@ export default function DropDown() {
           setValue={setSelected}
           options={opciones}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Orientación */}
       <h2 className="titleSecundary">Orientación del menú</h2>
@@ -397,7 +400,7 @@ export default function DropDown() {
         <span className="inline-code">left</span> o
         <span className="inline-code">right</span>.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -424,7 +427,7 @@ export default function DropDown() {
         <DropDownGal label="Top" options={opciones} orientation="top" />
         <DropDownGal label="Left" options={opciones} orientation="left" />
         <DropDownGal label="Right" options={opciones} orientation="right" />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Layout horizontal / vertical */}
       <h2 className="titleSecundary">Orientación del label</h2>
@@ -434,7 +437,7 @@ export default function DropDown() {
         defecto) o en fila (<span className="inline-code">"horizontal"</span>)
         respecto al input
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -455,7 +458,7 @@ export default function DropDown() {
       >
         <DropDownGal label="Vertical" options={opciones} HorV="vertical" />
         <DropDownGal label="Horizontal" options={opciones} HorV="horizontal" />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Iconos */}
       <h2 className="titleSecundary">Diseño de Iconos</h2>
@@ -467,7 +470,7 @@ export default function DropDown() {
         agrega la propiedad <span className="inline-code">icon</span> dentro de
         cada elemento de <span className="inline-code">options</span>.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -515,7 +518,7 @@ export default function DropDown() {
           seeOptionsIcons
           options={opcionesConIconos}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Tamaño y bordes */}
       <h2 className="titleSecundary">Tamaño y bordes</h2>
@@ -527,7 +530,7 @@ export default function DropDown() {
         <span className="inline-code">rounded</span> puedes ajustar las
         dimensiones y el borde del dropdown.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -557,7 +560,7 @@ export default function DropDown() {
         <DropDownGal label="Sin borde" options={opciones} border={false} />
         <DropDownGal label="Con sombra" options={opciones} shadow />
         <DropDownGal label="Redondeado" options={opciones} rounded="full" />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Error */}
       <h2 className="titleSecundary">Mensaje de error</h2>
@@ -568,7 +571,7 @@ export default function DropDown() {
         decidir cuándo mostrarlo (por ejemplo, al enviar un formulario sin
         ninguna opción seleccionada).
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -598,7 +601,7 @@ export default function DropDown() {
           options={opciones}
           errorMessage="Debes seleccionar una opción"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Personalización del dropdown */}
       <h2 className="titleSecundaryButton">Personalización del DropDown</h2>
@@ -619,7 +622,7 @@ export default function DropDown() {
         una vez ya aplicada, veras que los estilos que seleccionas se habrán
         aplicado
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         allowOverflow
         codeTabs={[
           {
@@ -679,7 +682,7 @@ export default function DropDown() {
           customIconClass="iconDrop"
           customOptionClass="optionDrop"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
     </div>
   );
 }

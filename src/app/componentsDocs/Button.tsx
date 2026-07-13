@@ -1,5 +1,4 @@
-import { ButtonGal } from "galliard-ui";
-import { ComponentPreview } from "../../components/ComponentPreview";
+import { ButtonGal, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../components/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
@@ -210,7 +209,7 @@ export default function Button() {
         <span className="inline-code">label</span> y una{" "}
         <span className="inline-code">action</span> a ejecutar al hacer click.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -225,7 +224,7 @@ export default function Button() {
         ]}
       >
         <ButtonGal label="Button" action={() => {}} />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Colores */}
       <h2 className="titleSecundaryButton">Colores que hay por defecto</h2>
@@ -235,7 +234,7 @@ export default function Button() {
         ajusta a lo que necesitas, puedes definir un color propio con{" "}
         <span className="inline-code">bgColor</span>.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         customTheme={{ bg: "#9b9b9b" }}
         codeTabs={[
           {
@@ -293,7 +292,7 @@ export default function Button() {
         />
         <ButtonGal label="ThemeGray" styleType="ThemeGray" action={() => {}} />
         <ButtonGal label="ColorDiferente" bgColor="#2aa198" action={() => {}} />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Tamaño del Botón */}
       <h2 className="titleSecundaryButton">Tamaño del Botón</h2>
@@ -304,7 +303,7 @@ export default function Button() {
         <span className="inline-code">padding</span> puedes ajustar las
         dimensiones del botón y el espaciado interno de su contenido.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -335,7 +334,7 @@ export default function Button() {
         />
         <ButtonGal label="TamañoDelTexto" textSize="18px" action={() => {}} />
         <ButtonGal label="Padding" padding="20px 35px" action={() => {}} />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Iconos */}
       <h2 className="titleSecundaryButton">Diseño de Iconos</h2>
@@ -348,7 +347,7 @@ export default function Button() {
         con <span className="inline-code">customIcon</span> puedes reemplazarlo
         por cualquier elemento (incluso una imagen o gif).
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -423,7 +422,7 @@ export default function Button() {
             />
           }
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Posición del icono */}
       <h2 className="titleSecundaryButton">Posición del icono</h2>
@@ -431,7 +430,7 @@ export default function Button() {
         La prop <span className="inline-code">iconOn</span> define si el ícono
         se muestra a la izquierda o a la derecha del texto del botón.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -451,7 +450,7 @@ export default function Button() {
       >
         <ButtonGal label="Izquierda" iconOn="left" action={() => {}} />
         <ButtonGal label="Derecha" iconOn="right" action={() => {}} />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Bordes */}
       <h2 className="titleSecundaryButton">Bordes</h2>
@@ -460,7 +459,7 @@ export default function Button() {
         <span className="inline-code">rounded</span> que se usó, mostrando los
         distintos niveles de redondeo disponibles.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -489,7 +488,7 @@ export default function Button() {
         <ButtonGal label="md" rounded="md" action={() => {}} />
         <ButtonGal label="lg" rounded="lg" action={() => {}} />
         <ButtonGal label="full" rounded="full" action={() => {}} />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Botón con borde */}
       <h2 className="titleSecundaryButton">Botón con borde</h2>
@@ -499,7 +498,7 @@ export default function Button() {
         <span className="inline-code">styleType</span> en el borde y el texto en
         vez de en el fondo.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         customTheme={{ bg: "#9b9b9b" }}
         codeTabs={[
           {
@@ -538,7 +537,7 @@ export default function Button() {
         <ButtonGal borderedStyle styleType="ThemeYellow" action={() => {}} />
         <ButtonGal borderedStyle styleType="ThemeGray" action={() => {}} />
         <ButtonGal borderedStyle styleType="ThemePurple" action={() => {}} />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Tipografia */}
       <h2 className="titleSecundaryButton">Tipografía</h2>
@@ -547,7 +546,7 @@ export default function Button() {
         <span className="inline-code">textSize</span> puedes ajustar la fuente y
         el tamaño del texto del botón.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -570,7 +569,7 @@ export default function Button() {
         <ButtonGal font="OpenSansRegular" action={() => {}} />
         <ButtonGal textSize="20px" action={() => {}} />
         <ButtonGal font="Georgia" textSize="18px" action={() => {}} />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Sombras */}
       <h2 className="titleSecundaryButton">Botón con Sombras</h2>
@@ -580,7 +579,7 @@ export default function Button() {
         <span className="inline-code">colorShadow</span> puedes ajustar su
         color.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         // customTheme={{ bg: "#E4d4ba" }}
         customTheme={{ bg: "#ffffce" }}
         // customTheme={{ bg: "#9ca3af" }}]
@@ -621,7 +620,7 @@ export default function Button() {
         <ButtonGal shadow colorShadow="#f59e0b" action={() => {}} />
         <ButtonGal shadow colorShadow="#9d50dc" action={() => {}} />
         <ButtonGal shadow colorShadow="#374151" action={() => {}} />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Personalización del botón */}
       <h2 className="titleSecundaryButton">Personalización del botón</h2>
@@ -647,7 +646,7 @@ export default function Button() {
         una vez ya aplicada, veras que los estilos que seleccionas se habrán
         aplicado
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         customTheme={{ bg: "#212528" }}
         codeTabs={[
           {
@@ -692,7 +691,7 @@ export default function Button() {
           args={{ title: "Ejemplo de args" }}
           action={() => {}}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
     </div>
   );
 }

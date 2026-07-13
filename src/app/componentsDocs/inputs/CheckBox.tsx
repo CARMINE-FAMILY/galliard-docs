@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { CheckBoxGal } from "galliard-ui";
-import { ComponentPreview } from "../../../components/ComponentPreview";
+import { CheckBoxGal, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../../components/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
@@ -36,7 +35,7 @@ export default function CheckBox() {
   const setCheck = (key: CheckKey) => (value: boolean) =>
     setChecks((prev) => ({ ...prev, [key]: value }));
 
-   const contenidoProps: PropRow[] = [
+  const contenidoProps: PropRow[] = [
     {
       name: "label",
       type: "string",
@@ -205,7 +204,7 @@ export default function CheckBox() {
         <span className="inline-code">setValue</span> para controlar si está
         marcado o no.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -234,7 +233,7 @@ export default function CheckBox() {
           value={checks.base}
           setValue={setCheck("base")}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Iconos */}
       <h2 className="titleSecundaryButton">Diseño de Iconos</h2>
@@ -246,7 +245,7 @@ export default function CheckBox() {
         <span className="inline-code">iconSize</span> para ajustar su color y
         tamaño.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -297,7 +296,7 @@ export default function CheckBox() {
           setValue={setCheck("sinIcono")}
           seeIcon={false}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Enlace */}
       <h2 className="titleSecundaryButton">Label como enlace</h2>
@@ -307,7 +306,7 @@ export default function CheckBox() {
         con <span className="inline-code">useLinkable</span> y{" "}
         <span className="inline-code">link</span>.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -338,7 +337,7 @@ export default function CheckBox() {
           useLinkable
           link="https://www.bing.com/ck/a?!&&p=327161dec17d8c3f1ca84cfdcebb3609d1760c9661e912b6fd047a3907295bedJmltdHM9MTc4MzAzNjgwMA&ptn=3&ver=2&hsh=4&fclid=25f0258f-2714-62ae-2ce3-32c026b56397&psq=yesicon+app&u=a1aHR0cHM6Ly95ZXNpY29uLmFwcC8"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Error */}
       <h2 className="titleSecundaryButton">Mensaje de error</h2>
@@ -348,7 +347,7 @@ export default function CheckBox() {
         componentes, CheckBox no valida nada por sí mismo — depende de ti
         decidir cuándo mostrarlo.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -377,7 +376,7 @@ export default function CheckBox() {
           textSize={25}
           errorMessage="Acepta para continuar"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Tipografía */}
       <h2 className="titleSecundaryButton">Tipografía</h2>
@@ -386,7 +385,7 @@ export default function CheckBox() {
         <span className="inline-code">textSize</span> puedes ajustar la fuente y
         el tamaño del texto del label.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -425,7 +424,7 @@ export default function CheckBox() {
           font="Georgia"
           textSize="18px"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Personalización del checkbox */}
       <h2 className="titleSecundaryButton">Personalización del checkbox</h2>
@@ -448,7 +447,7 @@ export default function CheckBox() {
         una vez ya aplicado, verás que los estilos que seleccionas se habrán
         aplicado
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -498,7 +497,7 @@ export default function CheckBox() {
           customLabelClass="label"
           customIconClass="icon"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
     </div>
   );
 }

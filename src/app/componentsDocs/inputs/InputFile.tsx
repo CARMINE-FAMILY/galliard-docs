@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { InputFileGal } from "galliard-ui";
-import { ComponentPreview } from "../../../components/ComponentPreview";
+import { InputFileGal, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../../components/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import {
@@ -282,7 +281,7 @@ export default function InputFile() {
         <span className="inline-code">setSelectedFileE</span> para capturar el
         archivo elegido
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -309,7 +308,7 @@ export default function InputFile() {
         ]}
       >
         <InputFileGal selectedFileE={file1} setSelectedFileE={setFile1} />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Tipos de archivo aceptados */}
       <h2 className="titleSecundary">Tipos de archivo aceptados</h2>
@@ -318,7 +317,7 @@ export default function InputFile() {
         archivos puede seleccionar el usuario, tanto desde el explorador de
         archivos como al arrastrar y soltar
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -350,7 +349,7 @@ export default function InputFile() {
           selectedFileE={file2}
           setSelectedFileE={setFile2}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Tamaño máximo */}
       <h2 className="titleSecundary">Límite de tamaño</h2>
@@ -359,7 +358,7 @@ export default function InputFile() {
         automáticamente cualquier archivo que exceda el límite indicado (en MB),
         mostrando un mensaje de error
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -391,7 +390,7 @@ export default function InputFile() {
           selectedFileE={file3}
           setSelectedFileE={setFile3}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Apariencia */}
       <h2 className="titleSecundary">Tamaño y bordes</h2>
@@ -402,7 +401,7 @@ export default function InputFile() {
         <span className="inline-code">rounded</span> puedes ajustar las
         dimensiones y el borde del área de carga
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -448,7 +447,7 @@ export default function InputFile() {
           selectedFileE={file4}
           setSelectedFileE={setFile4}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Colores */}
       <h2 className="titleSecundary">Colores</h2>
@@ -458,7 +457,7 @@ export default function InputFile() {
         color de fondo del área de carga en su estado normal y al pasar el mouse
         por encima
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -493,7 +492,7 @@ export default function InputFile() {
           selectedFileE={file5}
           setSelectedFileE={setFile5}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Cambio de Iconos */}
       <h2 className="titleSecundary">Cambio de iconos</h2>
@@ -503,7 +502,7 @@ export default function InputFile() {
         <span className="inline-code">iconSize</span> puedes reemplazar el icono
         por defecto y ajustar su color y tamaño
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -541,7 +540,7 @@ export default function InputFile() {
           selectedFileE={file6}
           setSelectedFileE={setFile6}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Error */}
       <h2 className="titleSecundary">Mensaje de error</h2>
@@ -551,7 +550,7 @@ export default function InputFile() {
         componentes, InputFile no valida nada por sí mismo, la lógica de cuándo
         mostrar el mensaje depende de ti
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -580,7 +579,7 @@ export default function InputFile() {
           setSelectedFileE={setFile7}
           errorMessage="Debes seleccionar un archivo"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Personalización*/}
       <h2 className="titleSecundary">Personalización de InputFile</h2>
@@ -599,7 +598,7 @@ export default function InputFile() {
         puedes utilizar <span className="inline-code">!important</span> una vez
         ya aplicada, verás que los estilos que seleccionas se habrán aplicado.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -640,7 +639,7 @@ export default function InputFile() {
           customLabelClass="fileLabelDemo"
           customIconClass="fileIconDemo"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Diseño circular personalizado */}
       <h2 className="titleSecundary">Ejemplo: botón circular de subida</h2>
@@ -652,7 +651,7 @@ export default function InputFile() {
         custom, es posible transformar por completo la apariencia del
         componente.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -700,7 +699,7 @@ export default function InputFile() {
           customLabelClass="circleUploadLabel"
           args={{ title: "Subir archivo" }}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { TextAreaGal } from "galliard-ui";
-import { ComponentPreview } from "../../../components/ComponentPreview";
+import { TextAreaGal, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../../components/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
@@ -256,7 +255,7 @@ export default function TextArea() {
         <span className="inline-code">setValue</span> para capturar lo que el
         usuario escribe
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -292,7 +291,7 @@ export default function TextArea() {
           value={value1}
           setValue={setValue1}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Contador de caracteres */}
       <h2 className="titleSecundary">Limite y contador de caracteres</h2>
@@ -302,7 +301,7 @@ export default function TextArea() {
         <span className="inline-code">seeMaxCharCounter</span>
         muestras u ocultas el contador (actual/máximo) dentro del componente
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -352,7 +351,7 @@ export default function TextArea() {
           value={value2}
           setValue={setValue2}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Iconos */}
       <h2 className="titleSecundary">Ubicacion del ícono</h2>
@@ -362,7 +361,7 @@ export default function TextArea() {
         label, y con <span className="inline-code">iconInRight</span>
         puedes colocarlo a la derecha del texto en vez de a la izquierda
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -423,7 +422,7 @@ export default function TextArea() {
           value={value3}
           setValue={setValue3}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Tamaño y bordes */}
       <h2 className="titleSecundary">Tamaño y bordes</h2>
@@ -437,7 +436,7 @@ export default function TextArea() {
         <span className="inline-code">rounded</span> puedes ajustar las
         dimensiones, limites de redimensionado y el borde del textarea.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -485,17 +484,17 @@ export default function TextArea() {
           value={value4}
           setValue={setValue4}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Error */}
       <h2 className="titleSecundary">Mensaje de error</h2>
       <p className="text">
         La prop <span className="inline-code">errorMessage</span> muestra un
         texto de validación debajo del textarea. Igual que en los demás
-        componentes, TextArea no valida nada por sí mismo depende de ti
-        decidir cuándo mostrarlo.
+        componentes, TextArea no valida nada por sí mismo depende de ti decidir
+        cuándo mostrarlo.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -527,7 +526,7 @@ export default function TextArea() {
           setValue={setValue5}
           errorMessage="Este campo es obligatorio"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Personalización */}
       <h2 className="titleSecundary">Personalización de TextArea</h2>
@@ -544,7 +543,7 @@ export default function TextArea() {
         utilizar <span className="inline-code">!important</span>; una vez
         aplicado, verás que los estilos que seleccionaste se habrán aplicado.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -588,7 +587,7 @@ export default function TextArea() {
           customTextAreaClass="textAreaFieldDemo"
           customIconClass="textAreaIconDemo"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
     </div>
   );
 }

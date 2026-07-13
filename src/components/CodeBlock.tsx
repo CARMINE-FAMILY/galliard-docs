@@ -1,5 +1,9 @@
 import { useState, type CSSProperties } from "react";
-import type { CodeBlockProps, CodeTab, CodeThemeValues } from "../models/CodeBlockModel";
+import type {
+  CodeBlockProps,
+  CodeTab,
+  CodeThemeValues,
+} from "../models/CodeBlockModel";
 import { tokenize } from "../hooks/useCodeTokenizer";
 import styles from "../styles/components/codeBlock.module.scss";
 
@@ -81,7 +85,9 @@ export function CodeBlock({
   const [copied, setCopied] = useState(false);
   // expansion independiente por tab: cambiar de tab no resetea
   // el estado de los demas tabs collapsible
-  const [expandedByTab, setExpandedByTab] = useState<Record<number, boolean>>({});
+  const [expandedByTab, setExpandedByTab] = useState<Record<number, boolean>>(
+    {},
+  );
 
   const currentTab: CodeTab = tabs[active];
   // el tema y customTheme vienen del tab ACTIVO; al cambiar de tab,

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { InputTextGal } from "galliard-ui";
-import { ComponentPreview } from "../../../components/ComponentPreview";
+import { InputTextGal, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../../components/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
@@ -13,7 +12,7 @@ export default function InputText() {
   const [value5, setValue5] = useState("");
   const [value6, setValue6] = useState("");
   const [value7, setValue7] = useState("");
-  
+
   const [typeText, setTypeText] = useState("");
   const [typeEmail, setTypeEmail] = useState("");
   const [typePassword, setTypePassword] = useState("");
@@ -290,7 +289,7 @@ export default function InputText() {
         <span className="inline-code">setValue</span> para capturar lo que el
         usuario escribe.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -326,7 +325,7 @@ export default function InputText() {
           value={value1}
           setValue={setValue1}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Placeholder */}
       <h2 className="titleSecundary">Placeholder</h2>
@@ -335,7 +334,7 @@ export default function InputText() {
         texto guía dentro del input mientras está vacío, y desaparece en cuanto
         el usuario empieza a escribir.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -367,7 +366,7 @@ export default function InputText() {
           value={value1b}
           setValue={setValue1b}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Tipos de input */}
       <h2 className="titleSecundary">Tipos de input</h2>
@@ -394,7 +393,7 @@ export default function InputText() {
         Tipo por defecto. Acepta cualquier texto libre, sin ninguna validación
         ni formato especial
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -429,7 +428,7 @@ export default function InputText() {
           value={typeText}
           setValue={setTypeText}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       <h3 className="subtitle">email</h3>
       <p className="text">
@@ -440,7 +439,7 @@ export default function InputText() {
         <span className="inline-code">args</span>), el navegador valida el
         formato antes de enviar el formulario
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -475,7 +474,7 @@ export default function InputText() {
           value={typeEmail}
           setValue={setTypeEmail}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       <h3 className="subtitle">password</h3>
       <p className="text"></p>
@@ -485,7 +484,7 @@ export default function InputText() {
         personalizable con <span className="inline-code">iconColorPass</span>e
         <span className="inline-code">iconSizePass</span>.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -520,7 +519,7 @@ export default function InputText() {
           value={typePassword}
           setValue={setTypePassword}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       <h3 className="subtitle">url</h3>
       <p className="text">
@@ -530,7 +529,7 @@ export default function InputText() {
         <span className="inline-code">http://</span> o
         <span className="inline-code">https:</span>)
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -565,7 +564,7 @@ export default function InputText() {
           value={typeUrl}
           setValue={setTypeUrl}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       <h3 className="subtitle">tel (telefono)</h3>
       <p className="text">
@@ -575,7 +574,7 @@ export default function InputText() {
         <span className="inline-code">-</span>, espacios, paréntesis) y en móvil
         muestra el teclado numérico de marcado
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -610,7 +609,7 @@ export default function InputText() {
           value={typeTel}
           setValue={setTypeTel}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       <h3 className="subtitle">number</h3>
       <p className="text">
@@ -621,7 +620,7 @@ export default function InputText() {
         <span className="inline-code">max</span> y
         <span className="inline-code">step</span> nativos.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -659,14 +658,14 @@ export default function InputText() {
           setValue={setTypeNumber}
           args={{ min: 0, max: 120 }}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       <h3 className="subtitle">date</h3>
       <p className="text">
         Muestra un selector de fecha nativo del navegador (dia, mes, año), sin
         hora
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -698,13 +697,13 @@ export default function InputText() {
           value={typeDate}
           setValue={setTypeDate}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       <h3 className="subtitle">time</h3>
       <p className="text">
         Muestra un selector de hora nativo (horas y minutos), sin fecha.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -736,7 +735,7 @@ export default function InputText() {
           value={typeTime}
           setValue={setTypeTime}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       <h3 className="subtitle">datetime-local</h3>
       <p className="text">
@@ -748,7 +747,7 @@ export default function InputText() {
         automáticamente para este tipo, ya que el selector nativo suele
         necesitar más espacio del que ocuparía un input de texto normal
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -780,7 +779,7 @@ export default function InputText() {
           value={typeDatetime}
           setValue={setTypeDatetime}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       <h3 className="subtitle">search</h3>
       <p className="text">
@@ -788,7 +787,7 @@ export default function InputText() {
         algunos navegadores agregan una "x" para limpiar el campo rápidamente y
         ajustan el botón de "Enter" del teclado móvil a un ícono de búsqueda
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -826,7 +825,7 @@ export default function InputText() {
           value={typeSearch}
           setValue={setTypeSearch}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Orientación del label */}
       <h2 className="titleSecundary">Orientación del label</h2>
@@ -836,7 +835,7 @@ export default function InputText() {
         en fila (<span className="inline-code">"horizontal"</span>) respecto al
         input.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -866,7 +865,7 @@ export default function InputText() {
           value={value3}
           setValue={setValue3}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Iconos */}
       <h2 className="titleSecundary">Diseño de iconos</h2>
@@ -877,7 +876,7 @@ export default function InputText() {
         <span className="inline-code">iconLeft</span> /
         <span className="inline-code">iconRight</span> defines cuáles.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -917,7 +916,7 @@ export default function InputText() {
           value={value4}
           setValue={setValue4}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Apariencia */}
       <h2 className="titleSecundary">Tamaño y bordes</h2>
@@ -929,7 +928,7 @@ export default function InputText() {
         <span className="inline-code">rounded</span> puedes ajustar las
         dimensiones y el borde del input.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -975,7 +974,7 @@ export default function InputText() {
           value={value5}
           setValue={setValue5}
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Error */}
       <h2 className="titleSecundary">Mensaje de error</h2>
@@ -985,7 +984,7 @@ export default function InputText() {
         componentes, InputText no valida nada por sí mismo — depende de ti
         decidir cuándo mostrarlo.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -1017,7 +1016,7 @@ export default function InputText() {
           setValue={setValue6}
           errorMessage="Correo inválido"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
 
       {/* Personalización */}
       <h2 className="titleSecundary">Personalización de InputText</h2>
@@ -1035,7 +1034,7 @@ export default function InputText() {
         utilizar <span className="inline-code">!important</span>; una vez
         aplicado, verás que los estilos que seleccionaste se habrán aplicado.
       </p>
-      <ComponentPreview
+      <ComponentPreviewGal
         codeTabs={[
           {
             label: "JSX",
@@ -1079,7 +1078,7 @@ export default function InputText() {
           customInputClass="inputTextFieldDemo"
           customIconLClass="inputTextIconDemo"
         />
-      </ComponentPreview>
+      </ComponentPreviewGal>
     </div>
   );
 }
