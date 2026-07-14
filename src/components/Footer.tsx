@@ -10,18 +10,20 @@ const Footer: React.FC = () => {
         <h2>Listo para comenzar?</h2>
         <p>Explora la documentación completa y comienza a construir.</p>
 
-        <ButtonGal
-          label="Explorar Docs"
-          action={() => navigate("/getStartDocs/docs")}
-          icon="tabler:karate"
-          bgColor="linear-gradient(to right, #9A4C95, #a78bfa)"
-          txtColor="#FDF7FA"
-          height="40px"
-          padding="0.6rem 1rem"
-          iconSize="2.7rem"
-          customClassIcon="icon"
-          customClassLabel="label"
-        />
+        <div className="container-actions">
+          <ButtonGal
+            label="Explorar Docs"
+            action={() => navigate("/getStartDocs/docs")}
+            icon="tabler:karate"
+            bgColor="linear-gradient(to right, #9A4C95, #a78bfa)"
+            txtColor="#FDF7FA"
+            height="40px"
+            padding="0.6rem 1rem"
+            iconSize="2.7rem"
+            customClassIcon="icon"
+            customClassLabel="label"
+          />
+        </div>
       </div>
 
       <div className="content">

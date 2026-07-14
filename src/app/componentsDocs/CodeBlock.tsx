@@ -256,6 +256,7 @@ export default function CodeBlock() {
     {
       label: "Ejemplo largo",
       language: "ts",
+      //Con este mandas a traer a collapsible
       collapsible: true,
       previewLines: 4,
       code: \`function ejemplo() {

@@ -77,4 +77,23 @@
       font-size: 1.7rem;
     }
   }
+
+  .container-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.7rem;
+
+    .icon {
+      color: $background !important;
+      font-size: 2.7rem;
+      transform: rotateY(180deg) rotate(-50deg);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: rotateY(180deg) translateY(-2px) rotate(30deg);
+      }
+    }
+  }
 }

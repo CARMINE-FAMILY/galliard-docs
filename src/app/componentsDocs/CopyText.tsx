@@ -27,6 +27,15 @@ export default function CopyText() {
     },
   ];
 
+  const iconosProps: PropRow[] = [
+    {
+      name: "iconPosition",
+      type: '"left" ó "right"',
+      defaultValue: "right",
+      description: "Define la posición del icono respecto al texto",
+    },
+  ];
+
   const personalizacionProps: PropRow[] = [
     {
       name: "className",
@@ -59,6 +68,13 @@ export default function CopyText() {
       <DataTable
         columns={propsColumns}
         data={aparienciaProps}
+        rowKey={(r) => r.name}
+      />
+
+      <h3 className="subtitle">Icono</h3>
+      <DataTable
+        columns={propsColumns}
+        data={iconosProps}
         rowKey={(r) => r.name}
       />
 
@@ -144,6 +160,34 @@ export default function CopyText() {
         <CopyTextGal command="red" theme="red" />
       </ComponentPreviewGal>
 
+      {/* Posición del icono */}
+      <h2 className="titleSecundary">Posición del icono</h2>
+      <p className="text">
+        La prop <span className="inline-code">iconPosition</span> define si el
+        icono se muestra a la izquierda o la derecha del texto del botón
+      </p>
+      <ComponentPreviewGal
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <CopyTextGal command="derecha" iconPosition="right" />
+        <CopyTextGal command="izquierda" iconPosition="left" />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <CopyTextGal command="derecha" iconPosition="right" />
+        <CopyTextGal command="izquierda" iconPosition="left" />`,
+          },
+        ]}
+      >
+        <CopyTextGal command="derecha" iconPosition="right" />
+        <CopyTextGal command="izquierda" iconPosition="left" />
+      </ComponentPreviewGal>
+
       {/* customStyle */}
       <h2 className="titleSecundaryButton">Personalización con customStyle</h2>
       <p className="text">
@@ -209,7 +253,7 @@ export default function CopyText() {
           },
         ]}
       >
-        <CopyTextGal command="git clone repo.git" className="my-copy-text" />
+        <CopyTextGal command="git clone repo.git" className="my-copy-text"/>
       </ComponentPreviewGal>
     </div>
   );
