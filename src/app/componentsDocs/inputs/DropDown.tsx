@@ -683,6 +683,75 @@ export default function DropDown() {
           customOptionClass="optionDrop"
         />
       </ComponentPreviewGal>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "1rem",
+          marginTop: "1.5rem",
+        }}
+      >
+        <a
+          href="/componentsDocs/inputs/checkbox"
+          style={{
+            display: "block",
+            padding: "1rem 1.25rem",
+            border: "1px solid #d1d5db",
+            borderRadius: "12px",
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "0.875rem",
+              color: "#6b7280",
+              marginBottom: "0.5rem",
+            }}
+          >
+            ← Anterior
+          </div>
+          <div
+            style={{
+              fontSize: "1.125rem",
+              fontWeight: 600,
+            }}
+          >
+            CheckBox
+          </div>
+        </a>
+
+        <a
+          href="/componentsDocs/inputs/inputfile"
+          style={{
+            display: "block",
+            padding: "1rem 1.25rem",
+            border: "1px solid #d1d5db",
+            borderRadius: "12px",
+            textDecoration: "none",
+            color: "inherit",
+            textAlign: "right",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "0.875rem",
+              color: "#6b7280",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Siguiente →
+          </div>
+          <div
+            style={{
+              fontSize: "1.125rem",
+              fontWeight: 600,
+            }}
+          >
+            InputFile
+          </div>
+        </a>
+      </div>
     </div>
   );
 }

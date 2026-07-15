@@ -35,7 +35,7 @@ export const sidebarData: SidebarGroupType[] = [
       { label: "Button", path: "/componentsDocs/button" },
       { label: "Inputs", path: "/componentsDocs/inputs",
         children: [
-          { label: "Checkbox", path: "/componentsDocs/inputs/checkbox" },
+          { label: "CheckBox", path: "/componentsDocs/inputs/checkbox" },
           { label: "DropDown", path: "/componentsDocs/inputs/dropdown" },
           { label: "InputFile", path: "/componentsDocs/inputs/inputfile" },
           { label: "InputRadio", path: "/componentsDocs/inputs/inputradio" },
@@ -53,6 +53,7 @@ export const sidebarData: SidebarGroupType[] = [
     title: "Functions",
     items: [
       { label: "UnixActions", path: "/functionsDocs/unixactions" },
+      { label: "OnClickOutside", path: "/functionsDocs/onclickoutside" },
     ],
   },
 ];

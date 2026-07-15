@@ -15,6 +15,7 @@ import CopyText from "./app/componentsDocs/CopyText";
 import CodeBlock from "./app/componentsDocs/CodeBlock";
 import ComponentPreview from "./app/componentsDocs/ComponentPreview";
 import UnixActions from "./app/functionsDocs/UnixActions";
+import OnClickOutside from "./app/functionsDocs/OnClickOutside";
 
 function App() {
   return (
@@ -74,6 +75,7 @@ function App() {
 
             {/* Tercera parte documentacion de funciones */}
             <Route path="/functionsDocs/unixactions" element={<UnixActions />} />
+            <Route path="/functionsDocs/onclickoutside" element={<OnClickOutside />} />
           </Route>
           <Route path="/" element={<LandingScreen />} />
         </Route>

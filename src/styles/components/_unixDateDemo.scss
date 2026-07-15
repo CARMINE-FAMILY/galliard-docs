@@ -1,0 +1,37 @@
+.unixDateDemo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 360px;
+
+  &__toggle {
+    display: inline-flex;
+    gap: 0.5rem;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__output {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 1.8rem;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__outputLabel {
+    font-weight: 700;
+    margin-right: 0.35rem;
+    font-size: 1.8rem;
+  }
+}

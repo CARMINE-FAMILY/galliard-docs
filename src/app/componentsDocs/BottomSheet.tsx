@@ -579,6 +579,76 @@ export default function BottomSheet() {
           <div style={{ padding: "20px" }}>Panel con clases personalizadas</div>
         </BottomSheetGal>
       </ComponentPreviewGal>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "1rem",
+          marginTop: "1.5rem",
+        }}
+      >
+        <a
+          href="/componentsDocs/inputs/textarea"
+          style={{
+            display: "block",
+            padding: "1rem 1.25rem",
+            border: "1px solid #d1d5db",
+            borderRadius: "12px",
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "0.875rem",
+              color: "#6b7280",
+              marginBottom: "0.5rem",
+            }}
+          >
+            ← Anterior
+          </div>
+          <div
+            style={{
+              fontSize: "1.125rem",
+              fontWeight: 600,
+            }}
+          >
+            TextArea
+          </div>
+        </a>
+
+        <a
+          href="/componentsDocs/copytext"
+          style={{
+            display: "block",
+            padding: "1rem 1.25rem",
+            border: "1px solid #d1d5db",
+            borderRadius: "12px",
+            textDecoration: "none",
+            color: "inherit",
+            textAlign: "right",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "0.875rem",
+              color: "#6b7280",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Siguiente →
+          </div>
+          <div
+            style={{
+              fontSize: "1.125rem",
+              fontWeight: 600,
+            }}
+          >
+            CopyText
+          </div>
+        </a>
+      </div>
     </div>
   );
 }

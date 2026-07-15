@@ -13,6 +13,7 @@
 @use "./components/cardComponent";
 @use "./components/codeComponent";
 @use "./components/sidebar/sidebar";
+@use "./components/unixDateDemo";
 
 //Get Started
 @use "./getStartedDocs/installation";
@@ -32,6 +33,7 @@
 
 // FunctionsDocs
 @use "./functionsDocs/unixActions";
+@use "./functionsDocs/onClickOutside";
 
 // PAGES
 @use "./pages/landingScreen";
