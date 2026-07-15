@@ -3,6 +3,7 @@ import { DataTable } from "../../components/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
 import { UnixDateDemo } from "../../components/UnixDateDemo";
+import { DocsPagination } from "../../components/DocsPagination";
 
 export default function UnixActions() {
   const timezonesInfo: PropRow[] = [
@@ -289,6 +290,8 @@ unixToDate(1783936800, "Europe/Madrid")`,
           },
         ]}
       />
+
+      <DocsPagination/>
     </div>
   );
 }

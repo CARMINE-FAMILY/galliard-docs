@@ -3,6 +3,7 @@ import { useOnClickOutside, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../components/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
+import { DocsPagination } from "../../components/DocsPagination";
 
 // Demo controlada: un "dropdown" que se cierra al hacer clic fuera de él
 const DropdownDemo = () => {
@@ -253,6 +254,8 @@ export default function OnClickOutside() {
         referencia en cada render, el hook removerá y volverá a agregar los
         listeners constantemente.
       </p>
+
+      <DocsPagination/>
     </div>
   );
 }

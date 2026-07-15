@@ -2,6 +2,7 @@ import { CodeBlockGal, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../components/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
+import { DocsPagination } from "../../components/DocsPagination";
 
 export default function CodeBlock() {
   const contenidoProps: PropRow[] = [
@@ -341,75 +342,7 @@ export default function CodeBlock() {
         />
       </ComponentPreviewGal>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: "1rem",
-          marginTop: "1.5rem",
-        }}
-      >
-        <a
-          href="/componentsDocs/copytext"
-          style={{
-            display: "block",
-            padding: "1rem 1.25rem",
-            border: "1px solid #d1d5db",
-            borderRadius: "12px",
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "0.875rem",
-              color: "#6b7280",
-              marginBottom: "0.5rem",
-            }}
-          >
-            ← Anterior
-          </div>
-          <div
-            style={{
-              fontSize: "1.125rem",
-              fontWeight: 600,
-            }}
-          >
-            CopyText
-          </div>
-        </a>
-
-        <a
-          href="/componentsDocs/componentpreview"
-          style={{
-            display: "block",
-            padding: "1rem 1.25rem",
-            border: "1px solid #d1d5db",
-            borderRadius: "12px",
-            textDecoration: "none",
-            color: "inherit",
-            textAlign: "right",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "0.875rem",
-              color: "#6b7280",
-              marginBottom: "0.5rem",
-            }}
-          >
-            Siguiente →
-          </div>
-          <div
-            style={{
-              fontSize: "1.125rem",
-              fontWeight: 600,
-            }}
-          >
-            ComponentPreview
-          </div>
-        </a>
-      </div>
+     <DocsPagination/>
     </div>
   );
 }
