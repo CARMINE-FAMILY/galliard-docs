@@ -18,7 +18,7 @@ export const docsNavOrder: DocsNavItem[] = [
   { href: "/componentsDocs/componentpreview", label: "ComponentPreview" },
   { href: "/functionsDocs/unixactions", label: "UnixActions"},
   { href: "/functionsDocs/onclickoutside", label: "OnClickOutside"},
-  { href: "/functionsDocs/unixactions", label: "UnixActions"},
+  { href: "/functionsDocs/validateforms", label: "ValidateForms"},
 ];
 
 export function getDocsNavSiblings(currentHref: string) {

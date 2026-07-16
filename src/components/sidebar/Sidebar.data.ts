@@ -54,6 +54,7 @@ export const sidebarData: SidebarGroupType[] = [
     items: [
       { label: "UnixActions", path: "/functionsDocs/unixactions" },
       { label: "OnClickOutside", path: "/functionsDocs/onclickoutside" },
+      { label: "ValidateForms", path: "/functionsDocs/validateforms" },
     ],
   },
 ];

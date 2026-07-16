@@ -1,3 +1,4 @@
+
 .pagination {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -33,7 +34,7 @@
 
 .paginationLabel {
   font-size: 1.5rem;
-  color: #6b7280;
+  color: $textSecundary;
   display: flex;
   align-items: center;
   gap: 0.25rem;

@@ -68,6 +68,7 @@
     color: $textPrimary;
     font-family: OpenSansSemiBold;
   }
+
   // Demo: dropdown (ejemplo básico)
   .dropdownDemo {
     position: relative;
@@ -80,7 +81,7 @@
       background-color: #212528;
       color: #fff;
       cursor: pointer;
-      font-size: 0.95rem;
+      font-size: 1.5rem;
 
       &:hover {
         background-color: #33383c;
@@ -122,7 +123,7 @@
       background-color: #212528;
       color: #fff;
       cursor: pointer;
-      font-size: 0.95rem;
+      font-size: 1.5rem;
 
       &:hover {
         background-color: #33383c;
