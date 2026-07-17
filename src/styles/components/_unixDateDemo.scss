@@ -1,21 +1,26 @@
 .unixDateDemo {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2.4rem;
 
-  // Fila con el input dinámico (Fecha/Unix) + Timezone
+  /* ------------------------------------------------------------------ */
+  /* Fila: input dinámico (Fecha/Unix) + Timezone + botón                */
+  /* ------------------------------------------------------------------ */
   &__row {
     display: flex;
-    gap: 1.6rem;
-    align-items: flex-start;
+    gap: 2.4rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
 
-    > * {
+    > *:not(.buttonResult) {
       flex: 1;
       min-width: 0;
     }
   }
 
-  // Toggle D/U: switch tipo pastilla con label a cada lado
+  /* ------------------------------------------------------------------ */
+  /* Toggle D/U: switch tipo pastilla con label a cada lado              */
+  /* ------------------------------------------------------------------ */
   &__toggle {
     display: flex;
     align-items: center;
@@ -64,43 +69,58 @@
     transform: translateX(0);
   }
 
-  // Valor unix mostrado en modo "Date a unix"
-  &__unixValue {
-    font-size: 1.8rem;
+  /* ------------------------------------------------------------------ */
+  /* Resultado: cuadro con borde                                         */
+  /* ------------------------------------------------------------------ */
+
+  // Envuelve todo el bloque de resultado (unix crudo + las 3 funciones)
+  &__result {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.6rem 2rem;
+    background-color: #e5e7eb;
+    border-radius: 8px;
   }
 
-  // Contenedor del resultado en modo "Unix a date"
+  // Línea suelta del unix crudo (solo visible en modo "D")
+  &__unixValue {
+    font-size: 1.6rem;
+    margin: 0;
+  }
+
+  // Contenedor de los 3 bloques (YMD / DateTime / DateTime String)
   &__output {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    padding: 0.75rem;
-    border-radius: 8px;
-    font-size: 1.8rem;
+    gap: 1.8rem;
+  }
+
+  // Cada bloque individual (uno por función)
+  &__outputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
 
     p {
       margin: 0;
+      font-size: 1.6rem;
     }
   }
 
-  &__outputGroup {
-    margin-bottom: 1.6rem;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
+  // Nombre de la función, como mini-encabezado del bloque
   &__outputFnName {
-    font-weight: 600;
-    font-size: 1.3rem;
+    font-weight: 700;
+    font-size: 1.6rem;
     margin-bottom: 0.4rem;
   }
 
-  // Etiqueta de cada línea de resultado (Unix, UTC, Timezone)
+  // "UTC:" / "America/Mexico_City:" en negrita
   &__outputLabel {
     font-weight: 700;
-    margin-right: 0.35rem;
-    font-size: 1.8rem;
+  }
+
+  .buttonResult {
+    height: fit-content;
   }
 }

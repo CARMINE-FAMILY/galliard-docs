@@ -27,8 +27,7 @@ type SupportedTimeZone = (typeof TIMEZONES)[number];
 type SourceType = "D" | "U";
 
 // Las 3 funciones de galliard-ui/actions que se usan para formatear un
-// unix como fecha. Solo se usan en modo "U", ya que en modo "D" el
-// resultado relevante es el unix crudo, no una fecha formateada.
+// unix como fecha. Se muestran sin importar el modo activo (D o U).
 type FnName = "unixToStringYMD" | "unixToDateTime" | "unixToDateTimeString";
 
 /* -------------------------------------------------------------------------- */
@@ -48,7 +47,7 @@ const FN_MAP: Record<
 };
 
 // Orden fijo en el que se renderizan las 3 funciones dentro del bloque
-// de resultado en modo "U".
+// de resultado.
 const FN_ORDER: FnName[] = [
   "unixToStringYMD",
   "unixToDateTime",
@@ -58,9 +57,9 @@ const FN_ORDER: FnName[] = [
 // Etiquetas legibles que se muestran como título de cada bloque de
 // resultado (una por función).
 const FN_LABELS: Record<FnName, string> = {
-  unixToStringYMD: "YMD",
-  unixToDateTime: "DateTime",
-  unixToDateTimeString: "DateTime String",
+  unixToStringYMD: "unixToStringYMD:",
+  unixToDateTime: "unixToDateTime:",
+  unixToDateTimeString: "unixToDateTimeString:",
 };
 
 // Opciones del dropdown de Timezone. DropDownGal no acepta strings
@@ -124,8 +123,7 @@ export function UnixDateDemo() {
   // 10 dígitos (timestamp en segundos, el formato real y actual) y 13
   // dígitos (timestamp en milisegundos). En modo "D" no aplica, siempre
   // se considera válido porque el unix se calcula, no se escribe.
-  const isValidUnixInput =
-    source === "U" ? /^\d{10,13}$/.test(unixInput) : true;
+  const isValidUnixInput = source === "U" ? /^\d{10}$/.test(unixInput) : true;
 
   // unixValue es el dato base del que parte todo el resultado, sin
   // importar el modo activo:
@@ -143,19 +141,18 @@ export function UnixDateDemo() {
   }, [source, dateInput, unixInput]);
 
   // Resultado de las 3 funciones de formateo, aplicadas sobre unixValue
-  // en UTC y en la timezone seleccionada. Solo tiene sentido en modo
-  // "U" (partir de un unix y verlo como fecha en distintos formatos);
-  // en modo "D" el resultado relevante ya es unixValue, mostrado aparte.
-  // Por eso el memo devuelve un arreglo vacío si no estamos en modo "U"
-  // o si el usuario todavía no dio clic en "Ver resultado".
+  // en UTC y en la timezone seleccionada. Se calcula sin importar el modo
+  // activo (D o U), ya que ambos parten de un unixValue válido.
+  // El memo devuelve un arreglo vacío mientras el usuario no dé clic en
+  // "Ver resultado".
   const results = useMemo(() => {
-    if (!revealed || source !== "U") return [];
+    if (!revealed) return [];
     return FN_ORDER.map((fn) => ({
       fn,
       utc: FN_MAP[fn](unixValue, "UTC"),
       tz: FN_MAP[fn](unixValue, timeZone),
     }));
-  }, [revealed, source, unixValue, timeZone]);
+  }, [revealed, unixValue, timeZone]);
 
   // Indica si el botón "Ver resultado" puede mostrarse dado el estado
   // actual de los inputs. En modo "D" siempre es true (la fecha siempre
@@ -268,64 +265,58 @@ export function UnixDateDemo() {
           options={TZ_OPTIONS}
           border={false}
         />
-      </div>
 
-      {/* ---------------------------------------------------------------- */}
-      {/* Resultado en modo "D": el unix calculado                         */}
-      {/* ---------------------------------------------------------------- */}
-      {/* Solo aplica en modo Date a unix, y solo después de dar clic en
-          "Ver resultado" (revealed). Es el único resultado relevante en
-          este modo: el usuario ya tiene la fecha, lo que quiere ver es
-          el unix equivalente. No se muestran las 3 funciones de
-          formateo aquí porque serían redundantes (le devolverían al
-          usuario, en distintos formatos, la misma fecha que ya escribió). */}
-      {source === "D" && revealed && (
-        <p className="unixDateDemo__unixValue">
-          <span className="unixDateDemo__outputLabel">Unix:</span> {unixValue}
-        </p>
-      )}
-
-      {/* ---------------------------------------------------------------- */}
-      {/* Botón "Ver resultado"                                            */}
-      {/* ---------------------------------------------------------------- */}
-      {/* Dispara el cálculo/despliegue del resultado. No se muestra si:
+        {/* ---------------------------------------------------------------- */}
+        {/* Botón "Ver resultado"                                            */}
+        {/* ---------------------------------------------------------------- */}
+        {/* Dispara el cálculo/despliegue del resultado. No se muestra si:
           - El resultado ya está visible (revealed === true), o
           - El unix ingresado en modo "U" no tiene un formato válido
             (canReveal === false), para evitar que el usuario intente
             ver un resultado con datos incompletos o mal formados. */}
-      {!revealed && canReveal && (
-        <ButtonGal
-          label="Ver resultado"
-          action={() => setRevealed(true)}
-          styleType="ThemeBlue"
-          borderedStyle={false}
-          seeIcon={false}
-        />
-      )}
+        {!revealed && canReveal && (
+          <ButtonGal
+            label="Ver resultado"
+            action={() => setRevealed(true)}
+            styleType="ThemeBlue"
+            borderedStyle={false}
+            seeIcon={false}
+            customClassButton="buttonResult"
+          />
+        )}
+      </div>
 
       {/* ---------------------------------------------------------------- */}
-      {/* Resultado en modo "U": las 3 funciones de formateo               */}
+      {/* Resultado: unix crudo + las 3 funciones de formateo               */}
       {/* ---------------------------------------------------------------- */}
-      {/* Solo aplica en modo Unix a date, y solo tras dar clic en
-          "Ver resultado". Aquí sí tiene sentido mostrar las 3 funciones
-          (YMD, DateTime, DateTime String), porque el usuario parte de
-          un unix crudo y quiere ver cómo se representa en distintos
-          formatos de fecha, tanto en UTC como en la timezone elegida. */}
-      {source === "U" && revealed && (
-        <div className="unixDateDemo__output">
-          {results.map(({ fn, utc, tz }) => (
-            <div key={fn} className="unixDateDemo__outputGroup">
-              <p className="unixDateDemo__outputFnName">{FN_LABELS[fn]}</p>
-              <p>
-                <span className="unixDateDemo__outputLabel">UTC:</span>{" "}
-                {utc || "—"}
-              </p>
-              <p>
-                <span className="unixDateDemo__outputLabel">{timeZone}:</span>{" "}
-                {tz || "—"}
-              </p>
-            </div>
-          ))}
+      {/* Se muestra sin importar el modo activo (D o U), una vez que el
+          usuario dio clic en "Ver resultado". Siempre se ve el unix crudo
+          arriba, y debajo las 3 variantes formateadas (YMD, DateTime,
+          DateTime String) tanto en UTC como en la timezone seleccionada. */}
+      {revealed && (
+        <div className="unixDateDemo__result">
+          {source === "D" && (
+            <p className="unixDateDemo__unixValue">
+              <span className="unixDateDemo__outputLabel">Unix:</span>{" "}
+              {unixValue}
+            </p>
+          )}
+
+          <div className="unixDateDemo__output">
+            {results.map(({ fn, utc, tz }) => (
+              <div key={fn} className="unixDateDemo__outputGroup">
+                <p className="unixDateDemo__outputFnName">{FN_LABELS[fn]}</p>
+                <p>
+                  <span className="unixDateDemo__outputLabel">UTC:</span>{" "}
+                  {utc || "—"}
+                </p>
+                <p>
+                  <span className="unixDateDemo__outputLabel">{timeZone}:</span>{" "}
+                  {tz || "—"}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

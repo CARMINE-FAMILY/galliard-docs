@@ -186,68 +186,6 @@ type Event = MouseEvent | TouchEvent;
         dispositivos móviles.
       </p>
 
-      {/* Ejemplo básico */}
-      <h2 className="titleSecundaryButton">Ejemplo básico</h2>
-      <p className="text">
-        El siguiente ejemplo muestra el uso mínimo del hook. Se crea una
-        referencia utilizando <span className="inline-code">useRef</span>,
-        posteriormente se registra el hook y finalmente la referencia se asigna
-        al elemento que se desea monitorear.
-      </p>
-      <ComponentPreviewGal
-        codeTabs={[
-          {
-            label: "JSX",
-            language: "jsx",
-            code: `
-const boxRef = useRef(null);
-
-const handleOutsideClick = () => {
-  console.log("Se hizo clic fuera.");
-};
-
-useOnClickOutside(boxRef, handleOutsideClick);
-
-return (
-  <div ref={boxRef}>
-    Haz clic fuera de este elemento.
-  </div>
-);
-      `,
-          },
-          {
-            label: "TSX",
-            language: "tsx",
-            code: `
-const boxRef = useRef<HTMLDivElement>(null);
-
-const handleOutsideClick = () => {
-  console.log("Se hizo clic fuera.");
-};
-
-useOnClickOutside(boxRef, handleOutsideClick);
-
-return (
-  <div ref={boxRef}>
-    Haz clic fuera de este elemento.
-  </div>
-);
-      `,
-          },
-        ]}
-      >
-        <div
-          style={{
-            border: "1px solid #d1d5db",
-            borderRadius: "10px",
-            padding: "2rem",
-            textAlign: "center",
-          }}
-        >
-          Haz clic fuera de este recuadro.
-        </div>
-      </ComponentPreviewGal>
-
       {/* Ejemplo interactivo: Dropdown */}
       <h2 className="titleSecundaryButton">Ejemplo interactivo</h2>
       <p className="text">

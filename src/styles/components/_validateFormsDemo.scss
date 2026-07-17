@@ -1,0 +1,58 @@
+.registerFormDemo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  background-color: #ffffff;
+
+  &__row {
+    display: flex;
+    gap: 1.6rem;
+
+    .registerFormDemo__field {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  // Mensajes por campo (debajo de cada input)
+  &__error {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #dc2626;
+  }
+
+  &__success {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #16a34a;
+  }
+
+  // Banner general al final del formulario
+  &__banner {
+    margin: 0;
+    padding: 1.2rem 1.6rem;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    &--success {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    &--error {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+  }
+
+  &__submit {
+    align-self: flex-start;
+  }
+}
