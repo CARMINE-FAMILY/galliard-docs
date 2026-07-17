@@ -112,17 +112,125 @@ export default function ValidateForms() {
     },
   ];
 
+  const typesSupported: PropRow[] = [
+    {
+      name: "text",
+      type: "string",
+      description: "Valida texto, longitud y expresiones regulares",
+    },
+    {
+      name: "email",
+      type: "string",
+      description: "Valida el formato de un correo electrónico",
+    },
+    {
+      name: "phone",
+      type: "string",
+      description: "Valída números telefonicos",
+    },
+    {
+      name: "url",
+      type: "string",
+      description: "Valída direcciones URL",
+    },
+    {
+      name: "pass",
+      type: "string",
+      description: "Valida contraseñas seguras",
+    },
+    {
+      name: "num",
+      type: "number",
+      description: "Valída valores numéricos",
+    },
+    {
+      name: "bool",
+      type: "boolean",
+      description: "Valida valores booleanos",
+    },
+    {
+      name: "date",
+      type: "Date, string, number",
+      description: "Valída fechas dentro de un rango",
+    },
+    {
+      name: "date-time",
+      type: "Data, string, number",
+      description: "Valida fecha y hora",
+    },
+    {
+      name: "time",
+      type: "string",
+      description: "Valida obligatoriedad",
+    },
+    {
+      name: "data",
+      type: "any",
+      description: "Valida obligatoriedad",
+    },
+  ];
+
   return (
     <div className="container doc-content">
       <h1 className="titlePrimary">useValidateForms</h1>
 
       <p className="text">
-        Hook para validar formularios completos en una sola llamada. Recibe un
-        arreglo de reglas (<span className="inline-code">ValidateProps[]</span>
-        ), evalúa cada una según su{" "}
-        <span className="inline-code">typeInput</span> y dispara el
-        <span className="inline-code">setError</span> correspondiente cuando
-        alguna falla.
+        <span className="inline-code">useValidateForms</span> es un hook
+        diseñado para validar múltiples campos de un formulario en una sola
+        llamada. Recibe un arreglo de objetos de tipo
+        <span className="inline-code">ValidateProps[]</span>, donde cada
+        elemento representa las reglas de validación de un campo. Dependiendo
+        del valor de
+        <span className="inline-code">typeInput</span>, el hook ejecuta las
+        validaciones correspondientes y utiliza
+        <span className="inline-code">setError</span> para reportar el primer
+        error encontrado en cada campo.
+      </p>
+
+      {/* Importación */}
+      <h2 className="titleSecundary">Importación</h2>
+      <p className="text">
+        Antes de utilizar el hook es necesario importarlo desde la libreria
+      </p>
+
+      <CodeBlockGal
+        hideHeaderIfSingleTab
+        tabs={[
+          {
+            label: "TypeScript",
+            language: "ts",
+            code: `
+          import { useValidateForms } from "galliard-ui";
+            `,
+          },
+        ]}
+      />
+
+      {/* Tipos de validación */}
+      <h2 className="titleSecundary">Tipos de validación soportados</h2>
+      <p className="text">
+        El comportamiento del hook depende del valor asignado a
+        <span className="inline-code">typeInput</span>. Cada tipo activa un
+        conjunto diferente de reglas de validación
+      </p>
+      <DataTable
+        columns={propsColumns}
+        data={typesSupported}
+        rowKey={(r) => r.name}
+      />
+
+      {/* ¿Como funciona? */}
+      <h2 className="titleSecundary">¿Cómo funciona?</h2>
+      <p className="text">
+        Cada objeto del arreglo representa un campo del formulario. El hook
+        recorre todas las reglas recibidas y ejecuta únicamnete las validaciones
+        correspondientes al tipo indicado mediante.
+        <span className="inline-code">typeInput</span>. Si alguna validación
+        falla, se invoca la función{" "}
+        <span className="inline-code">setError</span> asociada a ese campo y el
+        hook retorna <span className="inline-code">false</span>. Cuando todas
+        las validaciones son correctas retorna{" "}
+        <span className="inline-code">true</span>
       </p>
 
       {/* Uso Básico */}
@@ -139,10 +247,11 @@ export default function ValidateForms() {
           {
             label: "TypeScript",
             language: "ts",
+            collapsible: true,
             code: `
-            const [emailError, setEmailError] = useState<string>();
+            const [emailError, setEmailError] = useState<string>("");
             
-            const [ageError, setAgeError] = useState<string>();
+            const [ageError, setAgeError] = useState<string>("");
 
             const handleSubmit = () => {
                 const isValid = useValidateForms([
@@ -153,7 +262,7 @@ export default function ValidateForms() {
                     setError: setEmailError,
                   },
                   {
-                    typeInput: "email",
+                    typeInput: "num",
                     value: age,
                     nameInput:"Edad",
                     min: 18,
@@ -163,9 +272,11 @@ export default function ValidateForms() {
                   },  
                 ]);
 
-                if(!isValid) return,
-
-                // continuar con el envio...
+                if(!isValid) {
+                  return;
+                }
+                
+                console.log("Formulario válido");
             }
             `,
           },
@@ -194,6 +305,20 @@ export default function ValidateForms() {
         rowKey={(r) => r.name}
       />
 
+      <p className="note">Importante:</p>
+
+      <p className="text">
+        Las propiedades adicionales disponibles dependen del valor de
+        <span className="inline-code">typeInput</span>. Por ejemplo,
+        <span className="inline-code">minLength</span> y
+        <span className="inline-code">maxLength</span> únicamente tienen efecto
+        cuando el tipo es
+        <span className="inline-code">"text"</span>, mientras que
+        <span className="inline-code">min</span> y
+        <span className="inline-code">max</span> se utilizan para valores
+        numéricos o fechas.
+      </p>
+
       {/* Texto */}
       <h2 className="titleSecundary">typeInput: "text"</h2>
       <p className="text">
@@ -217,7 +342,7 @@ export default function ValidateForms() {
                 typeInput:"text",
                 value: username,
                 nameInput: "Usuario",
-                minLegth: 3,
+                minLength: 3,
                 maxLength: 20,
                 setError: setUsernameError,
              }

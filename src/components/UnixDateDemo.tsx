@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import {
   TIMEZONES,
   convertToUnix,
-  unixToDate,
   unixToDateTime,
   unixToDateTimeString,
   unixToStringYMD,
@@ -10,98 +9,131 @@ import {
 import { DropDownGal, InputTextGal, ButtonGal } from "galliard-ui";
 import type { OptionsDropModel } from "galliard-ui";
 
+/* -------------------------------------------------------------------------- */
+/*                                    TIPOS                                   */
+/* -------------------------------------------------------------------------- */
+
 // Se reconstruye el type localmente porque galliard-ui/actions no exporta
 // SupportedTimeZone directamente, solo el array TIMEZONES. Se deriva con
-// typeof + indexado numérico, igual que en el archivo original.
+// typeof + indexado numérico (TIMEZONES[number] = unión de todos sus
+// valores posibles como tipo).
 type SupportedTimeZone = (typeof TIMEZONES)[number];
 
-// D = el usuario da una fecha y quiere ver el unix + el texto formateado
-// U = el usuario da un unix directo y quiere ver el texto formateado
+// Modo activo del playground:
+// - "D" (Date a unix): el usuario da una fecha y el resultado que le
+//   importa es el unix equivalente.
+// - "U" (Unix a date): el usuario da un unix y quiere verlo formateado
+//   como fecha, en distintas variantes (YMD, DateTime, DateTime String).
 type SourceType = "D" | "U";
 
-// Las 4 funciones de UnixActions que devuelven texto (todas menos
-// convertToUnix, que va aparte porque su dirección es inversa: fecha -> unix)
-type FnName =
-  | "unixToDate"
-  | "unixToStringYMD"
-  | "unixToDateTime"
-  | "unixToDateTimeString";
+// Las 3 funciones de galliard-ui/actions que se usan para formatear un
+// unix como fecha. Solo se usan en modo "U", ya que en modo "D" el
+// resultado relevante es el unix crudo, no una fecha formateada.
+type FnName = "unixToStringYMD" | "unixToDateTime" | "unixToDateTimeString";
 
-// Mapa que conecta el nombre de función (string, usado en el dropdown)
-// con la función real importada. Permite llamar la función correcta
-// dinámicamente con FN_MAP[fnName](...) en vez de un switch/if largo.
+/* -------------------------------------------------------------------------- */
+/*                              CONSTANTES / MAPAS                            */
+/* -------------------------------------------------------------------------- */
+
+// Conecta el nombre de cada función (string) con la función real
+// importada, para poder invocarla dinámicamente dentro de un .map()
+// en vez de escribir un switch/if largo por cada una.
 const FN_MAP: Record<
   FnName,
   (unixTime: number | null | undefined, tz: SupportedTimeZone) => string
 > = {
-  unixToDate,
   unixToStringYMD,
   unixToDateTime,
   unixToDateTimeString,
 };
 
-// Opciones del dropdown de Tz. DropDownGal no acepta strings sueltos,
-// necesita objetos OptionsDropModel { valueOption, text }. Como el nombre
-// de la zona horaria ya es legible, se usa el mismo string en ambos campos.
+// Orden fijo en el que se renderizan las 3 funciones dentro del bloque
+// de resultado en modo "U".
+const FN_ORDER: FnName[] = [
+  "unixToStringYMD",
+  "unixToDateTime",
+  "unixToDateTimeString",
+];
+
+// Etiquetas legibles que se muestran como título de cada bloque de
+// resultado (una por función).
+const FN_LABELS: Record<FnName, string> = {
+  unixToStringYMD: "YMD",
+  unixToDateTime: "DateTime",
+  unixToDateTimeString: "DateTime String",
+};
+
+// Opciones del dropdown de Timezone. DropDownGal no acepta strings
+// sueltos, necesita objetos OptionsDropModel { valueOption, text }.
+// Como el nombre de la zona horaria ya es legible, se usa el mismo
+// string en ambos campos.
 const TZ_OPTIONS: OptionsDropModel[] = TIMEZONES.map((tz) => ({
   valueOption: tz,
   text: tz,
 }));
 
-// Opciones del dropdown de Nf, mismo patrón que TZ_OPTIONS pero con los
-// nombres de las 4 funciones disponibles.
-const FN_OPTIONS: OptionsDropModel[] = (
-  [
-    "unixToDate",
-    "unixToStringYMD",
-    "unixToDateTime",
-    "unixToDateTimeString",
-  ] as FnName[]
-).map((fn) => ({
-  valueOption: fn,
-  text: fn,
-}));
+/* -------------------------------------------------------------------------- */
+/*                                 COMPONENTE                                 */
+/* -------------------------------------------------------------------------- */
 
 export function UnixDateDemo() {
-  // Modo activo del toggle D/U. Controla qué input se muestra y de dónde
-  // sale el valor unix base (unixValue, más abajo).
+  /* -------------------------------- ESTADO -------------------------------- */
+
+  // Modo activo del toggle D/U. Controla qué input se muestra (Fecha o
+  // Unix) y qué se calcula/muestra como resultado.
   const [source, setSource] = useState<SourceType>("D");
 
-  // Valor del input de fecha (solo visible/usado en modo D).
-  // InputTextGal maneja el valor como string plano.
+  // Valor del input de fecha (solo se usa en modo "D").
+  // InputTextGal maneja el valor como string plano; se inicializa con
+  // la fecha/hora actual en formato compatible con <input type="datetime-local">.
   const [dateInput, setDateInput] = useState(() =>
     new Date().toISOString().slice(0, 16),
   );
 
-  // Valor del input de unix (solo visible/usado en modo U).
-  // También string; se parsea a number más abajo al calcular unixValue.
+  // Valor del input de unix (solo se usa en modo "U").
+  // También es un string; se parsea a number más abajo al calcular
+  // unixValue. Se inicializa con el unix actual, en segundos.
   const [unixInput, setUnixInput] = useState(() =>
     String(Math.floor(Date.now() / 1000)),
   );
 
-  // Estado del dropdown Tz. DropDownGal trabaja con el objeto
-  // OptionsDropModel completo, no con el string de la zona horaria sola.
+  // Estado del dropdown de Timezone. DropDownGal trabaja con el objeto
+  // OptionsDropModel completo (valueOption + text), no con el string de
+  // la zona horaria sola.
   const [tzOption, setTzOption] = useState<OptionsDropModel | null>(
     TZ_OPTIONS.find((o) => o.valueOption === "America/Mexico_City") ?? null,
   );
 
-  // Estado del dropdown Nf, mismo patrón que tzOption.
-  const [fnOption, setFnOption] = useState<OptionsDropModel | null>(
-    FN_OPTIONS.find((o) => o.valueOption === "unixToDateTimeString") ?? null,
-  );
+  // Controla si el resultado ya fue calculado y se muestra en pantalla.
+  // Los datos NO se calculan/muestran al instante mientras el usuario
+  // escribe: solo aparecen tras dar clic en el botón "Ver resultado".
+  // Se resetea a false cada vez que cambia cualquier input relevante
+  // (fecha, unix, timezone o el modo D/U), para evitar mostrar un
+  // resultado desactualizado respecto a lo que hay en los campos.
+  const [revealed, setRevealed] = useState(false);
 
-  // Se extrae el valor "plano" (string) de cada opción seleccionada, con un
-  // fallback por si tzOption/fnOption llegaran a ser null (ej. antes del
-  // primer render o si el usuario limpia la selección).
+  /* ----------------------------- DERIVADOS -------------------------------- */
+
+  // Extrae el valor "plano" (string) de la timezone seleccionada, con
+  // un fallback por si tzOption llegara a ser null (por ejemplo antes
+  // del primer render o si el usuario limpia la selección).
   const timeZone = (tzOption?.valueOption ??
     "America/Mexico_City") as SupportedTimeZone;
-  const fnName = (fnOption?.valueOption ?? "unixToDateTimeString") as FnName;
 
-  // unixValue es el dato base del que parte todo lo demás, sin importar
-  // el modo activo:
-  // - Modo D: se calcula con convertToUnix a partir de la fecha ingresada
-  // - Modo U: se toma directo del input numérico (ya es unix)
-  // useMemo evita recalcular esto en cada render si nada relevante cambió.
+  // Valida el formato del unix ingresado en modo "U": debe tener entre
+  // 10 dígitos (timestamp en segundos, el formato real y actual) y 13
+  // dígitos (timestamp en milisegundos). En modo "D" no aplica, siempre
+  // se considera válido porque el unix se calcula, no se escribe.
+  const isValidUnixInput =
+    source === "U" ? /^\d{10,13}$/.test(unixInput) : true;
+
+  // unixValue es el dato base del que parte todo el resultado, sin
+  // importar el modo activo:
+  // - Modo "D": se calcula con convertToUnix a partir de la fecha
+  //   ingresada por el usuario.
+  // - Modo "U": se toma directo del input numérico (ya es un unix).
+  // useMemo evita recalcular esto en cada render si nada relevante
+  // cambió (solo se recalcula si cambian source, dateInput o unixInput).
   const unixValue = useMemo(() => {
     if (source === "D") {
       return dateInput ? convertToUnix(dateInput) : 0;
@@ -110,99 +142,192 @@ export function UnixDateDemo() {
     return Number.isFinite(parsed) ? parsed : 0;
   }, [source, dateInput, unixInput]);
 
-  // Función de formateo seleccionada actualmente en el dropdown Nf
-  const selectedFn = FN_MAP[fnName];
+  // Resultado de las 3 funciones de formateo, aplicadas sobre unixValue
+  // en UTC y en la timezone seleccionada. Solo tiene sentido en modo
+  // "U" (partir de un unix y verlo como fecha en distintos formatos);
+  // en modo "D" el resultado relevante ya es unixValue, mostrado aparte.
+  // Por eso el memo devuelve un arreglo vacío si no estamos en modo "U"
+  // o si el usuario todavía no dio clic en "Ver resultado".
+  const results = useMemo(() => {
+    if (!revealed || source !== "U") return [];
+    return FN_ORDER.map((fn) => ({
+      fn,
+      utc: FN_MAP[fn](unixValue, "UTC"),
+      tz: FN_MAP[fn](unixValue, timeZone),
+    }));
+  }, [revealed, source, unixValue, timeZone]);
 
-  // Se aplica la función elegida dos veces sobre el mismo unixValue:
-  // una fijando "UTC" y otra con la zona horaria elegida en Tz.
-  // Esto pasa siempre, en ambos modos (D o U), para mostrar el uso
-  // real de las funciones del módulo sin importar el origen del dato.
-  const utcResult = selectedFn(unixValue, "UTC");
-  const tzResult = selectedFn(unixValue, timeZone);
+  // Indica si el botón "Ver resultado" puede mostrarse dado el estado
+  // actual de los inputs. En modo "D" siempre es true (la fecha siempre
+  // produce un unix válido). En modo "U" depende de que el unix
+  // ingresado tenga un formato válido (10 a 13 dígitos).
+  const canReveal = source === "D" ? true : isValidUnixInput;
+
+  /* ------------------------------- HANDLERS -------------------------------- */
+  // Todos los handlers de cambio de input resetean "revealed" a false,
+  // de modo que si el usuario edita algo después de ver un resultado,
+  // ese resultado se oculta hasta que vuelva a dar clic en el botón.
+  // Esto evita mostrar un resultado que ya no corresponde a los valores
+  // actuales de los campos.
+
+  const handleSourceChange = (next: SourceType) => {
+    setSource(next);
+    setRevealed(false);
+  };
+
+  const handleDateChange = (val: string) => {
+    setDateInput(val);
+    setRevealed(false);
+  };
+
+  const handleUnixChange = (val: string) => {
+    setUnixInput(val);
+    setRevealed(false);
+  };
+
+  const handleTzChange = (val: OptionsDropModel | null) => {
+    setTzOption(val);
+    setRevealed(false);
+  };
+
+  /* -------------------------------- RENDER --------------------------------- */
 
   return (
     <div className="unixDateDemo">
-      {/* Toggle D/U: cada botón cambia el modo activo. El botón del modo
-          actual se pinta con ThemeBlue (activo), el otro con ThemeGray
-          (apagado), simulando el efecto de "pintado/oscuro" del boceto */}
+      {/* ---------------------------------------------------------------- */}
+      {/* Toggle D/U                                                       */}
+      {/* ---------------------------------------------------------------- */}
+      {/* Switch tipo "pastilla" con un label a cada lado. El label del
+          modo activo se muestra subrayado/en negrita, el otro atenuado.
+          Tanto los labels como el switch mismo son clicables, para dar
+          más área de interacción. role="switch" + aria-checked para
+          accesibilidad, ya que es un control binario real (no un botón
+          de acción). */}
       <div className="unixDateDemo__toggle">
-        <ButtonGal
-          label="D"
-          action={() => setSource("D")}
-          styleType={source === "D" ? "ThemeBlue" : "ThemeGray"}
-          borderedStyle={false}
-          seeIcon={false}
-        />
-        <ButtonGal
-          label="U"
-          action={() => setSource("U")}
-          styleType={source === "U" ? "ThemeBlue" : "ThemeGray"}
-          borderedStyle={false}
-          seeIcon={false}
+        <span
+          className={`unixDateDemo__toggleLabel ${
+            source === "D" ? "unixDateDemo__toggleLabel--active" : ""
+          }`}
+          onClick={() => handleSourceChange("D")}
+        >
+          Date a unix
+        </span>
+
+        <button
+          type="button"
+          role="switch"
+          aria-checked={source === "U"}
+          className="unixDateDemo__switch"
+          onClick={() => handleSourceChange(source === "D" ? "U" : "D")}
+        >
+          <span className="unixDateDemo__switchThumb" />
+        </button>
+
+        <span
+          className={`unixDateDemo__toggleLabel ${
+            source === "U" ? "unixDateDemo__toggleLabel--active" : ""
+          }`}
+          onClick={() => handleSourceChange("U")}
+        >
+          Unix a date
+        </span>
+      </div>
+
+      {/* ---------------------------------------------------------------- */}
+      {/* Fila: input dinámico (Fecha o Unix) + Timezone                   */}
+      {/* ---------------------------------------------------------------- */}
+      {/* El input que se muestra depende del modo activo. Solo uno de
+          los dos (dateInput/unixInput) está montado a la vez, pero
+          ambos estados se conservan aunque no estén visibles, así que
+          si el usuario cambia de modo y regresa, no pierde lo que
+          había escrito. El dropdown de Timezone siempre está visible,
+          porque aplica sin importar el modo. */}
+      <div className="unixDateDemo__row">
+        {source === "D" ? (
+          <InputTextGal
+            label="Fecha"
+            typeInput="datetime-local"
+            value={dateInput}
+            setValue={handleDateChange}
+            border={false}
+          />
+        ) : (
+          <InputTextGal
+            label="Unix"
+            typeInput="number"
+            value={unixInput}
+            setValue={handleUnixChange}
+            border={false}
+          />
+        )}
+
+        <DropDownGal
+          label="Timezone"
+          value={tzOption}
+          setValue={handleTzChange}
+          options={TZ_OPTIONS}
+          border={false}
         />
       </div>
 
-      {/* Input dinámico: cambia de tipo y de estado según el modo activo.
-          Solo uno de los dos está montado a la vez, pero ambos estados
-          (dateInput/unixInput) se conservan aunque no estén visibles */}
-      {source === "D" ? (
-        <InputTextGal
-          label="Fecha"
-          typeInput="datetime-local"
-          value={dateInput}
-          setValue={setDateInput}
-          border={false}
-        />
-      ) : (
-        <InputTextGal
-          label="Unix"
-          typeInput="number"
-          value={unixInput}
-          setValue={setUnixInput}
-          border={false}
-        />
-      )}
-
-      {/* Dropdown de zona horaria: siempre visible, en ambos modos,
-          porque siempre se usa para calcular tzResult */}
-      <DropDownGal
-        label="Tz"
-        value={tzOption}
-        setValue={setTzOption}
-        options={TZ_OPTIONS}
-        border={false}
-      />
-
-      {/* Dropdown de función de formateo: siempre visible, decide cuál
-          de las 4 funciones de UnixActions se aplica sobre unixValue */}
-      <DropDownGal
-        label="Nf"
-        value={fnOption}
-        setValue={setFnOption}
-        options={FN_OPTIONS}
-        border={false}
-      />
-
-      {/* Solo en modo D: muestra el unix crudo que resultó de convertToUnix,
-          como paso intermedio antes de aplicarle la función de formateo */}
-      {source === "D" && (
+      {/* ---------------------------------------------------------------- */}
+      {/* Resultado en modo "D": el unix calculado                         */}
+      {/* ---------------------------------------------------------------- */}
+      {/* Solo aplica en modo Date a unix, y solo después de dar clic en
+          "Ver resultado" (revealed). Es el único resultado relevante en
+          este modo: el usuario ya tiene la fecha, lo que quiere ver es
+          el unix equivalente. No se muestran las 3 funciones de
+          formateo aquí porque serían redundantes (le devolverían al
+          usuario, en distintos formatos, la misma fecha que ya escribió). */}
+      {source === "D" && revealed && (
         <p className="unixDateDemo__unixValue">
           <span className="unixDateDemo__outputLabel">Unix:</span> {unixValue}
         </p>
       )}
 
-      {/* Resultado final: siempre dos filas, con el texto que devuelve
-          la función Nf elegida, una en UTC y otra en la Tz seleccionada */}
-      <div className="unixDateDemo__output">
-        <p>
-          <span className="unixDateDemo__outputLabel">UTC:</span>{" "}
-          {utcResult || "—"}
-        </p>
-        <p>
-          <span className="unixDateDemo__outputLabel">{timeZone}:</span>{" "}
-          {tzResult || "—"}
-        </p>
-      </div>
+      {/* ---------------------------------------------------------------- */}
+      {/* Botón "Ver resultado"                                            */}
+      {/* ---------------------------------------------------------------- */}
+      {/* Dispara el cálculo/despliegue del resultado. No se muestra si:
+          - El resultado ya está visible (revealed === true), o
+          - El unix ingresado en modo "U" no tiene un formato válido
+            (canReveal === false), para evitar que el usuario intente
+            ver un resultado con datos incompletos o mal formados. */}
+      {!revealed && canReveal && (
+        <ButtonGal
+          label="Ver resultado"
+          action={() => setRevealed(true)}
+          styleType="ThemeBlue"
+          borderedStyle={false}
+          seeIcon={false}
+        />
+      )}
+
+      {/* ---------------------------------------------------------------- */}
+      {/* Resultado en modo "U": las 3 funciones de formateo               */}
+      {/* ---------------------------------------------------------------- */}
+      {/* Solo aplica en modo Unix a date, y solo tras dar clic en
+          "Ver resultado". Aquí sí tiene sentido mostrar las 3 funciones
+          (YMD, DateTime, DateTime String), porque el usuario parte de
+          un unix crudo y quiere ver cómo se representa en distintos
+          formatos de fecha, tanto en UTC como en la timezone elegida. */}
+      {source === "U" && revealed && (
+        <div className="unixDateDemo__output">
+          {results.map(({ fn, utc, tz }) => (
+            <div key={fn} className="unixDateDemo__outputGroup">
+              <p className="unixDateDemo__outputFnName">{FN_LABELS[fn]}</p>
+              <p>
+                <span className="unixDateDemo__outputLabel">UTC:</span>{" "}
+                {utc || "—"}
+              </p>
+              <p>
+                <span className="unixDateDemo__outputLabel">{timeZone}:</span>{" "}
+                {tz || "—"}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

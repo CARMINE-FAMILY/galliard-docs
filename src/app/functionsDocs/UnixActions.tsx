@@ -79,8 +79,6 @@ export default function UnixActions() {
     },
   ];
 
-  // console.log(convertToUnix);
-
   return (
     <div className="container doc-content">
       <h1 className="titlePrimary">Utilidades de Fecha</h1>
