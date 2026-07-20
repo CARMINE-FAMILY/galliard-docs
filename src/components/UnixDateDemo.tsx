@@ -247,6 +247,7 @@ export function UnixDateDemo() {
             value={dateInput}
             setValue={handleDateChange}
             border={false}
+            fontLabel="OpenSansBold"
           />
         ) : (
           <InputTextGal
@@ -264,6 +265,7 @@ export function UnixDateDemo() {
           setValue={handleTzChange}
           options={TZ_OPTIONS}
           border={false}
+          fontLabel="OpenSansBold"
         />
 
         {/* ---------------------------------------------------------------- */}
@@ -305,7 +307,9 @@ export function UnixDateDemo() {
           <div className="unixDateDemo__output">
             {results.map(({ fn, utc, tz }) => (
               <div key={fn} className="unixDateDemo__outputGroup">
-                <p className="unixDateDemo__outputFnName">{FN_LABELS[fn]}</p>
+                <p className="unixDateDemo__outputFnName">
+                  <code>{FN_LABELS[fn]}</code>
+                </p>
                 <p>
                   <span className="unixDateDemo__outputLabel">UTC:</span>{" "}
                   {utc || "—"}

@@ -110,14 +110,22 @@
 
   // Nombre de la función, como mini-encabezado del bloque
   &__outputFnName {
-    font-weight: 700;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     margin-bottom: 0.4rem;
+
+    code {
+      font-family: OpenSansBold;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
   }
 
   // "UTC:" / "America/Mexico_City:" en negrita
   &__outputLabel {
     font-weight: 700;
+    font-family: OpenSansSemiBold;
   }
 
   .buttonResult {
