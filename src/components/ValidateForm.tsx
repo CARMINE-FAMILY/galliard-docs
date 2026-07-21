@@ -3,6 +3,8 @@ import { useState } from "react";
 import { InputTextGal, CheckBoxGal, ButtonGal } from "galliard-ui";
 import { validateFormsPatched } from "../hooks/useValidateExample";
 import type { ValidateProps } from "galliard-ui";
+import { useSelector } from "react-redux";
+import type { RootState } from "../store/store";
 
 // Componente chico para no repetir la lógica de "error vs correcto"
 // en cada campo. Reglas:
@@ -139,56 +141,90 @@ export function RegisterFormDemo() {
     setFormValid(isValid);
   };
 
+  const theme = useSelector((state: RootState) => state.theme);
+  const isDark = theme === "dark";
   /* -------------------------------- RENDER --------------------------------- */
 
   return (
     <div className="registerFormDemo">
-      <div className="registerFormDemo__field">
-        <InputTextGal
-          label="Nombre completo"
-          typeInput="text"
-          value={nombre}
-          setValue={setNombre}
-          border={false}
-          placeholder="Arturo Montaño"
-        />
-        <FieldFeedback
-          error={nombreError}
-          attempted={attempted}
-          isFilled={nombre.trim().length > 0}
-        />
+      <div className="registerFormDemo__row">
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Nombre completo"
+            typeInput="text"
+            value={nombre}
+            setValue={setNombre}
+            border={false}
+            placeholder="Arturo Montaño"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={nombreError}
+            attempted={attempted}
+            isFilled={nombre.trim().length > 0}
+          />
+        </div>
+
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Correo electrónico"
+            typeInput="email"
+            value={correo}
+            setValue={setCorreo}
+            border={false}
+            placeholder="correo@gamil.com"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={correoError}
+            attempted={attempted}
+            isFilled={correo.trim().length > 0}
+          />
+        </div>
       </div>
 
-      <div className="registerFormDemo__field">
-        <InputTextGal
-          label="Correo electrónico"
-          typeInput="email"
-          value={correo}
-          setValue={setCorreo}
-          border={false}
-          placeholder="correo@gamil.com"
-        />
-        <FieldFeedback
-          error={correoError}
-          attempted={attempted}
-          isFilled={correo.trim().length > 0}
-        />
-      </div>
+      <div className="registerFormDemo__row">
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Teléfono"
+            typeInput="text"
+            value={telefono}
+            setValue={setTelefono}
+            border={false}
+            placeholder="222 123 4567"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={telefonoError}
+            attempted={attempted}
+            isFilled={telefono.trim().length > 0}
+          />
+        </div>
 
-      <div className="registerFormDemo__field">
-        <InputTextGal
-          label="Teléfono"
-          typeInput="text"
-          value={telefono}
-          setValue={setTelefono}
-          border={false}
-          placeholder="222 123 4567"
-        />
-        <FieldFeedback
-          error={telefonoError}
-          attempted={attempted}
-          isFilled={telefono.trim().length > 0}
-        />
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Edad"
+            typeInput="number"
+            value={edad}
+            setValue={setEdad}
+            border={false}
+            placeholder="19"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={edadError}
+            attempted={attempted}
+            isFilled={edad.trim().length > 0}
+          />
+        </div>
       </div>
 
       <div className="registerFormDemo__row">
@@ -200,6 +236,10 @@ export function RegisterFormDemo() {
             setValue={setPassword}
             border={false}
             placeholder="arturo157*"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+            iconColorPass={isDark ? "#ffffff" : undefined}
           />
           <FieldFeedback
             error={passwordError}
@@ -216,6 +256,10 @@ export function RegisterFormDemo() {
             setValue={setConfirmPassword}
             border={false}
             placeholder="arturo157*"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+            iconColorPass={isDark ? "#ffffff" : undefined}
           />
           <FieldFeedback
             error={confirmPasswordError}
@@ -225,49 +269,39 @@ export function RegisterFormDemo() {
         </div>
       </div>
 
-      <div className="registerFormDemo__field">
-        <InputTextGal
-          label="Edad"
-          typeInput="number"
-          value={edad}
-          setValue={setEdad}
-          border={false}
-          placeholder="19"
-        />
-        <FieldFeedback
-          error={edadError}
-          attempted={attempted}
-          isFilled={edad.trim().length > 0}
-        />
-      </div>
+      <div className="registerFormDemo__row">
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Sitio web (opcional)"
+            typeInput="text"
+            value={sitioWeb}
+            setValue={setSitioWeb}
+            border={false}
+            placeholder="https://tu-url.com"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={sitioWebError}
+            attempted={attempted}
+            isFilled={sitioWeb.trim().length > 0}
+          />
+        </div>
 
-      <div className="registerFormDemo__field">
-        <InputTextGal
-          label="Sitio web (opcional)"
-          typeInput="text"
-          value={sitioWeb}
-          setValue={setSitioWeb}
-          border={false}
-          placeholder="https://tu-url.com"
-        />
-        <FieldFeedback
-          error={sitioWebError}
-          attempted={attempted}
-          isFilled={sitioWeb.trim().length > 0}
-        />
-      </div>
-
-      <div className="registerFormDemo__field">
-        <CheckBoxGal
-          label="Acepto los términos y condiciones"
-          value={aceptaTerminos}
-          setValue={setAceptaTerminos}
-        />
-        <FieldFeedback
-          error={terminosError}
-          attempted={attempted}
-          isFilled={aceptaTerminos === true}
-        />
+        <div className="registerFormDemo__field registerFormDemo__terms">
+          <CheckBoxGal
+            label="Acepto los términos y condiciones"
+            value={aceptaTerminos}
+            setValue={setAceptaTerminos}
+            textColor={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={terminosError}
+            attempted={attempted}
+            isFilled={aceptaTerminos === true}
+          />
+        </div>
       </div>
 
       <ButtonGal

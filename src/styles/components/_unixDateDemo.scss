@@ -114,13 +114,14 @@
   &__outputFnName {
     font-size: 1.8rem;
     margin-bottom: 0.4rem;
+    font-family: OpenSansSemiBold;
+    color: #fff;
     code {
       font-weight: 700;
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
       display: inline-block;
     }
-    @include inline-code;
   }
 
   // "UTC:" / "America/Mexico_City:" en negrita
@@ -131,5 +132,23 @@
 
   .buttonResult {
     height: fit-content;
+  }
+
+  .dropdownOptionDark {
+    background-color: #121212 !important;
+    color: #ffffff !important;
+  }
+
+  .dropdownInputDark svg {
+    color: #ffffff !important;
+  }
+
+  // ==========================
+  // Ícono nativo del calendario (input datetime-local)
+  // ==========================
+  [data-theme="dark"]
+    &
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
   }
 }

@@ -8,6 +8,8 @@ import {
 } from "galliard-ui/actions";
 import { DropDownGal, InputTextGal, ButtonGal } from "galliard-ui";
 import type { OptionsDropModel } from "galliard-ui";
+import { useSelector } from "react-redux";
+import type { RootState } from "../store/store";
 
 /* -------------------------------------------------------------------------- */
 /*                                    TIPOS                                   */
@@ -187,6 +189,9 @@ export function UnixDateDemo() {
     setRevealed(false);
   };
 
+  const theme = useSelector((state: RootState) => state.theme);
+  const isDark = theme === "dark";
+
   /* -------------------------------- RENDER --------------------------------- */
 
   return (
@@ -248,6 +253,9 @@ export function UnixDateDemo() {
             setValue={handleDateChange}
             border={false}
             fontLabel="OpenSansBold"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
           />
         ) : (
           <InputTextGal
@@ -256,6 +264,9 @@ export function UnixDateDemo() {
             value={unixInput}
             setValue={handleUnixChange}
             border={false}
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
           />
         )}
 
@@ -266,6 +277,12 @@ export function UnixDateDemo() {
           options={TZ_OPTIONS}
           border={false}
           fontLabel="OpenSansBold"
+          bgColor={isDark ? "#121212" : undefined}
+          labelColor={isDark ? "#ffffff" : undefined}
+          textColor={isDark ? "#ffffff" : undefined}
+          iconsColor={isDark ? "#ffffff" : undefined}
+          customInputClass={isDark ? "dropdownInputDark" : undefined}
+          customOptionClass={isDark ? "dropdownOptionDark" : undefined}
         />
 
         {/* ---------------------------------------------------------------- */}

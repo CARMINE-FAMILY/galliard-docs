@@ -2,11 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
+  width: 100%;
   background-color: #bdfde834;
 
   &__row {
     display: flex;
-    gap: 1.6rem;
+    gap: 2.4rem;
+    width: 100%;
 
     .registerFormDemo__field {
       flex: 1;
@@ -20,7 +22,10 @@
     gap: 0.4rem;
   }
 
-  // Mensajes por campo (debajo de cada input)
+  &__terms {
+    justify-content: flex-start;
+  }
+
   &__error {
     margin: 0;
     font-size: 1.3rem;
@@ -33,7 +38,6 @@
     color: #16a34a;
   }
 
-  // Banner general al final del formulario
   &__banner {
     margin: 0;
     padding: 1.2rem 1.6rem;
@@ -54,5 +58,14 @@
 
   &__submit {
     align-self: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .registerFormDemo {
+    &__row {
+      flex-direction: column;
+      gap: 1.8rem;
+    }
   }
 }

@@ -17,7 +17,7 @@
 
   th,
   td {
-    padding:.9rem;
+    padding: 0.9rem;
     text-align: left;
     vertical-align: middle;
 
@@ -71,7 +71,7 @@
       code {
         display: inline-flex;
         align-items: center;
-        padding: .5rem; //bloque blanco deu que encierra las letras
+        padding: 0.5rem;
         background: #f3f4f6;
         border-radius: 0.6rem;
         font-family: "Fira Code", monospace;
@@ -144,4 +144,74 @@
 
 .tableWrapper::-webkit-scrollbar-track {
   background: transparent;
+}
+
+// ==========================
+// Tema oscuro
+// ==========================
+
+[data-theme="dark"] {
+  .tableWrapper {
+    border: 1px solid #656565;
+    background: #171717;
+  }
+
+  .table {
+    th,
+    td {
+      border-right: 1px solid #656565;
+    }
+
+    thead {
+      background: #171717;
+
+      th {
+        color: #ffffff;
+        border-bottom: 1px solid #656565;
+      }
+    }
+
+    tbody {
+      tr {
+        background: #3b3b3b;
+
+        &:hover {
+          background: #656565;
+        }
+      }
+
+      td {
+        color: #e0e0e0; // antes #818181 — texto principal legible
+        border-bottom: 1px solid #656565;
+
+        code {
+          background: #171717;
+          border: 1px solid #656565;
+          color: #e0e0e0; // igual, para que se lea el "command"/"string"
+        }
+      }
+    }
+  }
+
+  .striped {
+    tbody tr:nth-child(even) {
+      background: #171717;
+    }
+
+    tbody tr:nth-child(even):hover {
+      background: #656565;
+    }
+  }
+
+  .bordered {
+    border: 1px solid #656565;
+  }
+
+  .emptyCell {
+    color: #818181; // aquí sí se queda el gris apagado, es texto de "sin datos"
+  }
+
+  .tableWrapper::-webkit-scrollbar-thumb {
+    background: #656565;
+  }
 }
