@@ -150,6 +150,7 @@ export function RegisterFormDemo() {
           value={nombre}
           setValue={setNombre}
           border={false}
+          placeholder="Arturo Montaño"
         />
         <FieldFeedback
           error={nombreError}
@@ -165,6 +166,7 @@ export function RegisterFormDemo() {
           value={correo}
           setValue={setCorreo}
           border={false}
+          placeholder="correo@gamil.com"
         />
         <FieldFeedback
           error={correoError}
@@ -180,6 +182,7 @@ export function RegisterFormDemo() {
           value={telefono}
           setValue={setTelefono}
           border={false}
+          placeholder="222 123 4567"
         />
         <FieldFeedback
           error={telefonoError}
@@ -196,6 +199,7 @@ export function RegisterFormDemo() {
             value={password}
             setValue={setPassword}
             border={false}
+            placeholder="arturo157*"
           />
           <FieldFeedback
             error={passwordError}
@@ -211,6 +215,7 @@ export function RegisterFormDemo() {
             value={confirmPassword}
             setValue={setConfirmPassword}
             border={false}
+            placeholder="arturo157*"
           />
           <FieldFeedback
             error={confirmPasswordError}
@@ -227,6 +232,7 @@ export function RegisterFormDemo() {
           value={edad}
           setValue={setEdad}
           border={false}
+          placeholder="19"
         />
         <FieldFeedback
           error={edadError}
@@ -242,6 +248,7 @@ export function RegisterFormDemo() {
           value={sitioWeb}
           setValue={setSitioWeb}
           border={false}
+          placeholder="https://tu-url.com"
         />
         <FieldFeedback
           error={sitioWebError}

@@ -3,11 +3,12 @@
     display: inline-flex;
     align-items: center;
     padding: 0.2rem 0.6rem;
-    background:#f3f4f6;
+    background: var(--code-bg); // antes: #f3f4f6
+    border: 1px solid var(--border-color);
     border-radius: 0.6rem;
     font-family: "Fira Code", monospace;
     font-size: 0.9em;
-    color: #37241f;
+    color: var(--primary-color); // antes: #37241f — usa tu color de marca en vez de un café random
     white-space: nowrap;
   }
 }

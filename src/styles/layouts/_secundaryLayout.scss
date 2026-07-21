@@ -1,11 +1,15 @@
 .docs-layout {
   display: flex;
   height: calc(100vh - 45px);
+  //Menu de la derecha 
+  background-color: var(--bg-color);
 
   .docs-content {
     flex: 1;
     min-width: 0;
     padding: 3.2rem 4rem;
     overflow-y: auto;
+    background-color: var(--bg-color);
+    color: var(--text-color);
   }
 }

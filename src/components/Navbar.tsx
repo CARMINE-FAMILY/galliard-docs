@@ -1,8 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState } from "../store/store";
+import { toggleTheme } from "../store/themeSlice";
 
 const Navbar: React.FC = () => {
+  const theme = useSelector((state: RootState) => state.theme);
+  const dispach = useDispatch();
+
+  const handleToggleTheme = () => {
+    dispach(toggleTheme());
+  };
+
   return (
     <nav className="navbar">
       <a href="/" className="navbar__brand">
@@ -22,7 +32,6 @@ const Navbar: React.FC = () => {
         <li>
           <NavLink to="/functionsDocs/unixactions">Functions</NavLink>
         </li>
-
       </ul>
 
       <div className="navbar__actions">
@@ -39,12 +48,16 @@ const Navbar: React.FC = () => {
         <a
           className="social"
           href="https://www.npmjs.com/package/galliard-ui"
-          title="NPM" 
+          title="NPM"
           target="_blank"
           rel="noopener nereferrer"
         >
           <Icon icon="devicon:npm" className="icon npm" />
         </a>
+
+        <button className="navbar__theme-toggle" onClick={handleToggleTheme}>
+          {theme === "dark" ? "Claro" : "Oscuro"}
+        </button>
       </div>
     </nav>
   );

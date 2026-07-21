@@ -4,7 +4,7 @@
   padding: 3.2rem 2rem;
   height: calc(100vh - 45px);
   overflow-y: auto;
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 1px solid var(--border-color);
 
   .toc-title {
     font-size: 1.2rem;
@@ -13,6 +13,7 @@
     text-transform: uppercase;
     opacity: 0.45;
     margin-bottom: 1.2rem;
+    color: var(--text-color);
   }
 
   ul {
@@ -29,7 +30,7 @@
       display: block;
       padding: 0.4rem 0;
       font-size: 1.4rem;
-      color: #212528;
+      color: var(--text-color);
       opacity: 0.6;
       text-decoration: none;
       border-left: 2px solid transparent;
@@ -53,9 +54,9 @@
 
     &.active a {
       opacity: 1;
-      color: #9a4c95;
+      color: var(--primary-color);
       font-weight: 600;
-      border-left-color: #9a4c95;
+      border-left-color: var(--primary-color);
     }
   }
 }

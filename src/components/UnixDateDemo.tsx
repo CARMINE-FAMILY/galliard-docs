@@ -308,7 +308,7 @@ export function UnixDateDemo() {
             {results.map(({ fn, utc, tz }) => (
               <div key={fn} className="unixDateDemo__outputGroup">
                 <p className="unixDateDemo__outputFnName">
-                  <code>{FN_LABELS[fn]}</code>
+                  <code className="inline-code">{FN_LABELS[fn]}</code>
                 </p>
                 <p>
                   <span className="unixDateDemo__outputLabel">UTC:</span>{" "}

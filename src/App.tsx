@@ -17,8 +17,16 @@ import ComponentPreview from "./app/componentsDocs/ComponentPreview";
 import UnixActions from "./app/functionsDocs/UnixActions";
 import OnClickOutside from "./app/functionsDocs/OnClickOutside";
 import ValidateForms from "./app/functionsDocs/ValidateForms";
+import { useSelector } from "react-redux";
+import type { RootState } from "./store/store";
+import { useEffect } from "react";
 
 function App() {
+  const theme = useSelector((state: RootState) => state.theme);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
   return (
     <BrowserRouter>
       <Routes>

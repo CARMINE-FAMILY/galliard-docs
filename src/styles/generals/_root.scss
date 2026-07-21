@@ -1,58 +1,33 @@
-
 @use "./vars" as *;
-// @use "./vars" as *;
 
 :root {
- 
-// :root {
-  
-
-  --bg: #{$background};
+  --bg-color: #{$background};
   --border: #{$border};
-
   --accent: #{$primary};
-  
-//   --bg: #{$background};
-//   --border: #{$border};
-
-  --code-bg: #f8f9fb70;
-//   --accent: #{$primary};
-
   --accent-bg: rgba(124, 58, 237, 0.1);
   --accent-border: rgba(198, 237, 58, 0.3);
-
-  --social-bg: rgba(248, 251, 248, 0.8);
-//   --code-bg: #f8f9fb70;
-
+  --social-bg: #fdf7fa;
   --shadow:
-    rgba(0, 0, 0, 0.08) 0 10px 15px -3px,
-    rgba(0, 0, 0, 0.04) 0 4px 6px -2px;
-//   --accent-bg: rgba(124, 58, 237, 0.1);
-//   --accent-border: rgba(198, 237, 58, 0.3);
+    rgba(0, 0, 0, 0.08) 0 10px 15px -3px, rgba(0, 0, 0, 0.04) 0 4px 6px -2px;
 
-  color: var(--text);
-  background: var(--bg);
-//   --social-bg: rgba(248, 251, 248, 0.8);
+  color: var(--text-color);
+  background: var(--bg-color);
 
-//   --shadow:
-//     rgba(0, 0, 0, 0.08) 0 10px 15px -3px,
-//     rgba(0, 0, 0, 0.04) 0 4px 6px -2px;
-
-//   color: var(--text);
-//   background: var(--bg);
-
- 
   letter-spacing: 0.18px;
-//   letter-spacing: 0.18px;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-//   font-synthesis: none;
-//   text-rendering: optimizeLegibility;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-// }
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --border: #3a3a3a;
+  --accent: #c17dbd;
+  --code-bg: #1e1e1e70;
+  --accent-bg: rgba(198, 141, 237, 0.15);
+  --accent-border: rgba(198, 141, 237, 0.4);
+  --social-bg: rgba(30, 30, 30, 0.8);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.3) 0 4px 6px -2px;
+}

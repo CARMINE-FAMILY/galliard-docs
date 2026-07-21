@@ -1,3 +1,5 @@
+@use "../generals/mixins" as *;
+
 .unixDateDemo {
   display: flex;
   flex-direction: column;
@@ -79,7 +81,7 @@
     flex-direction: column;
     gap: 2rem;
     padding: 1.6rem 2rem;
-    background-color: #e5e7eb;
+    background-color: #bdfde834;
     border-radius: 8px;
   }
 
@@ -112,14 +114,13 @@
   &__outputFnName {
     font-size: 1.8rem;
     margin-bottom: 0.4rem;
-
     code {
-      font-family: OpenSansBold;
       font-weight: 700;
       padding: 0.2rem 0.5rem;
       border-radius: 4px;
       display: inline-block;
     }
+    @include inline-code;
   }
 
   // "UTC:" / "America/Mexico_City:" en negrita
