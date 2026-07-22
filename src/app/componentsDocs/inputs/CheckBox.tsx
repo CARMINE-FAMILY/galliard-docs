@@ -374,7 +374,7 @@ export default function CheckBox() {
           label="Acepto"
           value={checks.error}
           setValue={setCheck("error")}
-          textSize={25}
+          textSize={20}
           errorMessage="Acepta para continuar"
         />
       </ComponentPreviewGal>

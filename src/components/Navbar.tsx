@@ -56,46 +56,20 @@ const Navbar: React.FC = () => {
         </a>
 
         <button
-          className="navbar__theme-toggle"
+          className="theme__icon"
           onClick={handleToggleTheme}
           role="switch"
           aria-checked={theme === "dark"}
           aria-label="Cambiar tema"
         >
-          <span className="navbar__theme-toggle-track">
-            <svg
-              className="navbar__theme-icon navbar__theme-icon--sun"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <circle
-                cx="12"
-                cy="12"
-                r="4"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-              <path
-                d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-            <svg
-              className="navbar__theme-icon navbar__theme-icon--moon"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <span className="navbar__theme-toggle-thumb" />
+          <span className="theme__icon-circle" />
+          <span className="theme__icon-rays">
+            <span />
+            <span />
+            <span />
+            <span />
           </span>
+          <span className="theme__icon-mask" />
         </button>
       </div>
     </nav>

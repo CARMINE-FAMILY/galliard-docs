@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BottomSheetGal, ComponentPreviewGal } from "galliard-ui";
+import { BottomSheetGal, ButtonGal, ComponentPreviewGal } from "galliard-ui";
 import { DataTable } from "../../components/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
@@ -235,13 +235,19 @@ export default function BottomSheet() {
           },
         ]}
       >
-        <button onClick={() => setOpenBasic(true)}>Abrir panel</button>
+        <ButtonGal
+          label="Abrir panel"
+          seeIcon={false}
+          action={() => setOpenBasic(true)}
+        />
         <BottomSheetGal
           isOpen={openBasic}
           setIsOpen={setOpenBasic}
           closeOnBackdropClick
         >
-          <div style={{ padding: "20px" }}>Contenido del panel</div>
+          <div style={{ padding: "20px", fontSize: "3.5rem" }}>
+            Contenido del panel
+          </div>
         </BottomSheetGal>
       </ComponentPreviewGal>
 
@@ -284,14 +290,20 @@ export default function BottomSheet() {
           },
         ]}
       >
-        <button onClick={() => setOpenDisapear(true)}>Abrir panel</button>
+        <ButtonGal
+          label="Abrir panel"
+          seeIcon={false}
+          action={() => setOpenDisapear(true)}
+        />
         <BottomSheetGal
           isOpen={openDisapear}
           setIsOpen={setOpenDisapear}
           canDisapear
           disapearPercent={20}
         >
-          <div style={{ padding: "20px" }}>Arrástrame hacia abajo</div>
+          <div style={{ padding: "20px", fontSize: "3.5rem" }}>
+            Arrástrame hacia abajo
+          </div>
         </BottomSheetGal>
       </ComponentPreviewGal>
 
@@ -339,7 +351,11 @@ export default function BottomSheet() {
           },
         ]}
       >
-        <button onClick={() => setOpenLimits(true)}>Abrir panel</button>
+        <ButtonGal
+          label="Abrir panel"
+          seeIcon={false}
+          action={() => setOpenLimits(true)}
+        />
         <BottomSheetGal
           isOpen={openLimits}
           setIsOpen={setOpenLimits}
@@ -348,7 +364,7 @@ export default function BottomSheet() {
           maxHeightPercentPosition={90}
           closeOnBackdropClick
         >
-          <div style={{ padding: "20px" }}>
+          <div style={{ padding: "20px", fontSize: "3.5rem" }}>
             Arrastra para expandir o reducir
           </div>
         </BottomSheetGal>
@@ -382,14 +398,20 @@ export default function BottomSheet() {
           },
         ]}
       >
-        <button onClick={() => setOpenWidth(true)}>Abrir panel</button>
+        <ButtonGal
+          label="Abrir panel"
+          seeIcon={false}
+          action={() => setOpenWidth(true)}
+        />
         <BottomSheetGal
           isOpen={openWidth}
           setIsOpen={setOpenWidth}
           widthPercent="60%"
           closeOnBackdropClick
         >
-          <div style={{ padding: "20px" }}>Panel más angosto</div>
+          <div style={{ padding: "20px", fontSize: "3.5rem" }}>
+            Panel más angosto
+          </div>
         </BottomSheetGal>
       </ComponentPreviewGal>
 
@@ -437,7 +459,11 @@ export default function BottomSheet() {
           },
         ]}
       >
-        <button onClick={() => setOpenBackdrop(true)}>Abrir panel</button>
+        <ButtonGal
+          label="Abrir panel"
+          seeIcon={false}
+          action={() => setOpenBackdrop(true)}
+        />
         <BottomSheetGal
           isOpen={openBackdrop}
           setIsOpen={setOpenBackdrop}
@@ -446,7 +472,7 @@ export default function BottomSheet() {
           backdropBlur={5}
           backdropColor="#00000050"
         >
-          <div style={{ padding: "20px" }}>
+          <div style={{ padding: "20px", fontSize: "3.5rem" }}>
             Click fuera del panel para cerrar
           </div>
         </BottomSheetGal>
@@ -496,7 +522,11 @@ export default function BottomSheet() {
           },
         ]}
       >
-        <button onClick={() => setOpenAppearance(true)}>Abrir panel</button>
+        <ButtonGal
+          label="Abrir panel"
+          seeIcon={false}
+          action={() => setOpenAppearance(true)}
+        />
         <BottomSheetGal
           isOpen={openAppearance}
           setIsOpen={setOpenAppearance}
@@ -505,7 +535,7 @@ export default function BottomSheet() {
           draggElementColor="#fff"
           closeOnBackdropClick
         >
-          <div style={{ padding: "20px", color: "#fff" }}>
+          <div style={{ padding: "20px", color: "#fff", fontSize: "3.5rem" }}>
             Panel con tema oscuro
           </div>
         </BottomSheetGal>
@@ -568,7 +598,11 @@ export default function BottomSheet() {
           },
         ]}
       >
-        <button onClick={() => setOpenCustom(true)}>Abrir panel</button>
+        <ButtonGal
+          label="Abrir panel"
+          seeIcon={false}
+          action={() => setOpenCustom(true)}
+        />
         <BottomSheetGal
           isOpen={openCustom}
           setIsOpen={setOpenCustom}
@@ -577,11 +611,13 @@ export default function BottomSheet() {
           customBackdropClass="bsgDocsBackdrop"
           closeOnBackdropClick
         >
-          <div style={{ padding: "20px" }}>Panel con clases personalizadas</div>
+          <div style={{ padding: "20px", fontSize: "3.5rem" }}>
+            Panel con clases personalizadas
+          </div>
         </BottomSheetGal>
       </ComponentPreviewGal>
 
-      <DocsPagination/>
+      <DocsPagination />
     </div>
   );
 }

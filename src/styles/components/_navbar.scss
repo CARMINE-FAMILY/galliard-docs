@@ -134,7 +134,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    font-size: 1rem;
+    font-size: .8rem;
     height: 100%;
 
     .social {
@@ -145,7 +145,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 100%;
+      border-radius: 80%;
       transition: all 0.3s ease;
 
       .icon {
@@ -168,70 +168,117 @@
   }
 }
 
-// ========================
-// Toggle de tema (sol/luna)
-// ========================
-.navbar__theme-toggle {
-  background: none;
+/* <reset-style> ============================ */
+button {
   border: none;
+  background: none;
   padding: 0;
+  margin: 0;
   cursor: pointer;
-  flex-shrink: 0;
-
-  &-track {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 5.6rem;
-    height: 2.8rem;
-    padding: 0 0.6rem;
-    border-radius: 999px;
-    background: linear-gradient(135deg, $primary, $activeroute);
-    transition: background 0.3s ease;
-  }
-
-  &-thumb {
-    position: absolute;
-    top: 0.3rem;
-    left: 0.3rem;
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 50%;
-    background: #ffffff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  &[aria-checked="true"] .navbar__theme-toggle-thumb {
-    transform: translateX(2.8rem);
-  }
+  font-family: inherit;
 }
 
-.navbar__theme-icon {
+/* <main-style> ============================ */
+.theme__icon {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  overflow: hidden;
   position: relative;
-  z-index: 1;
-  width: 1.6rem;
-  height: 1.6rem;
-  color: #ffffff;
 
-  &--sun {
-    opacity: 1;
-    transition: opacity 0.2s ease;
+  &-circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 24px;
+    border: 1px solid #212121;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 204, 0);
+    transition: width 0.4s, height 0.4s, border 0.4s, background-color 0.4s;
+    z-index: 10;
   }
 
-  &--moon {
-    opacity: 0.6;
-    transition: opacity 0.2s ease;
+  &[aria-checked="true"] &-circle {
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgb(245, 245, 247);
+    background-color: rgb(245, 245, 247);
   }
-}
 
-.navbar__theme-toggle[aria-checked="true"] .navbar__theme-icon--sun {
-  opacity: 0.6;
-}
+  &-rays {
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s;
 
-.navbar__theme-toggle[aria-checked="true"] .navbar__theme-icon--moon {
-  opacity: 1;
+    span {
+      display: block;
+      border-radius: 2px;
+      position: relative;
+      background-color: rgb(255, 204, 0);
+    }
+
+    span:nth-child(1) {
+      width: 2px;
+      height: 24px;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    span:nth-child(2) {
+      width: 24px;
+      height: 2px;
+      top: -54%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    span:nth-child(3) {
+      width: 24px;
+      height: 2px;
+      top: -60%;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    span:nth-child(4) {
+      width: 24px;
+      height: 2px;
+      top: -70%;
+      left: 50%;
+      transform: translateX(-50%) rotate(-45deg);
+    }
+  }
+
+  &[aria-checked="true"] &-rays {
+    transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
+  }
+
+  &-mask {
+    width: 20px;
+    height: 20px;
+    border-radius: 24px;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    background-color: #212121;
+    transition: top 0.4s, left 0.4s;
+    transition-delay: 0.2s;
+    z-index: 20;
+  }
+
+  &[aria-checked="true"] &-mask {
+    top: 35%;
+    left: 40%;
+  }
 }
 
 @keyframes rainbow {

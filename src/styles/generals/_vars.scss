@@ -46,6 +46,7 @@ $prueba2: #3d4348;
   --primary-color: #{$primary};
   --border-color: #{$border};
   --activeroute-color: #{$activeroute};
+  --shadow-color: rgba(33, 37, 40, 0.4);
 }
 
 [data-theme="dark"] {
@@ -54,4 +55,5 @@ $prueba2: #3d4348;
   --primary-color: #c17dbd;
   --border-color: #3a3a3a;
   --activeroute-color: #b06bac;
+  --shadow-color: rgba(240, 240, 240, 0.15);
 }
