@@ -10,6 +10,7 @@
   height: calc(100vh - 45px);
   width: 100%;
   position: relative;
+  background: var(--bg-color);
 
   &__title {
     font-family: OpenSansExtraBold;

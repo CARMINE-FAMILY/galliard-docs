@@ -23,19 +23,26 @@ const App = () => (
 `;
 
   return (
-    <section className="codeContainer">
-      <div className="headerCodeContainer">
-        <h1 className="title">Uso Basico</h1>
-        <p className="subtitle">
-          Importa los componentes y comienza a construir en segundos
-        </p>
-      </div>
+    <section className="codeContainerPlus">
+      <section className="codeContainer">
+        <div className="headerCodeContainer">
+          <h1 className="title">Uso Basico</h1>
+          <p className="subtitle">
+            Importa los componentes y comienza a construir en segundos
+          </p>
+        </div>
 
-      <CodeBlockGal
-      tabs={[
-        {label: "Ejemplo", code:code, theme:"blue", customTheme: {fontSize:"14px"},}
-      ]}
-      />
+        <CodeBlockGal
+          tabs={[
+            {
+              label: "Ejemplo",
+              code: code,
+              theme: "blue",
+              customTheme: { fontSize: "14px" },
+            },
+          ]}
+        />
+      </section>
     </section>
   );
 }

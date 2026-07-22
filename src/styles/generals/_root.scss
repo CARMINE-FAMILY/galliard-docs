@@ -2,6 +2,7 @@
 
 :root {
   --bg-color: #{$background};
+  --text-color: #{$blackcake};
   --border: #{$border};
   --accent: #{$primary};
   --accent-bg: rgba(124, 58, 237, 0.1);
@@ -21,7 +22,8 @@
 }
 
 [data-theme="dark"] {
-  --bg-color: #121212;
+  --bg-color: #{$blackcake};
+  --text-color: #f0f0f0;
   --border: #3a3a3a;
   --accent: #c17dbd;
   --code-bg: #1e1e1e70;

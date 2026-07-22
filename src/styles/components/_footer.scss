@@ -24,6 +24,21 @@
   background-size: 100%;
   background-repeat: no-repeat;
 
+  [data-theme="dark"] & {
+    background: linear-gradient(
+      to bottom,
+      #fdf7fa 0%,
+      #f8f2f6 3%,
+      #f1eaef 6%,
+      #e4dce3 9%,
+      #c7c0c8 12%,
+      #8a878c 25%,
+      #4a4d50 30%,
+      $blackcake 35%,
+      $blackcake 100%
+    );
+  }
+
   .cta {
     display: flex;
     flex-direction: column;
@@ -58,10 +73,6 @@
       line-height: 1;
       display: flex;
       align-items: center;
-    }
-
-    &:hover {
-      transform: translateY(-2px);
     }
   }
 

@@ -28,6 +28,22 @@
   background-size: 100%;
   background-repeat: no-repeat;
 
+  [data-theme="dark"] & {
+    background: linear-gradient(
+      to bottom,
+      $blackcake 0%,
+      $blackcake 10%,
+      #4a4d50 15%,
+      #8a878c 20%,
+      #c7c0c8 25%,
+      #e4dce3 30%,
+      #f1eaef 35%,
+      #f8f2f6 40%,
+      #fdf7fa 45%,
+      #fdf7fa 100%
+    );
+  }
+
   .headerCardContainer {
     margin-bottom: 4rem;
 
@@ -41,7 +57,7 @@
 
     .subtitle {
       font-size: 2.2rem;
-      color: $background;
+      color: $text2;
       margin: 0;
       text-align: center;
       font-family: OpenSansItalic;
@@ -58,6 +74,44 @@
     width: 100%;
     height: auto;
     gap: 2.4rem;
+
+    .cardComponent {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background: #2f3438; // fijo, no depende del tema
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2.4rem 2rem;
+      width: 260px;
+      transition: border-color 0.2s ease;
+
+      &:hover {
+        border-color: var(--primary-color);
+      }
+
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        background: $background; // rosa clarito, fijo también
+        margin-bottom: 1.6rem;
+
+        .iconContainer {
+          font-size: 2.4rem;
+          color: $primary1; // morado, para contraste sobre el fondo claro del badge
+        }
+      }
+
+      .detail {
+        p {
+          color: #d8d8d8; // texto claro legible sobre el fondo oscuro fijo
+        }
+      }
+    }
   }
 
   .detail {
