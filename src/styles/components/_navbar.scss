@@ -40,11 +40,12 @@
       height: 30px;
       border-radius: 10px;
       background: $primary;
-      color: $background;
-      font-size: 2rem;
-      font-weight: 700;
       transition: transform 0.3s ease;
-      gap: 1px;
+
+      img {
+        width: 22px;
+        height: 22px;
+      }
 
       &:hover {
         transform: rotate(-9deg) scale(1.05);
@@ -57,6 +58,7 @@
       font-family: OpenSansExtraBold;
     }
   }
+
   // ========================
   // Navegación central
   // ========================
@@ -134,7 +136,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    font-size: .8rem;
+    font-size: 0.8rem;
     height: 100%;
 
     .social {
@@ -196,7 +198,11 @@ button {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgb(255, 204, 0);
-    transition: width 0.4s, height 0.4s, border 0.4s, background-color 0.4s;
+    transition:
+      width 0.4s,
+      height 0.4s,
+      border 0.4s,
+      background-color 0.4s;
     z-index: 10;
   }
 
@@ -270,7 +276,9 @@ button {
     left: 100%;
     transform: translateY(-50%);
     background-color: #212121;
-    transition: top 0.4s, left 0.4s;
+    transition:
+      top 0.4s,
+      left 0.4s;
     transition-delay: 0.2s;
     z-index: 20;
   }

@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../store/store";
 import { toggleTheme } from "../store/themeSlice";
+import HelmetLogo from "../assets/logo-helmet.svg";
 
 const Navbar: React.FC = () => {
   const theme = useSelector((state: RootState) => state.theme);
@@ -16,7 +17,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <a href="/" className="navbar__brand">
-        <span className="logo">G</span>
+        <span className="logo"><img src={HelmetLogo} alt="Galliard UI"/></span>
         <span className="title">Galliard UI</span>
       </a>
 
