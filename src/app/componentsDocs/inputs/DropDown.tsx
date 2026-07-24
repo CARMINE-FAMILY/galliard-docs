@@ -11,6 +11,26 @@ import { DocsPagination } from "../../../components/DocsPagination";
 
 export default function DropDown() {
   const [selected, setSelected] = useState<OptionsDropModel | null>(null);
+  const [selectedBasic, setSelectedBasic] = useState<OptionsDropModel | null>(
+    null,
+  );
+  const [selectedOrientation, setSelectedOrientation] =
+    useState<OptionsDropModel | null>(null);
+  const [selectedHorV, setSelectedHorV] = useState<OptionsDropModel | null>(
+    null,
+  );
+  const [selectedIcons, setSelectedIcons] = useState<OptionsDropModel | null>(
+    null,
+  );
+  const [selectedSize, setSelectedSize] = useState<OptionsDropModel | null>(
+    null,
+  );
+  const [selectedError, setSelectedError] = useState<OptionsDropModel | null>(
+    null,
+  );
+  const [selectedCustom, setSelectedCustom] = useState<OptionsDropModel | null>(
+    null,
+  );
 
   const opciones: OptionsDropModel[] = [
     { valueOption: "manzana", text: "Manzana" },
@@ -385,8 +405,8 @@ export default function DropDown() {
       >
         <DropDownGal
           label="Fruta"
-          value={selected}
-          setValue={setSelected}
+          value={selectedBasic}
+          setValue={setSelectedBasic}
           options={opciones}
         />
       </ComponentPreviewGal>
@@ -408,7 +428,7 @@ export default function DropDown() {
             label: "JSX",
             language: "jsx",
             code: `
-        <DropDownGal label="Bottom" options={opciones} orientation="bottom value={selected} setValue={setSelected}" />
+        <DropDownGal label="Bottom" options={opciones} orientation="bottom" value={selected} setValue={setSelected} />
         <DropDownGal label="Top" options={opciones} orientation="top" value={selected} setValue={setSelected}/>
         <DropDownGal label="Left" options={opciones} orientation="left" value={selected} setValue={setSelected}/>
         <DropDownGal label="Right" options={opciones} orientation="right" value={selected} setValue={setSelected}/>`,
@@ -428,29 +448,29 @@ export default function DropDown() {
           label="Bottom"
           options={opciones}
           orientation="bottom"
-          value={selected}
-          setValue={setSelected}
+          value={selectedOrientation}
+          setValue={setSelectedOrientation}
         />
         <DropDownGal
           label="Top"
           options={opciones}
           orientation="top"
-          value={selected}
-          setValue={setSelected}
+          value={selectedOrientation}
+          setValue={setSelectedOrientation}
         />
         <DropDownGal
           label="Left"
           options={opciones}
           orientation="left"
           value={selected}
-          setValue={setSelected}
+          setValue={setSelectedOrientation}
         />
         <DropDownGal
           label="Right"
           options={opciones}
           orientation="right"
-          value={selected}
-          setValue={setSelected}
+          value={selectedOrientation}
+          setValue={setSelectedOrientation}
         />
       </ComponentPreviewGal>
 
@@ -485,15 +505,15 @@ export default function DropDown() {
           label="Vertical"
           options={opciones}
           HorV="vertical"
-          value={selected}
-          setValue={setSelected}
+          value={selectedHorV}
+          setValue={setSelectedHorV}
         />
         <DropDownGal
           label="Horizontal"
           options={opciones}
           HorV="horizontal"
-          value={selected}
-          setValue={setSelected}
+          value={selectedHorV}
+          setValue={setSelectedHorV}
         />
       </ComponentPreviewGal>
 
@@ -558,8 +578,8 @@ export default function DropDown() {
           icon="tabler:apple"
           seeOptionsIcons
           options={opcionesConIconos}
-          value={selected}
-          setValue={setSelected}
+          value={selectedIcons}
+          setValue={setSelectedIcons}
         />
       </ComponentPreviewGal>
 
@@ -602,36 +622,36 @@ export default function DropDown() {
           label="Ancho"
           options={opciones}
           width={320}
-          value={selected}
-          setValue={setSelected}
+          value={selectedSize}
+          setValue={setSelectedSize}
         />
         <DropDownGal
           label="Alto"
           options={opciones}
           height={55}
-          value={selected}
-          setValue={setSelected}
+          value={selectedSize}
+          setValue={setSelectedSize}
         />
         <DropDownGal
           label="Sin borde"
           options={opciones}
           border={false}
-          value={selected}
-          setValue={setSelected}
+          value={selectedSize}
+          setValue={setSelectedSize}
         />
         <DropDownGal
           label="Con sombra"
           options={opciones}
           shadow
-          value={selected}
-          setValue={setSelected}
+          value={selectedSize}
+          setValue={setSelectedSize}
         />
         <DropDownGal
           label="Redondeado"
           options={opciones}
           rounded="full"
-          value={selected}
-          setValue={setSelected}
+          value={selectedSize}
+          setValue={setSelectedSize}
         />
       </ComponentPreviewGal>
 
@@ -677,8 +697,8 @@ export default function DropDown() {
           label="Fruta"
           options={opciones}
           errorMessage="Debes seleccionar una opción"
-          value={selected}
-          setValue={setSelected}
+          value={selectedError}
+          setValue={setSelectedError}
         />
       </ComponentPreviewGal>
 
