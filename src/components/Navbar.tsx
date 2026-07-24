@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../store/store";
 import { toggleTheme } from "../store/themeSlice";
-import icon from "../assets/icon.webp";
+import icon from "../../public/logo/pin.webp";
 
 const Navbar: React.FC = () => {
   const theme = useSelector((state: RootState) => state.theme);
