@@ -50,6 +50,12 @@ export const sidebarData: SidebarGroupType[] = [
     ],
   },
   {
+    title: "Modals",
+    items: [
+      {label: "BottomSheet", path: "/modalsDocs/BottomSheet"},
+    ],
+  },
+  {
     title: "Functions",
     items: [
       { label: "UnixActions", path: "/functionsDocs/unixactions" },

@@ -10,10 +10,10 @@ import InputFile from "./app/componentsDocs/inputs/InputFile";
 import InputRadio from "./app/componentsDocs/inputs/InputRadio";
 import InputText from "./app/componentsDocs/inputs/InputText";
 import TextArea from "./app/componentsDocs/inputs/TextArea";
-import BottomSheet from "./app/componentsDocs/BottomSheet";
 import CopyText from "./app/componentsDocs/CopyText";
 import CodeBlock from "./app/componentsDocs/CodeBlock";
 import ComponentPreview from "./app/componentsDocs/ComponentPreview";
+import BottomSheet from "./app/modalsDocs/BottomSheet";
 import UnixActions from "./app/functionsDocs/UnixActions";
 import OnClickOutside from "./app/functionsDocs/OnClickOutside";
 import ValidateForms from "./app/functionsDocs/ValidateForms";
@@ -63,29 +63,31 @@ function App() {
               path="/componentsDocs/inputs/textarea"
               element={<TextArea />}
             />
-            <Route
-              path="/componentsDocs/bottomsheet"
-              element={<BottomSheet />}
-            />
-            <Route 
-              path="/componentsDocs/copytext" 
-              element={<CopyText />} 
-            />
 
-            <Route 
-              path="/componentsDocs/codeblock" 
-              element={<CodeBlock />} 
-            />
-            
+            <Route path="/componentsDocs/copytext" element={<CopyText />} />
+
+            <Route path="/componentsDocs/codeblock" element={<CodeBlock />} />
+
             <Route
               path="/componentsDocs/componentpreview"
               element={<ComponentPreview />}
             />
+            {/* Tercera parte documentacion de modals */}
+            <Route path="/modalsDocs/bottomsheet" element={<BottomSheet />} />
 
-            {/* Tercera parte documentacion de funciones */}
-            <Route path="/functionsDocs/unixactions" element={<UnixActions />} />
-            <Route path="/functionsDocs/onclickoutside" element={<OnClickOutside />} />
-            <Route path="/functionsDocs/validateforms" element={<ValidateForms />} />
+            {/* Cuarta parte documentacion de funciones */}
+            <Route
+              path="/functionsDocs/unixactions"
+              element={<UnixActions />}
+            />
+            <Route
+              path="/functionsDocs/onclickoutside"
+              element={<OnClickOutside />}
+            />
+            <Route
+              path="/functionsDocs/validateforms"
+              element={<ValidateForms />}
+            />
           </Route>
           <Route path="/" element={<LandingScreen />} />
         </Route>

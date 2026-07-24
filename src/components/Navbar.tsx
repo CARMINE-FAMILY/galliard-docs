@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../store/store";
 import { toggleTheme } from "../store/themeSlice";
-import icon from "../../public/logo/pin.webp";
+import logo from "../../public/logo/pin.webp";
 
 const Navbar: React.FC = () => {
   const theme = useSelector((state: RootState) => state.theme);
@@ -16,10 +16,10 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar">
-      <a href="/" className="navbar__brand">
-        <span className="logo"><img src={icon} alt="Galliard UI"/></span>
+      <NavLink to="/" className="navbar__brand">
+        <img className="logo" src={logo} alt="Galliard UI"/>
         <span className="title">Galliard UI</span>
-      </a>
+      </NavLink>
 
       <ul className="navbar__links">
         <li>
@@ -28,6 +28,10 @@ const Navbar: React.FC = () => {
 
         <li>
           <NavLink to="/componentsDocs/button">Components</NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/modalsDocs/bottomsheet">Modals</NavLink>
         </li>
 
         <li>

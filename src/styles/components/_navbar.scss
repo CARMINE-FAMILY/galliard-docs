@@ -3,6 +3,7 @@
 .navbar {
   width: 100%;
   height: 45px;
+  max-height: 45px;
   display: grid;
   grid-template-columns: auto 1fr auto; // izq y der según su contenido, centro absorbe el resto
   align-items: center;
@@ -30,21 +31,14 @@
     color: $primary;
     font-weight: 700;
     text-decoration: none;
-    justify-self: start;
+    height: 30px;
+    // justify-self: start;
 
     .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 25px;
-      height: 25px;
-      border-radius: 10px;
       transition: transform 0.3s ease;
-
-      img {
-        width: 25px;
-        height: 25px;
-      }
+      height: 100%;
+      width: auto;
+      position: relative;
 
       &:hover {
         transform: rotate(-9deg) scale(1.05);
@@ -139,8 +133,8 @@
     height: 100%;
 
     .social {
-      width: auto;
-      height: 100%;
+      width: 28px; // tamaño fijo del contenedor circular
+      height: 28px;
       aspect-ratio: 1/1;
       overflow: hidden;
       display: flex;
@@ -150,15 +144,13 @@
       transition: all 0.3s ease;
 
       .icon {
-        height: 80%;
-        width: auto;
-        aspect-ratio: 1/1;
+        height: 20px; // tamaño fijo del ícono, ya no depende del navbar
+        width: 20px;
       }
 
       .npm {
-        height: 100%;
-        width: auto;
-        aspect-ratio: 1/1;
+        height: 22px;
+        width: 22px;
       }
 
       &:hover {
@@ -299,37 +291,37 @@ button {
 }
 
 @media (max-width: 576px) {
-  .navbar{
+  .navbar {
     .title {
       font-size: 2rem;
     }
-    a{
+    a {
       font-size: 2.1rem;
     }
   }
 }
 
-@media (max-width: 768px){
-  .navbar{
-    .title{
+@media (max-width: 768px) {
+  .navbar {
+    .title {
       font-size: 1.8rem;
     }
-    a{
+    a {
       font-size: 2.2rem;
     }
   }
 }
 
 @media (max-width: 360px) {
-  .navbar{
-    .title{
+  .navbar {
+    .title {
       font-size: 3rem;
     }
-    a{
+    a {
       font-size: 3rem;
     }
 
-    &__actions{
+    &__actions {
       height: 55%;
     }
   }
