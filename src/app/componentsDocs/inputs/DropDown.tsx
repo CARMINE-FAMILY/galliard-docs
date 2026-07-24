@@ -28,9 +28,6 @@ export default function DropDown() {
   const [selectedError, setSelectedError] = useState<OptionsDropModel | null>(
     null,
   );
-  const [selectedCustom, setSelectedCustom] = useState<OptionsDropModel | null>(
-    null,
-  );
 
   const opciones: OptionsDropModel[] = [
     { valueOption: "manzana", text: "Manzana" },
