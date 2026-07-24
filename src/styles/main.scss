@@ -1,0 +1,48 @@
+// GENERALS
+@use "./generals/root";
+@use "./generals/reset";
+@use "./generals/typography";
+@use "./generals//overridesGalliardUi";
+
+// LAYOUTS
+@use "./layouts/mainLayout";
+@use "./layouts/secundaryLayout";
+
+// COMPONENTS
+@use "./components/navbar";
+@use "./components/footer";
+@use "./components/cardComponent";
+@use "./components/codeComponent";
+@use "./components/sidebar/sidebar";
+@use "./components/unixDateDemo";
+@use "./components/validateFormsDemo";
+
+//Get Started
+@use "./getStartedDocs/installation";
+
+//ComponentsDocs
+@use "./componentsDocs/button";
+@use "./componentsDocs/inputs/checkBox";
+@use "./componentsDocs/inputs/dropDown";
+@use "./componentsDocs/inputs/inputFile";
+@use "./componentsDocs/inputs/inputRadio";
+@use "./componentsDocs/inputs/inputText";
+@use "./componentsDocs/inputs/textArea";
+@use "./componentsDocs/bottomSheet";
+@use "./componentsDocs/copyText";
+@use "./componentsDocs/codeBlock";
+@use "./componentsDocs/componentPreview";
+
+// FunctionsDocs
+@use "./functionsDocs/unixActions";
+@use "./functionsDocs/onClickOutside";
+@use "./functionsDocs/validateForms";
+
+// PAGES
+@use "./pages/landingScreen";
+@use "./pages/tableOfContents";
+
+// Landing
+@use "./landing/hero";
+@use "./landing/cardContainer";
+@use "./landing/codeContainer";

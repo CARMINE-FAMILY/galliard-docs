@@ -1,0 +1,115 @@
+@use "../generals/vars" as *;
+
+.cardsContainer {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  padding: 5rem 20px;
+  padding-top: 230px;
+
+  background: linear-gradient(
+    to bottom,
+    #fdf7fa 0%,
+    #f8f2f6 4%,
+    #f1eaef 8%,
+    #e4dce3 12%,
+    #c7c0c8 16%,
+    #8a878c 20%,
+    #4a4d50 23%,
+    $blackcake 25%,
+    $blackcake 100%
+  );
+
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  [data-theme="dark"] & {
+    background: linear-gradient(
+      to bottom,
+      $blackcake 0%,
+      $blackcake 10%,
+      #4a4d50 15%,
+      #8a878c 20%,
+      #c7c0c8 25%,
+      #e4dce3 30%,
+      #f1eaef 35%,
+      #f8f2f6 40%,
+      #fdf7fa 45%,
+      #fdf7fa 100%
+    );
+  }
+
+  .headerCardContainer {
+    margin-bottom: 4rem;
+
+    .title {
+      font-family: OpenSansExtraBold;
+      font-size: 4.5rem;
+      color: $text;
+      margin: 0 0 0.4rem;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 2.2rem;
+      color: $text2;
+      margin: 0;
+      text-align: center;
+      font-family: OpenSansItalic;
+    }
+  }
+
+  // Solo layout: la card en sí vive en CardComponent.module.scss
+  .general {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    gap: 2.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardsContainer {
+    padding-top: 500px;
+    .headerCardContainer {
+      .title {
+        font-size: 5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .cardsContainer {
+    .headerCardContainer {
+      .title {
+        font-size: 5rem; // te faltaba la unidad "rem" aquí, ojo
+      }
+
+      .subtitle {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .cardsContainer {
+    padding-top: 250px;
+    .general {
+      grid-template-columns: repeat(
+        2,
+        1fr
+      ); // o el layout que quieras solo aquí
+    }
+  }
+}

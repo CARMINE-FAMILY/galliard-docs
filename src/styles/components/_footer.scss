@@ -1,0 +1,110 @@
+@use "../generals/vars" as *;
+
+.footer {
+  width: 100%;
+  padding-top: 230px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: linear-gradient(
+    to bottom,
+    $blackcake 0%,
+    $blackcake 25%,
+    #4a4d50 27%,
+    #8a878c 35%,
+    #c7c0c8 50%,
+    #e4dce3 65%,
+    #f1eaef 80%,
+    #f8f2f6 92%,
+    #fdf7fa 100%
+  );
+
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  [data-theme="dark"] & {
+    background: linear-gradient(
+      to bottom,
+      #fdf7fa 0%,
+      #f8f2f6 3%,
+      #f1eaef 6%,
+      #e4dce3 9%,
+      #c7c0c8 12%,
+      #8a878c 25%,
+      #4a4d50 30%,
+      $blackcake 35%,
+      $blackcake 100%
+    );
+  }
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    margin-bottom: 6rem;
+    padding: 5rem;
+
+    h2 {
+      font-family: OpenSansExtraBold;
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: $primary;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.8rem;
+      color: #b8860b;
+      margin-bottom: 2.5rem;
+    }
+
+    .icon {
+      color: $background !important;
+      font-size: 2.7rem;
+      transform: rotateY(180deg);
+    }
+
+    .label {
+      margin: 0;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .legal {
+      padding-block: 20px;
+      font-family: OpenSansMedium;
+      font-size: 1.7rem;
+    }
+  }
+
+  .container-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.7rem;
+
+    .icon {
+      color: $background !important;
+      font-size: 2.7rem;
+      transform: rotateY(180deg) rotate(-50deg);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: rotateY(180deg) translateY(-2px) rotate(30deg);
+      }
+    }
+  }
+}

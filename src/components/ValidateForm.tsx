@@ -1,0 +1,334 @@
+// src/components/demos/RegisterFormDemo.tsx
+import { useState } from "react";
+import { InputTextGal, CheckBoxGal, ButtonGal } from "galliard-ui";
+import { validateFormsPatched } from "../hooks/useValidateExample";
+import type { ValidateProps } from "galliard-ui";
+import { useSelector } from "react-redux";
+import type { RootState } from "../store/store";
+
+// Componente chico para no repetir la lógica de "error vs correcto"
+// en cada campo. Reglas:
+// - Si hay un mensaje de error, se muestra en rojo.
+// - Si no hay error, pero ya se intentó enviar (attempted) y el campo
+//   tiene contenido (isFilled), se muestra "✓ Dato correcto" en verde.
+// - Si no se ha intentado enviar todavía, no se muestra nada.
+function FieldFeedback({
+  error,
+  attempted,
+  isFilled,
+}: {
+  error: string;
+  attempted: boolean;
+  isFilled: boolean;
+}) {
+  if (error) {
+    return <p className="registerFormDemo__error">⚠ {error}</p>;
+  }
+  if (attempted && isFilled) {
+    return <p className="registerFormDemo__success">✔ Dato correcto</p>;
+  }
+  return null;
+}
+
+export function RegisterFormDemo() {
+  /* -------------------------------- ESTADO -------------------------------- */
+  const [nombre, setNombre] = useState("");
+  const [nombreError, setNombreError] = useState("");
+
+  const [correo, setCorreo] = useState("");
+  const [correoError, setCorreoError] = useState("");
+
+  const [telefono, setTelefono] = useState("");
+  const [telefonoError, setTelefonoError] = useState("");
+
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
+
+  const [edad, setEdad] = useState("");
+  const [edadError, setEdadError] = useState("");
+
+  const [sitioWeb, setSitioWeb] = useState("");
+  const [sitioWebError, setSitioWebError] = useState("");
+
+  const [aceptaTerminos, setAceptaTerminos] = useState(false);
+  const [terminosError, setTerminosError] = useState("");
+
+  // true en cuanto el usuario da clic en "Crear cuenta" al menos una
+  // vez, sin importar si la validación pasó o no. Se usa para decidir
+  // si ya toca mostrar "✓ Dato correcto" en los campos sin error.
+  const [attempted, setAttempted] = useState(false);
+
+  // true solo cuando TODOS los campos pasaron la validación. Controla
+  // el mensaje general de éxito al final del formulario.
+  const [formValid, setFormValid] = useState(false);
+
+  /* ------------------------------- HANDLERS -------------------------------- */
+
+  const handleSubmit = () => {
+    setNombreError("");
+    setCorreoError("");
+    setTelefonoError("");
+    setPasswordError("");
+    setConfirmPasswordError("");
+    setEdadError("");
+    setSitioWebError("");
+    setTerminosError("");
+
+    const validations: ValidateProps[] = [
+      {
+        value: nombre,
+        typeInput: "text",
+        nameInput: "Nombre completo",
+        minLength: 3,
+        maxLength: 50,
+        setError: setNombreError,
+      },
+      {
+        value: correo,
+        typeInput: "email",
+        nameInput: "Correo electrónico",
+        setError: setCorreoError,
+      },
+      {
+        value: telefono,
+        typeInput: "phone",
+        nameInput: "Teléfono",
+        setError: setTelefonoError,
+      },
+      {
+        value: password,
+        typeInput: "pass",
+        nameInput: "Contraseña",
+        setError: setPasswordError,
+      },
+      {
+        value: confirmPassword,
+        typeInput: "text",
+        nameInput: "Confirmar contraseña",
+        needBeEqualTo: password,
+        setError: setConfirmPasswordError,
+      },
+      {
+        value: Number(edad),
+        typeInput: "num",
+        nameInput: "Edad",
+        min: 18,
+        max: 120,
+        isInteger: true,
+        setError: setEdadError,
+      },
+      {
+        value: sitioWeb,
+        typeInput: "url",
+        nameInput: "Sitio web",
+        canBeNull: true,
+        setError: setSitioWebError,
+      },
+      {
+        value: aceptaTerminos,
+        typeInput: "bool",
+        nameInput: "Términos y condiciones",
+        mustBeTrue: true,
+        setError: setTerminosError,
+      },
+    ];
+
+    const isValid = validateFormsPatched(validations);
+    setAttempted(true);
+    setFormValid(isValid);
+  };
+
+  const theme = useSelector((state: RootState) => state.theme);
+  const isDark = theme === "dark";
+  /* -------------------------------- RENDER --------------------------------- */
+    console.log("theme:", theme, "isDark:", isDark);
+  return (
+
+    <div className="registerFormDemo">
+      <div className="registerFormDemo__row">
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Nombre completo"
+            typeInput="text"
+            value={nombre}
+            setValue={setNombre}
+            border={false}
+            placeholder="Arturo Montaño"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={nombreError}
+            attempted={attempted}
+            isFilled={nombre.trim().length > 0}
+          />
+        </div>
+
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Correo electrónico"
+            typeInput="email"
+            value={correo}
+            setValue={setCorreo}
+            border={false}
+            placeholder="correo@gamil.com"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={correoError}
+            attempted={attempted}
+            isFilled={correo.trim().length > 0}
+          />
+        </div>
+      </div>
+
+      <div className="registerFormDemo__row">
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Teléfono"
+            typeInput="text"
+            value={telefono}
+            setValue={setTelefono}
+            border={false}
+            placeholder="222 123 4567"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={telefonoError}
+            attempted={attempted}
+            isFilled={telefono.trim().length > 0}
+          />
+        </div>
+
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Edad"
+            typeInput="number"
+            value={edad}
+            setValue={setEdad}
+            border={false}
+            placeholder="19"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={edadError}
+            attempted={attempted}
+            isFilled={edad.trim().length > 0}
+          />
+        </div>
+      </div>
+
+      <div className="registerFormDemo__row">
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Contraseña"
+            typeInput="password"
+            value={password}
+            setValue={setPassword}
+            border={false}
+            placeholder="arturo157*"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+            iconColorPass={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={passwordError}
+            attempted={attempted}
+            isFilled={password.length > 0}
+          />
+        </div>
+
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Confirmar contraseña"
+            typeInput="password"
+            value={confirmPassword}
+            setValue={setConfirmPassword}
+            border={false}
+            placeholder="arturo157*"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+            iconColorPass={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={confirmPasswordError}
+            attempted={attempted}
+            isFilled={confirmPassword.length > 0}
+          />
+        </div>
+      </div>
+
+      <div className="registerFormDemo__row">
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Sitio web (opcional)"
+            typeInput="text"
+            value={sitioWeb}
+            setValue={setSitioWeb}
+            border={false}
+            placeholder="https://tu-url.com"
+            bgColor={isDark ? "#121212" : undefined}
+            textColor={isDark ? "#ffffff" : undefined}
+            iconColorL={isDark ? "#ffffff" : undefined}
+          />
+          <FieldFeedback
+            error={sitioWebError}
+            attempted={attempted}
+            isFilled={sitioWeb.trim().length > 0}
+          />
+        </div>
+
+        <div className="registerFormDemo__field registerFormDemo__terms">
+          <CheckBoxGal
+            label="Acepto los términos y condiciones"
+            value={aceptaTerminos}
+            setValue={setAceptaTerminos}
+            textColor={isDark ? "var(--text-color)" : undefined}
+            customLabelClass="cambio"
+            seeIcon={false}
+          />
+          <FieldFeedback
+            error={terminosError}
+            attempted={attempted}
+            isFilled={aceptaTerminos === true}
+          />
+        </div>
+      </div>
+
+      <ButtonGal
+        label="Crear cuenta"
+        action={handleSubmit}
+        styleType="ThemeBlue"
+        borderedStyle={false}
+        seeIcon={false}
+        customClassButton="registerFormDemo__submit"
+      />
+
+      {attempted && (
+        <p
+          className={
+            formValid
+              ? "registerFormDemo__banner registerFormDemo__banner--success"
+              : "registerFormDemo__banner registerFormDemo__banner--error"
+          }
+        >
+          {formValid
+            ? "✔ Todos los datos son correctos. Registro válido."
+            : "⚠ Hay campos con errores, revísalos arriba."}
+        </p>
+      )}
+    </div>
+  );
+}

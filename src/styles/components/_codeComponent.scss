@@ -1,0 +1,51 @@
+@use "../generals/vars" as *;
+
+.codeComponent {
+  padding: 1.5rem;
+  overflow-x: auto;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  
+  background: #2b3034;
+  color: $background;
+  border-radius: 16px;
+
+  transition:
+    border-color 200ms,
+    box-shadow 200ms;
+
+  &:hover {
+    border-color: $background;
+    box-shadow: 0 2px 12px $primary;
+    transform: translateY(-2px);
+  }
+
+  pre {
+    margin: 0;
+    font-size: 2.2rem;
+    width: 100%;
+
+    code {
+      white-space: pre-wrap;
+      text-align: center;
+      font-size: 1.8rem;
+
+      .keyword {
+        color: $primary; // morado
+        font-weight: 600;
+        font-size: 1.8rem;
+      }
+
+      .string {
+        color: $text; // coral
+        font-size: 1.8rem;
+      }
+
+      .tag {
+        color: $text2; // turquesa
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

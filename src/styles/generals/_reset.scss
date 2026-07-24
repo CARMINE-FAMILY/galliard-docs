@@ -1,0 +1,78 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-family: OpenSansRegular, Helvetica, Verdana, sans-serif;
+}
+
+html {
+  font-size: 10px;
+}
+body,
+#root {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  html{
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  html{
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 360px) {
+  html{
+    font-size: 4px;
+  }
+}

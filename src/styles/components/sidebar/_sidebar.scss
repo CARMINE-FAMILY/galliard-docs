@@ -1,0 +1,202 @@
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  height: calc(100vh - 45px);
+  background: var(--social-bg); // antes: rgba(253, 247, 250, 0.7)
+  backdrop-filter: blur(12px);
+  border-right: 1px solid var(--border-color); // antes: rgba(0, 0, 0, 0.08)
+  display: flex;
+  flex-direction: column;
+  transition:
+    width 0.25s ease,
+    background 0.2s ease;
+  overflow-y: auto;
+  align-items: center;
+
+  &.collapsed {
+    width: 50px;
+    .content {
+      display: none;
+    }
+  }
+
+  .sidebar-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem;
+    border-bottom: 1px solid var(--border-color);
+
+    .button {
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.6rem;
+      padding: 0.4rem;
+      transition: background 0.2s ease;
+
+      .icon {
+        font-size: 1.9rem;
+        display: flex;
+        transform: translateY(2px);
+      }
+
+      &:hover {
+        background: var(--accent-bg);
+      }
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+      color: var(--primary-color); // antes: #9a4c95
+    }
+  }
+
+  .sidebar-header-collapsed {
+    justify-content: center;
+    padding-inline: 0;
+  }
+
+  .content {
+    padding: 1.1rem;
+    overflow-y: auto;
+    width: 100%;
+
+    .group {
+      margin-bottom: 2.4rem;
+
+      .title {
+        font-size: 1.7rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        opacity: 0.45;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        color: var(--text-color);
+      }
+    }
+  }
+
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.7rem;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+    color: var(--text-color); // antes: #212528
+    font-weight: 500;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease;
+
+    &:hover {
+      background: var(--accent-bg);
+    }
+
+    &.active {
+      background: var(--accent-bg);
+      border-left-color: var(--primary-color);
+      color: var(--primary-color); // antes: #9a4c95
+    }
+
+    .icon {
+      width: 1.4rem;
+      height: 1.4rem;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.3;
+      font-size: 0;
+    }
+
+    &.active .icon {
+      opacity: 1;
+    }
+
+    .label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 1.4rem;
+    }
+  }
+
+  .sidebar-item-group {
+    width: 100%;
+  }
+
+  .sidebar-item-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    font: inherit;
+    color: var(--text-color);
+
+    .chevron {
+      margin-left: auto;
+      font-size: 1.2rem;
+      opacity: 0.5;
+      transition: transform 0.2s ease;
+    }
+
+    &.open .chevron {
+      transform: rotate(180deg);
+    }
+  }
+
+  .sidebar-children {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 0.25s ease;
+    padding-left: 2.4rem;
+
+    &[data-open="true"] {
+      grid-template-rows: 1fr;
+    }
+
+    .sidebar-children-inner {
+      min-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-child {
+      display: block;
+      padding: 0.4rem 0.5rem;
+      font-size: 1.4rem;
+      text-decoration: none;
+      color: var(--text-color); // antes: #212528
+      opacity: 0.7;
+      border-left: 3px solid transparent;
+      transition:
+        opacity 0.2s ease,
+        color 0.2s ease;
+
+      &:hover {
+        opacity: 1;
+        background: var(--accent-bg);
+      }
+
+      &.active {
+        opacity: 1;
+        color: var(--primary-color); // antes: #9a4c95
+        border-left-color: var(--primary-color);
+      }
+    }
+  }
+}

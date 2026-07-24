@@ -1,122 +1,97 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainLayout from "./app/MainLayout";
+import LandingScreen from "./app/landingPage/LandigScreen";
+import { SecondaryLayout } from "./app/landingPage/SecundaryLayout";
+import { Installation } from "./app/getStartedDocs/Installation";
+import Button from "./app/componentsDocs/Button";
+import CheckBox from "./app/componentsDocs/inputs/CheckBox";
+import DropDown from "./app/componentsDocs/inputs/DropDown";
+import InputFile from "./app/componentsDocs/inputs/InputFile";
+import InputRadio from "./app/componentsDocs/inputs/InputRadio";
+import InputText from "./app/componentsDocs/inputs/InputText";
+import TextArea from "./app/componentsDocs/inputs/TextArea";
+import BottomSheet from "./app/componentsDocs/BottomSheet";
+import CopyText from "./app/componentsDocs/CopyText";
+import CodeBlock from "./app/componentsDocs/CodeBlock";
+import ComponentPreview from "./app/componentsDocs/ComponentPreview";
+import UnixActions from "./app/functionsDocs/UnixActions";
+import OnClickOutside from "./app/functionsDocs/OnClickOutside";
+import ValidateForms from "./app/functionsDocs/ValidateForms";
+import { useSelector } from "react-redux";
+import type { RootState } from "./store/store";
+import { useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const theme = useSelector((state: RootState) => state.theme);
 
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <BrowserRouter>
+      <Routes>
+        {/* Se agrega el navbar y footer, solo agregar rutas del contenido */}
+        <Route element={<MainLayout />}>
+          {/* Aqui van las rutas del contenido */}
+          <Route element={<SecondaryLayout />}>
+            {/* Primera parte de como instalar */}
+            <Route path="/getStartDocs/docs" element={<Installation />} />
 
-      <div className="ticks"></div>
+            {/* Segunda parte documentacion de los componentes */}
+            <Route path="/componentsDocs/button" element={<Button />} />
+            <Route
+              path="/componentsDocs/inputs/checkbox"
+              element={<CheckBox />}
+            />
+            <Route
+              path="/componentsDocs/inputs/dropdown"
+              element={<DropDown />}
+            />
+            <Route
+              path="/componentsDocs/inputs/inputfile"
+              element={<InputFile />}
+            />
+            <Route
+              path="/componentsDocs/inputs/inputradio"
+              element={<InputRadio />}
+            />
+            <Route
+              path="/componentsDocs/inputs/inputtext"
+              element={<InputText />}
+            />
+            <Route
+              path="/componentsDocs/inputs/textarea"
+              element={<TextArea />}
+            />
+            <Route
+              path="/componentsDocs/bottomsheet"
+              element={<BottomSheet />}
+            />
+            <Route 
+              path="/componentsDocs/copytext" 
+              element={<CopyText />} 
+            />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+            <Route 
+              path="/componentsDocs/codeblock" 
+              element={<CodeBlock />} 
+            />
+            
+            <Route
+              path="/componentsDocs/componentpreview"
+              element={<ComponentPreview />}
+            />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+            {/* Tercera parte documentacion de funciones */}
+            <Route path="/functionsDocs/unixactions" element={<UnixActions />} />
+            <Route path="/functionsDocs/onclickoutside" element={<OnClickOutside />} />
+            <Route path="/functionsDocs/validateforms" element={<ValidateForms />} />
+          </Route>
+          <Route path="/" element={<LandingScreen />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

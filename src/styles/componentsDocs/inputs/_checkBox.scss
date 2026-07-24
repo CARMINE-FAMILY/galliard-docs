@@ -1,0 +1,140 @@
+@use "../../generals/vars" as *;
+@use "../../generals/mixins" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: $background;
+  overflow: hidden;
+
+  .titlePrimary {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0 0 2rem;
+    line-height: 1.2;
+    font-family: OpenSansBold;
+    color: $primary1;
+  }
+
+  .titleSecundary {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.7rem;
+    line-height: 1.25;
+    color: $textPrimary;
+    font-family: OpenSansSemiBold;
+  }
+
+  .titleSecundaryButton {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 5rem 0 1.5rem;
+    line-height: 1.25;
+    color: $textPrimary;
+    font-family: OpenSansSemiBold;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 3.2rem 0 1.2rem;
+    line-height: 1.3;
+    color: $blackcake;
+    font-family: OpenSansSemiBold;
+  }
+
+  .text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 0 0 1.6rem;
+    @include inline-code;
+  }
+
+  .code {
+    font-size: 1.8rem;
+    display: block;
+    background: rgba(255, 0, 0, 0.05);
+    padding: 1.2rem 1.6rem;
+    border-radius: 0.8rem;
+    margin: 0 0 2.4rem;
+    overflow-x: auto;
+  }
+
+  .note {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 0 0 1.6rem;
+    color: $textPrimary;
+    font-family: OpenSansSemiBold;
+  }
+
+  // Estilos custom para el ejemplo de "Personalización del checkbox"
+  .input {
+    width: 2rem;
+    height: 2rem;
+    accent-color: #2aa198;
+    cursor: pointer;
+    border-radius: 0.4rem;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    transition:
+      outline-color 0.2s ease,
+      transform 0.15s ease;
+
+    &:hover {
+      outline-color: rgba(42, 161, 152, 0.4);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    &:checked {
+      animation: checkPop 0.25s ease;
+    }
+
+    // cuando el input se marca, afecta al label que viene después en el DOM
+    &:checked ~ .label {
+      color: #00ff00 !important;
+    }
+  }
+
+  .label {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: color 0.2s ease; // el cambio de color se anima suave, no de golpe
+
+    &:hover {
+      color: #a12a30 !important;
+    }
+  }
+
+  .icon {
+    filter: drop-shadow(0 0 4px rgba(42, 161, 152, 0.5));
+    transition: transform 0.2s ease;
+  }
+
+  @keyframes checkPop {
+    0% {
+      transform: scale(0.8);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+// Fix: el errorMessage de CheckBoxGal (galliard-ui) viene con line-clamp: 2
+// desde su mixin interno, lo que lo parte en dos líneas. No podemos tocar
+// galliard-ui directamente, así que lo sobreescribimos aquí con un selector
+// de atributo que matchea la clase compilada del CSS module sin importar el hash.
+p[class*="errorMessage"] {
+  white-space: nowrap !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+}

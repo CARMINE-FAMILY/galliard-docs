@@ -1,0 +1,30 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 99rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.badgeIcon {
+  font-size: 1.5rem;
+}
+
+.component {
+  background: #e9eaee;
+  color: #4a4d57;
+}
+
+.part {
+  background: #e9eaee;
+  color: #4a4d57;
+}
+
+.modifier {
+  background: #e0f5ff;
+  color: #0ea5e9;
+}

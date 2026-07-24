@@ -1,0 +1,158 @@
+@use "../generals/vars" as *;
+@use "../generals/mixins" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  color: var(--text-color) !important;
+
+  .titlePrimary {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0 0 2rem;
+    line-height: 1.2;
+    font-family: OpenSansBold;
+    color: $primary1;
+  }
+
+  .titleSecundary {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.7rem;
+    line-height: 1.25;
+    color: $textPrimary;
+    font-family: OpenSansSemiBold;
+  }
+
+  .titleSecundaryButton {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 5rem 0 1.5rem;
+    line-height: 1.25;
+    color: $textPrimary;
+    font-family: OpenSansSemiBold;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 3.2rem 0 1.2rem;
+    line-height: 1.3;
+    color: var(--text-color) !important;
+    font-family: OpenSansSemiBold;
+  }
+
+  .text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 0 0 1.6rem;
+    @include inline-code;
+  }
+
+  .code {
+    font-size: 1.8rem;
+    display: block;
+    background: rgba(255, 0, 0, 0.05);
+    padding: 1.2rem 1.6rem;
+    border-radius: 0.8rem;
+    margin: 0 0 2.4rem;
+    overflow-x: auto;
+  }
+
+  .note {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 0 0 1.6rem;
+    color: $textPrimary;
+    font-family: OpenSansSemiBold;
+  }
+
+  .button {
+    $glow-color: rgb(217, 176, 255);
+    $glow-spread-color: rgba(191, 123, 255, 0.78);
+    $btn-color: rgb(100, 61, 136);
+
+    border: 0.25em solid $glow-color;
+    border-radius: 1em;
+    position: relative;
+    outline: none;
+    font-size: 12.5px;
+    font-weight: bold;
+    border-radius: 1em;
+    transition: all 0.3s;
+
+    box-shadow:
+      0 0 1em 0.25em $glow-color,
+      0 0 4em 1em $glow-spread-color,
+      inset 0 0 0.75em 0.25 $glow-color;
+
+    &::after {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $glow-spread-color;
+      filter: blur(2em);
+      opacity: 0.7;
+      transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+    }
+
+    &:hover {
+      background: $glow-color;
+      box-shadow:
+        0 0 1em 0.25em $glow-color,
+        0 0 4em 2em $glow-spread-color,
+        inset 0 0 0.75em 0.25em $glow-color;
+
+      .label {
+        color: #000 !important;
+      }
+    }
+
+    &:active {
+      box-shadow:
+        0 0 0.6em 0.25em $glow-color,
+        0 0 2.5em 2em $glow-spread-color,
+        inset 0 0 0.5em 0.25 $glow-color;
+    }
+
+    .label {
+      color: rgb(217, 176, 255) !important;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      transition: all 0.3s ease;
+
+      text-shadow:
+        0 0 5px rgb(217, 176, 255),
+        0 0 10px rgb(217, 176, 255),
+        0 0 20px rgba(191, 123, 255, 0.8);
+    }
+
+    .icon {
+      transition: all 0.3s ease;
+    }
+
+    .icon * {
+      color: rgb(217, 176, 255) !important;
+
+      filter: drop-shadow(0 0 4px rgb(217, 176, 255))
+        drop-shadow(0 0 8px rgba(191, 123, 255, 0.8))
+        drop-shadow(0 0 14px rgba(191, 123, 255, 0.6));
+    }
+
+    .icon:hover {
+      transform: scale(1.15);
+    }
+
+    .icon:hover * {
+      filter: drop-shadow(0 0 6px rgb(217, 176, 255))
+        drop-shadow(0 0 12px rgba(191, 123, 255, 1))
+        drop-shadow(0 0 18px rgba(191, 123, 255, 0.8));
+    }
+  }
+}

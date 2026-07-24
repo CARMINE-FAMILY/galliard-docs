@@ -1,0 +1,59 @@
+// ==========================================
+// COLORS
+// ==========================================
+
+// COLORES PRINCIPALES:
+$primary1: #9a4c95;
+//$background: #fdf7fa;
+//$blackcake: #212528;
+$textPrimary: #ff5a5f;
+$textSecundary: #18a999;
+
+$primary: #a86ca4;
+$background: #fdf7fa;
+$border: #d1d1d1;
+$bottomline: #ff6a00;
+$activeroute: #7a3a76;
+
+// ==========================================
+// CARD COMPONENTS
+// ==========================================
+$border2: #e8e8f0;
+$bordercolor: #9a4c95;
+
+// ==========================================
+// CARD CONTAINER
+// ==========================================
+$blackcake: #212528;
+
+// ========================
+// Glass Morphism
+// ====================
+$glass: #fdfdfde5;
+
+// ==========================================
+// text
+// ==========================================
+$text: #ff8c90;
+$prueba: #ff7377;
+$text2: #66cfc5;
+$font-family: OpenSansRegular, Helvetica, Verdana, sans-serif, OpenSansBold;
+$prueba2: #3d4348;
+
+:root {
+  --bg-color: #{$background};
+  --text-color: #{$blackcake};
+  --primary-color: #{$primary};
+  --border-color: #{$border};
+  --activeroute-color: #{$activeroute};
+  --shadow-color: rgba(33, 37, 40, 0.4);
+}
+
+[data-theme="dark"] {
+  --bg-color: #{$blackcake};
+  --text-color: #f0f0f0;
+  --primary-color: #c17dbd;
+  --border-color: #3a3a3a;
+  --activeroute-color: #b06bac;
+  --shadow-color: rgba(240, 240, 240, 0.15);
+}

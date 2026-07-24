@@ -1,0 +1,106 @@
+@use "../../generals/vars" as *;
+@use "../../generals/mixins" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: $background;
+  overflow-x: hidden;
+  font-family: inherit;
+
+  .titlePrimary {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0 0 2rem;
+    line-height: 1.2;
+    font-family: OpenSansBold;
+    color: $primary1;
+  }
+
+  .titleSecundary {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.7rem;
+    line-height: 1.25;
+    color: $textPrimary;
+    font-family: OpenSansSemiBold;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 3.2rem 0 1.2rem;
+    line-height: 1.3;
+    color: $blackcake;
+    font-family: OpenSansSemiBold;
+  }
+
+  .text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 0 0 1.6rem;
+    @include inline-code;
+  }
+
+  .code {
+    font-size: 1.8rem;
+    display: block;
+    background: rgba(255, 0, 0, 0.05);
+    padding: 1.2rem 1.6rem;
+    border-radius: 0.8rem;
+    margin: 0 0 2.4rem;
+    overflow-x: auto;
+  }
+
+  .note {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 0 0 1.6rem;
+    color: $textPrimary;
+    font-family: OpenSansSemiBold;
+  }
+
+  // Clase custom del DropDownGal de la sección "Personalización".
+  // Renombrada de .container -> .dropDemoContainer para no chocar
+  // con la clase global .container del wrapper de la página.
+  .dropDemoContainer {
+    // vacía por ahora, disponible si necesitas estilos propios
+    // para el contenedor de ese dropdown en particular
+  }
+
+  .inputDrop {
+    border: 1.5px solid #2aa198 !important;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 0 0 3px rgba(42, 161, 152, 0.2);
+    }
+  }
+
+  .labelDrop {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #2aa198 !important;
+  }
+
+  .iconDrop {
+    color: #2aa198 !important;
+  }
+
+  .optionDrop {
+    transition: background 0.15s ease;
+
+    &:hover {
+      background: rgba(42, 161, 152, 0.1);
+    }
+  }
+}
+
+p[class*="errorMessage"] {
+  white-space: nowrap !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+}
