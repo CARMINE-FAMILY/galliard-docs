@@ -47,7 +47,7 @@ export default function CardsContainer() {
           </div>
           <div className="detail">
             <h2>Responsiva</h2>
-            <p>Disenada para funcionar en cualquier tamano de pantalla.</p>
+            <p>Disenada para funcionar en cualquier tamaño de pantalla.</p>
           </div>
         </div>
       </div>
