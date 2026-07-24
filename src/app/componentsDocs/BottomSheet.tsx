@@ -243,6 +243,8 @@ export default function BottomSheet() {
         <BottomSheetGal
           isOpen={openBasic}
           setIsOpen={setOpenBasic}
+          canDisapear
+          startHeightPercentPosition={50}
           closeOnBackdropClick
         >
           <div style={{ padding: "20px", fontSize: "3.5rem" }}>
@@ -299,6 +301,7 @@ export default function BottomSheet() {
           isOpen={openDisapear}
           setIsOpen={setOpenDisapear}
           canDisapear
+          startHeightPercentPosition={50}
           disapearPercent={20}
         >
           <div style={{ padding: "20px", fontSize: "3.5rem" }}>
@@ -359,6 +362,7 @@ export default function BottomSheet() {
         <BottomSheetGal
           isOpen={openLimits}
           setIsOpen={setOpenLimits}
+          canDisapear
           startHeightPercentPosition={50}
           minHeightPercentPosition={20}
           maxHeightPercentPosition={90}
@@ -408,6 +412,8 @@ export default function BottomSheet() {
           setIsOpen={setOpenWidth}
           widthPercent="60%"
           closeOnBackdropClick
+          canDisapear
+          startHeightPercentPosition={50}
         >
           <div style={{ padding: "20px", fontSize: "3.5rem" }}>
             Panel más angosto
@@ -471,6 +477,8 @@ export default function BottomSheet() {
           closeOnBackdropClick
           backdropBlur={5}
           backdropColor="#00000050"
+          canDisapear
+          startHeightPercentPosition={50}
         >
           <div style={{ padding: "20px", fontSize: "3.5rem" }}>
             Click fuera del panel para cerrar
@@ -534,6 +542,8 @@ export default function BottomSheet() {
           bodyBg="#2f343a"
           draggElementColor="#fff"
           closeOnBackdropClick
+          canDisapear
+          startHeightPercentPosition={50}
         >
           <div style={{ padding: "20px", color: "#fff", fontSize: "3.5rem" }}>
             Panel con tema oscuro
@@ -610,6 +620,8 @@ export default function BottomSheet() {
           customBodyClass="bsgDocsBody"
           customBackdropClass="bsgDocsBackdrop"
           closeOnBackdropClick
+          canDisapear
+          startHeightPercentPosition={50}
         >
           <div style={{ padding: "20px", fontSize: "3.5rem" }}>
             Panel con clases personalizadas

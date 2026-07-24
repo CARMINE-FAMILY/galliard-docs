@@ -297,6 +297,7 @@ export function RegisterFormDemo() {
             setValue={setAceptaTerminos}
             textColor={isDark ? "var(--text-color)" : undefined}
             customLabelClass="cambio"
+            seeIcon={false}
           />
           <FieldFeedback
             error={terminosError}

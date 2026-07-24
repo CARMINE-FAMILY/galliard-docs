@@ -1,4 +1,4 @@
-import { ButtonGal, ComponentPreviewGal } from "galliard-ui";
+import { ButtonGal, ComponentPreviewGal, type ButtonProps } from "galliard-ui";
 import { DataTable } from "../../components/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
@@ -555,7 +555,7 @@ export default function Button() {
             code: `
         <ButtonGal font="OpenSansRegular" />
         <ButtonGal textSize="20px" />
-        <ButtonGal font="Georgia" textSize="18px" />`,
+        <ButtonGal font={"Georgia" as ButtonProps["font"]} textSize="18px" action={() => {}} />`,
           },
           {
             label: "TSX",
@@ -563,13 +563,13 @@ export default function Button() {
             code: `
         <ButtonGal font="OpenSansRegular" />
         <ButtonGal textSize="20px" />
-        <ButtonGal font="Georgia" textSize="18px" />`,
+        <ButtonGal font={"Georgia" as ButtonProps["font"]} textSize="18px" action={() => {}} />`,
           },
         ]}
       >
         <ButtonGal font="OpenSansRegular" action={() => {}} />
         <ButtonGal textSize="20px" action={() => {}} />
-        <ButtonGal font="Georgia" textSize="18px" action={() => {}} />
+        <ButtonGal font={"Georgia" as ButtonProps["font"]} textSize="18px" action={() => {}} />
       </ComponentPreviewGal>
 
       {/* Sombras */}

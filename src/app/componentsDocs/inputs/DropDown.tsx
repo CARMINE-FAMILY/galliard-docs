@@ -408,26 +408,50 @@ export default function DropDown() {
             label: "JSX",
             language: "jsx",
             code: `
-        <DropDownGal label="Bottom" options={opciones} orientation="bottom" />
-        <DropDownGal label="Top" options={opciones} orientation="top" />
-        <DropDownGal label="Left" options={opciones} orientation="left" />
-        <DropDownGal label="Right" options={opciones} orientation="right" />`,
+        <DropDownGal label="Bottom" options={opciones} orientation="bottom value={selected} setValue={setSelected}" />
+        <DropDownGal label="Top" options={opciones} orientation="top" value={selected} setValue={setSelected}/>
+        <DropDownGal label="Left" options={opciones} orientation="left" value={selected} setValue={setSelected}/>
+        <DropDownGal label="Right" options={opciones} orientation="right" value={selected} setValue={setSelected}/>`,
           },
           {
             label: "TSX",
             language: "tsx",
             code: `
-        <DropDownGal label="Bottom" options={opciones} orientation="bottom" />
-        <DropDownGal label="Top" options={opciones} orientation="top" />
-        <DropDownGal label="Left" options={opciones} orientation="left" />
-        <DropDownGal label="Right" options={opciones} orientation="right" />`,
+        <DropDownGal label="Bottom" options={opciones} orientation="bottom" value={selected} setValue={setSelected}/>
+        <DropDownGal label="Top" options={opciones} orientation="top" value={selected} setValue={setSelected}/>
+        <DropDownGal label="Left" options={opciones} orientation="left" value={selected} setValue={setSelected}/>
+        <DropDownGal label="Right" options={opciones} orientation="right" value={selected} setValue={setSelected}/>`,
           },
         ]}
       >
-        <DropDownGal label="Bottom" options={opciones} orientation="bottom" />
-        <DropDownGal label="Top" options={opciones} orientation="top" />
-        <DropDownGal label="Left" options={opciones} orientation="left" />
-        <DropDownGal label="Right" options={opciones} orientation="right" />
+        <DropDownGal
+          label="Bottom"
+          options={opciones}
+          orientation="bottom"
+          value={selected}
+          setValue={setSelected}
+        />
+        <DropDownGal
+          label="Top"
+          options={opciones}
+          orientation="top"
+          value={selected}
+          setValue={setSelected}
+        />
+        <DropDownGal
+          label="Left"
+          options={opciones}
+          orientation="left"
+          value={selected}
+          setValue={setSelected}
+        />
+        <DropDownGal
+          label="Right"
+          options={opciones}
+          orientation="right"
+          value={selected}
+          setValue={setSelected}
+        />
       </ComponentPreviewGal>
 
       {/* Layout horizontal / vertical */}
@@ -445,20 +469,32 @@ export default function DropDown() {
             label: "JSX",
             language: "jsx",
             code: `
-        <DropDownGal label="Vertical" options={opciones} HorV="vertical" />
-        <DropDownGal label="Horizontal" options={opciones} HorV="horizontal" />`,
+        <DropDownGal label="Vertical" options={opciones} HorV="vertical" value={selected} setValue={setSelected}/>
+        <DropDownGal label="Horizontal" options={opciones} HorV="horizontal" value={selected} setValue={setSelected}/>`,
           },
           {
             label: "TSX",
             language: "tsx",
             code: `
-        <DropDownGal label="Vertical" options={opciones} HorV="vertical" />
-        <DropDownGal label="Horizontal" options={opciones} HorV="horizontal" />`,
+        <DropDownGal label="Vertical" options={opciones} HorV="vertical" value={selected} setValue={setSelected}/>
+        <DropDownGal label="Horizontal" options={opciones} HorV="horizontal" value={selected} setValue={setSelected}/>`,
           },
         ]}
       >
-        <DropDownGal label="Vertical" options={opciones} HorV="vertical" />
-        <DropDownGal label="Horizontal" options={opciones} HorV="horizontal" />
+        <DropDownGal
+          label="Vertical"
+          options={opciones}
+          HorV="vertical"
+          value={selected}
+          setValue={setSelected}
+        />
+        <DropDownGal
+          label="Horizontal"
+          options={opciones}
+          HorV="horizontal"
+          value={selected}
+          setValue={setSelected}
+        />
       </ComponentPreviewGal>
 
       {/* Iconos */}
@@ -490,6 +526,8 @@ export default function DropDown() {
           icon="tabler:apple"
           seeOptionsIcons
           options={opcionesConIconos}
+          value={selected} 
+          setValue={setSelected}
         />`,
           },
           {
@@ -508,7 +546,9 @@ export default function DropDown() {
           icon="tabler:apple"
           seeOptionsIcons
           options={opcionesConIconos}
-        />`,
+          value={selected} 
+          setValue={setSelected}  
+          />`,
           },
         ]}
       >
@@ -518,6 +558,8 @@ export default function DropDown() {
           icon="tabler:apple"
           seeOptionsIcons
           options={opcionesConIconos}
+          value={selected}
+          setValue={setSelected}
         />
       </ComponentPreviewGal>
 
@@ -538,29 +580,59 @@ export default function DropDown() {
             label: "JSX",
             language: "jsx",
             code: `
-        <DropDownGal label="Ancho" options={opciones} width={320} />
-        <DropDownGal label="Alto" options={opciones} height={55} />
-        <DropDownGal label="Sin borde" options={opciones} border={false} />
-        <DropDownGal label="Con sombra" options={opciones} shadow />
-        <DropDownGal label="Redondeado" options={opciones} rounded="full" />`,
+        <DropDownGal label="Ancho" options={opciones} width={320} value={selected} setValue={setSelected}/>
+        <DropDownGal label="Alto" options={opciones} height={55} value={selected} setValue={setSelected}/>
+        <DropDownGal label="Sin borde" options={opciones} border={false} value={selected} setValue={setSelected}/>
+        <DropDownGal label="Con sombra" options={opciones} shadow value={selected} setValue={setSelected}/>
+        <DropDownGal label="Redondeado" options={opciones} rounded="full" value={selected} setValue={setSelected}/>`,
           },
           {
             label: "TSX",
             language: "tsx",
             code: `
-        <DropDownGal label="Ancho" options={opciones} width={320} />
-        <DropDownGal label="Alto" options={opciones} height={55} />
-        <DropDownGal label="Sin borde" options={opciones} border={false} />
-        <DropDownGal label="Con sombra" options={opciones} shadow />
-        <DropDownGal label="Redondeado" options={opciones} rounded="full" />`,
+        <DropDownGal label="Ancho" options={opciones} width={320} value={selected} setValue={setSelected}/>
+        <DropDownGal label="Alto" options={opciones} height={55} value={selected} setValue={setSelected}/>
+        <DropDownGal label="Sin borde" options={opciones} border={false} value={selected} setValue={setSelected}/>
+        <DropDownGal label="Con sombra" options={opciones} shadow value={selected} setValue={setSelected}/>
+        <DropDownGal label="Redondeado" options={opciones} rounded="full" value={selected} setValue={setSelected}/>`,
           },
         ]}
       >
-        <DropDownGal label="Ancho" options={opciones} width={320} />
-        <DropDownGal label="Alto" options={opciones} height={55} />
-        <DropDownGal label="Sin borde" options={opciones} border={false} />
-        <DropDownGal label="Con sombra" options={opciones} shadow />
-        <DropDownGal label="Redondeado" options={opciones} rounded="full" />
+        <DropDownGal
+          label="Ancho"
+          options={opciones}
+          width={320}
+          value={selected}
+          setValue={setSelected}
+        />
+        <DropDownGal
+          label="Alto"
+          options={opciones}
+          height={55}
+          value={selected}
+          setValue={setSelected}
+        />
+        <DropDownGal
+          label="Sin borde"
+          options={opciones}
+          border={false}
+          value={selected}
+          setValue={setSelected}
+        />
+        <DropDownGal
+          label="Con sombra"
+          options={opciones}
+          shadow
+          value={selected}
+          setValue={setSelected}
+        />
+        <DropDownGal
+          label="Redondeado"
+          options={opciones}
+          rounded="full"
+          value={selected}
+          setValue={setSelected}
+        />
       </ComponentPreviewGal>
 
       {/* Error */}
@@ -583,6 +655,8 @@ export default function DropDown() {
           label="Fruta"
           options={opciones}
           errorMessage="Debes seleccionar una opción"
+          value={selected} 
+          setValue={setSelected}
         />`,
           },
           {
@@ -593,6 +667,8 @@ export default function DropDown() {
           label="Fruta"
           options={opciones}
           errorMessage="Debes seleccionar una opción"
+          value={selected} 
+          setValue={setSelected}
         />`,
           },
         ]}
@@ -601,6 +677,8 @@ export default function DropDown() {
           label="Fruta"
           options={opciones}
           errorMessage="Debes seleccionar una opción"
+          value={selected}
+          setValue={setSelected}
         />
       </ComponentPreviewGal>
 
@@ -684,7 +762,7 @@ export default function DropDown() {
           customOptionClass="optionDrop"
         />
       </ComponentPreviewGal>
-     <DocsPagination/>
+      <DocsPagination />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckBoxGal, ComponentPreviewGal } from "galliard-ui";
+import { CheckBoxGal, ComponentPreviewGal, type CheckProps } from "galliard-ui";
 import { DataTable } from "../../../components/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
@@ -215,6 +215,7 @@ export default function CheckBox() {
           label="Acepto"
           value={checked}
           setValue={setChecked}
+          seeIcon={false}
         />`,
           },
           {
@@ -225,6 +226,7 @@ export default function CheckBox() {
           label="Acepto"
           value={checked}
           setValue={setChecked}
+          seeIcon={false}
         />`,
           },
         ]}
@@ -233,6 +235,7 @@ export default function CheckBox() {
           label="Acepto"
           value={checks.base}
           setValue={setCheck("base")}
+          seeIcon={false}
         />
       </ComponentPreviewGal>
 
@@ -314,7 +317,10 @@ export default function CheckBox() {
             language: "jsx",
             code: `
         <CheckBoxGal
-          label="Acepto los términos y condiciones"
+          llabel="Acepto los términos y condiciones"
+          value={checks.enlace}
+          seeIcon={false}
+          setValue={setCheck("enlace")}
           useLinkable
           link="tu link"
         />`,
@@ -325,6 +331,9 @@ export default function CheckBox() {
             code: `
         <CheckBoxGal
           label="Acepto los términos y condiciones"
+          value={checks.enlace}
+          seeIcon={false}
+          setValue={setCheck("enlace")}
           useLinkable
           link="tu link"
         />`,
@@ -334,6 +343,7 @@ export default function CheckBox() {
         <CheckBoxGal
           label="Acepto los términos y condiciones"
           value={checks.enlace}
+          seeIcon={false}
           setValue={setCheck("enlace")}
           useLinkable
           link="https://www.bing.com/ck/a?!&&p=327161dec17d8c3f1ca84cfdcebb3609d1760c9661e912b6fd047a3907295bedJmltdHM9MTc4MzAzNjgwMA&ptn=3&ver=2&hsh=4&fclid=25f0258f-2714-62ae-2ce3-32c026b56397&psq=yesicon+app&u=a1aHR0cHM6Ly95ZXNpY29uLmFwcC8"
@@ -356,7 +366,11 @@ export default function CheckBox() {
             code: `
         <CheckBoxGal
           label="Acepto"
-          errorMessage="Debes aceptar para continuar"
+          value={checks.error}
+          setValue={setCheck("error")}
+          textSize={20}
+          seeIcon={false}
+          errorMessage="Acepta para continuar"
         />`,
           },
           {
@@ -365,7 +379,11 @@ export default function CheckBox() {
             code: `
         <CheckBoxGal
           label="Acepto"
-          errorMessage="Debes aceptar para continuar"
+          value={checks.error}
+          setValue={setCheck("error")}
+          textSize={20}
+          seeIcon={false}
+          errorMessage="Acepta para continuar"
         />`,
           },
         ]}
@@ -375,6 +393,7 @@ export default function CheckBox() {
           value={checks.error}
           setValue={setCheck("error")}
           textSize={20}
+          seeIcon={false}
           errorMessage="Acepta para continuar"
         />
       </ComponentPreviewGal>
@@ -392,17 +411,17 @@ export default function CheckBox() {
             label: "JSX",
             language: "jsx",
             code: `
-        <CheckBoxGal label="OpenSansRegular" font="OpenSansRegular" />
-        <CheckBoxGal label="TextoGrande" textSize="20px" />
-        <CheckBoxGal label="Georgia" font="Georgia" textSize="18px" />`,
+        <CheckBoxGal label="OpenSansRegular" font="OpenSansRegular seeIcon={false}" />
+        <CheckBoxGal label="TextoGrande" textSize="20px seeIcon={false}" />
+        <CheckBoxGal label="Georgia" font={"Georgia" as CheckProps["font"]} textSize="18px" seeIcon={false}/>`,
           },
           {
             label: "TSX",
             language: "tsx",
             code: `
-        <CheckBoxGal label="OpenSansRegular" font="OpenSansRegular" />
-        <CheckBoxGal label="TextoGrande" textSize="20px" />
-        <CheckBoxGal label="Georgia" font="Georgia" textSize="18px" />`,
+        <CheckBoxGal label="OpenSansRegular" font="OpenSansRegular" seeIcon={false} />
+        <CheckBoxGal label="TextoGrande" textSize="20px" seeIcon={false} />
+        <CheckBoxGal label="Georgia" font={"Georgia" as CheckProps["font"]} textSize="18px" seeIcon={false} />`,
           },
         ]}
       >
@@ -411,19 +430,22 @@ export default function CheckBox() {
           value={checks.tipografia1}
           setValue={setCheck("tipografia1")}
           font="OpenSansRegular"
+          seeIcon={false}
         />
         <CheckBoxGal
           label="TextoGrande"
           value={checks.tipografia2}
           setValue={setCheck("tipografia2")}
           textSize="20px"
+          seeIcon={false}
         />
         <CheckBoxGal
           label="Georgia"
           value={checks.tipografia3}
           setValue={setCheck("tipografia3")}
-          font="Georgia"
+          font={"Georgia" as CheckProps["font"]}
           textSize="18px"
+          seeIcon={false}
         />
       </ComponentPreviewGal>
 
@@ -500,7 +522,7 @@ export default function CheckBox() {
         />
       </ComponentPreviewGal>
 
-      <DocsPagination/>
+      <DocsPagination />
     </div>
   );
 }

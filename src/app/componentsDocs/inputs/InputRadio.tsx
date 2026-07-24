@@ -6,15 +6,15 @@ import { propsColumns } from "../../../hooks/usePropsTableColumns";
 import { DocsPagination } from "../../../components/DocsPagination";
 
 export default function InputRadio() {
-  const [radioValue1, setRadioValue1] = useState<string>("");
-  const [radioValue2, setRadioValue2] = useState<string>("");
-  const [radioValue3, setRadioValue3] = useState<string>("");
-  const [radioValue4, setRadioValue4] = useState<string>("");
-  const [radioValue5, setRadioValue5] = useState<string>("");
+  const [, setRadioValue1] = useState<string>("");
+  const [, setRadioValue2] = useState<string>("");
+  const [, setRadioValue3] = useState<string>("");
+  const [, setRadioValue4] = useState<string>("");
+  const [, setRadioValue5] = useState<string>("");
 
   const opciones = [
-    { value: "yes", label: "Si" },
-    { value: "no", label: "No" },
+    { value: "yes", label: "Si", seeIcon: false },
+    { value: "no", label: "No", seeIcon: false },
   ];
 
   const opcionesConIconos = [
@@ -525,7 +525,7 @@ export default function InputRadio() {
         />
       </ComponentPreviewGal>
 
-      <DocsPagination/>
+      <DocsPagination />
     </div>
   );
 }
