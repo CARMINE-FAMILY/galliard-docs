@@ -24,6 +24,10 @@
 
   &__terms {
     justify-content: flex-start;
+
+    .cambio{
+      background:var(--bg-color);
+    }
   }
 
   &__error {

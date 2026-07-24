@@ -64,69 +64,39 @@
     }
   }
 
+  // Solo layout: la card en sí vive en CardComponent.module.scss
   .general {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    justify-items: flex-start;
     width: 100%;
     height: auto;
-    gap: 2.4rem;
+    gap: 2.9rem;
+  }
+}
 
-    .cardComponent {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      background: #2f3438; // fijo, no depende del tema
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 2.4rem 2rem;
-      width: 260px;
-      transition: border-color 0.2s ease;
-
-      &:hover {
-        border-color: var(--primary-color);
-      }
-
-      .icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 48px;
-        height: 48px;
-        border-radius: 8px;
-        background: $background; // rosa clarito, fijo también
-        margin-bottom: 1.6rem;
-
-        .iconContainer {
-          font-size: 2.4rem;
-          color: $primary1; // morado, para contraste sobre el fondo claro del badge
-        }
-      }
-
-      .detail {
-        p {
-          color: #d8d8d8; // texto claro legible sobre el fondo oscuro fijo
-        }
+@media (max-width: 768px) {
+  .cardsContainer {
+    .headerCardContainer {
+      .title {
+        font-size: 5rem;
       }
     }
   }
+}
 
-  .detail {
-    h2 {
-      font-size: 2.4rem;
-      font-weight: 600;
-      color: $text2;
-      margin: 0 0 0.6rem;
-    }
+@media (max-width: 576px) {
+  .cardsContainer {
+    .headerCardContainer {
+      .title {
+        font-size: 5.5rem; // te faltaba la unidad "rem" aquí, ojo
+      }
 
-    p {
-      font-size: 1.5rem;
-      color: $background;
-      line-height: 1.6;
-      margin: 0;
+      .subtitle{
+        font-size: 2.8rem;
+      }
     }
   }
 }

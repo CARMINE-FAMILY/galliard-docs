@@ -82,3 +82,18 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .codeContainerPlus{
+    .codeContainer{
+      .headerCodeContainer{
+        .title{
+          font-size: 5rem;
+        }
+        .subtitle{
+          font-size: 2.8rem;
+        }
+      }
+    }
+  }
+}

@@ -36,15 +36,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
       border-radius: 10px;
-      background: $primary;
       transition: transform 0.3s ease;
 
       img {
-        width: 22px;
-        height: 22px;
+        width: 25px;
+        height: 25px;
       }
 
       &:hover {
@@ -296,5 +295,35 @@ button {
 
   100% {
     background-position: 300%;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar{
+    .title {
+      font-size: 2rem;
+    }
+    a{
+      font-size: 2.1rem;
+    }
+  }
+}
+
+@media (max-width: 768px){
+  .navbar{
+    .title{
+      font-size: 1.8rem;
+    }
+    a{
+      font-size: 2.2rem;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar{
+    a{
+      font-size: 2rem;
+    }
   }
 }

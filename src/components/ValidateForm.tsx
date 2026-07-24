@@ -144,8 +144,9 @@ export function RegisterFormDemo() {
   const theme = useSelector((state: RootState) => state.theme);
   const isDark = theme === "dark";
   /* -------------------------------- RENDER --------------------------------- */
-
+    console.log("theme:", theme, "isDark:", isDark);
   return (
+
     <div className="registerFormDemo">
       <div className="registerFormDemo__row">
         <div className="registerFormDemo__field">
@@ -294,7 +295,8 @@ export function RegisterFormDemo() {
             label="Acepto los términos y condiciones"
             value={aceptaTerminos}
             setValue={setAceptaTerminos}
-            textColor={isDark ? "#ffffff" : undefined}
+            textColor={isDark ? "var(--text-color)" : undefined}
+            customLabelClass="cambio"
           />
           <FieldFeedback
             error={terminosError}

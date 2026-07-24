@@ -300,7 +300,9 @@ const handleSubmit = () => {
         Valida cadenas de texto genéricas: longitud mínima/máxima, coincidencia
         con un patrón o igualdad con un valor específico
       </p>
-      <h3 className="subtitle">Parámetros adicionales</h3>
+      <h3 className="subtitle" id="parametros-adicionales-1">
+        Parámetros adicionales
+      </h3>
       <DataTable
         columns={propsColumns}
         data={textParams}
@@ -444,7 +446,9 @@ const handleSubmit = () => {
         Valida valores numéricos: rango mínimo/máximo, si debe ser entero, o
         igualdad con un valor específico
       </p>
-      <h3 className="subtitle">Parámetros adicionales</h3>
+      <h3 className="subtitle" id="parametros-adicionales-2">
+        Parámetros adicionales
+      </h3>
       <DataTable
         columns={propsColumns}
         data={numParams}
@@ -455,10 +459,10 @@ const handleSubmit = () => {
       <p className="text">
         Además del bug de <span className="inline-code">needBeEqualTo</span>{" "}
         descrito arriba (aplica igual para números), la verificación base de
-        "¿es un número?" también está invertida: actualmente marca error
-        cuando <span className="inline-code">value</span> SÍ es un número,
-        en vez de cuando no lo es. También está identificado como bug
-        pendiente de corrección.
+        "¿es un número?" también está invertida: actualmente marca error cuando{" "}
+        <span className="inline-code">value</span> SÍ es un número, en vez de
+        cuando no lo es. También está identificado como bug pendiente de
+        corrección.
       </p>
 
       <CodeBlockGal
@@ -487,7 +491,9 @@ const handleSubmit = () => {
       <p className="text">
         Valida valores booleanos, típicamente checkboxes de aceptación
       </p>
-      <h3 className="subtitle">Parámetros adicionales</h3>
+      <h3 className="subtitle" id="parametros-adicionales-3">
+        Parámetros adicionales
+      </h3>
       <DataTable
         columns={propsColumns}
         data={boolParams}
@@ -520,7 +526,9 @@ const handleSubmit = () => {
         <span className="inline-code">string</span> o un timestamp Unix en
         segundos (número de 10 dígitos).
       </p>
-      <h3 className="subtitle">Parámetros adicionales</h3>
+      <h3 className="subtitle" id="parametros-adicionales-4">
+        Parámetros adicionales
+      </h3>
       <DataTable
         columns={propsColumns}
         data={dateParams}
