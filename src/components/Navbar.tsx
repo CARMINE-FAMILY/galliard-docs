@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
           href="https://www.npmjs.com/package/galliard-ui"
           title="NPM"
           target="_blank"
-          rel="noopener nereferrer"
+          rel="noopener noreferrer"
         >
           <Icon icon="devicon:npm" className="icon npm" />
         </a>
@@ -68,17 +68,18 @@ const Navbar: React.FC = () => {
         <button
           className="theme__icon"
           onClick={handleToggleTheme}
-          aria-checked={effectiveTheme === "dark"}
-          aria-label="Cambiar tema"
+          aria-label={
+            effectiveTheme === "dark"
+              ? "Cambiar a modo claro"
+              : "Cambiar a modo oscuro"
+          }
         >
-          <span className="theme__icon-circle" />
-          <span className="theme__icon-rays">
-            <span />
-            <span />
-            <span />
-            <span />
-          </span>
-          <span className="theme__icon-mask" />
+          <Icon
+            icon={effectiveTheme === "light" ? "ph:moon-fill" : "ph:sun-fill"}
+            className={`theme-icon ${
+              effectiveTheme === "light" ? "moon-icon" : "sun-icon"
+            }`}
+          />
         </button>
       </div>
     </nav>

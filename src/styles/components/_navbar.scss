@@ -1,3 +1,4 @@
+@use "../generals/root" as *;
 @use "../generals/vars" as *;
 
 .navbar {
@@ -16,7 +17,6 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--navbar-bg);
   color: var(--text-color);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
@@ -161,7 +161,10 @@
   }
 }
 
-/* <reset-style> ============================ */
+/* =========================
+   Botón cambio de tema
+========================= */
+
 button {
   border: none;
   background: none;
@@ -171,112 +174,44 @@ button {
   font-family: inherit;
 }
 
-/* <main-style> ============================ */
 .theme__icon {
-  width: 32px;
-  height: 32px;
-  padding: 4px;
-  overflow: hidden;
-  position: relative;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 
-  &-circle {
-    width: 14px;
-    height: 14px;
-    border-radius: 24px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgb(255, 204, 0);
-    transition:
-      width 0.4s,
-      height 0.4s,
-      border 0.4s,
-      background-color 0.4s;
-    z-index: 10;
+  .theme-icon {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
   }
 
-  //Color para la luna en false, si es true es sol
-  &[aria-checked="false"] &-circle {
-    width: 24px;
-    height: 24px;
-    border: 1px solid rgb(180, 190, 210);
-    background-color: #212121;
+  // Luna
+  .moon-icon {
+    color: #4c6fff;
   }
 
-  &-rays {
-    width: 24px;
-    height: 24px;
-    border-radius: 24px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 0.4s;
+  // Sol
+  .sun-icon {
+    color: #ffcc00;
+  }
 
-    span {
-      display: block;
-      border-radius: 2px;
-      position: relative;
-      background-color: rgb(255, 204, 0);
-    }
+  &:hover {
+    transform: translateY(-2px);
 
-    span:nth-child(1) {
-      width: 2px;
-      height: 24px;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    span:nth-child(2) {
-      width: 24px;
-      height: 2px;
-      top: -54%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    span:nth-child(3) {
-      width: 24px;
-      height: 2px;
-      top: -60%;
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-    }
-
-    span:nth-child(4) {
-      width: 24px;
-      height: 2px;
-      top: -70%;
-      left: 50%;
-      transform: translateX(-50%) rotate(-45deg);
+    .theme-icon {
+      transform: rotate(15deg) scale(1.1);
     }
   }
 
-  &[aria-checked="false"] &-rays {
-    transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
-  }
-
-  &-mask {
-    width: 20px;
-    height: 20px;
-    border-radius: 24px;
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translateY(-50%);
-    background-color: #fdf7fa;
-    transition:
-      top 0.4s,
-      left 0.4s;
-    transition-delay: 0.2s;
-    z-index: 20;
-  }
-
-  &[aria-checked="false"] &-mask {
-    top: 35%;
-    left: 40%;
+  &:active {
+    transform: scale(0.9);
   }
 }
 
