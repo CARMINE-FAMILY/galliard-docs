@@ -1,23 +1,28 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../store/store";
-import { toggleTheme } from "../store/themeSlice";
 import logo from "../../public/logo/pin.webp";
+import { setTheme } from "../store/themeSlice";
+import { getEffectiveTheme } from "../hooks/useThemeUtils";
 
 const Navbar: React.FC = () => {
   const theme = useSelector((state: RootState) => state.theme);
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  const effectiveTheme = getEffectiveTheme(location.pathname, theme);
 
   const handleToggleTheme = () => {
-    dispach(toggleTheme());
+    const next = effectiveTheme === "dark" ? "light" : "dark";
+    dispatch(setTheme(next));
   };
 
   return (
     <nav className="navbar">
       <NavLink to="/" className="navbar__brand">
-        <img className="logo" src={logo} alt="Galliard UI"/>
+        <img className="logo" src={logo} alt="Galliard UI" />
         <span className="title">Galliard UI</span>
       </NavLink>
 
@@ -63,7 +68,7 @@ const Navbar: React.FC = () => {
         <button
           className="theme__icon"
           onClick={handleToggleTheme}
-          aria-checked={theme === "dark"}
+          aria-checked={effectiveTheme === "dark"}
           aria-label="Cambiar tema"
         >
           <span className="theme__icon-circle" />
