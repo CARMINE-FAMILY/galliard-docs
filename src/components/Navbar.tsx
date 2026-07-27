@@ -63,7 +63,6 @@ const Navbar: React.FC = () => {
         <button
           className="theme__icon"
           onClick={handleToggleTheme}
-          role="switch"
           aria-checked={theme === "dark"}
           aria-label="Cambiar tema"
         >

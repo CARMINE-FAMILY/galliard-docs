@@ -145,9 +145,10 @@
     font: inherit;
     color: var(--text-color);
 
+    //Icono del triangulo que despliega los inputs
     .chevron {
       margin-left: auto;
-      font-size: 1.2rem;
+      font-size: 2rem;
       opacity: 0.5;
       transition: transform 0.2s ease;
     }

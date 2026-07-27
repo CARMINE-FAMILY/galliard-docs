@@ -311,13 +311,28 @@ export default function BottomSheet() {
       </ComponentPreviewGal>
 
       {/* Límites de altura */}
-      <h2 className="titleSecundaryButton">Límites de altura</h2>
+      <h2 className="titleSecundaryButton">Posiciones</h2>
       <p className="text">
-        Con <span className="inline-code">startHeightPercentPosition</span>,{" "}
-        <span className="inline-code">minHeightPercentPosition</span> y{" "}
-        <span className="inline-code">maxHeightPercentPosition</span> defines
-        entre qué alturas se puede mover el panel al arrastrarlo.
+        Con las siguientes propiedades puedes definir entre qué alturas se puede
+        mover el panel al arrastrarlo.
       </p>
+      <ul className="text">
+        <li>
+          <span className="inline-code">startHeightPercentPosition</span>:
+          altura inicial del panel.
+        </li>
+        <li>
+          <span className="inline-code">minHeightPercentPosition</span>: altura
+          mínima al arrastrar hacia abajo.
+        </li>
+        <li>
+          <span className="inline-code">maxHeightPercentPosition</span>: altura
+          máxima al arrastrar hacia arriba.
+        </li>
+        <li>
+          <span className="inline-code">widthPercent</span>: ancho del panel.
+        </li>
+      </ul>
       <ComponentPreviewGal
         codeTabs={[
           {

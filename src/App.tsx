@@ -17,18 +17,12 @@ import BottomSheet from "./app/modalsDocs/BottomSheet";
 import UnixActions from "./app/functionsDocs/UnixActions";
 import OnClickOutside from "./app/functionsDocs/OnClickOutside";
 import ValidateForms from "./app/functionsDocs/ValidateForms";
-import { useSelector } from "react-redux";
-import type { RootState } from "./store/store";
-import { useEffect } from "react";
+import {ThemeSync} from "./ThemeSync";
 
 function App() {
-  const theme = useSelector((state: RootState) => state.theme);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
   return (
     <BrowserRouter>
+      <ThemeSync />
       <Routes>
         {/* Se agrega el navbar y footer, solo agregar rutas del contenido */}
         <Route element={<MainLayout />}>

@@ -183,7 +183,6 @@ button {
     width: 14px;
     height: 14px;
     border-radius: 24px;
-    border: 1px solid #212121;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -197,11 +196,12 @@ button {
     z-index: 10;
   }
 
-  &[aria-checked="true"] &-circle {
+  //Color para la luna en false, si es true es sol
+  &[aria-checked="false"] &-circle {
     width: 24px;
     height: 24px;
-    border: 1px solid rgb(245, 245, 247);
-    background-color: rgb(245, 245, 247);
+    border: 1px solid rgb(180, 190, 210);
+    background-color: #212121;
   }
 
   &-rays {
@@ -254,7 +254,7 @@ button {
     }
   }
 
-  &[aria-checked="true"] &-rays {
+  &[aria-checked="false"] &-rays {
     transform: translate(-50%, -50%) rotate(-45deg) scale(0.8);
   }
 
@@ -266,7 +266,7 @@ button {
     top: 50%;
     left: 100%;
     transform: translateY(-50%);
-    background-color: #212121;
+    background-color: #fdf7fa;
     transition:
       top 0.4s,
       left 0.4s;
@@ -274,7 +274,7 @@ button {
     z-index: 20;
   }
 
-  &[aria-checked="true"] &-mask {
+  &[aria-checked="false"] &-mask {
     top: 35%;
     left: 40%;
   }
