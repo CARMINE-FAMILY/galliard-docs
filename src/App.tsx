@@ -17,7 +17,8 @@ import BottomSheet from "./app/modalsDocs/BottomSheet";
 import UnixActions from "./app/functionsDocs/UnixActions";
 import OnClickOutside from "./app/functionsDocs/OnClickOutside";
 import ValidateForms from "./app/functionsDocs/ValidateForms";
-import {ThemeSync} from "./ThemeSync";
+import { ThemeSync } from "./ThemeSync";
+import NotFound from "./app/NotFound";
 
 function App() {
   return (
@@ -85,6 +86,9 @@ function App() {
           </Route>
           <Route path="/" element={<LandingScreen />} />
         </Route>
+
+        {/* NotFound */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
