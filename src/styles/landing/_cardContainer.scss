@@ -64,7 +64,7 @@
     }
   }
 
-  // Solo layout: la card en sí vive en CardComponent.module.scss
+  // Solo layout: la card en sí vive en este mandeja las tarjetas
   .general {
     display: flex;
     flex-direction: row;
@@ -79,22 +79,11 @@
 
 @media (max-width: 768px) {
   .cardsContainer {
-    padding-top: 500px;
+    padding-top: 400px;
     .headerCardContainer {
       .title {
         font-size: 5rem;
       }
-    }
-  }
-}
-
-@media (max-width: 576px) {
-  .cardsContainer {
-    .headerCardContainer {
-      .title {
-        font-size: 5rem; // te faltaba la unidad "rem" aquí, ojo
-      }
-
       .subtitle {
         font-size: 2.5rem;
       }
@@ -102,14 +91,42 @@
   }
 }
 
+@media (max-width: 576px) {
+  .cardsContainer {
+    padding-top: 450px;
+    .headerCardContainer {
+      .title {
+        font-size: 5rem;
+      }
+      .subtitle {
+        font-size: 3rem;
+      }
+    }
+
+    .general {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: 1fr; // sigue 2x
+      // gap: 8rem;
+      flex-direction: row;
+    }
+  }
+}
+
 @media (max-width: 360px) {
   .cardsContainer {
-    padding-top: 250px;
+    padding-top: 350px;
+    .headerCardContainer {
+      .title {
+        font-size: 6rem;
+      }
+      .subtitle {
+        font-size: 4rem;
+      }
+    }
     .general {
-      grid-template-columns: repeat(
-        2,
-        1fr
-      ); // o el layout que quieras solo aquí
+      grid-template-columns: 1fr;
     }
   }
 }
