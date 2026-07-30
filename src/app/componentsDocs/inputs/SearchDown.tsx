@@ -297,7 +297,7 @@ export default function SearchDown() {
       />
 
       {/* Uso básico */}
-      <h2 className="titleSecundaryButton">Uso Básico</h2>
+      <h2 className="titleSecundary">Uso Básico</h2>
       <p className="text">
         Ejemplo base: filtra localmente sobre la lista de{" "}
         <span className="inline-code">options</span> que le pasas.
@@ -344,7 +344,7 @@ export default function SearchDown() {
       </ComponentPreviewGal>
 
       {/* Búsqueda con API */}
-      <h2 className="titleSecundaryButton">Búsqueda conectada a una API</h2>
+      <h2 className="titleSecundary">Búsqueda conectada a una API</h2>
       <p className="text">
         Con <span className="inline-code">useForApi</span> en{" "}
         <span className="inline-code">true</span>, el componente deja de filtrar
@@ -487,7 +487,7 @@ export default function SearchDown() {
       </ComponentPreviewGal>
 
       {/* Iconos */}
-      <h2 className="titleSecundaryButton">Iconos</h2>
+      <h2 className="titleSecundary">Diseño con iconos</h2>
       <p className="text">
         Con <span className="inline-code">seeIcon</span>,{" "}
         <span className="inline-code">icon</span> e{" "}
@@ -542,7 +542,7 @@ export default function SearchDown() {
       </ComponentPreviewGal>
 
       {/* Layout horizontal */}
-      <h2 className="titleSecundaryButton">Layout horizontal</h2>
+      <h2 className="titleSecundary">Layout horizontal</h2>
       <p className="text">
         Con <span className="inline-code">HorV="horizontal"</span> la etiqueta
         se acomoda al lado del campo en vez de arriba.
@@ -572,7 +572,7 @@ export default function SearchDown() {
       </ComponentPreviewGal>
 
       {/* Bordes y sombra */}
-      <h2 className="titleSecundaryButton">Bordes y sombra</h2>
+      <h2 className="titleSecundary">Bordes y sombra</h2>
       <p className="text">
         Con <span className="inline-code">rounded</span>,{" "}
         <span className="inline-code">border</span> y{" "}
@@ -618,7 +618,7 @@ export default function SearchDown() {
       </ComponentPreviewGal>
 
       {/* Personalización */}
-      <h2 className="titleSecundaryButton">Personalización</h2>
+      <h2 className="titleSecundary">Personalización</h2>
       <p className="text">
         Con <span className="inline-code">customContainerClass</span>,{" "}
         <span className="inline-code">customInputClass</span>,{" "}

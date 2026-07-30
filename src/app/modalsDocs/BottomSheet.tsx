@@ -393,7 +393,7 @@ export default function BottomSheet() {
       <h2 className="titleSecundaryButton">Ancho del panel</h2>
       <p className="text">
         Con <span className="inline-code">widthPercent</span> ajustas el ancho
-        del panel respecto al viewport.
+        del panel respecto al bottomsheet.
       </p>
       <ComponentPreviewGal
         codeTabs={[
