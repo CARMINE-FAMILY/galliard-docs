@@ -19,6 +19,7 @@ import OnClickOutside from "./app/functionsDocs/OnClickOutside";
 import ValidateForms from "./app/functionsDocs/ValidateForms";
 import { ThemeSync } from "./ThemeSync";
 import NotFound from "./app/NotFound";
+import SearchDown from "./app/componentsDocs/inputs/SearchDown";
 
 function App() {
   return (
@@ -54,6 +55,12 @@ function App() {
               path="/componentsDocs/inputs/inputtext"
               element={<InputText />}
             />
+
+            <Route
+              path="/componentsDocs/inputs/searchdown"
+              element={<SearchDown />}
+            />
+
             <Route
               path="/componentsDocs/inputs/textarea"
               element={<TextArea />}

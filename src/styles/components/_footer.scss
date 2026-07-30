@@ -108,3 +108,23 @@
     }
   }
 }
+
+@media (max-width: 768px){
+  .footer{
+    .cta{
+      h2{
+        font-size: 5rem;
+      }
+
+      p{
+        font-size: 2.5rem;
+      }
+    }
+
+    .content{
+      .legal{
+        font-size: 2rem;
+      }
+    }
+  }
+}

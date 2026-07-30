@@ -59,3 +59,43 @@
   background-color: var(--bg-color) !important;
   border-color: var(--border-color) !important;
 }
+
+// Fix responsive para CodeBlockGal: en pantallas chicas el header
+// (tabs + botón copiar) se desborda porque no tiene overflow ni
+// flex-shrink. galliard-ui es dependencia sellada, override desde docs.
+[class*="codeBlock-tabsContainer"] {
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+[class*="codeBlock-tabButton"] {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+[class*="codeBlock-copyButton"] {
+  flex-shrink: 0;
+}
+
+@media (max-width: 360px) {
+  [class*="codeBlock-copyButton"] {
+    font-size: 1.1rem;
+    padding: 4px;
+  }
+
+  [class*="codeBlock-tabButton"] {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  // _overridesGalliardUi.scss
+  [class*="codeBlock-wrapper"] {
+    max-width: 100%; // nunca más ancho que su contenedor padre
+    width: 100%; // ocupa el 100% de .codeContainer, no crece más allá
+    margin: 0 auto;
+  }
+}

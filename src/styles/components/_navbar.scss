@@ -249,16 +249,46 @@ button {
 
 @media (max-width: 360px) {
   .navbar {
-    width: 100%;
-    .title {
-      font-size: 3rem;
+    padding: 15px;
+
+    .logo{
+      height: 50%;
     }
+
+    .title {
+      font-size: 1.8rem;
+    }
+
     a {
-      font-size: 3rem;
+      font-size: 2rem;
     }
 
     &__actions {
       height: 55%;
+    }
+
+    .social {
+      width: 12px;
+      height: 12px;
+
+      .icon {
+        width: 8px;
+        height: 8px;
+      }
+      .npm {
+        width: 8px;
+        height: 8px;
+      }
+    }
+
+    .theme__icon {
+      width: 12px;
+      height: 12px;
+
+      .theme-icon {
+        width: 9px;
+        height: 9px;
+      }
     }
   }
 }

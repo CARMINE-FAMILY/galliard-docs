@@ -97,3 +97,21 @@
     }
   }
 }
+
+@media (max-width: 360px) {
+  .codeContainerPlus {
+    justify-content: flex-end; // antes: flex-end
+    overflow-x: auto;
+    .codeContainer {
+      .headerCodeContainer{
+        .title{
+          font-size: 7rem;
+        }
+
+        .subtitle{
+          font-size: 4.5rem;
+        }
+      }
+    }
+  }
+}

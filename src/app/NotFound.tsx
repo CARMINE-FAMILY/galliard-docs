@@ -27,7 +27,7 @@ const NotFound = () => {
           <Link to="/" className="not-found__btn not-found__btn--primary">
             Ir al inicio
           </Link>
-          <Link to="/docs" className="not-found__btn not-found__btn--ghost">
+          <Link to="/getStartDocs/docs" className="not-found__btn not-found__btn--ghost">
             Ver documentación
           </Link>
         </div>
