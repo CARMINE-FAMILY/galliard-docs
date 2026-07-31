@@ -393,7 +393,7 @@ export default function SearchDown() {
             label: "JSX",
             language: "jsx",
             code: `
-const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[]> => {
+const searchCharacter = async (text) => {
     if (!text) {
       return [];
     }
