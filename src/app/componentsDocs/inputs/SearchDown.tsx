@@ -15,13 +15,13 @@ const sampleOptions: OptionsSearchModel[] = [
 ];
 
 export default function SearchDown() {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[]> => {
     if (!text) {
       return [];
     }
-    setLoading(true);
+    // setLoading(true);
     try {
       const res = await fetch(
         `https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(text)}`,
@@ -41,7 +41,7 @@ export default function SearchDown() {
     } catch (error) {
       return [];
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 

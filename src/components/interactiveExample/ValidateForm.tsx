@@ -1,7 +1,6 @@
 // src/components/demos/RegisterFormDemo.tsx
 import { useState } from "react";
 import { InputTextGal, CheckBoxGal, ButtonGal, useValidateForms } from "galliard-ui";
-import { validateFormsPatched } from "../../hooks/useValidateExample";
 import type { ValidateProps } from "galliard-ui";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
