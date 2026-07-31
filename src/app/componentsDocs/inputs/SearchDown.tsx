@@ -422,7 +422,6 @@ const buscarPersonaje = async (texto) => {
 };
 
 <SearchDownGal
-  key={options.length} // fuerza refrescar la lista interna
   label="Personaje"
   value={value}
   setValue={setValue}
@@ -454,7 +453,6 @@ const buscarPersonaje = async (texto: string | null) => {
 };
 
 <SearchDownGal
-  key={options.length} // fuerza refrescar la lista interna
   label="Personaje"
   value={value}
   setValue={setValue}
@@ -466,12 +464,11 @@ const buscarPersonaje = async (texto: string | null) => {
         ]}
       >
         <SearchDownGal
-          key={apiOptions.length}
           label="Personaje"
           value={apiValue}
           setValue={setApiValue}
           options={apiOptions}
-          useForApi={false}
+          useForApi={true}
           searchAction={buscarPersonaje}
         />
 
