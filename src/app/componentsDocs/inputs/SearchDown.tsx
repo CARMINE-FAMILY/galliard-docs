@@ -22,23 +22,64 @@ const sampleOptions: OptionsSearchModel[] = [
 ];
 
 export default function SearchDown() {
+  const [apiOptions, setApiOptions] = useState<OptionsSearchModel[]>([]);
+  const [, setLoading] = useState(false);
+
+  const buscarPersonaje = async (texto: string | null) => {
+    if (!texto) {
+      setApiOptions([]);
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(texto)}`,
+      );
+      if (!res.ok) {
+        // la API regresa 404 cuando no hay resultados
+        setApiOptions([]);
+        return;
+      }
+      const data = await res.json();
+      const resultados: OptionsSearchModel[] = data.results
+        .slice(0, 10)
+        .map((c: { id: number; name: string }) => ({
+          valueOption: c.id,
+          text: c.name,
+        }));
+      setApiOptions(resultados);
+    } catch (error) {
+      setApiOptions([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const [basicValue, setBasicValue] = useState<OptionsSearchModel | null>(null);
+
   const [apiValue, setApiValue] = useState<OptionsSearchModel | null>(null);
+
   const [iconValue, setIconValue] = useState<OptionsSearchModel | null>(null);
+
   const [horizontalValue, setHorizontalValue] =
     useState<OptionsSearchModel | null>(null);
+
   const [shadowValue, setShadowValue] = useState<OptionsSearchModel | null>(
     null,
   );
+
   const [customValue, setCustomValue] = useState<OptionsSearchModel | null>(
     null,
   );
 
   const [topValue, setTopValue] = useState<OptionsSearchModel | null>(null);
+
   const [bottomValue, setBottomValue] = useState<OptionsSearchModel | null>(
     null,
   );
+
   const [leftValue, setLeftValue] = useState<OptionsSearchModel | null>(null);
+
   const [rightValue, setRightValue] = useState<OptionsSearchModel | null>(null);
 
   const contenidoProps: PropRow[] = [
@@ -299,7 +340,7 @@ export default function SearchDown() {
       {/* Uso básico */}
       <h2 className="titleSecundary">Uso Básico</h2>
       <p className="text">
-        Ejemplo base: filtra localmente sobre la lista de{" "}
+        Ejemplo base: filtra localmente sobre la lista de
         <span className="inline-code">options</span> que le pasas.
       </p>
       <ComponentPreviewGal
@@ -347,11 +388,14 @@ export default function SearchDown() {
       <h2 className="titleSecundary">Búsqueda conectada a una API</h2>
       <p className="text">
         Con <span className="inline-code">useForApi</span> en{" "}
-        <span className="inline-code">true</span>, el componente deja de filtrar
-        por su cuenta y en su lugar llama a{" "}
+        <span className="inline-code">true</span>, el componente llama a{" "}
         <span className="inline-code">searchAction</span> con lo que el usuario
-        escribe (con debounce), para que tú resuelvas la búsqueda contra tu
-        propio backend.
+        escribe (con debounce), en vez de filtrar internamente. Este ejemplo
+        busca en tiempo real contra la{" "}
+        <a href="https://rickandmortyapi.com" target="_blank" rel="noreferrer">
+          Rick and Morty API
+        </a>
+        : escribe el nombre de un personaje (ej. "rick", "morty", "summer").
       </p>
       <ComponentPreviewGal
         codeTabs={[
@@ -359,73 +403,94 @@ export default function SearchDown() {
             label: "JSX",
             language: "jsx",
             code: `
-        const [value, setValue] = useState(null);
+const [value, setValue] = useState(null);
+const [options, setOptions] = useState([]);
 
-        const buscarEnApi = async (texto) => {
-          const resultados = await miApi.buscarFrutas(texto);
-          // actualiza tu propio estado de "options" con resultados
-        };
+const buscarPersonaje = async (texto) => {
+  if (!texto) return setOptions([]);
+  const res = await fetch(
+    \`https://rickandmortyapi.com/api/character/?name=\${texto}\`
+  );
+  if (!res.ok) return setOptions([]);
+  const data = await res.json();
+  setOptions(
+    data.results.slice(0, 10).map((c) => ({
+      valueOption: c.id,
+      text: c.name,
+    }))
+  );
+};
 
-        <SearchDownGal
-          label="Fruta (API)"
-          value={value}
-          setValue={setValue}
-          options={options}
-          useForApi
-          searchAction={buscarEnApi}
-        />`,
+<SearchDownGal
+  key={options.length} // fuerza refrescar la lista interna
+  label="Personaje"
+  value={value}
+  setValue={setValue}
+  options={options}
+  useForApi
+  searchAction={buscarPersonaje}
+/>`,
           },
           {
             label: "TSX",
             language: "tsx",
             code: `
-        const [value, setValue] = useState<OptionsSearchModel | null>(null);
+const [value, setValue] = useState<OptionsSearchModel | null>(null);
+const [options, setOptions] = useState<OptionsSearchModel[]>([]);
 
-        const buscarEnApi = async (texto: string | null) => {
-          const resultados = await miApi.buscarFrutas(texto);
-          // actualiza tu propio estado de "options" con resultados
-        };
+const buscarPersonaje = async (texto: string | null) => {
+  if (!texto) return setOptions([]);
+  const res = await fetch(
+    \`https://rickandmortyapi.com/api/character/?name=\${texto}\`
+  );
+  if (!res.ok) return setOptions([]);
+  const data = await res.json();
+  setOptions(
+    data.results.slice(0, 10).map((c: { id: number; name: string }) => ({
+      valueOption: c.id,
+      text: c.name,
+    }))
+  );
+};
 
-        <SearchDownGal
-          label="Fruta (API)"
-          value={value}
-          setValue={setValue}
-          options={options}
-          useForApi
-          searchAction={buscarEnApi}
-        />`,
+<SearchDownGal
+  key={options.length} // fuerza refrescar la lista interna
+  label="Personaje"
+  value={value}
+  setValue={setValue}
+  options={options}
+  useForApi
+  searchAction={buscarPersonaje}
+/>`,
           },
         ]}
       >
         <SearchDownGal
-          label="Fruta (API)"
+          key={apiOptions.length}
+          label="Personaje"
           value={apiValue}
           setValue={setApiValue}
-          options={sampleOptions}
-          useForApi
-          searchAction={() => {}}
+          options={apiOptions}
+          useForApi={false}
+          searchAction={buscarPersonaje}
         />
+
       </ComponentPreviewGal>
 
       <p className="note">Nota:</p>
       <p className="text">
-        Revisando el código de{" "}
-        <span className="inline-code">SearchDownGal</span>, cuando{" "}
-        <span className="inline-code">useForApi</span> es{" "}
-        <span className="inline-code">true</span>, la lista interna de opciones
-        (<span className="inline-code">internalOptions</span>) solo se
-        inicializa una vez a partir de{" "}
-        <span className="inline-code">options</span> y no parece sincronizarse
-        cuando actualizas ese prop desde el padre después de tu llamada a la
-        API. Vale la pena que lo confirmes en tu práctica: si al escribir no ves
-        las opciones nuevas reflejarse en el dropdown, probablemente sea por
-        esto — es un comportamiento del paquete{" "}
-        <span className="inline-code">galliard-ui</span>, no algo que se
-        resuelva desde la documentación.
+        <span className="inline-code">SearchDownGal</span> guarda las opciones
+        en un estado interno que solo se inicializa una vez a partir de
+        <span className="inline-code">options</span>; no se sincroniza cuando el
+        prop cambia después. El truco de arriba usar
+        <span className="inline-code">key={"{options.length}"}</span> fuerza a
+        React a remontar el componente cada vez que llegan resultados nuevos. Es
+        un workaround de documentación; no es ideal para producción porque el
+        input pierde el foco al remontarse mientras el usuario escribe rápido.
       </p>
 
       {/* Orientación */}
-      <h2 className="titleSecundaryButton">Orientación del despliegue</h2>
+      <h2 className="titleSecundary">Orientación del despliegue</h2>
       <p className="text">
         La prop <span className="inline-code">orientation</span> define hacia
         dónde se abre la lista de opciones respecto al campo.
@@ -489,12 +554,12 @@ export default function SearchDown() {
       {/* Iconos */}
       <h2 className="titleSecundary">Diseño con iconos</h2>
       <p className="text">
-        Con <span className="inline-code">seeIcon</span>,{" "}
-        <span className="inline-code">icon</span> e{" "}
+        Con <span className="inline-code">seeIcon</span>,
+        <span className="inline-code">icon</span> e
         <span className="inline-code">iconInRight</span> puedes mostrar un ícono
         junto a la etiqueta y decidir de qué lado aparece. También puedes
-        ajustar el ícono de lupa del campo con{" "}
-        <span className="inline-code">iconsOptionsSize</span> y{" "}
+        ajustar el ícono de lupa del campo con
+        <span className="inline-code">iconsOptionsSize</span> y
         <span className="inline-code">iconsColor</span>.
       </p>
       <ComponentPreviewGal
@@ -574,8 +639,8 @@ export default function SearchDown() {
       {/* Bordes y sombra */}
       <h2 className="titleSecundary">Bordes y sombra</h2>
       <p className="text">
-        Con <span className="inline-code">rounded</span>,{" "}
-        <span className="inline-code">border</span> y{" "}
+        Con <span className="inline-code">rounded</span>,
+        <span className="inline-code">border</span>
         <span className="inline-code">shadow</span> puedes ajustar el redondeo,
         quitar el borde o activar una sombra sobre el campo.
       </p>
@@ -618,24 +683,23 @@ export default function SearchDown() {
       </ComponentPreviewGal>
 
       {/* Personalización */}
-      <h2 className="titleSecundary">Personalización</h2>
+      <h2 className="titleSecundary">Personalización del componente</h2>
       <p className="text">
-        Con <span className="inline-code">customContainerClass</span>,{" "}
-        <span className="inline-code">customInputClass</span>,{" "}
-        <span className="inline-code">customLabelClass</span>,{" "}
-        <span className="inline-code">customIconClass</span> y{" "}
+        Con <span className="inline-code">customContainerClass</span>,
+        <span className="inline-code">customInputClass</span>,
+        <span className="inline-code">customLabelClass</span>,
+        <span className="inline-code">customIconClass</span> y
         <span className="inline-code">customOptionClass</span> puedes aplicar
         clases CSS propias a cada parte del componente.
       </p>
       <p className="note">Nota:</p>
       <p className="text">
         Si los estilos personalizados no se aplican, puede deberse a que ya
-        existen estilos con mayor prioridad. Puedes usar{" "}
+        existen estilos con mayor prioridad. Puedes usar
         <span className="inline-code">!important</span> en tu clase para
         sobreescribirlos.
       </p>
       <ComponentPreviewGal
-        customTheme={{ bg: "#212528" }}
         codeTabs={[
           {
             label: "JSX",
