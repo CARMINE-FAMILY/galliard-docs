@@ -15,34 +15,31 @@ const sampleOptions: OptionsSearchModel[] = [
 ];
 
 export default function SearchDown() {
-  const [apiOptions, setApiOptions] = useState<OptionsSearchModel[]>([]);
-  const [, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const searchCharacter = async (texto: string | null) => {
-    if (!texto) {
-      setApiOptions([]);
-      return;
+  const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[]> => {
+    if (!text) {
+      return [];
     }
     setLoading(true);
     try {
       const res = await fetch(
-        `https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(texto)}`,
+        `https://rickandmortyapi.com/api/character/?name=${encodeURIComponent(text)}`,
       );
       if (!res.ok) {
         // la API regresa 404 cuando no hay resultados
-        setApiOptions([]);
-        return;
+        return [];
       }
       const data = await res.json();
-      const resultados: OptionsSearchModel[] = data.results
+      const formateData: OptionsSearchModel[] = data.results
         .slice(0, 10)
         .map((c: { id: number; name: string }) => ({
           valueOption: c.id,
           text: c.name,
         }));
-      setApiOptions(resultados);
+      return formateData;
     } catch (error) {
-      setApiOptions([]);
+      return [];
     } finally {
       setLoading(false);
     }
@@ -396,90 +393,95 @@ export default function SearchDown() {
             label: "JSX",
             language: "jsx",
             code: `
-const [value, setValue] = useState(null);
-const [options, setOptions] = useState([]);
-
-const buscarPersonaje = async (texto) => {
-  if (!texto) return setOptions([]);
-  const res = await fetch(
-    \`https://rickandmortyapi.com/api/character/?name=\${texto}\`
+const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[]> => {
+    if (!text) {
+      return [];
+    }
+    setLoading(true);
+    try {
+      const res = await fetch(
+    \`https://rickandmortyapi.com/api/character/?name=\${text}\`
   );
-  if (!res.ok) return setOptions([]);
-  const data = await res.json();
-  setOptions(
-    data.results.slice(0, 10).map((c) => ({
-      valueOption: c.id,
-      text: c.name,
-    }))
-  );
-};
+      if (!res.ok) {
+        // la API regresa 404 cuando no hay resultados
+        return [];
+      }
+      const data = await res.json();
+      const formateData: OptionsSearchModel[] = data.results
+        .slice(0, 10)
+        .map((c: { id: number; name: string }) => ({
+          valueOption: c.id,
+          text: c.name,
+        }));
+      return formateData;
+    } catch (error) {
+      return [];
+    } finally {
+      setLoading(false);
+    }
+  };
 
 <SearchDownGal
-  key={apiOptions.length}
+  options={[]}
   label="Personaje"
-  value={value}
-  setValue={setValue}
-  options={options}
-  useForApi
-  searchAction={buscarPersonaje}
+  value={apiValue}
+  setValue={setApiValue}
+  useForApi={true}
+  searchAction={searchCharacter}
 />`,
-          },
-          {
+},
+  {
             label: "TSX",
             language: "tsx",
             code: `
-const [value, setValue] = useState<OptionsSearchModel | null>(null);
-const [options, setOptions] = useState<OptionsSearchModel[]>([]);
-
-const buscarPersonaje = async (texto: string | null) => {
-  if (!texto) return setOptions([]);
-  const res = await fetch(
-    \`https://rickandmortyapi.com/api/character/?name=\${texto}\`
+const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[]> => {
+    if (!text) {
+      return [];
+    }
+    setLoading(true);
+    try {
+      const res = await fetch(
+    \`https://rickandmortyapi.com/api/character/?name=\${text}\`
   );
-  if (!res.ok) return setOptions([]);
-  const data = await res.json();
-  setOptions(
-    data.results.slice(0, 10).map((c: { id: number; name: string }) => ({
-      valueOption: c.id,
-      text: c.name,
-    }))
-  );
-};
+      if (!res.ok) {
+        // la API regresa 404 cuando no hay resultados
+        return [];
+      }
+      const data = await res.json();
+      const formateData: OptionsSearchModel[] = data.results
+        .slice(0, 10)
+        .map((c: { id: number; name: string }) => ({
+          valueOption: c.id,
+          text: c.name,
+        }));
+      return formateData;
+    } catch (error) {
+      return [];
+    } finally {
+      setLoading(false);
+    }
+  };
 
 <SearchDownGal
-  key={apiOptions.length}
+  options={[]}
   label="Personaje"
-  value={value}
-  setValue={setValue}
-  options={options}
-  useForApi
-  searchAction={buscarPersonaje}
+  value={apiValue}
+  setValue={setApiValue}
+  useForApi={true}
+  searchAction={searchCharacter}
 />`,
           },
         ]}
       >
         <SearchDownGal
-          key={apiOptions.length}
+          options={[]}
           label="Personaje"
           value={apiValue}
           setValue={setApiValue}
-          options={apiOptions}
           useForApi={true}
           searchAction={searchCharacter}
         />
       </ComponentPreviewGal>
-
-      <p className="note">Nota:</p>
-      <p className="text">
-        <span className="inline-code">SearchDownGal</span> guarda las opciones
-        en un estado interno que solo se inicializa una vez a partir de
-        <span className="inline-code">options</span>; no se sincroniza cuando el
-        prop cambia después. El truco de arriba usar
-        <span className="inline-code">key={"{options.length}"}</span> fuerza a
-        React a remontar el componente cada vez que llegan resultados nuevos. Es
-        un workaround de documentación; no es ideal para producción porque el
-        input pierde el foco al remontarse mientras el usuario escribe rápido.
-      </p>
 
       {/* Orientación */}
       <h2 className="titleSecundary">Orientación del despliegue</h2>
