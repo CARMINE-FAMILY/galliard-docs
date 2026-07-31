@@ -1,17 +1,10 @@
 import { useState } from "react";
 import { SearchDownGal, ComponentPreviewGal } from "galliard-ui";
-import { DataTable } from "../../../components/DataTable";
+import type { OptionsSearchModel } from "galliard-ui";
+import { DataTable } from "../../../components/table/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../../components/DocsPagination";
-
-// TODO: OptionsSearchModel no está exportado desde galliard-ui todavía.
-// Cuando se agregue el export, borrar esta interfaz y usar:
-// import { type OptionsSearchModel } from "galliard-ui";
-interface OptionsSearchModel {
-  valueOption: number | string | null;
-  text: string;
-}
+import { DocsPagination } from "../../../components/generals/DocsPagination";
 
 const sampleOptions: OptionsSearchModel[] = [
   { valueOption: 1, text: "Manzana" },
@@ -25,7 +18,7 @@ export default function SearchDown() {
   const [apiOptions, setApiOptions] = useState<OptionsSearchModel[]>([]);
   const [, setLoading] = useState(false);
 
-  const buscarPersonaje = async (texto: string | null) => {
+  const searchCharacter = async (texto: string | null) => {
     if (!texto) {
       setApiOptions([]);
       return;
@@ -82,7 +75,7 @@ export default function SearchDown() {
 
   const [rightValue, setRightValue] = useState<OptionsSearchModel | null>(null);
 
-  const contenidoProps: PropRow[] = [
+  const contentProps: PropRow[] = [
     {
       name: "label",
       type: "string",
@@ -134,7 +127,7 @@ export default function SearchDown() {
     },
   ];
 
-  const aparienciaProps: PropRow[] = [
+  const appearanceProps: PropRow[] = [
     {
       name: "orientation",
       type: '"top", "bottom", "left", "right"',
@@ -227,7 +220,7 @@ export default function SearchDown() {
     },
   ];
 
-  const iconosProps: PropRow[] = [
+  const iconsProps: PropRow[] = [
     {
       name: "seeIcon",
       type: "boolean",
@@ -268,7 +261,7 @@ export default function SearchDown() {
     },
   ];
 
-  const personalizacionProps: PropRow[] = [
+  const customizationProps: PropRow[] = [
     {
       name: "customContainerClass",
       type: "string",
@@ -312,28 +305,28 @@ export default function SearchDown() {
       <h3 className="subtitle">Contenido</h3>
       <DataTable
         columns={propsColumns}
-        data={contenidoProps}
+        data={contentProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Apariencia</h3>
       <DataTable
         columns={propsColumns}
-        data={aparienciaProps}
+        data={appearanceProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Iconos</h3>
       <DataTable
         columns={propsColumns}
-        data={iconosProps}
+        data={iconsProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Personalización</h3>
       <DataTable
         columns={propsColumns}
-        data={personalizacionProps}
+        data={customizationProps}
         rowKey={(r) => r.name}
       />
 
@@ -422,6 +415,7 @@ const buscarPersonaje = async (texto) => {
 };
 
 <SearchDownGal
+  key={apiOptions.length}
   label="Personaje"
   value={value}
   setValue={setValue}
@@ -453,6 +447,7 @@ const buscarPersonaje = async (texto: string | null) => {
 };
 
 <SearchDownGal
+  key={apiOptions.length}
   label="Personaje"
   value={value}
   setValue={setValue}
@@ -464,14 +459,14 @@ const buscarPersonaje = async (texto: string | null) => {
         ]}
       >
         <SearchDownGal
+          key={apiOptions.length}
           label="Personaje"
           value={apiValue}
           setValue={setApiValue}
           options={apiOptions}
           useForApi={true}
-          searchAction={buscarPersonaje}
+          searchAction={searchCharacter}
         />
-
       </ComponentPreviewGal>
 
       <p className="note">Nota:</p>

@@ -96,33 +96,37 @@
     align-items: center;
     gap: 0.7rem;
 
+    .hola {
+      &:hover {
+        .icon {
+          transform: rotateY(180deg) translateY(-2px) rotate(30deg);
+        }
+      }
+    }
+
     .icon {
       color: $background !important;
       font-size: 2.7rem;
       transform: rotateY(180deg) rotate(-50deg);
       transition: transform 0.3s ease;
-
-      &:hover {
-        transform: rotateY(180deg) translateY(-2px) rotate(30deg);
-      }
     }
   }
 }
 
-@media (max-width: 768px){
-  .footer{
-    .cta{
-      h2{
+@media (max-width: 768px) {
+  .footer {
+    .cta {
+      h2 {
         font-size: 5rem;
       }
 
-      p{
+      p {
         font-size: 2.5rem;
       }
     }
 
-    .content{
-      .legal{
+    .content {
+      .legal {
         font-size: 2rem;
       }
     }

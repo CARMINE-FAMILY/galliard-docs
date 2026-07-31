@@ -1,11 +1,11 @@
 import { CodeBlockGal, ComponentPreviewGal } from "galliard-ui";
-import { DataTable } from "../../components/DataTable";
+import { DataTable } from "../../components/table/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../components/DocsPagination";
+import { DocsPagination } from "../../components/generals/DocsPagination";
 
 export default function CodeBlock() {
-  const contenidoProps: PropRow[] = [
+  const contentProps: PropRow[] = [
     {
       name: "tabs",
       type: "Codetab[]",
@@ -72,7 +72,7 @@ export default function CodeBlock() {
     },
   ];
 
-  const temasProps: PropRow[] = [
+  const themesProps: PropRow[] = [
     {
       name: "CodeTheme",
       type: "black, light, dracula, orange, green, solarized-light, blue, yellow, red",
@@ -94,7 +94,7 @@ export default function CodeBlock() {
       <h3 className="subtitle">Contenido</h3>
       <DataTable
         columns={propsColumns}
-        data={contenidoProps}
+        data={contentProps}
         rowKey={(r) => r.name}
       />
 
@@ -113,7 +113,7 @@ export default function CodeBlock() {
       <h3 className="subtitle">Colores</h3>
       <DataTable
         columns={propsColumns}
-        data={temasProps}
+        data={themesProps}
         rowKey={(r) => r.name}
       />
 
@@ -342,7 +342,7 @@ export default function CodeBlock() {
         />
       </ComponentPreviewGal>
 
-     <DocsPagination/>
+      <DocsPagination />
     </div>
   );
 }

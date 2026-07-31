@@ -1,5 +1,5 @@
 import type { TableColumn, ClassNameRow } from "../models/TableModel";
-import { ClassBadge } from "../components/ClassBadge";
+import { ClassBadge } from "../components/table/ClassBadge";
 
 export function useClassNameColumns(): TableColumn<ClassNameRow>[] {
   return [

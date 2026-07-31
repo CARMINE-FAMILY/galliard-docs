@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
-import styles from "../styles/components/classBadge.module.scss";
-import type { ClassBadgeType } from "../models/TableModel";
+import styles from "../../styles/components/table/classBadge.module.scss";
+import type { ClassBadgeType } from "../../models/TableModel";
 
 const badgeIcon: Record<ClassBadgeType, string | null> = {
     Component: null,

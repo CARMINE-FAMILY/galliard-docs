@@ -21,6 +21,7 @@ const Footer: React.FC = () => {
             padding="0.6rem 1rem"
             iconSize="2.7rem"
             customClassIcon="icon"
+            customClassButton="hola"
             customClassLabel="label"
           />
         </div>

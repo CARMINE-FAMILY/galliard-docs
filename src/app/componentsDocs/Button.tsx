@@ -1,11 +1,11 @@
 import { ButtonGal, ComponentPreviewGal, type ButtonProps } from "galliard-ui";
-import { DataTable } from "../../components/DataTable";
+import { DataTable } from "../../components/table/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../components/DocsPagination";
+import { DocsPagination } from "../../components/generals/DocsPagination";
 
 export default function Button() {
-  const contenidoProps: PropRow[] = [
+  const contentProps: PropRow[] = [
     {
       name: "label",
       type: "string",
@@ -20,7 +20,7 @@ export default function Button() {
     },
   ];
 
-  const aparienciaProps: PropRow[] = [
+  const appearanceProps: PropRow[] = [
     {
       name: "styleType",
       type: "ThemeDark, ThemeLight, ThemeGreen, ThemeRed, ThemeBlue, ThemeYellow, ThemePurple, ThemeGray",
@@ -75,7 +75,7 @@ export default function Button() {
     },
   ];
 
-  const iconosProps: PropRow[] = [
+  const iconsProps: PropRow[] = [
     {
       name: "seeIcon",
       type: "boolean",
@@ -112,7 +112,7 @@ export default function Button() {
     },
   ];
 
-  const sombrasProps: PropRow[] = [
+  const shadowProps: PropRow[] = [
     {
       name: "shadow",
       type: "boolean",
@@ -127,7 +127,7 @@ export default function Button() {
     },
   ];
 
-  const personalizacionProps: PropRow[] = [
+  const customizationProps: PropRow[] = [
     {
       name: "customClassButton",
       type: "string",
@@ -155,6 +155,7 @@ export default function Button() {
       ),
     },
   ];
+
   return (
     <div className="container doc-content">
       <h1 className="titlePrimary">Button</h1>
@@ -171,35 +172,35 @@ export default function Button() {
       <h3 className="subtitle">Contenido</h3>
       <DataTable
         columns={propsColumns}
-        data={contenidoProps}
+        data={contentProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Apariencia</h3>
       <DataTable
         columns={propsColumns}
-        data={aparienciaProps}
+        data={appearanceProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Iconos</h3>
       <DataTable
         columns={propsColumns}
-        data={iconosProps}
+        data={iconsProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Sombras</h3>
       <DataTable
         columns={propsColumns}
-        data={sombrasProps}
+        data={shadowProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Personalización</h3>
       <DataTable
         columns={propsColumns}
-        data={personalizacionProps}
+        data={customizationProps}
         rowKey={(r) => r.name}
       />
 
@@ -569,7 +570,11 @@ export default function Button() {
       >
         <ButtonGal font="OpenSansRegular" action={() => {}} />
         <ButtonGal textSize="20px" action={() => {}} />
-        <ButtonGal font={"Georgia" as ButtonProps["font"]} textSize="18px" action={() => {}} />
+        <ButtonGal
+          font={"Georgia" as ButtonProps["font"]}
+          textSize="18px"
+          action={() => {}}
+        />
       </ComponentPreviewGal>
 
       {/* Sombras */}
@@ -694,7 +699,7 @@ export default function Button() {
         />
       </ComponentPreviewGal>
 
-      <DocsPagination/>
+      <DocsPagination />
     </div>
   );
 }

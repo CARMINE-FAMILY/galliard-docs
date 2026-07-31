@@ -1,9 +1,9 @@
 import { CodeBlockGal } from "galliard-ui";
-import { DataTable } from "../../components/DataTable";
+import { DataTable } from "../../components/table/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
-import { UnixDateDemo } from "../../components/UnixDateDemo";
-import { DocsPagination } from "../../components/DocsPagination";
+import { UnixDateDemo } from "../../components/interactiveExample/UnixDateDemo";
+import { DocsPagination } from "../../components/generals/DocsPagination";
 
 export default function UnixActions() {
   const timezonesInfo: PropRow[] = [

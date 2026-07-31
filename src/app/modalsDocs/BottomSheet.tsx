@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { BottomSheetGal, ButtonGal, ComponentPreviewGal } from "galliard-ui";
-import { DataTable } from "../../components/DataTable";
+import { DataTable } from "../../components/table/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../components/DocsPagination";
+import { DocsPagination } from "../../components/generals/DocsPagination";
 
 export default function BottomSheet() {
   const [openBasic, setOpenBasic] = useState<boolean>(false);
@@ -14,7 +14,7 @@ export default function BottomSheet() {
   const [openAppearance, setOpenAppearance] = useState<boolean>(false);
   const [openCustom, setOpenCustom] = useState<boolean>(false);
 
-  const contenidoProps: PropRow[] = [
+  const contentProps: PropRow[] = [
     {
       name: "children",
       type: "React.ReactNode",
@@ -59,7 +59,7 @@ export default function BottomSheet() {
     },
   ];
 
-  const tamanoProps: PropRow[] = [
+  const sizeProps: PropRow[] = [
     {
       name: "startHeightPercentPosition",
       type: "0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100",
@@ -88,7 +88,7 @@ export default function BottomSheet() {
     },
   ];
 
-  const aparienciaProps: PropRow[] = [
+  const appearanceProps: PropRow[] = [
     {
       name: "transitionDuration",
       type: "0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1",
@@ -131,7 +131,7 @@ export default function BottomSheet() {
     },
   ];
 
-  const personalizacionProps: PropRow[] = [
+  const customizationProps: PropRow[] = [
     {
       name: "customContainerClass",
       type: "string",
@@ -165,7 +165,7 @@ export default function BottomSheet() {
       <h3 className="subtitle">Contenido</h3>
       <DataTable
         columns={propsColumns}
-        data={contenidoProps}
+        data={contentProps}
         rowKey={(r) => r.name}
       />
 
@@ -179,21 +179,21 @@ export default function BottomSheet() {
       <h3 className="subtitle">Tamaño y posición</h3>
       <DataTable
         columns={propsColumns}
-        data={tamanoProps}
+        data={sizeProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Apariencia</h3>
       <DataTable
         columns={propsColumns}
-        data={aparienciaProps}
+        data={appearanceProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Personalización</h3>
       <DataTable
         columns={propsColumns}
-        data={personalizacionProps}
+        data={customizationProps}
         rowKey={(r) => r.name}
       />
 

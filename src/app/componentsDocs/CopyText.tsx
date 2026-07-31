@@ -1,11 +1,11 @@
 import { CopyTextGal, ComponentPreviewGal } from "galliard-ui";
-import { DataTable } from "../../components/DataTable";
+import { DataTable } from "../../components/table/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../components/DocsPagination";
+import { DocsPagination } from "../../components/generals/DocsPagination";
 
 export default function CopyText() {
-  const contenidoProps: PropRow[] = [
+  const contentProps: PropRow[] = [
     {
       name: "command",
       type: "string",
@@ -13,7 +13,7 @@ export default function CopyText() {
     },
   ];
 
-  const aparienciaProps: PropRow[] = [
+  const appearanceProps: PropRow[] = [
     {
       name: "theme",
       type: "black, light, dracula, orange, green, solarized-light, blue, yellow, red",
@@ -28,7 +28,7 @@ export default function CopyText() {
     },
   ];
 
-  const iconosProps: PropRow[] = [
+  const iconsProps: PropRow[] = [
     {
       name: "iconPosition",
       type: '"left" ó "right"',
@@ -37,7 +37,7 @@ export default function CopyText() {
     },
   ];
 
-  const personalizacionProps: PropRow[] = [
+  const customizationProps: PropRow[] = [
     {
       name: "className",
       type: "string",
@@ -61,28 +61,28 @@ export default function CopyText() {
       <h3 className="subtitle">Contenido</h3>
       <DataTable
         columns={propsColumns}
-        data={contenidoProps}
+        data={contentProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Apariencia</h3>
       <DataTable
         columns={propsColumns}
-        data={aparienciaProps}
+        data={appearanceProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Icono</h3>
       <DataTable
         columns={propsColumns}
-        data={iconosProps}
+        data={iconsProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Personalización</h3>
       <DataTable
         columns={propsColumns}
-        data={personalizacionProps}
+        data={customizationProps}
         rowKey={(r) => r.name}
       />
 

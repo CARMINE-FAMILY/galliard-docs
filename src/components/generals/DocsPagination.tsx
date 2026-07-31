@@ -1,5 +1,5 @@
-import styles from "../styles/components/DocsPagination.module.scss";
-import { docsNavOrder, type DocsNavItem } from "../models/docsNavOrder";
+import styles from "../../styles/components/generals/DocsPagination.module.scss";
+import { docsNavOrder, type DocsNavItem } from "../../models/docsNavOrder";
 
 interface DocsPaginationProps {
   currentHref?: string; // opcional: si no lo pasas, se detecta con la ruta actual

@@ -41,15 +41,19 @@
     align-items: center;
     gap: 0.7rem;
 
+    .hola {
+      &:hover {
+        .icon {
+          transform: rotateY(180deg) translateY(-2px) rotate(30deg);
+        }
+      }
+    }
+
     .icon {
       color: $background !important;
       font-size: 2.7rem;
       transform: rotateY(180deg) rotate(-50deg);
       transition: transform 0.3s ease;
-
-      &:hover {
-        transform: rotateY(180deg) translateY(-2px) rotate(30deg);
-      }
     }
   }
 
@@ -128,9 +132,11 @@
     &__title {
       font-size: 9rem;
     }
+
     &__subtitle {
       font-size: 2.2rem;
     }
+
     &__made-with {
       font-size: 1.8rem;
     }
@@ -140,11 +146,13 @@
 @media (max-width: 360px) {
   .hero {
     &__title {
-      font-size: 10rem; // revisa si esto es lo que quieres, ver nota arriba
+      font-size: 10rem;
     }
+
     &__subtitle {
       font-size: 2.9rem;
     }
+
     &__made-with {
       font-size: 2.5rem;
     }
@@ -156,6 +164,7 @@
         font-size: 1.1rem;
         padding: 4px;
       }
+
       &-tabButton {
         font-size: 12px;
         padding: 5px 8px;

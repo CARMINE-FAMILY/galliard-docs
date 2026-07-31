@@ -1,5 +1,5 @@
-import styles from "../styles/components/dataTable.module.scss";
-import type { DataTableProps } from "../models/TableModel";
+import styles from "../../styles/components/table/dataTable.module.scss";
+import type { DataTableProps } from "../../models/TableModel";
 
 export function DataTable<T>({
   columns,

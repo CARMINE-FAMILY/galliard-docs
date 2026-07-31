@@ -25,8 +25,8 @@ const Hero: React.FC = () => {
           height="40px"
           padding="0.6rem 1rem"
           iconSize="2.7rem"
-          customClassIcon="icon"
           customClassButton="hola"
+          customClassIcon="icon"
         />
 
         <CopyTextGal 

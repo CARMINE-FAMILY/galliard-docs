@@ -4,10 +4,10 @@ import {
   ComponentPreviewGal,
   CodeBlockGal,
 } from "galliard-ui";
-import { DataTable } from "../../components/DataTable";
+import { DataTable } from "../../components/table/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../components/DocsPagination";
+import { DocsPagination } from "../../components/generals/DocsPagination";
 
 /* -------------------------------------------------------------------------- */
 /*                                    DEMOS                                   */
@@ -76,7 +76,7 @@ const ModalDemo = () => {
 /* -------------------------------------------------------------------------- */
 
 export default function OnClickOutside() {
-  const parametrosProps: PropRow[] = [
+  const settingsProps: PropRow[] = [
     {
       name: "ref",
       type: "RefObject<T | null>",
@@ -153,7 +153,7 @@ import { useOnClickOutside } from "galliard-ui";
       </p>
       <DataTable
         columns={propsColumns}
-        data={parametrosProps}
+        data={settingsProps}
         rowKey={(r) => r.name}
       />
 

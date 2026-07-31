@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Sidebar } from "../../components/sidebar/Sidebar";
-import { TableOfContents } from "../../components/toc/TableOfContents";
+import { TableOfContents } from "../../components/table/TableOfContents";
 
 export const SecondaryLayout = () => {
   return (

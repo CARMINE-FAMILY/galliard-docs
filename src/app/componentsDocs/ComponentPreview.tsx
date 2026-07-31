@@ -1,11 +1,11 @@
 import { ComponentPreviewGal } from "galliard-ui";
-import { DataTable } from "../../components/DataTable";
+import { DataTable } from "../../components/table/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../components/DocsPagination";
+import { DocsPagination } from "../../components/generals/DocsPagination";
 
 export default function ComponentPreview() {
-  const contenidoProps: PropRow[] = [
+  const contentProps: PropRow[] = [
     {
       name: "children",
       type: "ReactNode",
@@ -56,7 +56,7 @@ export default function ComponentPreview() {
     },
   ];
 
-  const temasProps: PropRow[] = [
+  const themesProps: PropRow[] = [
     {
       name: "theme",
       type: "PreviewTheme",
@@ -84,7 +84,7 @@ export default function ComponentPreview() {
     },
   ];
 
-  const comportamientoProps: PropRow[] = [
+  const behaviorProps: PropRow[] = [
     {
       name: "allowOverflow",
       type: "boolean",
@@ -109,7 +109,7 @@ export default function ComponentPreview() {
       <h3 className="subtitle">Contenido</h3>
       <DataTable
         columns={propsColumns}
-        data={contenidoProps}
+        data={contentProps}
         rowKey={(r) => r.name}
       />
 
@@ -127,14 +127,14 @@ export default function ComponentPreview() {
       <h3 className="subtitle">Temas</h3>
       <DataTable
         columns={propsColumns}
-        data={temasProps}
+        data={themesProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Comportamiento</h3>
       <DataTable
         columns={propsColumns}
-        data={comportamientoProps}
+        data={behaviorProps}
         rowKey={(r) => r.name}
       />
 

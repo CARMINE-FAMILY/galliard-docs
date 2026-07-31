@@ -18,7 +18,7 @@ import UnixActions from "./app/functionsDocs/UnixActions";
 import OnClickOutside from "./app/functionsDocs/OnClickOutside";
 import ValidateForms from "./app/functionsDocs/ValidateForms";
 import { ThemeSync } from "./ThemeSync";
-import NotFound from "./app/NotFound";
+import NotFound from "./components/NotFound";
 import SearchDown from "./app/componentsDocs/inputs/SearchDown";
 
 function App() {

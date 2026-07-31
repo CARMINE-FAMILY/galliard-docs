@@ -2,10 +2,10 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState } from "../store/store";
-import logo from "../../public/logo/pin.webp";
-import { setTheme } from "../store/themeSlice";
-import { getEffectiveTheme } from "../hooks/useThemeUtils";
+import type { RootState } from "../../store/store";
+import logo from "../../../public/logo/pin.webp";
+import { setTheme } from "../../store/themeSlice";
+import { getEffectiveTheme } from "../../hooks/useThemeUtils";
 
 const Navbar: React.FC = () => {
   const theme = useSelector((state: RootState) => state.theme);

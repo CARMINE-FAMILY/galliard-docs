@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { CheckBoxGal, ComponentPreviewGal, type CheckProps } from "galliard-ui";
-import { DataTable } from "../../../components/DataTable";
+import { DataTable } from "../../../components/table/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../../components/DocsPagination";
+import { DocsPagination } from "../../../components/generals/DocsPagination";
 
 type CheckKey =
   | "base"
@@ -36,7 +36,7 @@ export default function CheckBox() {
   const setCheck = (key: CheckKey) => (value: boolean) =>
     setChecks((prev) => ({ ...prev, [key]: value }));
 
-  const contenidoProps: PropRow[] = [
+  const contentProps: PropRow[] = [
     {
       name: "label",
       type: "string",
@@ -59,7 +59,7 @@ export default function CheckBox() {
     },
   ];
 
-  const aparienciaProps: PropRow[] = [
+  const appearanceProps: PropRow[] = [
     {
       name: "textSize",
       type: "string",
@@ -78,7 +78,7 @@ export default function CheckBox() {
     },
   ];
 
-  const iconosProps: PropRow[] = [
+  const iconsProps: PropRow[] = [
     {
       name: "seeIcon",
       type: "boolean",
@@ -107,7 +107,7 @@ export default function CheckBox() {
     },
   ];
 
-  const enlaceProps: PropRow[] = [
+  const linkProps: PropRow[] = [
     {
       name: "useLinkable",
       type: "boolean",
@@ -122,7 +122,7 @@ export default function CheckBox() {
     },
   ];
 
-  const personalizacionProps: PropRow[] = [
+  const customizationProps: PropRow[] = [
     {
       name: "customInputClass",
       type: "string",
@@ -165,35 +165,35 @@ export default function CheckBox() {
       <h3 className="subtitle">Contenido</h3>
       <DataTable
         columns={propsColumns}
-        data={contenidoProps}
+        data={contentProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Apariencia</h3>
       <DataTable
         columns={propsColumns}
-        data={aparienciaProps}
+        data={appearanceProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Iconos</h3>
       <DataTable
         columns={propsColumns}
-        data={iconosProps}
+        data={iconsProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Enlaces</h3>
       <DataTable
         columns={propsColumns}
-        data={enlaceProps}
+        data={linkProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Personalización</h3>
       <DataTable
         columns={propsColumns}
-        data={personalizacionProps}
+        data={customizationProps}
         rowKey={(r) => r.name}
       />
 

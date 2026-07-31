@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { InputTextGal, ComponentPreviewGal } from "galliard-ui";
-import { DataTable } from "../../../components/DataTable";
+import { DataTable } from "../../../components/table/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../../components/DocsPagination";
+import { DocsPagination } from "../../../components/generals/DocsPagination";
 
 export default function InputText() {
   const [value1, setValue1] = useState("");
@@ -25,7 +25,7 @@ export default function InputText() {
   const [typeDatetime, setTypeDatetime] = useState("");
   const [typeSearch, setTypeSearch] = useState("");
 
-  const contenidoProps: PropRow[] = [
+  const contentProps: PropRow[] = [
     {
       name: "label",
       type: "string",
@@ -53,7 +53,7 @@ export default function InputText() {
     },
   ];
 
-  const comportamientoProps: PropRow[] = [
+  const behaviorProps: PropRow[] = [
     {
       name: "typeInput",
       type: "text, email, password, url, tel, number, date, time, datetime-local, search",
@@ -76,7 +76,7 @@ export default function InputText() {
     },
   ];
 
-  const aparienciaProps: PropRow[] = [
+  const appearanceProps: PropRow[] = [
     {
       name: "width",
       type: "string ó number",
@@ -139,7 +139,7 @@ export default function InputText() {
     },
   ];
 
-  const iconosProps: PropRow[] = [
+  const iconsProps: PropRow[] = [
     {
       name: "seeIconLeft",
       type: "boolean",
@@ -206,7 +206,7 @@ export default function InputText() {
     },
   ];
 
-  const personalizacionProps: PropRow[] = [
+  const customizationProps: PropRow[] = [
     {
       name: "customContainerClass",
       type: "string",
@@ -250,35 +250,35 @@ export default function InputText() {
       <h3 className="subtitle">Contenido</h3>
       <DataTable
         columns={propsColumns}
-        data={contenidoProps}
+        data={contentProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Comportamiento</h3>
       <DataTable
         columns={propsColumns}
-        data={comportamientoProps}
+        data={behaviorProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Apariencia</h3>
       <DataTable
         columns={propsColumns}
-        data={aparienciaProps}
+        data={appearanceProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Iconos</h3>
       <DataTable
         columns={propsColumns}
-        data={iconosProps}
+        data={iconsProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Personalización</h3>
       <DataTable
         columns={propsColumns}
-        data={personalizacionProps}
+        data={customizationProps}
         rowKey={(r) => r.name}
       />
 

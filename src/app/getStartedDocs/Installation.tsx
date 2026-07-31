@@ -1,4 +1,4 @@
-import { DocsPagination } from "../../components/DocsPagination";
+import { DocsPagination } from "../../components/generals/DocsPagination";
 import "../../styles/getStartedDocs/_installation.scss";
 import { CopyTextGal, CodeBlockGal } from "galliard-ui";
 

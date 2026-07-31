@@ -1,9 +1,9 @@
 import { CodeBlockGal } from "galliard-ui";
-import { DataTable } from "../../components/DataTable";
+import { DataTable } from "../../components/table/DataTable";
 import type { PropRow } from "../../models/TableModel";
 import { propsColumns } from "../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../components/DocsPagination";
-import { RegisterFormDemo } from "../../components/ValidateForm";
+import { DocsPagination } from "../../components/generals/DocsPagination";
+import { RegisterFormDemo } from "../../components/interactiveExample/ValidateForm";
 
 export default function ValidateForms() {
   // --- MODELOS DE DATOS PARA LAS TABLAS DE PROPIEDADES ---

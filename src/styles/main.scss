@@ -7,16 +7,22 @@
 // LAYOUTS
 @use "./layouts/mainLayout";
 @use "./layouts/secundaryLayout";
+@use "./layouts/footer";
 
 // COMPONENTS
-@use "./components/navbar";
-@use "./components/footer";
-@use "./components//notFound";
-@use "./components/cardComponent";
-@use "./components/codeComponent";
+//generals
+@use "./components/generals/navbar";
+
+//interactive Example
+@use "./components/interactiveExample/unixDateDemo";
+@use "./components/interactiveExample/validateFormsDemo";
+
+//page
+@use "./components/page/cardComponent";
+@use "./components/page/codeComponent";
+
+//sidebar
 @use "./components/sidebar/sidebar";
-@use "./components/unixDateDemo";
-@use "./components/validateFormsDemo";
 
 //Get Started
 @use "./getStartedDocs/installation";

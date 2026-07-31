@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { InputRadioGal, ComponentPreviewGal } from "galliard-ui";
-import { DataTable } from "../../../components/DataTable";
+import { DataTable } from "../../../components/table/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../../components/DocsPagination";
+import { DocsPagination } from "../../../components/generals/DocsPagination";
 
 export default function InputRadio() {
   const [, setRadioValue1] = useState<string>("");
@@ -12,18 +12,18 @@ export default function InputRadio() {
   const [, setRadioValue4] = useState<string>("");
   const [, setRadioValue5] = useState<string>("");
 
-  const opciones = [
+  const options = [
     { value: "yes", label: "Si", seeIcon: false },
     { value: "no", label: "No", seeIcon: false },
   ];
 
-  const opcionesConIconos = [
+  const optionsWithIcons = [
     { value: "dog", label: "Perro", icon: "mdi:dog", seeIcon: true },
     { value: "cat", label: "Gato", icon: "mdi:cat", seeIcon: true },
     { value: "bird", label: "Ave", icon: "mdi:bird", seeIcon: true },
   ];
 
-  const contenidoProps: PropRow[] = [
+  const contentProps: PropRow[] = [
     {
       name: "label",
       type: "string",
@@ -52,7 +52,7 @@ export default function InputRadio() {
     },
   ];
 
-  const comportamientoProps: PropRow[] = [
+  const behaviorProps: PropRow[] = [
     {
       name: "HorV",
       type: '"horizontal" ó "vertical"',
@@ -66,7 +66,7 @@ export default function InputRadio() {
     },
   ];
 
-  const aparienciaProps: PropRow[] = [
+  const appearanceProps: PropRow[] = [
     {
       name: "labelSize",
       type: "string ó number",
@@ -101,7 +101,7 @@ export default function InputRadio() {
     },
   ];
 
-  const iconosProps: PropRow[] = [
+  const iconsProps: PropRow[] = [
     {
       name: "seeIcon",
       type: "boolean",
@@ -127,7 +127,7 @@ export default function InputRadio() {
     },
   ];
 
-  const opcionesModelProps: PropRow[] = [
+  const optionsModelProps: PropRow[] = [
     {
       name: "value",
       type: "string",
@@ -166,7 +166,7 @@ export default function InputRadio() {
     },
   ];
 
-  const personalizacionProps: PropRow[] = [
+  const customizationProps: PropRow[] = [
     {
       name: "customInputClass",
       type: "string",
@@ -220,42 +220,42 @@ export default function InputRadio() {
       <h3 className="subtitle">Contenido</h3>
       <DataTable
         columns={propsColumns}
-        data={contenidoProps}
+        data={contentProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Comportamiento</h3>
       <DataTable
         columns={propsColumns}
-        data={comportamientoProps}
+        data={behaviorProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Apariencia</h3>
       <DataTable
         columns={propsColumns}
-        data={aparienciaProps}
+        data={appearanceProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Iconos</h3>
       <DataTable
         columns={propsColumns}
-        data={iconosProps}
+        data={iconsProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Modelo de cada opción (RadioOptionModel)</h3>
       <DataTable
         columns={propsColumns}
-        data={opcionesModelProps}
+        data={optionsModelProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Personalización</h3>
       <DataTable
         columns={propsColumns}
-        data={personalizacionProps}
+        data={customizationProps}
         rowKey={(r) => r.name}
       />
 
@@ -309,7 +309,7 @@ export default function InputRadio() {
         <InputRadioGal
           label="¿Aceptas los términos?"
           name="terminos"
-          options={opciones}
+          options={options}
           setValue={setRadioValue1}
         />
       </ComponentPreviewGal>
@@ -344,14 +344,14 @@ export default function InputRadio() {
         <InputRadioGal
           label="Horizontal"
           name="horizontalDemo"
-          options={opciones}
+          options={options}
           HorV="horizontal"
           setValue={setRadioValue2}
         />
         <InputRadioGal
           label="Vertical"
           name="verticalDemo"
-          options={opciones}
+          options={options}
           HorV="vertical"
           setValue={setRadioValue2}
         />
@@ -410,7 +410,7 @@ export default function InputRadio() {
         <InputRadioGal
           label="Mascota favorita"
           name="mascotaDemo"
-          options={opcionesConIconos}
+          options={optionsWithIcons}
           iconSize={22}
           setValue={setRadioValue3}
         />
@@ -465,7 +465,7 @@ export default function InputRadio() {
         <InputRadioGal
           label="Personalizado"
           name="personalizadoDemo"
-          options={opciones}
+          options={options}
           textSize="1.6em"
           textColor="#2aa198"
           labelSize="1.6em"
@@ -519,7 +519,7 @@ export default function InputRadio() {
         <InputRadioGal
           label="¿Aceptas los términos?"
           name="terminosErrorDemo"
-          options={opciones}
+          options={options}
           setValue={setRadioValue5}
           errorMessage="Debes seleccionar una opción"
         />

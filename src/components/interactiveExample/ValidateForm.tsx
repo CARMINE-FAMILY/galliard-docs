@@ -1,10 +1,10 @@
 // src/components/demos/RegisterFormDemo.tsx
 import { useState } from "react";
 import { InputTextGal, CheckBoxGal, ButtonGal } from "galliard-ui";
-import { validateFormsPatched } from "../hooks/useValidateExample";
+import { validateFormsPatched } from "../../hooks/useValidateExample";
 import type { ValidateProps } from "galliard-ui";
 import { useSelector } from "react-redux";
-import type { RootState } from "../store/store";
+import type { RootState } from "../../store/store";
 
 // Componente chico para no repetir la lógica de "error vs correcto"
 // en cada campo. Reglas:

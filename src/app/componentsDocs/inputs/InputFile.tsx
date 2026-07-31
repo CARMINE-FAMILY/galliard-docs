@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { InputFileGal, ComponentPreviewGal } from "galliard-ui";
-import { DataTable } from "../../../components/DataTable";
+import { DataTable } from "../../../components/table/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import {
   fileCatalogColumns,
   propsColumns,
 } from "../../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../../components/DocsPagination";
+import { DocsPagination } from "../../../components/generals/DocsPagination";
 
 export default function InputFile() {
   const [file1, setFile1] = useState<File | null>(null);
@@ -19,7 +19,7 @@ export default function InputFile() {
   const [file8, setFile8] = useState<File | null>(null);
   const [file9, setFile9] = useState<File | null>(null);
 
-  const contenidoProps: PropRow[] = [
+  const contentProps: PropRow[] = [
     {
       name: "label",
       type: "string",
@@ -45,7 +45,7 @@ export default function InputFile() {
     },
   ];
 
-  const comportamientoProps: PropRow[] = [
+  const behaviorProps: PropRow[] = [
     {
       name: "acceptFiles",
       type: "string",
@@ -68,7 +68,7 @@ export default function InputFile() {
     },
   ];
 
-  const aparienciaProps: PropRow[] = [
+  const appearanceProps: PropRow[] = [
     {
       name: "widht",
       type: "string ó number",
@@ -121,7 +121,7 @@ export default function InputFile() {
     },
   ];
 
-  const iconosProps: PropRow[] = [
+  const iconsProps: PropRow[] = [
     {
       name: "seeIcon",
       type: "boolean",
@@ -149,7 +149,7 @@ export default function InputFile() {
     },
   ];
 
-  const personalizacionProps: PropRow[] = [
+  const customizationProps: PropRow[] = [
     {
       name: "customFileClass",
       type: "string",
@@ -223,28 +223,28 @@ export default function InputFile() {
       <h3 className="subtitle">Contenido</h3>
       <DataTable
         columns={propsColumns}
-        data={contenidoProps}
+        data={contentProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Comportamiento</h3>
       <DataTable
         columns={propsColumns}
-        data={comportamientoProps}
+        data={behaviorProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Apariencia</h3>
       <DataTable
         columns={propsColumns}
-        data={aparienciaProps}
+        data={appearanceProps}
         rowKey={(r) => r.name}
       />
 
       <h3 className="subtitle">Iconos</h3>
       <DataTable
         columns={propsColumns}
-        data={iconosProps}
+        data={iconsProps}
         rowKey={(r) => r.name}
       />
 
@@ -269,7 +269,7 @@ export default function InputFile() {
       <h3 className="subtitle">Personalización</h3>
       <DataTable
         columns={propsColumns}
-        data={personalizacionProps}
+        data={customizationProps}
         rowKey={(r) => r.name}
       />
 
@@ -702,7 +702,7 @@ export default function InputFile() {
         />
       </ComponentPreviewGal>
 
-      <DocsPagination/>
+      <DocsPagination />
     </div>
   );
 }
