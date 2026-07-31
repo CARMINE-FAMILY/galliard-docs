@@ -24,6 +24,9 @@
 //sidebar
 @use "./components/sidebar/sidebar";
 
+// Not Found
+@use "./components/notFound";
+
 //Get Started
 @use "./getStartedDocs/installation";
 

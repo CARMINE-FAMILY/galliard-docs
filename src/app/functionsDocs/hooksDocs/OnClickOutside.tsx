@@ -4,10 +4,10 @@ import {
   ComponentPreviewGal,
   CodeBlockGal,
 } from "galliard-ui";
-import { DataTable } from "../../components/table/DataTable";
-import type { PropRow } from "../../models/TableModel";
-import { propsColumns } from "../../hooks/usePropsTableColumns";
-import { DocsPagination } from "../../components/generals/DocsPagination";
+import { DataTable } from "../../../components/table/DataTable";
+import type { PropRow } from "../../../models/TableModel";
+import { propsColumns } from "../../../hooks/usePropsTableColumns";
+import { DocsPagination } from "../../../components/generals/DocsPagination";
 
 /* -------------------------------------------------------------------------- */
 /*                                    DEMOS                                   */

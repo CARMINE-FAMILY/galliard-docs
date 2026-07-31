@@ -1,6 +1,6 @@
 // src/components/demos/RegisterFormDemo.tsx
 import { useState } from "react";
-import { InputTextGal, CheckBoxGal, ButtonGal } from "galliard-ui";
+import { InputTextGal, CheckBoxGal, ButtonGal, useValidateForms } from "galliard-ui";
 import { validateFormsPatched } from "../../hooks/useValidateExample";
 import type { ValidateProps } from "galliard-ui";
 import { useSelector } from "react-redux";
@@ -56,6 +56,8 @@ export function RegisterFormDemo() {
   const [aceptaTerminos, setAceptaTerminos] = useState(false);
   const [terminosError, setTerminosError] = useState("");
 
+  const validate = useValidateForms();
+
   // true en cuanto el usuario da clic en "Crear cuenta" al menos una
   // vez, sin importar si la validación pasó o no. Se usa para decidir
   // si ya toca mostrar "✓ Dato correcto" en los campos sin error.
@@ -76,6 +78,7 @@ export function RegisterFormDemo() {
     setEdadError("");
     setSitioWebError("");
     setTerminosError("");
+
 
     const validations: ValidateProps[] = [
       {
@@ -136,20 +139,28 @@ export function RegisterFormDemo() {
       },
     ];
 
-    const isValid = validateFormsPatched(validations);
+    let isValid: boolean = false;
+
+    try {
+      isValid = validate.ApplyValidate(validations);
+    } catch (error) {
+      alert((error as Error).message)
+      isValid = false;
+    }
+
     setAttempted(true);
     setFormValid(isValid);
   };
 
   const theme = useSelector((state: RootState) => state.theme);
   const isDark = theme === "dark";
-  /* -------------------------------- RENDER --------------------------------- */
-    console.log("theme:", theme, "isDark:", isDark);
+
   return (
 
     <div className="registerFormDemo">
       <div className="registerFormDemo__row">
         <div className="registerFormDemo__field">
+
           <InputTextGal
             label="Nombre completo"
             typeInput="text"
@@ -160,6 +171,7 @@ export function RegisterFormDemo() {
             bgColor={isDark ? "#121212" : undefined}
             textColor={isDark ? "#ffffff" : undefined}
             iconColorL={isDark ? "#ffffff" : undefined}
+            errorMessage={nombreError}
           />
           <FieldFeedback
             error={nombreError}
@@ -294,6 +306,7 @@ export function RegisterFormDemo() {
           <CheckBoxGal
             label="Acepto los términos y condiciones"
             value={aceptaTerminos}
+
             setValue={setAceptaTerminos}
             textColor={isDark ? "var(--text-color)" : undefined}
             customLabelClass="cambio"
