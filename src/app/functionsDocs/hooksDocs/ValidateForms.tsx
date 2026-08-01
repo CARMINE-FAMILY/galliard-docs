@@ -151,7 +151,6 @@ export default function ValidateForms() {
   return (
     <div className="container doc-content">
       <h1 className="titlePrimary">useValidateForms</h1>
-
       <p className="text">
         <span className="inline-code">useValidateForms</span> es un hook
         diseñado para validar múltiples campos de un formulario en una sola
@@ -163,7 +162,6 @@ export default function ValidateForms() {
         <span className="inline-code">setError</span> para reportar el primer
         error encontrado en cada campo.
       </p>
-
       <h2 className="titleSecundary">Ejemplo practico</h2>
       <RegisterFormDemo />
 
@@ -172,7 +170,6 @@ export default function ValidateForms() {
       <p className="text">
         Antes de utilizar el hook es necesario importarlo desde la librería
       </p>
-
       <CodeBlockGal
         hideHeaderIfSingleTab
         tabs={[
@@ -218,7 +215,6 @@ export default function ValidateForms() {
         el formulario. Retorna <span className="inline-code">true</span> solo si
         todas las reglas pasan
       </p>
-
       <CodeBlockGal
         hideHeaderIfSingleTab
         tabs={[
@@ -259,9 +255,7 @@ const handleSubmit = () => {
           },
         ]}
       />
-
       <br />
-
       <p className="note">Retorna:</p>
       <p className="text">
         <span className="inline-code">boolean</span> - true si todas las reglas
@@ -281,7 +275,6 @@ const handleSubmit = () => {
         data={baseProps}
         rowKey={(r) => r.name}
       />
-
       <p className="note">Importante:</p>
       <p className="text">
         Las propiedades adicionales disponibles dependen del valor de{" "}
@@ -308,7 +301,6 @@ const handleSubmit = () => {
         data={textParams}
         rowKey={(r) => r.name}
       />
-
       <p className="note">Nota de comportamiento:</p>
       <p className="text">
         En la versión actual, <span className="inline-code">needBeEqualTo</span>{" "}
@@ -319,7 +311,6 @@ const handleSubmit = () => {
         publique el fix, un campo de confirmación mostrará error si el usuario
         escribe el mismo valor dos veces.
       </p>
-
       <CodeBlockGal
         hideHeaderIfSingleTab
         tabs={[
@@ -454,7 +445,6 @@ const handleSubmit = () => {
         data={numParams}
         rowKey={(r) => r.name}
       />
-
       <p className="note">Nota de comportamiento:</p>
       <p className="text">
         Además del bug de <span className="inline-code">needBeEqualTo</span>{" "}
@@ -464,7 +454,6 @@ const handleSubmit = () => {
         cuando no lo es. También está identificado como bug pendiente de
         corrección.
       </p>
-
       <CodeBlockGal
         hideHeaderIfSingleTab
         tabs={[
@@ -575,7 +564,6 @@ const handleSubmit = () => {
         <span className="inline-code">canBeNull</span> que se aplica antes del
         switch).
       </p>
-
       <p className="note">Nota:</p>
       <p className="text">
         Si necesitas validar horas o datos genéricos, por ahora solo se aplica
@@ -585,6 +573,102 @@ const handleSubmit = () => {
         hook.
       </p>
 
+      {/* Tipo de mensaje de error */}
+      <h2 className="titleSecundary">Mensajes de Error</h2>
+      <p className="text">
+        El hook <code>useValidateForms</code> ya trae un mensaje de error
+        definido por defecto para cada campo, el cual puedes usar directamente a
+        través de la prop <code>errorMessage</code> de la siguiente manera:
+      </p>
+      <CodeBlockGal
+        hideHeaderIfSingleTab
+        tabs={[
+          {
+            label: "TypeScript",
+            language: "ts",
+            code: `<InputTextGal
+  label="Nombre completo"
+  typeInput="text"
+  value={name}
+  setValue={setName}
+  border={false}
+  placeholder="Arturo Montaño"
+  bgColor={isDark ? "#121212" : undefined}
+  textColor={isDark ? "#ffffff" : undefined}
+  iconColorL={isDark ? "#ffffff" : undefined}
+  errorMessage={nameError}
+/>`,
+          },
+        ]}
+      />
+      <p className="text">
+        Si además de mostrar el error quieres indicar cuándo un campo ya es
+        válido, puedes usar un pequeño componente auxiliar como{" "}
+        <code>FieldFeedback</code>. No es parte de <code>galliard-ui</code>, es
+        un componente local que maneja ambos casos: muestra el error mientras
+        exista, y un mensaje de éxito cuando el campo ya fue validado y tiene
+        contenido.
+      </p>
+      <CodeBlockGal
+        hideHeaderIfSingleTab
+        tabs={[
+          {
+            label: "TypeScript",
+            language: "ts",
+            code: `function FieldFeedback({
+  error,
+  attempted,
+  isFilled,
+}: {
+  error: string;
+  attempted: boolean;
+  isFilled: boolean;
+}) {
+  if (error) {
+    return <p className="registerFormDemo__error">⚠ {error}</p>;
+  }
+  if (attempted && isFilled) {
+    return <p className="registerFormDemo__success">✔ Dato correcto</p>;
+  }
+  return null;
+}`,
+          },
+        ]}
+      />
+      <p className="text">
+        Para usarlo, quita la prop <code>errorMessage</code> del input y coloca{" "}
+        <code>FieldFeedback</code> justo debajo, pasándole el error del hook, si
+        ya se intentó enviar el formulario, y si el campo tiene contenido:
+      </p>
+      <CodeBlockGal
+        hideHeaderIfSingleTab
+        tabs={[
+          {
+            label: "TypeScript",
+            language: "ts",
+            code: `<InputTextGal
+  label="Nombre completo"
+  typeInput="text"
+  value={name}
+  setValue={setName}
+  border={false}
+  placeholder="Arturo Montaño"
+  bgColor={isDark ? "#121212" : undefined}
+  textColor={isDark ? "#ffffff" : undefined}
+  iconColorL={isDark ? "#ffffff" : undefined}
+/>
+<FieldFeedback
+  error={nameError}
+  attempted={attempted}
+  isFilled={name.trim().length > 0}
+/>`,
+          },
+        ]}
+      />
+      <p className="text">
+        Así como se hizo con el campo <code>name</code>, puedes replicar el
+        mismo patrón con los demás campos del formulario.
+      </p>
       <DocsPagination />
     </div>
   );

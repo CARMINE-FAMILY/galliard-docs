@@ -1,5 +1,5 @@
 // Este archivo se basa para ser tu oragnizador de rutas
-// y agregar los titulos que tendra el menu 
+// y agregar los titulos que tendra el menu
 
 // Este sirve para:
 // label: el texto que vera el usuario
@@ -8,7 +8,7 @@
 export type SidebarItemType = {
   label: string;
   path: string;
-  children?: {label: string; path: string}[]; 
+  children?: { label: string; path: string }[];
 };
 
 // Este sirve para:
@@ -25,22 +25,22 @@ export type SidebarGroupType = {
 export const sidebarData: SidebarGroupType[] = [
   {
     title: "Get Started",
-    items: [
-      { label: "Installation", path: "/getStartDocs/docs" },
-    ],
+    items: [{ label: "Installation", path: "/getStartDocs/docs" }],
   },
   {
     title: "Components",
     items: [
       { label: "Button", path: "/componentsDocs/button" },
-      { label: "Inputs", path: "/componentsDocs/inputs",
+      {
+        label: "Inputs",
+        path: "/componentsDocs/inputs",
         children: [
           { label: "CheckBox", path: "/componentsDocs/inputs/checkbox" },
           { label: "DropDown", path: "/componentsDocs/inputs/dropdown" },
           { label: "InputFile", path: "/componentsDocs/inputs/inputfile" },
           { label: "InputRadio", path: "/componentsDocs/inputs/inputradio" },
           { label: "InputText", path: "/componentsDocs/inputs/inputtext" },
-          { label: "SearchDown", path: "/componentsDocs/inputs/searchdown"},
+          { label: "SearchDown", path: "/componentsDocs/inputs/searchdown" },
           { label: "TextArea", path: "/componentsDocs/inputs/textarea" },
         ],
       },
@@ -51,16 +51,20 @@ export const sidebarData: SidebarGroupType[] = [
   },
   {
     title: "Modals",
-    items: [
-      {label: "BottomSheet", path: "/modalsDocs/BottomSheet"},
-    ],
+    items: [{ label: "BottomSheet", path: "/modalsDocs/BottomSheet" }],
   },
   {
     title: "Functions",
     items: [
       { label: "UnixActions", path: "/functionsDocs/unixactions" },
-      { label: "OnClickOutside", path: "/functionsDocs/onclickoutside" },
-      { label: "ValidateForms", path: "/functionsDocs/validateforms" },
+      {
+        label: "Hooks",
+        path: "/functionsDocs/hooksDocs",
+        children: [
+          { label: "OnClickOutside", path: "/functionsDocs/onclickoutside" },
+          { label: "ValidateForms", path: "/functionsDocs/validateforms" },
+        ],
+      },
     ],
   },
 ];
