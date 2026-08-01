@@ -23,7 +23,7 @@
   background-color: $background;
   overflow: hidden;
 
-  .primaryTitle {
+  .titlePrimary {
     font-size: 4rem;
     font-weight: 700;
     margin: 0 0 2rem;
@@ -69,7 +69,6 @@
   .important {
     background: var(--code-bg); // antes: #f3f4f6
     font-family: OpenSansBold;
-    font-size: 0.9em;
     color: var(--primary-color); // antes: #37241f — usa tu color de marca en vez de un café random
     white-space: nowrap;
   }
