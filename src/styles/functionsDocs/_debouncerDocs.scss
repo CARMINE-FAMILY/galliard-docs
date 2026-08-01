@@ -1,0 +1,5 @@
+@use '../generals/mixins' as *;
+
+.debouncer-docs {
+  @include body-docs;
+}

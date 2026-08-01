@@ -20,6 +20,7 @@ import ValidateForms from "./app/functionsDocs/hooksDocs/ValidateForms";
 import { ThemeSync } from "./ThemeSync";
 import NotFound from "./components/NotFound";
 import SearchDown from "./app/componentsDocs/inputs/SearchDown";
+import DebouncerDoc from "./app/functionsDocs/hooksDocs/DebouncerDoc";
 
 function App() {
   return (
@@ -89,6 +90,10 @@ function App() {
             <Route
               path="/functionsDocs/validateforms"
               element={<ValidateForms />}
+            />
+            <Route
+              path="/functionsDocs/debouncerdoc"
+              element={<DebouncerDoc />}
             />
           </Route>
           <Route path="/" element={<LandingScreen />} />
