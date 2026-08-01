@@ -92,7 +92,7 @@ export default function OnClickOutside() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="onClick-docs docs-content">
       <h1 className="titlePrimary">useOnClickOutside</h1>
 
       <p className="text">
@@ -187,7 +187,7 @@ type Event = MouseEvent | TouchEvent;
       </p>
 
       {/* Ejemplo interactivo: Dropdown */}
-      <h2 className="titleSecundaryButton">Ejemplo interactivo</h2>
+      <h2 className="titleSecundary">Ejemplo interactivo</h2>
       <p className="text">
         Uno de los usos más comunes de este hook es cerrar automáticamente un
         menú desplegable cuando el usuario hace clic fuera de él. Mientras la
@@ -262,7 +262,7 @@ return (
       </ComponentPreviewGal>
 
       {/* Ejemplo práctico: Modal */}
-      <h2 className="titleSecundaryButton">Ejemplo práctico: Modal</h2>
+      <h2 className="titleSecundary">Ejemplo práctico: Modal</h2>
       <p className="text">
         Otro caso de uso frecuente consiste en cerrar un modal cuando el usuario
         hace clic fuera de su contenido, sin necesidad de implementar lógica
@@ -332,7 +332,7 @@ return (
       </ComponentPreviewGal>
 
       {/* Comportamiento */}
-      <h2 className="titleSecundaryButton">Comportamiento</h2>
+      <h2 className="titleSecundary">Comportamiento</h2>
       <p className="text">
         El hook agrega los listeners al montar el componente y los remueve
         automáticamente al desmontarlo, evitando fugas de memoria. No es

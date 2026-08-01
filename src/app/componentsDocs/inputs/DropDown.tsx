@@ -305,7 +305,7 @@ export default function DropDown() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="dropDown-docs docs-content">
       <h1 className="titlePrimary">DropDown</h1>
       <p className="text">
         El componente DropDown permite seleccionar una opción de una lista
@@ -700,7 +700,7 @@ export default function DropDown() {
       </ComponentPreviewGal>
 
       {/* Personalización del dropdown */}
-      <h2 className="titleSecundaryButton">Personalización del DropDown</h2>
+      <h2 className="titleSecundary">Personalización del DropDown</h2>
       <p className="text">
         Para la personalización del dropdown se ocuparon las siguientes
         propiedades: <span className="inline-code">customContainerClass</span>,

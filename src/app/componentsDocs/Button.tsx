@@ -157,7 +157,7 @@ export default function Button() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="button-docs docs-content">
       <h1 className="titlePrimary">Button</h1>
 
       <p className="text">
@@ -205,7 +205,7 @@ export default function Button() {
       />
 
       {/* Botón */}
-      <h2 className="titleSecundaryButton">Botón</h2>
+      <h2 className="titleSecundary">Botón</h2>
       <p className="text">
         Ejemplo base del componente: un botón simple con solo un{" "}
         <span className="inline-code">label</span> y una{" "}
@@ -229,7 +229,7 @@ export default function Button() {
       </ComponentPreviewGal>
 
       {/* Colores */}
-      <h2 className="titleSecundaryButton">Colores que hay por defecto</h2>
+      <h2 className="titleSecundary">Colores que hay por defecto</h2>
       <p className="text">
         El componente incluye varios temas de color predefinidos mediante la
         prop <span className="inline-code">styleType</span>. Si ninguno se
@@ -297,7 +297,7 @@ export default function Button() {
       </ComponentPreviewGal>
 
       {/* Tamaño del Botón */}
-      <h2 className="titleSecundaryButton">Tamaño del Botón</h2>
+      <h2 className="titleSecundary">Tamaño del Botón</h2>
       <p className="text">
         Con <span className="inline-code">width</span>,{" "}
         <span className="inline-code">height</span>,{" "}
@@ -339,7 +339,7 @@ export default function Button() {
       </ComponentPreviewGal>
 
       {/* Iconos */}
-      <h2 className="titleSecundaryButton">Diseño de Iconos</h2>
+      <h2 className="titleSecundary">Diseño de Iconos</h2>
       <p className="text">
         Con <span className="inline-code">icon</span>,{" "}
         <span className="inline-code">iconColor</span> e{" "}
@@ -427,7 +427,7 @@ export default function Button() {
       </ComponentPreviewGal>
 
       {/* Posición del icono */}
-      <h2 className="titleSecundaryButton">Posición del icono</h2>
+      <h2 className="titleSecundary">Posición del icono</h2>
       <p className="text">
         La prop <span className="inline-code">iconOn</span> define si el ícono
         se muestra a la izquierda o a la derecha del texto del botón.
@@ -455,7 +455,7 @@ export default function Button() {
       </ComponentPreviewGal>
 
       {/* Bordes */}
-      <h2 className="titleSecundaryButton">Bordes</h2>
+      <h2 className="titleSecundary">Bordes</h2>
       <p className="text">
         El nombre de cada botón indica el valor de{" "}
         <span className="inline-code">rounded</span> que se usó, mostrando los
@@ -493,7 +493,7 @@ export default function Button() {
       </ComponentPreviewGal>
 
       {/* Botón con borde */}
-      <h2 className="titleSecundaryButton">Botón con borde</h2>
+      <h2 className="titleSecundary">Botón con borde</h2>
       <p className="text">
         Con <span className="inline-code">borderedStyle</span> el botón cambia a
         una variante de solo borde (outline), manteniendo el color de cada{" "}
@@ -542,7 +542,7 @@ export default function Button() {
       </ComponentPreviewGal>
 
       {/* Tipografia */}
-      <h2 className="titleSecundaryButton">Tipografía</h2>
+      <h2 className="titleSecundary">Tipografía</h2>
       <p className="text">
         Con <span className="inline-code">font</span> y{" "}
         <span className="inline-code">textSize</span> puedes ajustar la fuente y
@@ -578,7 +578,7 @@ export default function Button() {
       </ComponentPreviewGal>
 
       {/* Sombras */}
-      <h2 className="titleSecundaryButton">Botón con Sombras</h2>
+      <h2 className="titleSecundary">Botón con Sombras</h2>
       <p className="text">
         Con <span className="inline-code">shadow</span> se activa una sombra
         alrededor del botón, y con{" "}
@@ -629,7 +629,7 @@ export default function Button() {
       </ComponentPreviewGal>
 
       {/* Personalización del botón */}
-      <h2 className="titleSecundaryButton">Personalización del botón</h2>
+      <h2 className="titleSecundary">Personalización del botón</h2>
       <p className="text">
         Para la personalización del boton se ocuparon las siguientes
         propiedades: <span className="inline-code">label</span>,
@@ -691,9 +691,9 @@ export default function Button() {
           label="Get started"
           seeIcon={false}
           padding="1em 3em"
-          customClassButton="button"
-          customClassLabel="label"
-          customClassIcon="icon"
+          customClassButton="button-example"
+          customClassLabel="label-example"
+          customClassIcon="icon-example"
           args={{ title: "Ejemplo de args" }}
           action={() => {}}
         />

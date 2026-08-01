@@ -46,7 +46,7 @@ export default function CopyText() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="copyText-docs docs-content">
       <h1 className="titlePrimary">CopyText</h1>
 
       <p className="text">
@@ -87,7 +87,7 @@ export default function CopyText() {
       />
 
       {/* Básico */}
-      <h2 className="titleSecundaryButton">CopyText</h2>
+      <h2 className="titleSecundary">CopyText</h2>
       <p className="text">
         Ejemplo base del componente: solo se necesita
         <span className="inline-code">command</span>. Al hacer click en el
@@ -112,7 +112,7 @@ export default function CopyText() {
       </ComponentPreviewGal>
 
       {/* Temas */}
-      <h2 className="titleSecundaryButton">Temas</h2>
+      <h2 className="titleSecundary">Temas</h2>
       <p className="text">
         La prop <span className="inline-code">theme</span> define el tema de
         color del componente. Son los mismos 9 temas que usan CodeBlock y
@@ -190,7 +190,7 @@ export default function CopyText() {
       </ComponentPreviewGal>
 
       {/* customStyle */}
-      <h2 className="titleSecundaryButton">Personalización con customStyle</h2>
+      <h2 className="titleSecundary">Personalización con customStyle</h2>
       <p className="text">
         Con <span className="inline-code">customStyle</span> puedes
         sobreescribir variables puntuales de un tema (por ejemplo el color de
@@ -228,7 +228,7 @@ export default function CopyText() {
       </ComponentPreviewGal>
 
       {/* Personalización con className */}
-      <h2 className="titleSecundaryButton">Personalización con className</h2>
+      <h2 className="titleSecundary">Personalización con className</h2>
       <p className="text">
         Con <span className="inline-code">className</span> puedes agregar una
         clase CSS propia al contenedor del componente, útil para ajustar

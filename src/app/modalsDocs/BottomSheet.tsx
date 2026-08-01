@@ -150,7 +150,7 @@ export default function BottomSheet() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="bottomSheet-docs docs-content">
       <h1 className="titlePrimary">BottomSheet</h1>
 
       <p className="text">
@@ -198,7 +198,7 @@ export default function BottomSheet() {
       />
 
       {/* Panel básico */}
-      <h2 className="titleSecundaryButton">Panel</h2>
+      <h2 className="titleSecundary">Panel</h2>
       <p className="text">
         Ejemplo base del componente: un panel controlado mediante{" "}
         <span className="inline-code">isOpen</span> y{" "}
@@ -254,7 +254,7 @@ export default function BottomSheet() {
       </ComponentPreviewGal>
 
       {/* Cierre por arrastre */}
-      <h2 className="titleSecundaryButton">Cierre al arrastrar</h2>
+      <h2 className="titleSecundary">Cierre al arrastrar</h2>
       <p className="text">
         Con <span className="inline-code">canDisapear</span> el panel se cierra
         al arrastrarlo hacia abajo más allá del umbral definido en{" "}
@@ -311,7 +311,7 @@ export default function BottomSheet() {
       </ComponentPreviewGal>
 
       {/* Límites de altura */}
-      <h2 className="titleSecundaryButton">Posiciones</h2>
+      <h2 className="titleSecundary">Posiciones</h2>
       <p className="text">
         Con las siguientes propiedades puedes definir entre qué alturas se puede
         mover el panel al arrastrarlo.
@@ -390,7 +390,7 @@ export default function BottomSheet() {
       </ComponentPreviewGal>
 
       {/* Ancho */}
-      <h2 className="titleSecundaryButton">Ancho del panel</h2>
+      <h2 className="titleSecundary">Ancho del panel</h2>
       <p className="text">
         Con <span className="inline-code">widthPercent</span> ajustas el ancho
         del panel respecto al bottomsheet.
@@ -437,7 +437,7 @@ export default function BottomSheet() {
       </ComponentPreviewGal>
 
       {/* Backdrop */}
-      <h2 className="titleSecundaryButton">Backdrop</h2>
+      <h2 className="titleSecundary">Backdrop</h2>
       <p className="text">
         Con <span className="inline-code">useBackdrop</span> muestras un fondo
         semitransparente detrás del panel, y con{" "}
@@ -502,7 +502,7 @@ export default function BottomSheet() {
       </ComponentPreviewGal>
 
       {/* Colores y apariencia */}
-      <h2 className="titleSecundaryButton">Colores y apariencia</h2>
+      <h2 className="titleSecundary">Colores y apariencia</h2>
       <p className="text">
         Con <span className="inline-code">headerBg</span>,{" "}
         <span className="inline-code">bodyBg</span> y{" "}
@@ -567,7 +567,7 @@ export default function BottomSheet() {
       </ComponentPreviewGal>
 
       {/* Personalización */}
-      <h2 className="titleSecundaryButton">Personalización del BottomSheet</h2>
+      <h2 className="titleSecundary">Personalización del BottomSheet</h2>
       <p className="text">
         Con <span className="inline-code">customContainerClass</span>,{" "}
         <span className="inline-code">customBodyClass</span> y{" "}

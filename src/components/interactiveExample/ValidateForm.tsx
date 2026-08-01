@@ -31,14 +31,14 @@ function FieldFeedback({
 
 export function RegisterFormDemo() {
   /* -------------------------------- ESTADO -------------------------------- */
-  const [nombre, setNombre] = useState("");
-  const [nombreError, setNombreError] = useState("");
+  const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
 
-  const [correo, setCorreo] = useState("");
-  const [correoError, setCorreoError] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
 
-  const [telefono, setTelefono] = useState("");
-  const [telefonoError, setTelefonoError] = useState("");
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
 
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -46,14 +46,14 @@ export function RegisterFormDemo() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
-  const [edad, setEdad] = useState("");
-  const [edadError, setEdadError] = useState("");
+  const [age, setAge] = useState("");
+  const [ageError, setAgeError] = useState("");
 
-  const [sitioWeb, setSitioWeb] = useState("");
-  const [sitioWebError, setSitioWebError] = useState("");
+  const [website, setWebsite] = useState("");
+  const [websiteError, setWebsiteError] = useState("");
 
-  const [aceptaTerminos, setAceptaTerminos] = useState(false);
-  const [terminosError, setTerminosError] = useState("");
+  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [termsError, setTermsError] = useState("");
 
   const validate = useValidateForms();
 
@@ -69,36 +69,35 @@ export function RegisterFormDemo() {
   /* ------------------------------- HANDLERS -------------------------------- */
 
   const handleSubmit = () => {
-    setNombreError("");
-    setCorreoError("");
-    setTelefonoError("");
+    setNameError("");
+    setEmailError("");
+    setPhoneError("");
     setPasswordError("");
     setConfirmPasswordError("");
-    setEdadError("");
-    setSitioWebError("");
-    setTerminosError("");
-
+    setAgeError("");
+    setWebsiteError("");
+    setTermsError("");
 
     const validations: ValidateProps[] = [
       {
-        value: nombre,
+        value: name,
         typeInput: "text",
         nameInput: "Nombre completo",
         minLength: 3,
         maxLength: 50,
-        setError: setNombreError,
+        setError: setNameError,
       },
       {
-        value: correo,
+        value: email,
         typeInput: "email",
         nameInput: "Correo electrónico",
-        setError: setCorreoError,
+        setError: setEmailError,
       },
       {
-        value: telefono,
+        value: phone,
         typeInput: "phone",
         nameInput: "Teléfono",
-        setError: setTelefonoError,
+        setError: setPhoneError,
       },
       {
         value: password,
@@ -114,27 +113,27 @@ export function RegisterFormDemo() {
         setError: setConfirmPasswordError,
       },
       {
-        value: Number(edad),
+        value: Number(age),
         typeInput: "num",
         nameInput: "Edad",
         min: 18,
         max: 120,
         isInteger: true,
-        setError: setEdadError,
+        setError: setAgeError,
       },
       {
-        value: sitioWeb,
+        value: website,
         typeInput: "url",
         nameInput: "Sitio web",
         canBeNull: true,
-        setError: setSitioWebError,
+        setError: setWebsiteError,
       },
       {
-        value: aceptaTerminos,
+        value: acceptTerms,
         typeInput: "bool",
         nameInput: "Términos y condiciones",
         mustBeTrue: true,
-        setError: setTerminosError,
+        setError: setTermsError,
       },
     ];
 
@@ -143,7 +142,7 @@ export function RegisterFormDemo() {
     try {
       isValid = validate.ApplyValidate(validations);
     } catch (error) {
-      alert((error as Error).message)
+      alert((error as Error).message);
       isValid = false;
     }
 
@@ -155,27 +154,24 @@ export function RegisterFormDemo() {
   const isDark = theme === "dark";
 
   return (
-
     <div className="registerFormDemo">
       <div className="registerFormDemo__row">
         <div className="registerFormDemo__field">
-
           <InputTextGal
             label="Nombre completo"
             typeInput="text"
-            value={nombre}
-            setValue={setNombre}
+            value={name}
+            setValue={setName}
             border={false}
             placeholder="Arturo Montaño"
             bgColor={isDark ? "#121212" : undefined}
             textColor={isDark ? "#ffffff" : undefined}
             iconColorL={isDark ? "#ffffff" : undefined}
-            errorMessage={nombreError}
           />
           <FieldFeedback
-            error={nombreError}
+            error={nameError}
             attempted={attempted}
-            isFilled={nombre.trim().length > 0}
+            isFilled={name.trim().length > 0}
           />
         </div>
 
@@ -183,8 +179,8 @@ export function RegisterFormDemo() {
           <InputTextGal
             label="Correo electrónico"
             typeInput="email"
-            value={correo}
-            setValue={setCorreo}
+            value={email}
+            setValue={setEmail}
             border={false}
             placeholder="correo@gamil.com"
             bgColor={isDark ? "#121212" : undefined}
@@ -192,9 +188,9 @@ export function RegisterFormDemo() {
             iconColorL={isDark ? "#ffffff" : undefined}
           />
           <FieldFeedback
-            error={correoError}
+            error={emailError}
             attempted={attempted}
-            isFilled={correo.trim().length > 0}
+            isFilled={email.trim().length > 0}
           />
         </div>
       </div>
@@ -204,8 +200,8 @@ export function RegisterFormDemo() {
           <InputTextGal
             label="Teléfono"
             typeInput="text"
-            value={telefono}
-            setValue={setTelefono}
+            value={phone}
+            setValue={setPhone}
             border={false}
             placeholder="222 123 4567"
             bgColor={isDark ? "#121212" : undefined}
@@ -213,9 +209,9 @@ export function RegisterFormDemo() {
             iconColorL={isDark ? "#ffffff" : undefined}
           />
           <FieldFeedback
-            error={telefonoError}
+            error={phoneError}
             attempted={attempted}
-            isFilled={telefono.trim().length > 0}
+            isFilled={phone.trim().length > 0}
           />
         </div>
 
@@ -223,8 +219,8 @@ export function RegisterFormDemo() {
           <InputTextGal
             label="Edad"
             typeInput="number"
-            value={edad}
-            setValue={setEdad}
+            value={age}
+            setValue={setAge}
             border={false}
             placeholder="19"
             bgColor={isDark ? "#121212" : undefined}
@@ -232,9 +228,9 @@ export function RegisterFormDemo() {
             iconColorL={isDark ? "#ffffff" : undefined}
           />
           <FieldFeedback
-            error={edadError}
+            error={ageError}
             attempted={attempted}
-            isFilled={edad.trim().length > 0}
+            isFilled={age.trim().length > 0}
           />
         </div>
       </div>
@@ -286,8 +282,8 @@ export function RegisterFormDemo() {
           <InputTextGal
             label="Sitio web (opcional)"
             typeInput="text"
-            value={sitioWeb}
-            setValue={setSitioWeb}
+            value={website}
+            setValue={setWebsite}
             border={false}
             placeholder="https://tu-url.com"
             bgColor={isDark ? "#121212" : undefined}
@@ -295,26 +291,27 @@ export function RegisterFormDemo() {
             iconColorL={isDark ? "#ffffff" : undefined}
           />
           <FieldFeedback
-            error={sitioWebError}
+            error={websiteError}
             attempted={attempted}
-            isFilled={sitioWeb.trim().length > 0}
+            isFilled={website.trim().length > 0}
           />
         </div>
 
         <div className="registerFormDemo__field registerFormDemo__terms">
           <CheckBoxGal
             label="Acepto los términos y condiciones"
-            value={aceptaTerminos}
-
-            setValue={setAceptaTerminos}
-            textColor={isDark ? "var(--text-color)" : undefined}
-            customLabelClass="cambio"
+            value={acceptTerms}
+            setValue={setAcceptTerms}
             seeIcon={false}
+            textColor={isDark ? "var(--text-color)" : undefined}
+            iconColor={isDark ? "var(--text-color)" : undefined}
+            customLabelClass="change"
+            customIconClass="paso"
           />
           <FieldFeedback
-            error={terminosError}
+            error={termsError}
             attempted={attempted}
-            isFilled={aceptaTerminos === true}
+            isFilled={acceptTerms === true}
           />
         </div>
       </div>

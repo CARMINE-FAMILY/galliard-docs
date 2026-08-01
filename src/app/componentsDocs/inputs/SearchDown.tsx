@@ -287,7 +287,7 @@ export default function SearchDown() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="searchDown-docs docs-content">
       <h1 className="titlePrimary">SearchDown</h1>
 
       <p className="text">
@@ -481,6 +481,7 @@ const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[
           useForApi={true}
           searchAction={searchCharacter}
         />
+        {loading ? "Cargando..." : ""} 
       </ComponentPreviewGal>
 
       {/* Orientación */}

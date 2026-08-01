@@ -1,6 +1,7 @@
 export type ThemeValue = "light" | "dark";
 
 const DOCS_PREFIXES = [
+  "/",
   "/getStartDocs",
   "/componentsDocs",
   "/modalsDocs",

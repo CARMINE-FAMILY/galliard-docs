@@ -210,7 +210,7 @@ export default function InputFile() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="inputFile-docs docs-content">
       <h1 className="titlePrimary">InputFile</h1>
       <p className="text">
         El componente InputFile permite seleccionar un archivo mediante click o

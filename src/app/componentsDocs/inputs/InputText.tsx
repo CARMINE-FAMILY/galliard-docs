@@ -230,7 +230,7 @@ export default function InputText() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="inputText-docs docs-content">
       <h1 className="titlePrimary">InputText</h1>
       <p className="text">
         El componente InputText permite capturar texto libre, soportando

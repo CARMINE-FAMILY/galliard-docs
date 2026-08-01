@@ -152,7 +152,7 @@ export default function CheckBox() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="check-docs docs-content">
       <h1 className="titlePrimary">CheckBox</h1>
       <p className="text">
         El componente CheckBox permite capturar una selección booleana del
@@ -198,7 +198,7 @@ export default function CheckBox() {
       />
 
       {/* CheckBox */}
-      <h2 className="titleSecundaryButton">CheckBox</h2>
+      <h2 className="titleSecundary">CheckBox</h2>
       <p className="text">
         Ejemplo base del componente: un checkbox simple, usando{" "}
         <span className="inline-code">value</span> y{" "}
@@ -240,7 +240,7 @@ export default function CheckBox() {
       </ComponentPreviewGal>
 
       {/* Iconos */}
-      <h2 className="titleSecundaryButton">Diseño de Iconos</h2>
+      <h2 className="titleSecundary">Diseño de Iconos</h2>
       <p className="text">
         Con <span className="inline-code">seeIcon</span> se muestra u oculta el
         ícono dentro del checkbox marcado. Usa{" "}
@@ -303,7 +303,7 @@ export default function CheckBox() {
       </ComponentPreviewGal>
 
       {/* Enlace */}
-      <h2 className="titleSecundaryButton">Label como enlace</h2>
+      <h2 className="titleSecundary">Label como enlace</h2>
       <p className="text">
         Útil para casos como "Acepto los términos y condiciones", donde el texto
         debe funcionar como link en vez de solo describir el checkbox. Se activa
@@ -351,7 +351,7 @@ export default function CheckBox() {
       </ComponentPreviewGal>
 
       {/* Error */}
-      <h2 className="titleSecundaryButton">Mensaje de error</h2>
+      <h2 className="titleSecundary">Mensaje de error</h2>
       <p className="text">
         La prop <span className="inline-code">errorMessage</span> muestra un
         texto de validación debajo del checkbox. Igual que en los demás
@@ -399,7 +399,7 @@ export default function CheckBox() {
       </ComponentPreviewGal>
 
       {/* Tipografía */}
-      <h2 className="titleSecundaryButton">Tipografía</h2>
+      <h2 className="titleSecundary">Tipografía</h2>
       <p className="text">
         Con <span className="inline-code">font</span> y{" "}
         <span className="inline-code">textSize</span> puedes ajustar la fuente y
@@ -450,7 +450,7 @@ export default function CheckBox() {
       </ComponentPreviewGal>
 
       {/* Personalización del checkbox */}
-      <h2 className="titleSecundaryButton">Personalización del checkbox</h2>
+      <h2 className="titleSecundary">Personalización del checkbox</h2>
       <p className="text">
         Para la personalización del checkbox se ocuparon las siguientes
         propiedades: <span className="inline-code">label</span>,

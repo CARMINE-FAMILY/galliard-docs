@@ -1,3 +1,4 @@
+@use "../generals/vars" as *;
 .not-found {
   position: relative;
   display: flex;
@@ -39,11 +40,7 @@
     font-size: 8rem;
     font-weight: 800;
     line-height: 1;
-    background: linear-gradient(
-      135deg,
-      var(--accent-primary),
-      var(--accent-secondary)
-    );
+    background: linear-gradient(135deg, $primary);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -93,7 +90,7 @@
     font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
-    border: none;
+    border: 1px solid $bordercolor;
     transition:
       transform 0.15s ease,
       opacity 0.15s ease;
@@ -108,7 +105,7 @@
         var(--accent-primary),
         var(--accent-secondary)
       );
-      color: var(--text-on-accent, #fff);
+      color: var(--text-primary);
     }
 
     &--secondary {
@@ -119,7 +116,6 @@
     &--ghost {
       background-color: transparent;
       color: var(--accent-primary);
-      border: 1px solid var(--accent-primary);
     }
   }
 }
