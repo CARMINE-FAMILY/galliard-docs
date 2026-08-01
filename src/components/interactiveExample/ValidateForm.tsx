@@ -310,7 +310,7 @@ export function RegisterFormDemo() {
             seeIcon={false}
             textColor={isDark ? "var(--text-color)" : undefined}
             iconColor={isDark ? "var(--text-color)" : undefined}
-            customLabelClass="changue"
+            customLabelClass="change"
             customIconClass="paso"
           />
           <FieldFeedback

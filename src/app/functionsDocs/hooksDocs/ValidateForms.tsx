@@ -225,14 +225,18 @@ export default function ValidateForms() {
             code: `
 const [emailError, setEmailError] = useState<string>("");
 const [ageError, setAgeError] = useState<string>("");
+const validate = useValidateForms();
 
 const handleSubmit = () => {
+
+    setEmailError("");
+    setAgeError("");        
     const isValid = useValidateForms([
       {
         typeInput: "email",
         value: email,
         nameInput: "Correo",
-        setError: setEmailError,
+        errorMessage={nameError}
       },
       {
         typeInput: "num",
@@ -241,15 +245,19 @@ const handleSubmit = () => {
         min: 18,
         max: 99,
         isInteger: true,
-        setError: setAgeError,
+       errorMessage={nameError},
       },  
     ]);
 
-    if(!isValid) {
-      return;
+    let isValid: boolean = false;
+
+    try {
+      isValid = validate.ApplyValidate(validations);
+    } catch (error) {
+      alert((error as Error).message);
+      isValid = false;
     }
-    
-    console.log("Formulario válido");
+    setFormValid(isValid);
 }
             `,
           },
@@ -324,7 +332,7 @@ const handleSubmit = () => {
    nameInput: "Usuario",
    minLength: 3,
    maxLength: 20,
-   setError: setUsernameError,
+   errorMessage={nameError}
 }
             `,
           },
@@ -336,7 +344,15 @@ const handleSubmit = () => {
       <p className="text">
         Valida el formato de un correo electrónico contra la expresión regular{" "}
         <span className="inline-code">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>. No
-        tiene parámetros adicionales más allá de los comunes.
+        tiene parámetros adicionales más allá de los comunes. Se puede validar
+        con <span className="inline-code">canBeNull</span> como se explico en la
+        sección de <span className="inline-code">Propiedades comunes</span>
+      </p>
+      <p className="note">Nota:</p>
+      <p className="text">
+        Una vez que aplique esta validación a un input para correo
+        automaticamnete verificara si el contenido es una formato de correo
+        valido, sin configuración adicional
       </p>
       <CodeBlockGal
         hideHeaderIfSingleTab
@@ -349,7 +365,7 @@ const handleSubmit = () => {
     typeInput: "email",
     value: email,
     nameInput: "Correo",
-    setError: setEmailError,    
+    errorMessage={nameError}    
 }
             `,
           },
@@ -361,7 +377,15 @@ const handleSubmit = () => {
       <p className="text">
         Valida números telefónicos con o sin lada internacional, separadores por
         espacio, guión o punto. No tiene parámetros adicionales más allá de los
-        comunes.
+        comunes. Se puede validar con{" "}
+        <span className="inline-code">canBeNull</span> como se explico en la
+        sección de <span className="inline-code">Propiedades comunes</span>
+      </p>
+      <p className="note">Nota:</p>
+      <p className="text">
+        Una vez que aplique esta validación a un input para correo
+        automaticamnete verificara si el contenido es una formato de correo
+        valido, sin configuración adicional
       </p>
       <CodeBlockGal
         hideHeaderIfSingleTab
@@ -374,7 +398,7 @@ const handleSubmit = () => {
     typeInput: "phone",
     value: phone,
     nameInput: "Teléfono",
-    setError: setPhoneError
+    errorMessage={nameError}
 }
             `,
           },
@@ -386,7 +410,15 @@ const handleSubmit = () => {
       <p className="text">
         Valida que el valor tenga forma de URL (con o sin protocolo{" "}
         <span className="inline-code">http(s)://</span>). No tiene parámetros
-        adicionales más allá de los comunes.
+        adicionales más allá de los comunes. Se puede validar con{" "}
+        <span className="inline-code">canBeNull</span> como se explico en la
+        sección de <span className="inline-code">Propiedades comunes</span>
+      </p>
+      <p className="note">Nota:</p>
+      <p className="text">
+        Una vez que aplique esta validación a un input para correo
+        automaticamnete verificara si el contenido es una formato de correo
+        valido, sin configuración adicional
       </p>
       <CodeBlockGal
         hideHeaderIfSingleTab
@@ -399,7 +431,7 @@ const handleSubmit = () => {
     typeInput: "url",
     value: website,
     nameInput: "Sitio web",
-    setError: setWebsiteError,
+    errorMessage={nameError}
 }
             `,
           },
@@ -412,6 +444,14 @@ const handleSubmit = () => {
         Valida contraseñas: mínimo 8 caracteres, al menos un número y al menos
         un carácter (<span className="inline-code">!@#$%^&*</span>). No tiene
         parámetros adicionales más allá de los comunes.
+
+       Se puede validar con <span className="inline-code">canBeNull</span> como se explico
+        en la sección de <span className="inline-code">Propiedades comunes</span>
+      </p>
+      <p className="note">Nota:</p>
+      <p className="text">
+        Una vez que aplique esta validación a un input para correo automaticamnete verificara 
+        si el contenido es una formato de correo valido, sin configuración adicional
       </p>
       <CodeBlockGal
         hideHeaderIfSingleTab
@@ -424,7 +464,7 @@ const handleSubmit = () => {
    typeInput: "pass",
    value: password,
    nameInput: "Contraseña",
-   setError: setPasswordError
+   errorMessage={nameError}
 }
             `,
           },
@@ -468,7 +508,7 @@ const handleSubmit = () => {
    min: 18,
    max: 99,
    isInteger: true,
-   setError: setAgeError,
+   errorMessage={nameError}
 }
             `,
           },
@@ -500,7 +540,7 @@ const handleSubmit = () => {
     value: acceptedTerms,
     nameInput: "Términos y condiciones",
     mustBeTrue: true,
-    setError: setTermsError,
+    errorMessage={nameError}
 }
             `,
           },
@@ -546,7 +586,7 @@ const handleSubmit = () => {
     nameInput: "Fecha de nacimiento",
     min: new Date("2006-10-04"),
     max: new Date(),
-    setError: setBirthDateError
+    errorMessage={nameError}
 }
             `,
           },
@@ -570,15 +610,16 @@ const handleSubmit = () => {
         la regla de obligatoriedad (
         <span className="inline-code">canBeNull</span>). Cualquier otra regla
         (rango, formato, etc.) no tiene efecto hasta que se implemente en el
-        hook.
+        hook proximamente.
       </p>
+
 
       {/* Tipo de mensaje de error */}
       <h2 className="titleSecundary">Mensajes de Error</h2>
       <p className="text">
-        El hook <code>useValidateForms</code> ya trae un mensaje de error
-        definido por defecto para cada campo, el cual puedes usar directamente a
-        través de la prop <code>errorMessage</code> de la siguiente manera:
+        De toda la libreria los inputs ya tienen por defecto un mensaje de
+        error, de lo cual ese mensaje de error se puede modificar por uno
+        personalizado
       </p>
       <CodeBlockGal
         hideHeaderIfSingleTab
@@ -596,7 +637,7 @@ const handleSubmit = () => {
   bgColor={isDark ? "#121212" : undefined}
   textColor={isDark ? "#ffffff" : undefined}
   iconColorL={isDark ? "#ffffff" : undefined}
-  errorMessage={nameError}
+  errorMessage={nameError} // Con esta propiedad manda a traer el mensaje de error
 />`,
           },
         ]}
@@ -631,7 +672,14 @@ const handleSubmit = () => {
     return <p className="registerFormDemo__success">✔ Dato correcto</p>;
   }
   return null;
-}`,
+}
+
+  // true solo cuando TODOS los campos pasaron la validación. Controla
+  // el mensaje general de éxito al final del formulario.
+  const [formValid, setFormValid] = useState(false);
+
+
+`,
           },
         ]}
       />
@@ -646,22 +694,26 @@ const handleSubmit = () => {
           {
             label: "TypeScript",
             language: "ts",
-            code: `<InputTextGal
-  label="Nombre completo"
-  typeInput="text"
-  value={name}
-  setValue={setName}
-  border={false}
-  placeholder="Arturo Montaño"
-  bgColor={isDark ? "#121212" : undefined}
-  textColor={isDark ? "#ffffff" : undefined}
-  iconColorL={isDark ? "#ffffff" : undefined}
-/>
-<FieldFeedback
-  error={nameError}
-  attempted={attempted}
-  isFilled={name.trim().length > 0}
-/>`,
+            code: `
+<div>
+  <InputTextGal
+    label="Nombre completo"
+    typeInput="text"
+    value={name}
+    setValue={setName}
+    border={false}
+    placeholder="Arturo Montaño"
+    bgColor={isDark ? "#121212" : undefined}
+    textColor={isDark ? "#ffffff" : undefined}
+    iconColorL={isDark ? "#ffffff" : undefined}
+  />
+  // Ya con este componente hace que muestre los mensajes de error y cuando los datos estan bien
+  <FieldFeedback
+    error={nameError}
+    attempted={attempted}
+    isFilled={name.trim().length > 0}
+  />
+<div>`,
           },
         ]}
       />
