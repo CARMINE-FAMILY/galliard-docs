@@ -61,8 +61,9 @@ export const sidebarData: SidebarGroupType[] = [
         label: "Hooks",
         path: "/functionsDocs/hooksDocs",
         children: [
-          { label: "OnClickOutside", path: "/functionsDocs/onclickoutside" },
-          { label: "ValidateForms", path: "/functionsDocs/validateforms" },
+          { label: "useOnClickOutside", path: "/functionsDocs/onclickoutside" },
+          { label: "useValidateForms", path: "/functionsDocs/validateforms" },
+          { label: "useDebouncer", path: "/functionsDocs/debouncerdoc" },
         ],
       },
     ],

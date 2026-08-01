@@ -18,8 +18,9 @@ export const docsNavOrder: DocsNavItem[] = [
   { href: "/componentsDocs/componentpreview", label: "ComponentPreview" },
   { href: "/modalsDocs/bottomsheet", label: "BottomSheet" },
   { href: "/functionsDocs/unixactions", label: "UnixActions"},
-  { href: "/functionsDocs/onclickoutside", label: "OnClickOutside"},
-  { href: "/functionsDocs/validateforms", label: "ValidateForms"},
+  { href: "/functionsDocs/onclickoutside", label: "useOnClickOutside"},
+  { href: "/functionsDocs/validateforms", label: "useValidateForms"},
+  { href: "/functionsDocs/debouncerdoc", label: "useDebouncer"},
 ];
 
 export function getDocsNavSiblings(currentHref: string) {
