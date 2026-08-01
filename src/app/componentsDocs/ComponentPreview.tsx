@@ -95,7 +95,7 @@ export default function ComponentPreview() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="preview-docs docs-content">
       <h1 className="titlePrimary">ComponentPreview</h1>
       <p className="text">
         El componente ComponentPreview envuelve un componente en vivo junto con
@@ -139,7 +139,7 @@ export default function ComponentPreview() {
       />
 
       {/* Básico */}
-      <h2 className="titleSecundaryButton">ComponentPreview básico</h2>
+      <h2 className="titleSecundary">ComponentPreview básico</h2>
       <p className="text">
         Ejemplo mínimo: un componente en vivo en el tab "Vista previa", y un tab
         de código mostrando cómo se usó.
@@ -169,7 +169,7 @@ export default function ComponentPreview() {
       </ComponentPreviewGal>
 
       {/* Múltiples tabs de código */}
-      <h2 className="titleSecundaryButton">Múltiples tabs de código</h2>
+      <h2 className="titleSecundary">Múltiples tabs de código</h2>
       <p className="text">
         Puedes pasar varios elementos en
         <span className="inline-code">codeTabs</span> para mostrar el mismo
@@ -206,7 +206,7 @@ export default function ComponentPreview() {
       </ComponentPreviewGal>
 
       {/* Tema del canvas */}
-      <h2 className="titleSecundaryButton">Tema del canvas</h2>
+      <h2 className="titleSecundary">Tema del canvas</h2>
       <p className="text">
         Con <span className="inline-code">theme</span> cambias el fondo del
         canvas de "Vista previa" y, por defecto, también el tema de los
@@ -239,7 +239,7 @@ export default function ComponentPreview() {
       </ComponentPreviewGal>
 
       {/* Tema independiente para el código */}
-      <h2 className="titleSecundaryButton">
+      <h2 className="titleSecundary">
         Tema independiente para el código
       </h2>
       <p className="text">
@@ -276,7 +276,7 @@ export default function ComponentPreview() {
       </ComponentPreviewGal>
 
       {/* Tema personalizado */}
-      <h2 className="titleSecundaryButton">Tema personalizado</h2>
+      <h2 className="titleSecundary">Tema personalizado</h2>
       <p className="text">
         Con <span className="inline-code">customTheme</span> sobreescribes solo
         el fondo del canvas de "Vista previa" (

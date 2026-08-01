@@ -197,7 +197,7 @@ export default function TextArea() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="textArea-docs docs-content">
       <h1 className="titlePrimary">TextArea</h1>
       <p className="text">
         El componente TextArea permite capturar texto libre de varias líneas,

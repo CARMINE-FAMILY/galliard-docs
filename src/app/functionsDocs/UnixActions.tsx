@@ -80,7 +80,7 @@ export default function UnixActions() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="unixActions-docs docs-content">
       <h1 className="titlePrimary">Utilidades de Fecha</h1>
       <p className="text">
         Conjunto de funciones para trabajar con timestamps Unix, conversión de
@@ -136,7 +136,7 @@ export default function UnixActions() {
       />
 
       {/* convertToUnix */}
-      <h2 className="titleSecundaryButton">convertToUnix</h2>
+      <h2 className="titleSecundary">convertToUnix</h2>
       <p className="text">
         Convierte una fecha (<span className="inline-code">string</span> o
         <span className="inline-code">Date</span>) a timestamp Unix en segundos
@@ -167,7 +167,7 @@ convertToUnix(new Date())`,
       />
 
       {/* unixToDate */}
-      <h2 className="titleSecundaryButton">unixToDate</h2>
+      <h2 className="titleSecundary">unixToDate</h2>
       <p className="text">
         Convierte un timestamp Unix a un string
         <span className="inline-code">YYYY-MM-DD</span>, compatible con el
@@ -199,7 +199,7 @@ unixToDate(1783936800, "Europe/Madrid")`,
       />
 
       {/* unixToDateTimeString */}
-      <h2 className="titleSecundaryButton">unixToDateTimeString</h2>
+      <h2 className="titleSecundary">unixToDateTimeString</h2>
       <p className="text">
         Convierte un timestamp Unix a un string legible en español, con hora en
         formato 12h y AM/PM.
@@ -229,7 +229,7 @@ unixToDate(1783936800, "Europe/Madrid")`,
       />
 
       {/* unixToDateTime */}
-      <h2 className="titleSecundaryButton">unixToDateTime</h2>
+      <h2 className="titleSecundary">unixToDateTime</h2>
       <p className="text">
         Convierte un timestamp Unix a un string
         <span className="inline-code">YYYY-MM-DD HH:MM</span> en formato 24h,
@@ -260,7 +260,7 @@ unixToDate(1783936800, "Europe/Madrid")`,
       />
 
       {/* unixToStringYMD */}
-      <h2 className="titleSecundaryButton">unixToStringYMD</h2>
+      <h2 className="titleSecundary">unixToStringYMD</h2>
       <p className="text">
         Convierte un timestamp Unix únicamente a la parte de fecha (sin hora),
         usando el mismo formato que
@@ -289,7 +289,7 @@ unixToDate(1783936800, "Europe/Madrid")`,
         ]}
       />
 
-      <DocsPagination/>
+      <DocsPagination />
     </div>
   );
 }

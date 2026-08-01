@@ -1,65 +1,8 @@
 @use "../../generals/vars" as *;
 @use "../../generals/mixins" as *;
 
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: $background;
-  overflow-x: hidden;
-  font-family: inherit;
-
-  .titlePrimary {
-    font-size: 4rem;
-    font-weight: 700;
-    margin: 0 0 2rem;
-    line-height: 1.2;
-    font-family: OpenSansBold;
-    color: $primary1;
-  }
-
-  .titleSecundary {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin: 1.5rem 0 0.7rem;
-    line-height: 1.25;
-    color: $textPrimary;
-    font-family: OpenSansSemiBold;
-  }
-
-  .subtitle {
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 3.2rem 0 1.2rem;
-    line-height: 1.3;
-    color: $blackcake;
-    font-family: OpenSansSemiBold;
-  }
-
-  .text {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    margin: 0 0 1.6rem;
-    @include inline-code;
-  }
-
-  .code {
-    font-size: 1.8rem;
-    display: block;
-    background: rgba(255, 0, 0, 0.05);
-    padding: 1.2rem 1.6rem;
-    border-radius: 0.8rem;
-    margin: 0 0 2.4rem;
-    overflow-x: auto;
-  }
-
-  .note {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    margin: 0 0 1.6rem;
-    color: $textPrimary;
-    font-family: OpenSansSemiBold;
-  }
+.textArea-docs {
+   @include body-docs;
 
   //Coloir del borde del textArea
   .textAreaDemo {

@@ -149,7 +149,7 @@ export default function ValidateForms() {
   ];
 
   return (
-    <div className="container docs-content">
+    <div className="validate-docs docs-content">
       <h1 className="titlePrimary">useValidateForms</h1>
       <p className="text">
         <span className="inline-code">useValidateForms</span> es un hook

@@ -82,7 +82,7 @@ export default function CodeBlock() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="codeBlock-docs docs-content">
       <h1 className="titlePrimary">CodeBlock</h1>
       <p className="text">
         El componente CodeBlock muestra bloques de código con resaltado de
@@ -118,7 +118,7 @@ export default function CodeBlock() {
       />
 
       {/* Básico */}
-      <h2 className="titleSecundaryButton">CodeBlock básico</h2>
+      <h2 className="titleSecundary">CodeBlock básico</h2>
       <p className="text">
         Ejemplo con un solo tab. Al haber un único tab, se recomienda usar{" "}
         <span className="inline-code">hideHeaderIfSingleTab</span> para ocultar
@@ -155,7 +155,7 @@ export default function CodeBlock() {
       </ComponentPreviewGal>
 
       {/* Múltiples tabs */}
-      <h2 className="titleSecundaryButton">Múltiples tabs</h2>
+      <h2 className="titleSecundary">Múltiples tabs</h2>
       <p className="text">
         Cuando se pasa más de un tab, el header muestra el selector para
         alternar entre ellos. Cada tab puede tener su propio{" "}
@@ -201,7 +201,7 @@ export default function CodeBlock() {
       </ComponentPreviewGal>
 
       {/* Temas */}
-      <h2 className="titleSecundaryButton">Temas</h2>
+      <h2 className="titleSecundary">Temas</h2>
       <p className="text">
         Con <span className="inline-code">theme</span> puedes cambiar la paleta
         de colores de cada tab de forma independiente.
@@ -239,7 +239,7 @@ export default function CodeBlock() {
       </ComponentPreviewGal>
 
       {/* Colapsable */}
-      <h2 className="titleSecundaryButton">Colapsable</h2>
+      <h2 className="titleSecundary">Colapsable</h2>
       <p className="text">
         Con <span className="inline-code">collapsible</span> el tab nace
         colapsado mostrando solo las primeras{" "}
@@ -296,7 +296,7 @@ export default function CodeBlock() {
       </ComponentPreviewGal>
 
       {/* customTheme */}
-      <h2 className="titleSecundaryButton">Tema personalizado</h2>
+      <h2 className="titleSecundary">Tema personalizado</h2>
       <p className="text">
         Con <span className="inline-code">customTheme</span> puedes
         sobreescribir solo algunas variables de color del tema base, sin tener

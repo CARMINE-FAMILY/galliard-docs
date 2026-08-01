@@ -197,7 +197,7 @@ export default function InputRadio() {
   ];
 
   return (
-    <div className="container doc-content">
+    <div className="inputRadio-docs docs-content">
       <h1 className="titlePrimary">InputRadio</h1>
       <p className="text">
         El componente InputRadio permite elegir una opción dentro de un grupo de
