@@ -94,6 +94,19 @@ export default function ComponentPreview() {
     },
   ];
 
+  const previewThemeValuesProps: PropRow[] = [
+    {
+      name: "bg",
+      type: "string",
+      description: "Color de fondo del canvas de 'Vista previa'",
+    },
+    {
+      name: "stripe",
+      type: "string",
+      description: "Color de las rayas diagonales del fondo del canvas",
+    },
+  ];
+
   return (
     <div className="preview-docs docs-content">
       <h1 className="titlePrimary">ComponentPreview</h1>
@@ -135,6 +148,21 @@ export default function ComponentPreview() {
       <DataTable
         columns={propsColumns}
         data={behaviorProps}
+        rowKey={(r) => r.name}
+      />
+
+      <h3 className="subtitle">customTheme (PreviewThemeValues)</h3>
+      <p className="text">
+        Variables que puedes sobreescribir vía{" "}
+        <span className="inline-code">customTheme</span> para el fondo del
+        canvas de "Vista previa". No afectan a los CodeBlock internos para eso
+        usa <span className="inline-code">codeCustomTheme</span> con las
+        variables de <span className="inline-code">CodeThemeValues</span> (ver
+        doc de CodeBlock).
+      </p>
+      <DataTable
+        columns={propsColumns}
+        data={previewThemeValuesProps}
         rowKey={(r) => r.name}
       />
 
@@ -239,9 +267,7 @@ export default function ComponentPreview() {
       </ComponentPreviewGal>
 
       {/* Tema independiente para el código */}
-      <h2 className="titleSecundary">
-        Tema independiente para el código
-      </h2>
+      <h2 className="titleSecundary">Tema independiente para el código</h2>
       <p className="text">
         Con <span className="inline-code">codeTheme</span> puedes usar un tema
         distinto para los CodeBlock internos, sin afectar el fondo del canvas de
@@ -314,7 +340,59 @@ export default function ComponentPreview() {
         </ComponentPreviewGal>
       </ComponentPreviewGal>
 
-      <DocsPagination/>
+      {/* Tema personalizado extendido */}
+      <h2 className="titleSecundary">
+        Combinando canvas y código personalizados
+      </h2>
+      <p className="text">
+        Puedes combinar <span className="inline-code">customTheme</span> (fondo
+        del canvas) con varias variables de{" "}
+        <span className="inline-code">codeCustomTheme</span> (código interno) al
+        mismo tiempo, para lograr una paleta consistente en todo el preview.
+      </p>
+      <ComponentPreviewGal
+        codeTabs={[
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `<ComponentPreviewGal
+  customTheme={{ bg: "#e8e5ee", stripe: "#2a1745" }}
+  codeCustomTheme={{
+    bg: "#1a0e2e",
+    bgHeader: "#2a1745",
+    border: "#7c3aed",
+    accent: "#c084fc",
+    keyword: "#c084fc",
+    stringTexts: "#a3e635",
+  }}
+  codeTabs={[
+    { label: "TSX", language: "tsx", code: '<button>Enviar</button>' },
+  ]}
+>
+  <button>Enviar</button>
+</ComponentPreviewGal>`,
+          },
+        ]}
+      >
+        <ComponentPreviewGal
+          customTheme={{ bg: "#ddd9e4", stripe: "#2a1745" }}
+          codeCustomTheme={{
+            bg: "#1a0e2e",
+            bgHeader: "#2a1745",
+            border: "#7c3aed",
+            accent: "#c084fc",
+            keyword: "#c084fc",
+            stringTexts: "#a3e635",
+          }}
+          codeTabs={[
+            { label: "TSX", language: "tsx", code: "<button>Enviar</button>" },
+          ]}
+        >
+          <button>Enviar</button>
+        </ComponentPreviewGal>
+      </ComponentPreviewGal>
+
+      <DocsPagination />
     </div>
   );
 }
