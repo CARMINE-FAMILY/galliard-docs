@@ -37,6 +37,50 @@ export default function CopyText() {
     },
   ];
 
+  const themeValuesProps: PropRow[] = [
+    {
+      name: "bg",
+      type: "string",
+      description: "Color de fondo del contenedor",
+    },
+    {
+      name: "border",
+      type: "string",
+      description: "Color del borde del contenedor",
+    },
+    {
+      name: "text",
+      type: "string",
+      description: "Color del texto del comando mostrado",
+    },
+    {
+      name: "buttonBg",
+      type: "string",
+      description: "Color de fondo del botón de copiar",
+    },
+    {
+      name: "buttonBorder",
+      type: "string",
+      description: "Color del borde del botón de copiar",
+    },
+    {
+      name: "success",
+      type: "string",
+      description: "Color del ícono/tooltip al copiar exitosamente",
+    },
+    {
+      name: "radius",
+      type: "string",
+      description: "Border-radius del contenedor",
+    },
+    { name: "width", type: "string", description: "Ancho del componente" },
+    {
+      name: "paddingY",
+      type: "string",
+      description: "Padding vertical del contenedor",
+    },
+  ];
+
   const customizationProps: PropRow[] = [
     {
       name: "className",
@@ -69,6 +113,19 @@ export default function CopyText() {
       <DataTable
         columns={propsColumns}
         data={appearanceProps}
+        rowKey={(r) => r.name}
+      />
+
+      <h3 className="subtitle">customStyle (CopyTextThemeValues)</h3>
+      <p className="text">
+        Estas son las variables que puedes sobreescribir parcialmente vía{" "}
+        <span className="inline-code">customStyle</span>. Las que no se
+        especifiquen toman el valor del{" "}
+        <span className="inline-code">theme</span> base.
+      </p>
+      <DataTable
+        columns={propsColumns}
+        data={themeValuesProps}
         rowKey={(r) => r.name}
       />
 
@@ -227,6 +284,70 @@ export default function CopyText() {
         />
       </ComponentPreviewGal>
 
+      {/* customStyle extendido */}
+      <h2 className="titleSecundary">Combinando varias variables</h2>
+      <p className="text">
+        Puedes combinar tantas variables de{" "}
+        <span className="inline-code">CopyTextThemeValues</span> como necesites
+        para lograr una apariencia completamente distinta al tema base, sin
+        dejar de usar el botón y la lógica de copiado del componente.
+      </p>
+      <ComponentPreviewGal
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `<CopyTextGal
+  command="git clone repo.git"
+  theme="black"
+  customStyle={{
+    bg: "#1a0e2e",
+    border: "#7c3aed",
+    text: "#e9d5ff",
+    buttonBg: "#2a1745",
+    buttonBorder: "#7c3aed",
+    success: "#c084fc",
+    radius: "12px",
+    width: "320px",
+  }}
+/>`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `<CopyTextGal
+  command="git clone repo.git"
+  theme="black"
+  customStyle={{
+    bg: "#1a0e2e",
+    border: "#7c3aed",
+    text: "#e9d5ff",
+    buttonBg: "#2a1745",
+    buttonBorder: "#7c3aed",
+    success: "#c084fc",
+    radius: "12px",
+    width: "320px",
+  }}
+/>`,
+          },
+        ]}
+      >
+        <CopyTextGal
+          command="git clone repo.git"
+          theme="black"
+          customStyle={{
+            bg: "#1a0e2e",
+            border: "#7c3aed",
+            text: "#e9d5ff",
+            buttonBg: "#2a1745",
+            buttonBorder: "#7c3aed",
+            success: "#c084fc",
+            radius: "12px",
+            width: "320px",
+          }}
+        />
+      </ComponentPreviewGal>
+
       {/* Personalización con className */}
       <h2 className="titleSecundary">Personalización con className</h2>
       <p className="text">
@@ -257,7 +378,7 @@ export default function CopyText() {
         <CopyTextGal command="git clone repo.git" className="my-copy-text" />
       </ComponentPreviewGal>
 
-      <DocsPagination/>
+      <DocsPagination />
     </div>
   );
 }
