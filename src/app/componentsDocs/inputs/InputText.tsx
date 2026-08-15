@@ -9,6 +9,8 @@ export default function InputText() {
   const [value1, setValue1] = useState("");
   const [value1b, setValue1b] = useState("");
   const [value3, setValue3] = useState("");
+  const [valueBS, setValueBS] = useState("");
+  const [valueBS2, setValueBS2] = useState("");
   const [value4, setValue4] = useState("");
   const [value5, setValue5] = useState("");
   const [value6, setValue6] = useState("");
@@ -60,6 +62,13 @@ export default function InputText() {
       typePlain: true,
       description:
         "Tipo nativo del input HTML. Con 'password' se agrega automáticamente el ícono para mostrar/ocultar el texto",
+    },
+    {
+      name: "blockSpecials",
+      type: "boolean",
+      description:
+        "Permite bloquear en inputs de tipo number los caracteres 'e', 'E', '+', '-'",
+      defaultValue: "false"
     },
     {
       name: "HorV",
@@ -865,6 +874,71 @@ export default function InputText() {
           HorV="horizontal"
           value={value3}
           setValue={setValue3}
+        />
+      </ComponentPreviewGal>
+
+      {/* Block specials */}
+      <h2 className="titleSecundary">Retirando caracteres especiales de input number</h2>
+      <p className="text">
+        La prop <span className="inline-code">blockSpecials</span> permite realizar un bloqueo de caracteres que por defecto el input number permite <span className="inline-code">'e', 'E', '+', '-'</span>, por lo que al usarlos en acciones como sumas u operaciones en bases de datos pueden ocurrir errores, si se coloca la propiedad <span className="inline-code">blockSpecials=true</span> esta aplicara el bloqueo solucionando este problema.
+      </p>
+      <ComponentPreviewGal
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <InputTextGal
+          label="Permite caracteres especiales"
+          typeInput="number"
+          value={value}
+          setValue={setValue}
+          blockSpecials={false}
+        />
+
+        <InputTextGal
+          label="No permite caracteres especiales"
+          typeInput="number"
+          value={value}
+          setValue={setValue}
+          blockSpecials={true}
+        />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <InputTextGal
+          label="Permite caracteres especiales"
+          typeInput="number"
+          value={value}
+          setValue={setValue}
+          blockSpecials={false}
+        />
+
+        <InputTextGal
+          label="No permite caracteres especiales"
+          typeInput="number"
+          value={value}
+          setValue={setValue}
+          blockSpecials={true}
+        />`,
+          },
+        ]}
+      >
+        <InputTextGal
+          label="Permite caracteres especiales"
+          typeInput="number"
+          value={valueBS}
+          setValue={setValueBS}
+          blockSpecials={false}
+        />
+        <InputTextGal
+          label="No permite caracteres especiales"
+          typeInput="number"
+          value={valueBS2}
+          setValue={setValueBS2}
+          blockSpecials={true}
         />
       </ComponentPreviewGal>
 
