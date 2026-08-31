@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { InputRadioGal, ComponentPreviewGal } from "galliard-ui";
+import type { PropsOptions } from "galliard-ui";
 import { DataTable } from "../../../components/table/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
@@ -12,12 +13,12 @@ export default function InputRadio() {
   const [, setRadioValue4] = useState<string>("");
   const [, setRadioValue5] = useState<string>("");
 
-  const options = [
+  const options: PropsOptions[] = [
     { value: "yes", label: "Si", seeIcon: false },
     { value: "no", label: "No", seeIcon: false },
   ];
 
-  const optionsWithIcons = [
+  const optionsWithIcons: PropsOptions[] = [
     { value: "dog", label: "Perro", icon: "mdi:dog", seeIcon: true },
     { value: "cat", label: "Gato", icon: "mdi:cat", seeIcon: true },
     { value: "bird", label: "Ave", icon: "mdi:bird", seeIcon: true },
@@ -31,7 +32,7 @@ export default function InputRadio() {
     },
     {
       name: "options",
-      type: "RadioOptionModel[]",
+      type: "PropsOptions[]",
       description: "Lista de opciones del grupo (value, label, icono, etc)",
     },
     {
@@ -141,7 +142,7 @@ export default function InputRadio() {
     },
     {
       name: "seeIcon",
-      type: "string",
+      type: "boolean",
       description: "Indica si esta opción muestra su propio ícono",
     },
     {
@@ -157,7 +158,7 @@ export default function InputRadio() {
     {
       name: "customIcon",
       type: "React.ReactNode",
-      description: "Clase CSS adicional aplicada al ícono de esta opción",
+      description: "Reemplaza el ícono de esta opción por un elemento personalizado",
     },
     {
       name: "customIconClass",
@@ -245,7 +246,7 @@ export default function InputRadio() {
         rowKey={(r) => r.name}
       />
 
-      <h3 className="subtitle">Modelo de cada opción (RadioOptionModel)</h3>
+      <h3 className="subtitle">Modelo de cada opción (PropsOptions)</h3>
       <DataTable
         columns={propsColumns}
         data={optionsModelProps}
@@ -292,7 +293,7 @@ export default function InputRadio() {
             label: "TSX",
             language: "tsx",
             code: `
-        const opciones: RadioOptionModel[] = [
+        const opciones: PropsOptions[] = [
           { value: "yes", label: "Sí" },
           { value: "no", label: "No" },
         ];
@@ -391,7 +392,7 @@ export default function InputRadio() {
             label: "TSX",
             language: "tsx",
             code: `
-        const opcionesConIconos: RadioOptionModel[] = [
+        const opcionesConIconos: PropsOptions[] = [
           { value: "dog", label: "Perro", icon: "mdi:dog", seeIcon: true },
           { value: "cat", label: "Gato", icon: "mdi:cat", seeIcon: true },
           { value: "bird", label: "Ave", icon: "mdi:bird", seeIcon: true },
