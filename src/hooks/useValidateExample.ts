@@ -1,9 +1,3 @@
-// src/hooks/useValidateFormsPatched.ts
-//
-// Ya NO es un hook (sin prefijo "use", sin useCallback): son funciones
-// normales, así se puede invocar dentro de handleSubmit sin violar las
-// reglas de hooks. Sigue corrigiendo los mismos 3 bugs de antes.
-
 import type { ValidateProps } from "galliard-ui";
 import { convertToUnix, unixToDateTime } from "galliard-ui/actions";
 

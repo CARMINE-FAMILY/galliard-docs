@@ -3,4 +3,30 @@
 
 .inputRadio-docs {
   @include body-docs;
+.radiotestsice{
+  background-color: red !important;
+
+}
+  .radio-custom-image {
+    width: 2rem !important;
+    height: 2rem !important;
+    min-width: 2rem !important;
+    min-height: 2rem !important;
+    flex: 0 0 2rem;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+    overflow: hidden;
+    border-radius: 50%;
+    
+    border: none !important;
+    background-color: transparent !important;
+
+    img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      object-fit: cover;
+    }
+  }
 }

@@ -6,6 +6,10 @@
     "module": "esnext",
     "types": ["vite/client"],
     "skipLibCheck": true,
+    "paths": {
+      "galliard-ui": ["../galliard-ui/src/index.ts"],
+      "@/*": ["../galliard-ui/src/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

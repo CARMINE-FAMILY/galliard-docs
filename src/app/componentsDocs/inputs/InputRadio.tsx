@@ -7,11 +7,12 @@ import { propsColumns } from "../../../hooks/usePropsTableColumns";
 import { DocsPagination } from "../../../components/generals/DocsPagination";
 
 export default function InputRadio() {
-  const [, setRadioValue1] = useState<string>("");
-  const [, setRadioValue2] = useState<string>("");
-  const [, setRadioValue3] = useState<string>("");
-  const [, setRadioValue4] = useState<string>("");
-  const [, setRadioValue5] = useState<string>("");
+  const [radioTermsValue, setRadioTermsValue] = useState<string>("");
+  const [radioOrientValue, setRadioOrientValue] = useState<string>("");
+  const [radioMascotaValue, setRadioMascotaValue] = useState<string>("");
+  const [radioCustomImageValue, setRadioCustomImageValue] = useState<string>("");
+  const [radioCustomValue, setRadioCustomValue] = useState<string>("");
+  const [radioErrorValue, setRadioErrorValue] = useState<string>("");
 
   const options: PropsOptions[] = [
     { value: "yes", label: "Si", seeIcon: false },
@@ -158,7 +159,8 @@ export default function InputRadio() {
     {
       name: "customIcon",
       type: "React.ReactNode",
-      description: "Reemplaza el ícono de esta opción por un elemento personalizado",
+      description:
+        "Reemplaza el ícono de esta opción por un elemento personalizado",
     },
     {
       name: "customIconClass",
@@ -311,7 +313,8 @@ export default function InputRadio() {
           label="¿Aceptas los términos?"
           name="terminos"
           options={options}
-          setValue={setRadioValue1}
+          value={radioTermsValue}
+          setValue={setRadioTermsValue}
         />
       </ComponentPreviewGal>
 
@@ -347,14 +350,16 @@ export default function InputRadio() {
           name="horizontalDemo"
           options={options}
           HorV="horizontal"
-          setValue={setRadioValue2}
+          value={radioOrientValue}
+          setValue={setRadioOrientValue}
         />
         <InputRadioGal
           label="Vertical"
           name="verticalDemo"
           options={options}
           HorV="vertical"
-          setValue={setRadioValue2}
+          value={radioOrientValue}
+          setValue={setRadioOrientValue}
         />
       </ComponentPreviewGal>
 
@@ -413,10 +418,20 @@ export default function InputRadio() {
           name="mascotaDemo"
           options={optionsWithIcons}
           iconSize={22}
-          setValue={setRadioValue3}
+          value={radioMascotaValue}
+          setValue={setRadioMascotaValue}
         />
       </ComponentPreviewGal>
-
+      {/* Imágenes personalizadas por opción */}
+      <h2 className="titleSecundary">Imágenes personalizadas por opción</h2>
+      <p className="text">
+        Usa <span className="inline-code">customIcon</span> dentro de cada
+        objeto de <span className="inline-code">options</span> para mostrar una
+        imagen, GIF o cualquier otro elemento React. Coloca la URL en{" "}
+        <span className="inline-code">src</span> de la etiqueta{" "}
+        <span className="inline-code">img</span>.
+      </p>
+        
       {/* Apariencia */}
       <h2 className="titleSecundary">Tamaños y colores de texto</h2>
       <p className="text">
@@ -471,7 +486,8 @@ export default function InputRadio() {
           textColor="#2aa198"
           labelSize="1.6em"
           labelColor="#2aa198"
-          setValue={setRadioValue4}
+          value={radioCustomValue}
+          setValue={setRadioCustomValue}
         />
       </ComponentPreviewGal>
 
@@ -521,7 +537,8 @@ export default function InputRadio() {
           label="¿Aceptas los términos?"
           name="terminosErrorDemo"
           options={options}
-          setValue={setRadioValue5}
+          value={radioErrorValue}
+          setValue={setRadioErrorValue}
           errorMessage="Debes seleccionar una opción"
         />
       </ComponentPreviewGal>

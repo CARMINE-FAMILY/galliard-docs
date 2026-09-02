@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 import { SearchDownGal, ComponentPreviewGal } from "galliard-ui";
 import type { OptionsSearchModel } from "galliard-ui";
 import { DataTable } from "../../../components/table/DataTable";
@@ -51,6 +52,9 @@ export default function SearchDown() {
 
   const [iconValue, setIconValue] = useState<OptionsSearchModel | null>(null);
 
+  const [customLabelIconValue, setCustomLabelIconValue] =
+    useState<OptionsSearchModel | null>(null);
+
   const [horizontalValue, setHorizontalValue] =
     useState<OptionsSearchModel | null>(null);
 
@@ -71,6 +75,15 @@ export default function SearchDown() {
   const [leftValue, setLeftValue] = useState<OptionsSearchModel | null>(null);
 
   const [rightValue, setRightValue] = useState<OptionsSearchModel | null>(null);
+
+  const [customInputIconValue, setCustomInputIconValue] =
+    useState<OptionsSearchModel | null>(null);
+
+  const [customInputIconImgValue, setCustomInputIconImgValue] =
+    useState<OptionsSearchModel | null>(null);
+
+  const [customInputIconGifValue, setCustomInputIconGifValue] =
+    useState<OptionsSearchModel | null>(null);
 
   const contentProps: PropRow[] = [
     {
@@ -255,6 +268,12 @@ export default function SearchDown() {
       type: "React.ReactNode",
       description:
         "Reemplaza el ícono de la etiqueta por un elemento personalizado.",
+    },
+    {
+      name: "customInputIcon",
+      type: "React.ReactNode",
+      description:
+        "Reemplaza el ícono de lupa dentro del campo por un elemento personalizado.",
     },
   ];
 
@@ -551,9 +570,10 @@ const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[
       <p className="text">
         Con <span className="inline-code">seeIcon</span>,
         <span className="inline-code">icon</span> e
-        <span className="inline-code">iconInRight</span> puedes mostrar un ícono
-        junto a la etiqueta y decidir de qué lado aparece. También puedes
-        ajustar el ícono de lupa del campo con
+        <span className="inline-code">customIcon</span> puedes mostrar un ícono
+        junto a la etiqueta o reemplazarlo por un elemento personalizado.
+        <span className="inline-code">iconInRight</span> decide de qué lado
+        aparece. El tamaño y el color del ícono del campo se ajustan con
         <span className="inline-code">iconsOptionsSize</span> y
         <span className="inline-code">iconsColor</span>.
       </p>
@@ -596,6 +616,52 @@ const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[
           iconsOptionsSize={24}
           value={iconValue}
           setValue={setIconValue}
+          options={sampleOptions}
+          useForApi={false}
+        />
+      </ComponentPreviewGal>
+
+      <p className="text">
+        También puedes reemplazar por completo el ícono de la etiqueta con
+        <span className="inline-code">customIcon</span>, pasando cualquier
+        elemento (por ejemplo, una imagen).
+      </p>
+      <ComponentPreviewGal
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <SearchDownGal
+          label="Carril"
+          seeIcon
+          customIcon={<img src='https://cdna.artstation.com/p/assets/images/images/102/030/840/large/sebastian-pytka-1-master-shot-b.jpg?1788174361' alt="Irelia" />}
+        />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <SearchDownGal
+          label="Carril"
+          seeIcon
+          customIcon={<img src='https://cdna.artstation.com/p/assets/images/images/102/030/840/large/sebastian-pytka-1-master-shot-b.jpg?1788174361' alt="Irelia" />}
+        />`,
+          },
+        ]}
+      >
+        <SearchDownGal
+          label="Carril"
+          seeIcon
+          customIcon={
+            <img
+              src="https://cdna.artstation.com/p/assets/images/images/102/030/840/large/sebastian-pytka-1-master-shot-b.jpg?1788174361"
+              alt="Irelia"
+              style={{ height: "95%", width: "auto" }}
+            />
+          }
+          value={customLabelIconValue}
+          setValue={setCustomLabelIconValue}
           options={sampleOptions}
           useForApi={false}
         />
@@ -730,6 +796,94 @@ const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[
           customOptionClass="miOpcion"
           value={customValue}
           setValue={setCustomValue}
+          options={sampleOptions}
+          useForApi={false}
+        />
+      </ComponentPreviewGal>
+
+      {/* Icono de búsqueda personalizado */}
+      <h2 className="titleSecundary">Icono de búsqueda personalizado</h2>
+      <p className="text">
+        Con <span className="inline-code">customInputIcon</span> puedes
+        reemplazar la lupa que se muestra dentro del campo por cualquier
+        elemento JSX propio: un <span className="inline-code">Icon</span>, una{" "}
+        <span className="inline-code">img</span>, un gif o un componente.
+      </p>
+      <ComponentPreviewGal
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `
+        <SearchDownGal
+          label="Ícono"
+          customInputIcon={<Icon icon="mdi:magnify" style={{ color: "#268bd2" }} />}
+        />
+
+        <SearchDownGal
+          label="Imagen"
+          customInputIcon={<img src="/tu-imagen.png" alt="Icono" />}
+        />
+
+        <SearchDownGal
+          label="Gif"
+          customInputIcon={<img src="/tu-animacion.gif" alt="Gif" />}
+        />`,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+        <SearchDownGal
+          label="Ícono"
+          customInputIcon={<Icon icon="mdi:magnify" style={{ color: "#268bd2" }} />}
+        />
+
+        <SearchDownGal
+          label="Imagen"
+          customInputIcon={<img src="/tu-imagen.png" alt="Icono" />}
+        />
+
+        <SearchDownGal
+          label="Gif"
+          customInputIcon={<img src="/tu-animacion.gif" alt="Gif" />}
+        />`,
+          },
+        ]}
+      >
+        <SearchDownGal
+          label="Ícono"
+          customInputIcon={
+            <Icon icon="mdi:magnify" style={{ color: "#268bd2" }} />
+          }
+          value={customInputIconValue}
+          setValue={setCustomInputIconValue}
+          options={sampleOptions}
+          useForApi={false}
+        />
+        <SearchDownGal
+          label="Imagen"
+          customInputIcon={
+            <img
+              src="https://cdnb.artstation.com/p/assets/images/images/040/288/947/large/foritis-wang-irelia.jpg?1628431072"
+              alt="Irelia"
+            />
+          }
+          value={customInputIconImgValue}
+          setValue={setCustomInputIconImgValue}
+          options={sampleOptions}
+          useForApi={false}
+        />
+        <SearchDownGal
+          label="Gif"
+          customInputIcon={
+            <img
+              src="https://c.tenor.com/ce1sLbXLif8AAAAM/la-roca.gif"
+              alt="Gif"
+            />
+          }
+          value={customInputIconGifValue}
+          setValue={setCustomInputIconGifValue}
           options={sampleOptions}
           useForApi={false}
         />

@@ -4,7 +4,8 @@ import { useLocation } from "react-router-dom";
 export type TocItem = {
   id: string;
   text: string;
-  level: number; // 2 = h2, 3 = h3
+  level: number;
+  children: TocItem[];
 };
 
 type Options = {
@@ -39,16 +40,41 @@ export const useTableOfContents = ({
         container.querySelectorAll<HTMLHeadingElement>(headingSelector),
       );
 
-      const collected: TocItem[] = headings.map((heading) => {
+      // Construye una estructura jerárquica: los niveles inferiores
+      // (h3, h4, ...) se anidan como hijos de su último heading de nivel 2.
+      const collected: TocItem[] = [];
+      const stack: TocItem[] = [];
+
+      headings.forEach((heading) => {
         // Si el heading no tiene id, se lo generamos a partir del texto.
         if (!heading.id) {
           heading.id = slugify(heading.textContent ?? "");
         }
-        return {
+
+        const item: TocItem = {
           id: heading.id,
           text: heading.textContent ?? "",
           level: Number(heading.tagName.replace("H", "")),
+          children: [],
         };
+
+        // Quita del stack todos los niveles que sean >= al actual
+        // (solo pueden ser hijos de un heading de nivel menor)
+        while (
+          stack.length > 0 &&
+          stack[stack.length - 1].level >= item.level
+        ) {
+          stack.pop();
+        }
+
+        if (stack.length > 0) {
+          // Se anida bajo el último heading padre
+          stack[stack.length - 1].children.push(item);
+        } else {
+          collected.push(item);
+        }
+
+        stack.push(item);
       });
 
       setItems(collected);
@@ -73,13 +99,23 @@ export const useTableOfContents = ({
       document.querySelector<HTMLElement>(".docs-content");
     if (!scrollContainer) return;
 
+    // Aplana la estructura jerárquica para poder recorrerla de forma secuencial
+    const flatItems: TocItem[] = [];
+    const flatten = (list: TocItem[]) => {
+      list.forEach((item) => {
+        flatItems.push(item);
+        flatten(item.children);
+      });
+    };
+    flatten(items);
+
     const handleScroll = () => {
       const scrollTop = scrollContainer.scrollTop;
-      const offset = 120; // qué tan abajo del top cuenta como "ya lo pasé"
+      const offset = 120;
 
-      let current: string | null = items[0]?.id ?? null;
+      let current: string | null = flatItems[0]?.id ?? null;
 
-      for (const item of items) {
+      for (const item of flatItems) {
         const el = document.getElementById(item.id);
         if (!el) continue;
 
@@ -89,7 +125,7 @@ export const useTableOfContents = ({
         if (scrollTop + offset >= elTop) {
           current = item.id;
         } else {
-          break; // Si ya encontramos un heading que no hemos pasado, salimos del loop
+          break;
         }
       }
 
