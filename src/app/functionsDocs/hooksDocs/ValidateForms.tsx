@@ -1,9 +1,125 @@
-import { CodeBlockGal } from "galliard-ui";
+import { useState } from "react";
+import { CodeBlockGal, ComponentPreviewGal, InputTextGal, ButtonGal, useValidateForms} from "galliard-ui";
+import type { ValidateProps } from "galliard-ui";
 import { DataTable } from "../../../components/table/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
 import { DocsPagination } from "../../../components/generals/DocsPagination";
 import { RegisterFormDemo } from "../../../components/interactiveExample/ValidateForm";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../../store/store";
+
+function ValidateFormBasicDemo() {
+  const [email, setEmail] = useState<string>("");
+  const [emailError, setEmailError] = useState<string>("");
+
+  const [age, setAge] = useState<string>("");
+  const [ageError, setAgeError] = useState<string>("");
+
+  const [formValid, setFormValid] = useState<boolean>(false);
+  const [attempted, setAttempted] = useState<boolean>(false);
+
+  const validateForm = useValidateForms();
+
+  const handleSubmit = async (): Promise<void> => {
+    setEmailError("");
+    setAgeError("");
+
+    const validateRules: ValidateProps[] = [
+      {
+        typeInput: "email",
+        value: email,
+        nameInput: "Email",
+        canBeNull: false,
+        setError: (e: string) => setEmailError(e),
+      },
+      {
+        typeInput: "num",
+        value: age === "" ? null : Number(age),
+        nameInput: "Edad",
+        min: 18,
+        max: 99,
+        isInteger: true,
+        canBeNull: false,
+        setError: (e: string) => setAgeError(e),
+      },
+    ];
+
+    try {
+      const isValid = validateForm.ApplyValidate(validateRules);
+      setFormValid(isValid);
+      setAttempted(true);
+    } catch (error) {
+      alert((error as Error).message);
+      setFormValid(false);
+      setAttempted(true);
+    }
+  };
+
+  const theme = useSelector((state: RootState) => state.theme);
+  const isDark = theme === "dark";
+
+  const baseColors = {
+    bgColor: isDark ? "#121212" : undefined,
+    textColor: isDark ? "#ffffff" : undefined,
+    iconColorL: isDark ? "#ffffff" : undefined,
+  };
+
+  return (
+    <div className="registerFormDemo">
+      <div className="registerFormDemo__row">
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Email"
+            typeInput="email"
+            value={email}
+            setValue={setEmail}
+            border={false}
+            placeholder="correo@gmail.com"
+            errorMessage={emailError}
+            {...baseColors}
+          />
+        </div>
+
+        <div className="registerFormDemo__field">
+          <InputTextGal
+            label="Edad"
+            typeInput="number"
+            value={age}
+            setValue={setAge}
+            border={false}
+            placeholder="19"
+            errorMessage={ageError}
+            {...baseColors}
+          />
+        </div>
+      </div>
+
+      <ButtonGal
+        label="Validar"
+        action={handleSubmit}
+        styleType="ThemeBlue"
+        borderedStyle={false}
+        seeIcon={false}
+        customClassButton="registerFormDemo__submit"
+      />
+
+      {attempted && (
+        <p
+          className={
+            formValid
+              ? "registerFormDemo__banner registerFormDemo__banner--success"
+              : "registerFormDemo__banner registerFormDemo__banner--error"
+          }
+        >
+          {formValid
+            ? "✔ Todos los datos son correctos. Registro válido."
+            : "⚠ Hay campos con errores, revísalos arriba."}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export default function ValidateForms() {
   // --- MODELOS DE DATOS PARA LAS TABLAS DE PROPIEDADES ---
@@ -162,8 +278,6 @@ export default function ValidateForms() {
         <span className="inline-code">setError</span> para reportar el primer
         error encontrado en cada campo.
       </p>
-      <h2 className="titleSecundary">Ejemplo practico</h2>
-      <RegisterFormDemo />
 
       {/* Importación */}
       <h2 className="titleSecundary">Importación</h2>
@@ -207,68 +321,220 @@ export default function ValidateForms() {
         las validaciones son correctas retorna{" "}
         <span className="inline-code">true</span>
       </p>
-
-      {/* Uso Básico */}
+{/* r4w */}
       <h2 className="titleSecundary">Uso básico</h2>
       <p className="text">
         Se define un arreglo de reglas y se ejecuta el hook al momento de enviar
         el formulario. Retorna <span className="inline-code">true</span> solo si
         todas las reglas pasan
       </p>
-      <CodeBlockGal
-        hideHeaderIfSingleTab
-        tabs={[
+      <ComponentPreviewGal
+        codeTabs={[
           {
-            label: "TypeScript",
-            language: "ts",
-            collapsible: true,
+            label: "JSX",
+            language: "jsx",
             code: `
-const [emailError, setEmailError] = useState<string>("");
-const [ageError, setAgeError] = useState<string>("");
-const validate = useValidateForms();
+import { useState } from "react";
+import { InputTextGal, ButtonGal,useValidateForms } from "galliard-ui";
 
-const handleSubmit = () => {
+export default function Example() {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [age, setAge] = useState("");
+  const [ageError, setAgeError] = useState("");
+  const [formValid, setFormValid] = useState(false);
+  const [attempted, setAttempted] = useState(false);
 
+  const validateForm = useValidateForms();
+
+  const handleSubmit = async () => {
     setEmailError("");
-    setAgeError("");        
-    const isValid = useValidateForms([
+    setAgeError("");
+
+    const validateRules = [
       {
         typeInput: "email",
         value: email,
-        nameInput: "Correo",
-        errorMessage={nameError}
+        nameInput: "Email",
+        canBeNull: false,
+        setError: (e) => setEmailError(e),
       },
       {
         typeInput: "num",
-        value: age,
+        value: age === "" ? null : Number(age),
         nameInput: "Edad",
         min: 18,
         max: 99,
         isInteger: true,
-       errorMessage={nameError},
-      },  
-    ]);
-
-    let isValid: boolean = false;
+        canBeNull: false,
+        setError: (e) => setAgeError(e),
+      },
+    ];
 
     try {
-      isValid = validate.ApplyValidate(validations);
+      const isValid = validateForm.ApplyValidate(validateRules);
+      setFormValid(isValid);
+      setAttempted(true);
+    } catch (error) {
+      alert(error.message);
+      setFormValid(false);
+      setAttempted(true);
+    }
+  };
+
+  return (
+    <div>
+      <InputTextGal
+        label="Email"
+        typeInput="email"
+        value={email}
+        setValue={setEmail}
+        placeholder="correo@gmail.com"
+        errorMessage={emailError}
+      />
+      <InputTextGal
+        label="Edad"
+        typeInput="number"
+        value={age}
+        setValue={setAge}
+        placeholder="19"
+        errorMessage={ageError}
+      />
+      <ButtonGal
+        label="Validar"
+        action={handleSubmit}
+        styleType="ThemeBlue"
+        borderedStyle={false}
+        seeIcon={false}
+      />
+      {attempted && (
+        <p
+          className={
+            formValid
+              ? "registerFormDemo__banner registerFormDemo__banner--success"
+              : "registerFormDemo__banner registerFormDemo__banner--error"
+          }
+        >
+          {formValid
+            ? "✔ Todos los datos son correctos. Registro válido."
+            : "⚠ Hay campos con errores, revísalos arriba."}
+        </p>
+      )}
+    </div>
+  );
+}
+            `,
+          },
+          {
+            label: "TSX",
+            language: "tsx",
+            code: `
+import { useState } from "react";
+import { InputTextGal, ButtonGal, useValidateForms} from "galliard-ui";
+import type { ValidateProps } from "galliard-ui";
+
+export default function Example() {
+  const [email, setEmail] = useState<string>("");
+  const [emailError, setEmailError] = useState<string>("");
+  const [age, setAge] = useState<string>("");
+  const [ageError, setAgeError] = useState<string>("");
+  const [formValid, setFormValid] = useState<boolean>(false);
+  const [attempted, setAttempted] = useState<boolean>(false);
+
+  const validateForm = useValidateForms();
+
+  const handleSubmit = async (): Promise<void> => {
+    setEmailError("");
+    setAgeError("");
+
+    const validateRules: ValidateProps[] = [
+      {
+        typeInput: "email",
+        value: email,
+        nameInput: "Email",
+        canBeNull: false,
+        setError: (e: string) => setEmailError(e),
+      },
+      {
+        typeInput: "num",
+        value: age === "" ? null : Number(age),
+        nameInput: "Edad",
+        min: 18,
+        max: 99,
+        isInteger: true,
+        canBeNull: false,
+        setError: (e: string) => setAgeError(e),
+      },
+    ];
+
+    try {
+      const isValid = validateForm.ApplyValidate(validateRules);
+      setFormValid(isValid);
+      setAttempted(true);
     } catch (error) {
       alert((error as Error).message);
-      isValid = false;
+      setFormValid(false);
+      setAttempted(true);
     }
-    setFormValid(isValid);
+  };
+
+  return (
+    <div>
+      <InputTextGal
+        label="Email"
+        typeInput="email"
+        value={email}
+        setValue={setEmail}
+        placeholder="correo@gmail.com"
+        errorMessage={emailError}
+      />
+      <InputTextGal
+        label="Edad"
+        typeInput="number"
+        value={age}
+        setValue={setAge}
+        placeholder="19"
+        errorMessage={ageError}
+      />
+      <ButtonGal
+        label="Validar"
+        action={handleSubmit}
+        styleType="ThemeBlue"
+        borderedStyle={false}
+        seeIcon={false}
+      />
+      {attempted && (
+        <p
+          className={
+            formValid
+              ? "registerFormDemo__banner registerFormDemo__banner--success"
+              : "registerFormDemo__banner registerFormDemo__banner--error"
+          }
+        >
+          {formValid
+            ? "✔ Todos los datos son correctos. Registro válido."
+            : "⚠ Hay campos con errores, revísalos arriba."}
+        </p>
+      )}
+    </div>
+  );
 }
             `,
           },
         ]}
-      />
+      >
+        <ValidateFormBasicDemo />
+      </ComponentPreviewGal>
       <br />
       <p className="note">Retorna:</p>
       <p className="text">
         <span className="inline-code">boolean</span> - true si todas las reglas
         del arreglo pasaron, false si al menos una falló
       </p>
+{/* r4w */}
+      {/* Ejemplo practico */}
+      <h2 className="titleSecundary">Ejemplo practico</h2>
+      <RegisterFormDemo />
 
       {/* Propiedades base */}
       <h2 className="titleSecundary">Propiedades comunes</h2>
@@ -365,7 +631,7 @@ const handleSubmit = () => {
     typeInput: "email",
     value: email,
     nameInput: "Correo",
-    errorMessage={nameError}    
+    errorMessage={nameError}
 }
             `,
           },
@@ -450,7 +716,7 @@ const handleSubmit = () => {
       </p>
       <p className="note">Nota:</p>
       <p className="text">
-        Una vez que aplique esta validación a un input para correo automaticamnete verificara 
+        Una vez que aplique esta validación a un input para correo automaticamnete verificara
         si el contenido es una formato de correo valido, sin configuración adicional
       </p>
       <CodeBlockGal
