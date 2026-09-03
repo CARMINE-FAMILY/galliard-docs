@@ -25,6 +25,11 @@ export default function InputRadio() {
     { value: "bird", label: "Ave", icon: "mdi:bird", seeIcon: true },
   ];
 
+  const optionsWithCustomIcons: PropsOptions[] = [
+    { value: "dog", label: "Gif", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://media.tenor.com/kLfwF7LJ5-wAAAAM/ishowspeed-dance.gif' /> },
+    { value: "cat", label: "Imagen", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://cdnb.artstation.com/p/assets/images/images/040/288/947/large/foritis-wang-irelia.jpg?1628431072' /> },
+  ];
+
   const contentProps: PropRow[] = [
     {
       name: "label",
@@ -423,7 +428,7 @@ export default function InputRadio() {
         />
       </ComponentPreviewGal>
       {/* Imágenes personalizadas por opción */}
-      <h2 className="titleSecundary">Imágenes personalizadas por opción</h2>
+      <h2 className="titleSecundary">Iconos personalizadas por opción</h2>
       <p className="text">
         Usa <span className="inline-code">customIcon</span> dentro de cada
         objeto de <span className="inline-code">options</span> para mostrar una
@@ -431,7 +436,85 @@ export default function InputRadio() {
         <span className="inline-code">src</span> de la etiqueta{" "}
         <span className="inline-code">img</span>.
       </p>
+
+      <ComponentPreviewGal
+        allowOverflow
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `import { InputRadioGal } from "galliard-ui";
+import { useState } from "react";
+
+export default function InputRadioCustomImage() {
+
+  const [radioCustomImageValue, setRadioCustomImageValue] = useState("");
+
+  const opcionesConIconosPersonalizados = [
+    { value: "dog", label: "Gif", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://media.tenor.com/kLfwF7LJ5-wAAAAM/ishowspeed-dance.gif' /> },
+    { value: "cat", label: "Imagen", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://cdnb.artstation.com/p/assets/images/images/040/288/947/large/foritis-wang-irelia.jpg?1628431072' /> },
+  ];
         
+  return (
+    <div>
+      <InputRadioGal
+        label="Tipo de archivo"
+        name="customImage"
+        icon="ci:image"
+        options={optionsWithCustomIcons}
+        iconSize={22}
+        value={radioCustomImageValue}
+        setValue={setRadioCustomImageValue}
+      />
+    </div>
+  )
+}`,
+        },
+        {
+          label: "TSX",
+          language: "tsx",
+          code: `import { InputRadioGal, PropsOptions } from "galliard-ui";
+import { useState } from "react";
+
+export default function InputRadioCustomImage() {
+
+  const [radioCustomImageValue, setRadioCustomImageValue] = useState<string>("");
+
+  const opcionesConIconosPersonalizados: PropsOptions[] = [
+    { value: "dog", label: "Gif", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://media.tenor.com/kLfwF7LJ5-wAAAAM/ishowspeed-dance.gif' /> },
+    { value: "cat", label: "Imagen", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://cdnb.artstation.com/p/assets/images/images/040/288/947/large/foritis-wang-irelia.jpg?1628431072' /> },
+  ];
+
+  return (
+    <div>
+      <InputRadioGal
+        label="Tipo de archivo"
+        name="customImage"
+        icon="ci:image"
+        options={optionsWithCustomIcons}
+        iconSize={22}
+        value={radioCustomImageValue}
+        setValue={setRadioCustomImageValue}
+      />
+    </div>
+  )
+}`,
+        }
+      ]
+    }
+
+      >
+        <InputRadioGal
+          label="Tipo de archivo"
+          name="customImage"
+          icon="ci:image"
+          options={optionsWithCustomIcons}
+          iconSize={22}
+          value={radioCustomImageValue}
+          setValue={setRadioCustomImageValue}
+        />
+      </ComponentPreviewGal>
+
       {/* Apariencia */}
       <h2 className="titleSecundary">Tamaños y colores de texto</h2>
       <p className="text">

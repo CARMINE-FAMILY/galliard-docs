@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState } from "../../store/store";
-import logo from "../../../public/logo/pin.webp";
+import logo from "/logo/pin.webp";
 import { setTheme } from "../../store/themeSlice";
 import { getEffectiveTheme } from "../../hooks/useThemeUtils";
 
