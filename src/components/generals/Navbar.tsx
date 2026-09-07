@@ -14,6 +14,12 @@ const Navbar: React.FC = () => {
 
   const effectiveTheme = getEffectiveTheme(location.pathname, theme);
 
+  // El NavLink apunta a una sola página por sección (ej: button),
+  // pero las demás rutas son hermanas (ej: inputs/checkbox), no hijas,
+  // así que el matcheo exacto nunca las marcaría. Se matchea por prefijo.
+  const sectionClass = (prefix: string) => ({ isActive }: { isActive: boolean }) =>
+    isActive || location.pathname.startsWith(prefix) ? "active" : undefined;
+
   const handleToggleTheme = () => {
     const next = effectiveTheme === "dark" ? "light" : "dark";
     dispatch(setTheme(next));
@@ -28,19 +34,36 @@ const Navbar: React.FC = () => {
 
       <ul className="navbar__links">
         <li>
-          <NavLink to="/getStartDocs/docs">Docs</NavLink>
+          <NavLink to="/getStartDocs/docs" className={sectionClass("/getStartDocs")}>
+            Docs
+          </NavLink>
         </li>
 
         <li>
-          <NavLink to="/componentsDocs/button">Components</NavLink>
+          <NavLink
+            to="/componentsDocs/button"
+            className={sectionClass("/componentsDocs")}
+          >
+            Components
+          </NavLink>
         </li>
 
         <li>
-          <NavLink to="/modalsDocs/bottomsheet">Modals</NavLink>
+          <NavLink
+            to="/modalsDocs/bottomsheet"
+            className={sectionClass("/modalsDocs")}
+          >
+            Modals
+          </NavLink>
         </li>
 
         <li>
-          <NavLink to="/functionsDocs/unixactions">Functions</NavLink>
+          <NavLink
+            to="/functionsDocs/unixactions"
+            className={sectionClass("/functionsDocs")}
+          >
+            Functions
+          </NavLink>
         </li>
       </ul>
 

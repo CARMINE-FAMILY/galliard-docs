@@ -29,6 +29,11 @@ export const useTableOfContents = ({
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Limpieza inmediata al cambiar de ruta: evita mostrar 1 frame
+    // con los items obsoletos de la página anterior.
+    setItems([]);
+    setActiveId(null);
+
     const timer = setTimeout(() => {
       const container = document.querySelector(containerSelector);
       if (!container) {
@@ -44,28 +49,50 @@ export const useTableOfContents = ({
       // (h3, h4, ...) se anidan como hijos de su último heading de nivel 2.
       const collected: TocItem[] = [];
       const stack: TocItem[] = [];
+      // Contador para generar ids únicos cuando varios headings
+      // comparten el mismo texto (ej: "Parámetros" por función).
+      const slugCount = new Map<string, number>();
+
+      // Pre-conteo global de textos: los duplicados (ej: "Parámetros"
+      // bajo cada función) están bajo padres distintos, no como hermanos.
+      const textCount = new Map<string, number>();
+      headings.forEach((h) => {
+        const t = (h.textContent ?? "").trim();
+        textCount.set(t, (textCount.get(t) ?? 0) + 1);
+      });
 
       headings.forEach((heading) => {
-        // Si el heading no tiene id, se lo generamos a partir del texto.
-        if (!heading.id) {
-          heading.id = slugify(heading.textContent ?? "");
-        }
+        // Si el heading no tiene id, se lo generamos a partir del texto,
+        // con sufijo numérico si el slug ya existe (ids duplicados = HTML
+        // inválido y todos los enlaces apuntando a la primera sección).
+        const baseSlug = heading.id || slugify(heading.textContent ?? "");
+        const used = slugCount.get(baseSlug) ?? 0;
+        slugCount.set(baseSlug, used + 1);
+        heading.id = used === 0 ? baseSlug : `${baseSlug}-${used}`;
 
-        const item: TocItem = {
-          id: heading.id,
-          text: heading.textContent ?? "",
-          level: Number(heading.tagName.replace("H", "")),
-          children: [],
-        };
+        // Si el texto aparece varias veces en la página (ej: "Parámetros"
+        // bajo cada función), se calificará con el nombre del padre real
+        // (tras el pop del stack) para que cada enlace sea distinguible.
+        const rawText = (heading.textContent ?? "").trim();
+        const isDuplicate = (textCount.get(rawText) ?? 0) > 1;
 
         // Quita del stack todos los niveles que sean >= al actual
         // (solo pueden ser hijos de un heading de nivel menor)
-        while (
-          stack.length > 0 &&
-          stack[stack.length - 1].level >= item.level
-        ) {
+        const level = Number(heading.tagName.replace("H", ""));
+        while (stack.length > 0 && stack[stack.length - 1].level >= level) {
           stack.pop();
         }
+
+        const parent = stack[stack.length - 1];
+        const displayText =
+          parent && isDuplicate ? `${parent.text} · ${rawText}` : rawText;
+
+        const item: TocItem = {
+          id: heading.id,
+          text: displayText,
+          level,
+          children: [],
+        };
 
         if (stack.length > 0) {
           // Se anida bajo el último heading padre
@@ -111,7 +138,19 @@ export const useTableOfContents = ({
 
     const handleScroll = () => {
       const scrollTop = scrollContainer.scrollTop;
-      const offset = 120;
+      const offset = 88;
+
+      // Fondo de página: la última sección puede ser más corta que el
+      // viewport y su heading nunca cruzaría la línea de referencia.
+      // En ese caso se fuerza el último item (estándar tipo Docusaurus).
+      const atBottom =
+        scrollTop + scrollContainer.clientHeight >=
+        scrollContainer.scrollHeight - 4;
+      if (atBottom) {
+        const last = flatItems[flatItems.length - 1]?.id ?? null;
+        setActiveId((prev) => (prev === last ? prev : last));
+        return;
+      }
 
       let current: string | null = flatItems[0]?.id ?? null;
 
@@ -129,12 +168,25 @@ export const useTableOfContents = ({
         }
       }
 
-      setActiveId(current);
+      // uso evita: re-renders en bucle si el activo no cambió
+      setActiveId((prev) => (prev === current ? prev : current));
     };
 
+    // requestAnimationFrame: uso para no leer rects a mitad del layout de tablas largas
+    let rafId: number | null = null;
+    const onScroll = () => {
+      if (rafId === null) rafId = requestAnimationFrame(() => {
+        rafId = null;
+        handleScroll();
+      });
+    };
+    // r4w
     handleScroll(); // estado inicial al montar
-    scrollContainer.addEventListener("scroll", handleScroll, { passive: true });
-    return () => scrollContainer.removeEventListener("scroll", handleScroll);
+    scrollContainer.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      scrollContainer.removeEventListener("scroll", onScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, [items]);
   return { items, activeId };
 };

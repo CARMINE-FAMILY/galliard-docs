@@ -135,6 +135,12 @@ export default function SearchDown() {
       type: "string",
       description: "Mensaje de error mostrado debajo del campo.",
     },
+    {
+      name: "args",
+      type: "InputHTMLAttributes<HTMLInputElement>",
+      description:
+        "Props nativas adicionales que se pasan directo al <input />",
+    },
   ];
 
   const appearanceProps: PropRow[] = [
@@ -264,6 +270,19 @@ export default function SearchDown() {
       description: "Tamaño del ícono de lupa dentro del campo.",
     },
     {
+      name: "seeInputIcon",
+      type: "boolean",
+      defaultValue: "true",
+      description: "Muestra el ícono de lupa dentro del campo.",
+    },
+    {
+      name: "iconInput",
+      type: "string",
+      defaultValue: '"icon-park-solid:search"',
+      description:
+        "Identificador del ícono dentro del campo, obtenido desde YesIcon. Solo aplica si seeInputIcon es true y no hay customInputIcon.",
+    },
+    {
       name: "customIcon",
       type: "React.ReactNode",
       description:
@@ -287,6 +306,12 @@ export default function SearchDown() {
       name: "customInputClass",
       type: "string",
       description: "Clase CSS adicional aplicada al campo de texto.",
+    },
+    {
+      name: "customInputContainerClass",
+      type: "string",
+      description:
+        "Clase CSS adicional aplicada al contenedor que agrupa el campo y el ícono de búsqueda.",
     },
     {
       name: "customLabelClass",
@@ -746,9 +771,10 @@ const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[
       {/* Personalización */}
       <h2 className="titleSecundary">Personalización del componente</h2>
       <p className="text">
-        Con <span className="inline-code">customContainerClass</span>,
-        <span className="inline-code">customInputClass</span>,
-        <span className="inline-code">customLabelClass</span>,
+         Con <span className="inline-code">customContainerClass</span>,
+         <span className="inline-code">customInputClass</span>,
+         <span className="inline-code">customInputContainerClass</span>,
+         <span className="inline-code">customLabelClass</span>,
         <span className="inline-code">customIconClass</span> y
         <span className="inline-code">customOptionClass</span> puedes aplicar
         clases CSS propias a cada parte del componente.
@@ -768,9 +794,10 @@ const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[
             code: `
         <SearchDownGal
           label="Fruta"
-          customContainerClass="miContenedor"
-          customInputClass="miInput"
-          customLabelClass="miLabel"
+           customContainerClass="miContenedor"
+           customInputClass="miInput"
+           customInputContainerClass="miContenedorInput"
+           customLabelClass="miLabel"
           customOptionClass="miOpcion"
         />`,
           },
@@ -780,9 +807,10 @@ const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[
             code: `
         <SearchDownGal
           label="Fruta"
-          customContainerClass="miContenedor"
-          customInputClass="miInput"
-          customLabelClass="miLabel"
+           customContainerClass="miContenedor"
+           customInputClass="miInput"
+           customInputContainerClass="miContenedorInput"
+           customLabelClass="miLabel"
           customOptionClass="miOpcion"
         />`,
           },
@@ -790,9 +818,10 @@ const searchCharacter = async (text: string | null): Promise<OptionsSearchModel[
       >
         <SearchDownGal
           label="Fruta"
-          customContainerClass="miContenedor"
-          customInputClass="miInput"
-          customLabelClass="miLabel"
+           customContainerClass="miContenedor"
+           customInputClass="miInput"
+           customInputContainerClass="miContenedorInput"
+           customLabelClass="miLabel"
           customOptionClass="miOpcion"
           value={customValue}
           setValue={setCustomValue}
