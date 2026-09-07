@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: "OpenSansExtraBold";
-  src: url("../../public/Open_Sans/static/OpenSans-ExtraBold.ttf") format("truetype");
+  src: url("/Open_Sans/static/OpenSans-ExtraBold.ttf") format("truetype");
   font-style: bold;
 }
 

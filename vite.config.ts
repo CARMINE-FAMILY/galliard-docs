@@ -1,19 +1,26 @@
-import { defineConfig } from "vite";
+import { defineConfig, type UserConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import fs from "node:fs";
+import path from "node:path";
+
+// uso: reflejar la versión exacta de galliard-ui instalada para mostrarla 
+// Al instalar/actualizar la dependencia se toma la nueva.
+const galliardUiPkg = JSON.parse(
+  fs.readFileSync(
+    path.resolve(process.cwd(), "node_modules/galliard-ui/package.json"),
+    "utf-8",
+  ),
+);
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       additionalData: (content: string, filepath: string) => {
-  //         if (filepath.endsWith("main.scss") || filepath.endsWith("vars.scss"))
-  //           return content;
-  //         return `@use "${path.resolve(__dirname, "src/styles/generals/vars").replace(/\\/g, "/")}" as *;\n${content}`;
-  //       },
-  //     },
-  //   },
-  // },
+export default defineConfig(( ) => {
+  // 1. Configuraciones generales (aplican tanto para build como para dev)
+  const config: UserConfig = {
+    plugins: [react()],
+    define: {
+      __GALLIARD_UI_VERSION__: JSON.stringify(galliardUiPkg.version ?? "0.0.0"),
+    },
+  };
+  // 3. Retornar la configuración final
+  return config;
 });

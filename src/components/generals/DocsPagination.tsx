@@ -1,3 +1,4 @@
+import { Link, useLocation } from "react-router-dom";
 import styles from "../../styles/components/generals/DocsPagination.module.scss";
 import { docsNavOrder, type DocsNavItem } from "../../models/docsNavOrder";
 
@@ -6,7 +7,8 @@ interface DocsPaginationProps {
 }
 
 export function DocsPagination({ currentHref }: DocsPaginationProps) {
-  const href = currentHref ?? window.location.pathname;
+  const { pathname } = useLocation();
+  const href = currentHref ?? pathname;
 
   const index = docsNavOrder.findIndex(
     (item: DocsNavItem) => item.href === href,
@@ -21,22 +23,22 @@ export function DocsPagination({ currentHref }: DocsPaginationProps) {
   return (
     <div className={styles.pagination}>
       {prev ? (
-        <a href={prev.href} className={styles.paginationCard}>
+        <Link to={prev.href} className={styles.paginationCard}>
           <span className={styles.paginationLabel}>← Anterior</span>
           <span className={styles.paginationTitle}>{prev.label}</span>
-        </a>
+        </Link>
       ) : (
         <div />
       )}
 
       {next ? (
-        <a
-          href={next.href}
+        <Link
+          to={next.href}
           className={`${styles.paginationCard} ${styles["paginationCard--next"]}`}
         >
           <span className={styles.paginationLabel}>Siguiente →</span>
           <span className={styles.paginationTitle}>{next.label}</span>
-        </a>
+        </Link>
       ) : (
         <div />
       )}

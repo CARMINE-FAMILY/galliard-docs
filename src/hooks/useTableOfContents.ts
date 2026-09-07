@@ -4,7 +4,8 @@ import { useLocation } from "react-router-dom";
 export type TocItem = {
   id: string;
   text: string;
-  level: number; // 2 = h2, 3 = h3
+  level: number;
+  children: TocItem[];
 };
 
 type Options = {
@@ -28,6 +29,11 @@ export const useTableOfContents = ({
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Limpieza inmediata al cambiar de ruta: evita mostrar 1 frame
+    // con los items obsoletos de la página anterior.
+    setItems([]);
+    setActiveId(null);
+
     const timer = setTimeout(() => {
       const container = document.querySelector(containerSelector);
       if (!container) {
@@ -39,16 +45,63 @@ export const useTableOfContents = ({
         container.querySelectorAll<HTMLHeadingElement>(headingSelector),
       );
 
-      const collected: TocItem[] = headings.map((heading) => {
-        // Si el heading no tiene id, se lo generamos a partir del texto.
-        if (!heading.id) {
-          heading.id = slugify(heading.textContent ?? "");
+      // Construye una estructura jerárquica: los niveles inferiores
+      // (h3, h4, ...) se anidan como hijos de su último heading de nivel 2.
+      const collected: TocItem[] = [];
+      const stack: TocItem[] = [];
+      // Contador para generar ids únicos cuando varios headings
+      // comparten el mismo texto (ej: "Parámetros" por función).
+      const slugCount = new Map<string, number>();
+
+      // Pre-conteo global de textos: los duplicados (ej: "Parámetros"
+      // bajo cada función) están bajo padres distintos, no como hermanos.
+      const textCount = new Map<string, number>();
+      headings.forEach((h) => {
+        const t = (h.textContent ?? "").trim();
+        textCount.set(t, (textCount.get(t) ?? 0) + 1);
+      });
+
+      headings.forEach((heading) => {
+        // Si el heading no tiene id, se lo generamos a partir del texto,
+        // con sufijo numérico si el slug ya existe (ids duplicados = HTML
+        // inválido y todos los enlaces apuntando a la primera sección).
+        const baseSlug = heading.id || slugify(heading.textContent ?? "");
+        const used = slugCount.get(baseSlug) ?? 0;
+        slugCount.set(baseSlug, used + 1);
+        heading.id = used === 0 ? baseSlug : `${baseSlug}-${used}`;
+
+        // Si el texto aparece varias veces en la página (ej: "Parámetros"
+        // bajo cada función), se calificará con el nombre del padre real
+        // (tras el pop del stack) para que cada enlace sea distinguible.
+        const rawText = (heading.textContent ?? "").trim();
+        const isDuplicate = (textCount.get(rawText) ?? 0) > 1;
+
+        // Quita del stack todos los niveles que sean >= al actual
+        // (solo pueden ser hijos de un heading de nivel menor)
+        const level = Number(heading.tagName.replace("H", ""));
+        while (stack.length > 0 && stack[stack.length - 1].level >= level) {
+          stack.pop();
         }
-        return {
+
+        const parent = stack[stack.length - 1];
+        const displayText =
+          parent && isDuplicate ? `${parent.text} · ${rawText}` : rawText;
+
+        const item: TocItem = {
           id: heading.id,
-          text: heading.textContent ?? "",
-          level: Number(heading.tagName.replace("H", "")),
+          text: displayText,
+          level,
+          children: [],
         };
+
+        if (stack.length > 0) {
+          // Se anida bajo el último heading padre
+          stack[stack.length - 1].children.push(item);
+        } else {
+          collected.push(item);
+        }
+
+        stack.push(item);
       });
 
       setItems(collected);
@@ -73,13 +126,35 @@ export const useTableOfContents = ({
       document.querySelector<HTMLElement>(".docs-content");
     if (!scrollContainer) return;
 
+    // Aplana la estructura jerárquica para poder recorrerla de forma secuencial
+    const flatItems: TocItem[] = [];
+    const flatten = (list: TocItem[]) => {
+      list.forEach((item) => {
+        flatItems.push(item);
+        flatten(item.children);
+      });
+    };
+    flatten(items);
+
     const handleScroll = () => {
       const scrollTop = scrollContainer.scrollTop;
-      const offset = 120; // qué tan abajo del top cuenta como "ya lo pasé"
+      const offset = 88;
 
-      let current: string | null = items[0]?.id ?? null;
+      // Fondo de página: la última sección puede ser más corta que el
+      // viewport y su heading nunca cruzaría la línea de referencia.
+      // En ese caso se fuerza el último item (estándar tipo Docusaurus).
+      const atBottom =
+        scrollTop + scrollContainer.clientHeight >=
+        scrollContainer.scrollHeight - 4;
+      if (atBottom) {
+        const last = flatItems[flatItems.length - 1]?.id ?? null;
+        setActiveId((prev) => (prev === last ? prev : last));
+        return;
+      }
 
-      for (const item of items) {
+      let current: string | null = flatItems[0]?.id ?? null;
+
+      for (const item of flatItems) {
         const el = document.getElementById(item.id);
         if (!el) continue;
 
@@ -89,16 +164,29 @@ export const useTableOfContents = ({
         if (scrollTop + offset >= elTop) {
           current = item.id;
         } else {
-          break; // Si ya encontramos un heading que no hemos pasado, salimos del loop
+          break;
         }
       }
 
-      setActiveId(current);
+      // uso evita: re-renders en bucle si el activo no cambió
+      setActiveId((prev) => (prev === current ? prev : current));
     };
 
+    // requestAnimationFrame: uso para no leer rects a mitad del layout de tablas largas
+    let rafId: number | null = null;
+    const onScroll = () => {
+      if (rafId === null) rafId = requestAnimationFrame(() => {
+        rafId = null;
+        handleScroll();
+      });
+    };
+    // r4w
     handleScroll(); // estado inicial al montar
-    scrollContainer.addEventListener("scroll", handleScroll, { passive: true });
-    return () => scrollContainer.removeEventListener("scroll", handleScroll);
+    scrollContainer.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      scrollContainer.removeEventListener("scroll", onScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, [items]);
   return { items, activeId };
 };

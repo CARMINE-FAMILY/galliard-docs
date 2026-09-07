@@ -83,7 +83,7 @@ export default function Example() {
                         label: "JSX", 
                         language: "jsx",
                         code: `
-                        import { InputTextGal, useDebounceCallback } from "galliard-ui";
+import { InputTextGal, useDebounceCallback } from "galliard-ui";
 
 export default function Example() {
     const [text, setText] = useState("");

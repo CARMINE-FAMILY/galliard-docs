@@ -18,6 +18,7 @@ import UnixActions from "./app/functionsDocs/UnixActions";
 import OnClickOutside from "./app/functionsDocs/hooksDocs/OnClickOutside";
 import ValidateForms from "./app/functionsDocs/hooksDocs/ValidateForms";
 import { ThemeSync } from "./ThemeSync";
+import { ScrollToTop } from "./components/generals/ScrollToTop";
 import NotFound from "./components/NotFound";
 import SearchDown from "./app/componentsDocs/inputs/SearchDown";
 import DebouncerDoc from "./app/functionsDocs/hooksDocs/DebouncerDoc";
@@ -26,6 +27,7 @@ function App() {
   return (
     <BrowserRouter>
       <ThemeSync />
+      <ScrollToTop />
       <Routes>
         {/* Se agrega el navbar y footer, solo agregar rutas del contenido */}
         <Route element={<MainLayout />}>

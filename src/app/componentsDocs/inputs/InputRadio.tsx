@@ -1,26 +1,33 @@
 import { useState } from "react";
 import { InputRadioGal, ComponentPreviewGal } from "galliard-ui";
+import type { PropsOptions } from "galliard-ui";
 import { DataTable } from "../../../components/table/DataTable";
 import type { PropRow } from "../../../models/TableModel";
 import { propsColumns } from "../../../hooks/usePropsTableColumns";
 import { DocsPagination } from "../../../components/generals/DocsPagination";
 
 export default function InputRadio() {
-  const [, setRadioValue1] = useState<string>("");
-  const [, setRadioValue2] = useState<string>("");
-  const [, setRadioValue3] = useState<string>("");
-  const [, setRadioValue4] = useState<string>("");
-  const [, setRadioValue5] = useState<string>("");
+  const [radioTermsValue, setRadioTermsValue] = useState<string>("");
+  const [radioOrientValue, setRadioOrientValue] = useState<string>("");
+  const [radioMascotaValue, setRadioMascotaValue] = useState<string>("");
+  const [radioCustomImageValue, setRadioCustomImageValue] = useState<string>("");
+  const [radioCustomValue, setRadioCustomValue] = useState<string>("");
+  const [radioErrorValue, setRadioErrorValue] = useState<string>("");
 
-  const options = [
+  const options: PropsOptions[] = [
     { value: "yes", label: "Si", seeIcon: false },
     { value: "no", label: "No", seeIcon: false },
   ];
 
-  const optionsWithIcons = [
+  const optionsWithIcons: PropsOptions[] = [
     { value: "dog", label: "Perro", icon: "mdi:dog", seeIcon: true },
     { value: "cat", label: "Gato", icon: "mdi:cat", seeIcon: true },
     { value: "bird", label: "Ave", icon: "mdi:bird", seeIcon: true },
+  ];
+
+  const optionsWithCustomIcons: PropsOptions[] = [
+    { value: "dog", label: "Gif", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://media.tenor.com/kLfwF7LJ5-wAAAAM/ishowspeed-dance.gif' /> },
+    { value: "cat", label: "Imagen", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://cdnb.artstation.com/p/assets/images/images/040/288/947/large/foritis-wang-irelia.jpg?1628431072' /> },
   ];
 
   const contentProps: PropRow[] = [
@@ -31,7 +38,7 @@ export default function InputRadio() {
     },
     {
       name: "options",
-      type: "RadioOptionModel[]",
+      type: "PropsOptions[]",
       description: "Lista de opciones del grupo (value, label, icono, etc)",
     },
     {
@@ -141,7 +148,7 @@ export default function InputRadio() {
     },
     {
       name: "seeIcon",
-      type: "string",
+      type: "boolean",
       description: "Indica si esta opción muestra su propio ícono",
     },
     {
@@ -157,7 +164,8 @@ export default function InputRadio() {
     {
       name: "customIcon",
       type: "React.ReactNode",
-      description: "Clase CSS adicional aplicada al ícono de esta opción",
+      description:
+        "Reemplaza el ícono de esta opción por un elemento personalizado",
     },
     {
       name: "customIconClass",
@@ -245,7 +253,7 @@ export default function InputRadio() {
         rowKey={(r) => r.name}
       />
 
-      <h3 className="subtitle">Modelo de cada opción (RadioOptionModel)</h3>
+      <h3 className="subtitle">Modelo de cada opción (PropsOptions)</h3>
       <DataTable
         columns={propsColumns}
         data={optionsModelProps}
@@ -292,7 +300,7 @@ export default function InputRadio() {
             label: "TSX",
             language: "tsx",
             code: `
-        const opciones: RadioOptionModel[] = [
+        const opciones: PropsOptions[] = [
           { value: "yes", label: "Sí" },
           { value: "no", label: "No" },
         ];
@@ -310,7 +318,8 @@ export default function InputRadio() {
           label="¿Aceptas los términos?"
           name="terminos"
           options={options}
-          setValue={setRadioValue1}
+          value={radioTermsValue}
+          setValue={setRadioTermsValue}
         />
       </ComponentPreviewGal>
 
@@ -346,14 +355,16 @@ export default function InputRadio() {
           name="horizontalDemo"
           options={options}
           HorV="horizontal"
-          setValue={setRadioValue2}
+          value={radioOrientValue}
+          setValue={setRadioOrientValue}
         />
         <InputRadioGal
           label="Vertical"
           name="verticalDemo"
           options={options}
           HorV="vertical"
-          setValue={setRadioValue2}
+          value={radioOrientValue}
+          setValue={setRadioOrientValue}
         />
       </ComponentPreviewGal>
 
@@ -391,7 +402,7 @@ export default function InputRadio() {
             label: "TSX",
             language: "tsx",
             code: `
-        const opcionesConIconos: RadioOptionModel[] = [
+        const opcionesConIconos: PropsOptions[] = [
           { value: "dog", label: "Perro", icon: "mdi:dog", seeIcon: true },
           { value: "cat", label: "Gato", icon: "mdi:cat", seeIcon: true },
           { value: "bird", label: "Ave", icon: "mdi:bird", seeIcon: true },
@@ -412,7 +423,95 @@ export default function InputRadio() {
           name="mascotaDemo"
           options={optionsWithIcons}
           iconSize={22}
-          setValue={setRadioValue3}
+          value={radioMascotaValue}
+          setValue={setRadioMascotaValue}
+        />
+      </ComponentPreviewGal>
+      {/* Imágenes personalizadas por opción */}
+      <h2 className="titleSecundary">Iconos personalizadas por opción</h2>
+      <p className="text">
+        Usa <span className="inline-code">customIcon</span> dentro de cada
+        objeto de <span className="inline-code">options</span> para mostrar una
+        imagen, GIF o cualquier otro elemento React. Coloca la URL en{" "}
+        <span className="inline-code">src</span> de la etiqueta{" "}
+        <span className="inline-code">img</span>.
+      </p>
+
+      <ComponentPreviewGal
+        allowOverflow
+        codeTabs={[
+          {
+            label: "JSX",
+            language: "jsx",
+            code: `import { InputRadioGal } from "galliard-ui";
+import { useState } from "react";
+
+export default function InputRadioCustomImage() {
+
+  const [radioCustomImageValue, setRadioCustomImageValue] = useState("");
+
+  const opcionesConIconosPersonalizados = [
+    { value: "dog", label: "Gif", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://media.tenor.com/kLfwF7LJ5-wAAAAM/ishowspeed-dance.gif' /> },
+    { value: "cat", label: "Imagen", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://cdnb.artstation.com/p/assets/images/images/040/288/947/large/foritis-wang-irelia.jpg?1628431072' /> },
+  ];
+        
+  return (
+    <div>
+      <InputRadioGal
+        label="Tipo de archivo"
+        name="customImage"
+        icon="ci:image"
+        options={optionsWithCustomIcons}
+        iconSize={22}
+        value={radioCustomImageValue}
+        setValue={setRadioCustomImageValue}
+      />
+    </div>
+  )
+}`,
+        },
+        {
+          label: "TSX",
+          language: "tsx",
+          code: `import { InputRadioGal, PropsOptions } from "galliard-ui";
+import { useState } from "react";
+
+export default function InputRadioCustomImage() {
+
+  const [radioCustomImageValue, setRadioCustomImageValue] = useState<string>("");
+
+  const opcionesConIconosPersonalizados: PropsOptions[] = [
+    { value: "dog", label: "Gif", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://media.tenor.com/kLfwF7LJ5-wAAAAM/ishowspeed-dance.gif' /> },
+    { value: "cat", label: "Imagen", seeIcon: false, customIcon: <img style={{ height: 'auto', width: 'auto', display: 'flex', justifyContent: 'center' }} src='https://cdnb.artstation.com/p/assets/images/images/040/288/947/large/foritis-wang-irelia.jpg?1628431072' /> },
+  ];
+
+  return (
+    <div>
+      <InputRadioGal
+        label="Tipo de archivo"
+        name="customImage"
+        icon="ci:image"
+        options={optionsWithCustomIcons}
+        iconSize={22}
+        value={radioCustomImageValue}
+        setValue={setRadioCustomImageValue}
+      />
+    </div>
+  )
+}`,
+        }
+      ]
+    }
+
+      >
+        <InputRadioGal
+          label="Tipo de archivo"
+          name="customImage"
+          icon="ci:image"
+          options={optionsWithCustomIcons}
+          iconSize={22}
+          value={radioCustomImageValue}
+          setValue={setRadioCustomImageValue}
         />
       </ComponentPreviewGal>
 
@@ -470,7 +569,8 @@ export default function InputRadio() {
           textColor="#2aa198"
           labelSize="1.6em"
           labelColor="#2aa198"
-          setValue={setRadioValue4}
+          value={radioCustomValue}
+          setValue={setRadioCustomValue}
         />
       </ComponentPreviewGal>
 
@@ -520,7 +620,8 @@ export default function InputRadio() {
           label="¿Aceptas los términos?"
           name="terminosErrorDemo"
           options={options}
-          setValue={setRadioValue5}
+          value={radioErrorValue}
+          setValue={setRadioErrorValue}
           errorMessage="Debes seleccionar una opción"
         />
       </ComponentPreviewGal>

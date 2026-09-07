@@ -1,16 +1,31 @@
-import { useEffect, useRef } from "react";
-import { useTableOfContents } from "../../hooks/useTableOfContents";
+import { useEffect, useMemo, useRef } from "react";
+import {
+  useTableOfContents,
+  type TocItem,
+} from "../../hooks/useTableOfContents";
 import "../../styles/pages/_tableOfContents.scss";
+
+// árbol jerárquico en orden de documento para que todos
+// los niveles (h2, h3, ...) se rendericen y puedan recibir `.active`.
+const flattenItems = (list: TocItem[]): TocItem[] => {
+  const flat: TocItem[] = [];
+  list.forEach((item) => {
+    flat.push(item);
+    flat.push(...flattenItems(item.children));
+  });
+  return flat;
+};
 
 export const TableOfContents = () => {
   const { items, activeId } = useTableOfContents();
   const activeRef = useRef<HTMLLIElement | null>(null);
+  const flatItems = useMemo(() => flattenItems(items), [items]);
 
   useEffect(() => {
     if (activeRef.current) {
       activeRef.current.scrollIntoView({
         block: "nearest",
-        behavior: "smooth",
+        behavior: "auto",
       });
     }
   }, [activeId]);
@@ -21,7 +36,7 @@ export const TableOfContents = () => {
     <nav className="toc" aria-label="Tabla de contenidos">
       <p className="toc-title">En esta página</p>
       <ul>
-        {items.map((item) => (
+        {flatItems.map((item) => (
           <li
             key={item.id}
             ref={activeId === item.id ? activeRef : null}
