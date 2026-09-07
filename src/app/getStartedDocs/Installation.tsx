@@ -42,12 +42,18 @@ const App = () => (
       </p>
 
       <CopyTextGal command="npm install galliard-ui" theme="light" />
+      <p className="text">
+        Versión actual: <code>{__GALLIARD_UI_VERSION__}</code>
+      </p>
 
       <p className="text">
         <strong>yarn</strong>
       </p>
 
       <CopyTextGal command="yarn add galliard-ui" theme="light" />
+      <p className="text">
+        Versión actual: <code>{__GALLIARD_UI_VERSION__}</code>
+      </p>
 
       <h2 className="titleSecundary">🛠️ Uso Básico</h2>
 
